@@ -1,0 +1,90 @@
+.projects-section {
+    background-color: var(--color-bg);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.project-card {
+    background: var(--color-bg-light);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-secondary);
+}
+
+.project-image-placeholder {
+    height: 150px;
+    background: linear-gradient(45deg, var(--color-bg-lighter), var(--color-bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.status-badge.in-progress {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--color-primary);
+}
+
+.status-badge.prototype {
+    background: rgba(170, 0, 255, 0.1);
+    color: #aa00ff;
+}
+
+.status-badge.completed {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--color-secondary);
+}
+
+.status-badge.planning {
+    background: rgba(255, 170, 0, 0.1);
+    color: #ffaa00;
+}
+
+.project-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+.project-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px dashed var(--color-text-muted);
+    color: var(--color-text-muted);
+    min-height: 250px;
+}

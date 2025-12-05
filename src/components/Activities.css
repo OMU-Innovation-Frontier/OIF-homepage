@@ -1,0 +1,116 @@
+.activities-section {
+    background-color: var(--color-bg);
+}
+
+.subsection-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    color: var(--color-white);
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--color-bg-lighter);
+    padding-bottom: 10px;
+}
+
+.weekly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.weekly-card {
+    background: var(--color-bg-light);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-bg-lighter);
+}
+
+.weekly-header {
+    background: var(--color-bg-lighter);
+    padding: 10px 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.weekly-body {
+    padding: 20px;
+}
+
+.weekly-body h4 {
+    color: var(--color-white);
+    margin-bottom: 5px;
+}
+
+.weekly-body p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    border-left: 2px solid var(--color-bg-lighter);
+    margin-left: 20px;
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -36px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    background: var(--color-bg);
+    border: 2px solid var(--color-secondary);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content {
+    background: var(--color-bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-date {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 5px;
+}
+
+.timeline-title {
+    font-size: 1.1rem;
+    color: var(--color-white);
+    margin-bottom: 5px;
+}
+
+.timeline-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+
+    .timeline-marker {
+        left: -26px;
+    }
+}

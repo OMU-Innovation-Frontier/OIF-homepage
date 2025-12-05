@@ -1,0 +1,93 @@
+.org-section {
+    background-color: var(--color-bg-light);
+    text-align: center;
+}
+
+.org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.org-level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.org-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.org-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-primary);
+    padding: 15px 30px;
+    border-radius: 8px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.org-card.founder {
+    background: rgba(0, 240, 255, 0.1);
+    border-width: 2px;
+    transform: scale(1.1);
+}
+
+.org-card.vice {
+    border-style: dashed;
+}
+
+.org-card.board {
+    border-color: var(--color-secondary);
+}
+
+.org-card.leader {
+    border-color: var(--color-text-muted);
+}
+
+.org-card .role {
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.org-card .name {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.connector-vertical {
+    width: 2px;
+    height: 30px;
+    background-color: var(--color-text-muted);
+    margin: 10px 0;
+}
+
+.org-group-label {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .org-row {
+        gap: 10px;
+    }
+
+    .org-card {
+        padding: 10px 15px;
+        min-width: 80px;
+        font-size: 0.8rem;
+    }
+}

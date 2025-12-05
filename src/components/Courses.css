@@ -1,0 +1,98 @@
+.courses-section {
+    background-color: var(--color-bg-light);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.course-card {
+    background: var(--color-bg-lighter);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.course-card.expanded {
+    border-color: var(--color-primary);
+    background: var(--color-bg);
+}
+
+.course-header {
+    padding: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.course-icon {
+    margin-bottom: 20px;
+}
+
+.course-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+.course-short-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.expand-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: var(--color-text-muted);
+}
+
+.course-details {
+    padding: 0 30px 30px;
+    border-top: 1px solid var(--color-bg-lighter);
+}
+
+.detail-section {
+    margin-top: 20px;
+}
+
+.detail-section h4 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.roadmap-list {
+    list-style: none;
+    padding-left: 5px;
+}
+
+.roadmap-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.roadmap-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+}
+
+.detail-section p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
