@@ -1,21 +1,20 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import About from '../components/About';
+import Strengths from '../components/Strengths';
+import Organization from '../components/Organization';
 import Courses from '../components/Courses';
 import Activities from '../components/Activities';
-import FAQ from '../components/FAQ';
 import JoinUs from '../components/JoinUs';
-
-import Organization from '../components/Organization';
+import FAQ from '../components/FAQ';
 
 const Home = () => {
     return (
         <>
             <Hero />
-            <About />
+            <Strengths />
+            <Organization />
             <Courses />
             <Activities />
-            <Organization />
             <JoinUs />
             <FAQ />
         </>

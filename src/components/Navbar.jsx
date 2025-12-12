@@ -18,7 +18,8 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'About', to: '/#about' },
+        { name: 'Strengths', to: '/#strengths' },
+        { name: 'Organization', to: '/#organization' },
         { name: 'Courses', to: '/#courses' },
         { name: 'Activities', to: '/#activities' },
         { name: 'Join', to: '/#join' },

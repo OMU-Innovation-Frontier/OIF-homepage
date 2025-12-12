@@ -71,13 +71,13 @@
 
 .course-jp-title {
     font-size: 0.85rem;
-    color: var(--color-text-muted);
+    color: var(--color-white);
     margin-top: 4px;
 }
 
 .course-desc {
     font-size: 1rem;
-    color: var(--color-text-muted);
+    color: var(--color-white);
     line-height: 1.7;
     margin-bottom: 30px;
     flex-grow: 1;

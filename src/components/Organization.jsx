@@ -4,7 +4,7 @@ import './Organization.css';
 
 const Organization = () => {
     return (
-        <section className="section org-section">
+        <section id="organization" className="section org-section">
             <div className="container">
                 <h2 className="section-title">組織構成</h2>
 

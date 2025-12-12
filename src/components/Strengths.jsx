@@ -1,33 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Users, Trophy, Rocket, ShieldCheck } from 'lucide-react';
+import { School, Users, Handshake } from 'lucide-react';
 import './Strengths.css';
 
 const strengths = [
     {
-        icon: <Zap size={32} />,
-        title: '圧倒的な成長環境',
-        text: '学生主体でありながら、東大・京大のトップサークルに匹敵するカリキュラムと開発環境を用意。'
+        icon: <School size={80} strokeWidth={1.5} />,
+        title: '多領域を学べる',
+        text: 'AI・開発・ビジネスなど様々な分野について学び、実践できる'
     },
     {
-        icon: <Users size={32} />,
-        title: '強力なメンター陣',
-        text: '実務経験のある先輩やOB/OGがメンターとして並走。技術的な壁もキャリアの悩みも相談可能。'
+        icon: <Users size={80} strokeWidth={1.5} />,
+        title: '仲間と共有する',
+        text: '同じ意思を持つ仲間と出会い、興味を共有することができる。'
     },
     {
-        icon: <Trophy size={32} />,
-        title: '実力主義のプロジェクト',
-        text: '学年に関係なく、成果を出せばリーダーに抜擢。ハッカソン優勝や起業を目指すチームも多数。'
-    },
-    {
-        icon: <Rocket size={32} />,
-        title: '大阪発のエコシステム',
-        text: '関西のテック企業や自治体との連携プロジェクトも実施。大学の枠を超えた活動ができる。'
-    },
-    {
-        icon: <ShieldCheck size={32} />,
-        title: '心理的安全性',
-        text: '「失敗を恐れない」文化。挑戦した結果の失敗は称賛される。初心者でも安心して質問できる空気感。'
+        icon: <Handshake size={80} strokeWidth={1.5} />,
+        title: 'キャリアにつながる',
+        text: '学んだ技術をそのまま実務へ。インターン、受託開発、起業など、リアルなキャリアにつながる導線を用意しています。'
     }
 ];
 
@@ -49,10 +39,10 @@ const Strengths = () => {
                         <motion.div
                             key={index}
                             className="strength-card"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: index * 0.2 }}
                         >
                             <div className="strength-icon-wrapper">
                                 {item.icon}

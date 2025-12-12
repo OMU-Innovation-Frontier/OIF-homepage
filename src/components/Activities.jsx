@@ -46,8 +46,7 @@ const Activities = () => {
                 >
                     <h2 className="section-title">活動ロードマップ</h2>
                     <p className="section-desc">
-                        「個の確立」から「チーム実践」、そして「社会実装」へ。<br />
-                        OIF独自の成長エコシステムです。
+                        「個の確立」から「チーム実践」、そして「社会実装」へ。
                     </p>
                 </motion.div>
 
@@ -116,7 +115,7 @@ const Activities = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flow-desc">「最強のメンバー」で社会実装</div>
+                        <div className="flow-desc">各コースが交わり社会実装</div>
                     </div>
                 </div>
             </div>

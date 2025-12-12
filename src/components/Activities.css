@@ -19,7 +19,7 @@
 
 .section-desc {
     font-size: 1.1rem;
-    color: var(--color-text-muted);
+    color: var(--color-white);
     margin-top: 20px;
 }
 
@@ -58,7 +58,7 @@
 
 .flow-sub {
     font-size: 0.9rem;
-    color: var(--color-text-muted);
+    color: var(--color-white);
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -184,7 +184,7 @@
 
 .flow-desc {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-white);
     text-align: center;
     min-height: 40px;
 }
