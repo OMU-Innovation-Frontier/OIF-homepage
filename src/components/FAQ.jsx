@@ -59,11 +59,33 @@ const FAQ = () => {
         <section className="section faq-section">
             <div className="container">
                 <h2 className="section-title">FAQ</h2>
-                <div className="faq-list">
+                <motion.div
+                    className="faq-list"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.3
+                            }
+                        }
+                    }}
+                >
                     {faqs.map((faq, index) => (
-                        <FAQItem key={index} {...faq} />
+                        <motion.div
+                            key={index}
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                            }}
+                        >
+                            <FAQItem {...faq} />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

@@ -46,6 +46,7 @@ const Courses = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                 >
                     3つのコース
                 </motion.h2>
@@ -61,7 +62,7 @@ const Courses = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ duration: 0.8, delay: index * 0.1 }}
                             whileHover={{ y: -10 }}
                         >
                             <div className="course-card-header">

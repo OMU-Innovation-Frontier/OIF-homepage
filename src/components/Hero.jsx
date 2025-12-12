@@ -31,7 +31,7 @@ const Hero = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
                 >
                     <h2 className="hero-subtitle">
                         <span className="line"></span>

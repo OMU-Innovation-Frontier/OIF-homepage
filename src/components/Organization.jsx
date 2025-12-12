@@ -46,6 +46,7 @@ const Organization = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
+                                transition={{ duration: 0.8 }}
                             >
                                 <div className="layer-badge">Layer 1</div>
                                 <h4>正規メンバー</h4>
@@ -63,7 +64,7 @@ const Organization = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="layer-badge">Layer 2</div>
                                 <h4>コミュニティメンバー</h4>

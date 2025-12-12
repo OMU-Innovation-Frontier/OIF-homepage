@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Instagram, Mail } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 import './Footer.css';
@@ -11,7 +12,13 @@ const Footer = () => {
     };
 
     return (
-        <footer className="footer">
+        <motion.footer
+            className="footer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="container">
                 <div className="footer-content">
                     <div className="footer-brand">
@@ -56,7 +63,7 @@ const Footer = () => {
                     <p className="university-name">大阪公立大学 (Osaka Metropolitan University)</p>
                 </div>
             </div>
-        </footer>
+        </motion.footer>
     );
 };
 

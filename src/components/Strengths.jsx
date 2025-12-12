@@ -30,6 +30,7 @@ const Strengths = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                 >
                     OIFの強み
                 </motion.h2>
@@ -42,7 +43,7 @@ const Strengths = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
+                            transition={{ duration: 0.8, delay: index * 0.2 }}
                         >
                             <div className="strength-icon-wrapper">
                                 {item.icon}

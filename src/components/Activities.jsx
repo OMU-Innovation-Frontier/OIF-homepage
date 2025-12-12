@@ -42,6 +42,7 @@ const Activities = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                     className="roadmap-header"
                 >
                     <h2 className="section-title">活動ロードマップ</h2>
@@ -51,9 +52,29 @@ const Activities = () => {
                 </motion.div>
 
                 {/* Visual Flow Chart Area */}
-                <div className="flow-chart-container">
+                <motion.div
+                    className="flow-chart-container"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.5
+                            }
+                        }
+                    }}
+                >
                     {/* Phase 1: The AXIS */}
-                    <div className="flow-track">
+                    <motion.div
+                        className="flow-track"
+                        variants={{
+                            hidden: { opacity: 0, y: 30 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 1.0 } }
+                        }}
+                    >
                         <div className="flow-phase">基礎構築</div>
                         <div className="flow-visual phase-1">
                             <div className="flow-line ai integrated">
@@ -67,12 +88,24 @@ const Activities = () => {
                             </div>
                         </div>
                         <div className="flow-desc">基礎体力をつける</div>
-                    </div>
+                    </motion.div>
 
-                    <div className="flow-arrow">➜</div>
+                    <motion.div
+                        className="flow-arrow"
+                        variants={{
+                            hidden: { opacity: 0, scale: 0.5 },
+                            visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } }
+                        }}
+                    >➜</motion.div>
 
                     {/* Phase 2: The GUILDS */}
-                    <div className="flow-track">
+                    <motion.div
+                        className="flow-track"
+                        variants={{
+                            hidden: { opacity: 0, y: 30 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 1.0 } }
+                        }}
+                    >
                         <div className="flow-phase">専門特化</div>
                         <div className="flow-visual phase-2">
                             <div className="guild-group">
@@ -101,12 +134,24 @@ const Activities = () => {
                             </div>
                         </div>
                         <div className="flow-desc">専門領域ごとのチームで深める</div>
-                    </div>
+                    </motion.div>
 
-                    <div className="flow-arrow">➜</div>
+                    <motion.div
+                        className="flow-arrow"
+                        variants={{
+                            hidden: { opacity: 0, scale: 0.5 },
+                            visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } }
+                        }}
+                    >➜</motion.div>
 
                     {/* Phase 3: The FUSION */}
-                    <div className="flow-track">
+                    <motion.div
+                        className="flow-track"
+                        variants={{
+                            hidden: { opacity: 0, y: 30 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 1.0 } }
+                        }}
+                    >
                         <div className="flow-phase">社会実装</div>
                         <div className="flow-visual phase-3">
                             <div className="flow-mix">
@@ -116,8 +161,8 @@ const Activities = () => {
                             </div>
                         </div>
                         <div className="flow-desc">各コースが交わり社会実装</div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );
