@@ -48,13 +48,13 @@ const Organization = () => {
                                 viewport={{ once: true }}
                             >
                                 <div className="layer-badge">Layer 1</div>
-                                <h4>正規メンバー <span className="en-role">(Core Member)</span></h4>
+                                <h4>正規メンバー</h4>
                                 <p className="definition">
                                     <strong>定義:</strong> OIFが定める研修プログラムを修了し、主体的にプロジェクトや運営に関わるメンバー。
                                 </p>
                                 <ul className="feature-list">
-                                    <li><strong>特徴:</strong> 学年不問。研修を修了すれば即座に正規メンバーとして活動可能。</li>
-                                    <li><strong>役割:</strong> サークルの中核として、技術を極め、チーム開発や対外活動を主導する。</li>
+                                    <li>学年不問。研修を修了すれば即座に正規メンバーとして活動可能。</li>
+                                    <li>サークルの中核として、技術を極め、チーム開発や対外活動を主導する。</li>
                                 </ul>
                             </motion.div>
 
@@ -66,7 +66,7 @@ const Organization = () => {
                                 transition={{ delay: 0.2 }}
                             >
                                 <div className="layer-badge">Layer 2</div>
-                                <h4>コミュニティメンバー <span className="en-role">(Community Member)</span></h4>
+                                <h4>コミュニティメンバー</h4>
                                 <p className="definition">
                                     <strong>定義:</strong> サークルの活動に興味があり、自身のペースでゆるく関わりたい層。
                                 </p>

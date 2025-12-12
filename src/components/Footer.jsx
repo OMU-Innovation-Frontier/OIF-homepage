@@ -25,9 +25,10 @@ const Footer = () => {
                     <div className="footer-links">
                         <h3>Links</h3>
                         <ul>
-                            <li><HashLink to="/#about" scroll={scrollWithOffset}>About</HashLink></li>
+                            <li><HashLink to="/#strengths" scroll={scrollWithOffset}>Strengths</HashLink></li>
+                            <li><HashLink to="/#organization" scroll={scrollWithOffset}>Organization</HashLink></li>
                             <li><HashLink to="/#courses" scroll={scrollWithOffset}>Courses</HashLink></li>
-                            <li><HashLink to="/#projects" scroll={scrollWithOffset}>Projects</HashLink></li>
+                            <li><HashLink to="/#activities" scroll={scrollWithOffset}>Activities</HashLink></li>
                             <li><HashLink to="/#join" scroll={scrollWithOffset}>Join Us</HashLink></li>
                         </ul>
                     </div>

@@ -50,7 +50,7 @@ const Courses = () => {
                     3つのコース
                 </motion.h2>
                 <p className="section-subtitle">
-                    互いに相乗効果（Synergy）を生み出す3つのコース
+                    互いに相乗効果を生み出す3つのコース
                 </p>
 
                 <div className="courses-grid">

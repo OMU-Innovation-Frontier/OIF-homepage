@@ -198,11 +198,8 @@ const CoursePage = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            Core Activities
+                            自由に構築されるコミュニティーによる活動例
                         </motion.h2>
-                        <p className="section-desc-premium">
-                            正規メンバーとして、以下の活動を通して専門性を深めます。
-                        </p>
                         <div className="core-activities-grid-premium">
                             {course.coreActivities.map((activity, index) => (
                                 <motion.div

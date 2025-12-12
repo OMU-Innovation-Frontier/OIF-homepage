@@ -1,6 +1,18 @@
 .courses-section {
     background-color: rgba(10, 25, 47, 0.2);
     position: relative;
+    text-align: center;
+}
+
+.courses-section .section-title {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-subtitle {
+    color: var(--color-white);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
 }
 
 .courses-grid {
