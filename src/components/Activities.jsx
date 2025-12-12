@@ -66,7 +66,7 @@ const Activities = () => {
                                 <span className="main-text">Bizコース</span>
                             </div>
                         </div>
-                        <div className="flow-desc">圧倒的な基礎体力をつける</div>
+                        <div className="flow-desc">基礎体力をつける</div>
                     </div>
 
                     <div className="flow-arrow">➜</div>
