@@ -15,12 +15,15 @@
     width: fit-content;
 }
 
-.section-desc {
+.org-intro {
     font-size: 1.1rem;
-    color: var(--color-white);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 60px;
     text-align: center;
     line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Content Wrapper */
@@ -28,7 +31,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 60px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -208,7 +211,7 @@
 }
 
 .membership-card h4 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 15px;
     color: var(--color-white);
     display: flex;
@@ -230,6 +233,19 @@
     line-height: 1.6;
 }
 
+.activity-block,
+.privilege-block {
+    margin-top: 15px;
+}
+
+.activity-block h5,
+.privilege-block h5 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
 .feature-list {
     list-style: none;
     padding: 0;
@@ -242,6 +258,7 @@
     color: var(--color-white);
     padding-left: 20px;
     position: relative;
+    line-height: 1.5;
 }
 
 .feature-list li::before {
@@ -250,6 +267,10 @@
     position: absolute;
     left: 0;
     font-weight: bold;
+}
+
+.rights-block {
+    margin-top: 15px;
 }
 
 .rights-block h5 {
@@ -266,9 +287,10 @@
 .rights-block li {
     font-size: 0.9rem;
     color: var(--color-white);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     padding-left: 15px;
     position: relative;
+    line-height: 1.5;
 }
 
 .rights-block li::before {
@@ -296,5 +318,9 @@
     .org-visual-area,
     .org-details-area {
         width: 100%;
+    }
+
+    .membership-card h4 {
+        font-size: 1.2rem;
     }
 }

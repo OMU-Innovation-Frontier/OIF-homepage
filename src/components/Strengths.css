@@ -53,8 +53,17 @@
 .strength-title {
     font-size: 1.5rem;
     color: var(--color-white);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-weight: 700;
+}
+
+.strength-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: block;
 }
 
 .strength-text {

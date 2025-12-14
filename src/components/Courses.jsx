@@ -1,39 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Brain, Database, Globe, Briefcase, Cpu, ArrowRight } from 'lucide-react';
+import { Brain, Globe, Briefcase, ArrowRight } from 'lucide-react';
 import './Courses.css';
 
 const courses = [
     {
         id: 'ai',
         title: 'AI Course',
-        jpTitle: 'The Brain',
+        jpTitle: '理論の習得と、論文の社会実装',
         icon: <Brain size={48} />,
         color: '#ff0055',
-        description: '最先端AI技術の探求とモデル構築を専門とするコース。',
-        role: '技術シーズの提供、R&D',
-        skills: ['Machine Learning', 'Deep Learning', 'Paper Reading']
+        description: 'APIを叩くだけの体験を超え、数学的背景からAIを深く理解したいメンバーが集まります。「金融×AI」「生成AI」「強化学習」など、興味のあるテーマごとにグループを作り、論文実装やコンペに挑みます。'
     },
     {
         id: 'dev',
         title: 'Dev Course',
-        jpTitle: 'The Body',
+        jpTitle: 'チーム開発によるプロダクトの社会実装',
         icon: <Globe size={48} />,
         color: '#00f0ff',
-        description: 'Web/アプリ開発による実装とエンジニアリングを専門とするコース。',
-        role: 'UI/UX実装、システム設計、社会実装',
-        skills: ['Web Development', 'System Design', 'UI/UX']
+        description: 'チュートリアルをなぞる学習を超え、ユーザーに使われるレベルの品質を追求したいメンバーが集まります。「このアプリがあったら便利だよね」というアイデアを出し合い、モダンな技術選定で開発・リリースまで行います。'
     },
     {
         id: 'biz',
         title: 'Biz Course',
-        jpTitle: 'The Direction',
+        jpTitle: '組織の経営と、事業のインキュベーション',
         icon: <Briefcase size={48} />,
         color: '#ffaa00',
-        description: '企画、外部連携、サークル運営、企業経営などのビジネス領域を専門とするコース。',
-        role: '事業開発、マネタイズ、PM',
-        skills: ['Business Dev', 'Management', 'Marketing']
+        description: '組織を動かす経営視点や、事業を作る感覚を養いたいメンバーが集まります。GDGoCという巨大な組織を「実験場」として使い、マーケティングやマネジメントの実践を行います。'
     }
 ];
 
@@ -48,10 +42,10 @@ const Courses = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    3つのコース
+                    3つの専門コース
                 </motion.h2>
                 <p className="section-subtitle">
-                    互いに相乗効果を生み出す3つのコース
+                    正規メンバーは以下の3コースに分かれ、専門性を磨きます。
                 </p>
 
                 <div className="courses-grid">

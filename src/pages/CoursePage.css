@@ -161,6 +161,15 @@
     line-height: 1.8;
 }
 
+.course-hero-mission {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 700px;
+    margin: 20px auto 0;
+    line-height: 1.8;
+    font-style: italic;
+}
+
 /* --- Premium Glass Card --- */
 .glass-card-premium {
     background: rgba(255, 255, 255, 0.03);

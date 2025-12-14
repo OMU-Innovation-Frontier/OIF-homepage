@@ -4,10 +4,10 @@ import { ArrowRight, Instagram } from 'lucide-react';
 import './JoinUs.css';
 
 const steps = [
-    { number: '01', title: '説明会参加', desc: 'まずはOIFの活動内容と熱量を感じてください。オンライン・オフラインで開催中。' },
-    { number: '02', title: 'エントリー', desc: '希望コースと志望動機をフォームから送信。あなたの「やりたい」を教えてください。' },
-    { number: '03', title: '選考・面談', desc: 'スキルよりも熱意を重視します。既存メンバーとの対話でマッチングを確認。' },
-    { number: '04', title: 'コース配属・Kickoff', desc: '晴れてメンバー入り！メンターと共に学習計画を立て、プロジェクトを始動。' },
+    { number: '01', title: 'GDGoC 参加', desc: 'まずはGDGoC OMUのイベント（新歓・勉強会）に参加し、Discordに入る。ここでコミュニティメンバーとなります。' },
+    { number: '02', title: 'OIF エントリー', desc: '「もっと深くやりたい」「運営側に回りたい」と思ったら、OIFの研修（Bootcamp）にエントリー。' },
+    { number: '03', title: 'Bootcamp', desc: 'Notionで配られる課題に取り組む。メンターがレビューし、成長をサポートします。' },
+    { number: '04', title: '正規メンバー', desc: '研修プログラムを修了し、晴れてOIF正規メンバーとなります。' },
 ];
 
 const JoinUs = () => {
@@ -16,7 +16,7 @@ const JoinUs = () => {
             <div className="container">
                 <h2 className="section-title">Join Us</h2>
                 <p className="join-intro">
-                    OIFは、本気で成長したい学生のためのコミュニティです。<br />
+                    入り口は「GDGoC」、目指す場所は「OIF Core」。<br />
                     あなたの挑戦を待っています。
                 </p>
 

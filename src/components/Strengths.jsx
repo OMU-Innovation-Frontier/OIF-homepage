@@ -1,23 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { School, Users, Handshake } from 'lucide-react';
+import { Globe, GraduationCap, Briefcase } from 'lucide-react';
 import './Strengths.css';
 
 const strengths = [
     {
-        icon: <School size={80} strokeWidth={1.5} />,
-        title: '多領域を学べる',
-        text: 'AI・開発・ビジネスなど様々な分野について学び、実践できる'
+        icon: <Globe size={80} strokeWidth={1.5} />,
+        title: '世界標準の技術',
+        subtitle: 'Global Standard',
+        text: 'GDGoCの活動を通じ、Googleの最新技術（Gemini, Firebase, Cloud）を実践レベルで習得。Google主催の世界大会「Solution Challenge」には、本気のチームで挑む環境があります。'
     },
     {
-        icon: <Users size={80} strokeWidth={1.5} />,
-        title: '仲間と共有する',
-        text: '同じ意思を持つ仲間と出会い、興味を共有することができる。'
+        icon: <GraduationCap size={80} strokeWidth={1.5} />,
+        title: '領域横断の学び',
+        subtitle: 'Multi-disciplinary',
+        text: 'AI・開発・ビジネス。一点突破ではなく、これらを掛け合わせることで市場価値の高い人材を目指します。文系・理系を問わず、多様なバックグラウンドを持つメンバーが在籍。'
     },
     {
-        icon: <Handshake size={80} strokeWidth={1.5} />,
-        title: 'キャリアにつながる',
-        text: '学んだ技術をそのまま実務へ。インターン、受託開発、起業など、リアルなキャリアにつながる導線を用意しています。'
+        icon: <Briefcase size={80} strokeWidth={1.5} />,
+        title: 'キャリアへの導線',
+        subtitle: 'Career Pipeline',
+        text: '学んだ技術をサークル内で終わらせません。実力がつけば、企業からの受託開発や、テックベンチャーへのインターンなど、リアルなキャリアにつながるチャンスがあります。'
     }
 ];
 
@@ -32,7 +35,7 @@ const Strengths = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    OIFの強み
+                    OIFの3つの強み
                 </motion.h2>
 
                 <div className="strengths-grid">
@@ -49,6 +52,7 @@ const Strengths = () => {
                                 {item.icon}
                             </div>
                             <h3 className="strength-title">{item.title}</h3>
+                            <span className="strength-subtitle">{item.subtitle}</span>
                             <p className="strength-text">{item.text}</p>
                         </motion.div>
                     ))}

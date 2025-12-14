@@ -43,7 +43,7 @@ const Hero = () => {
                     </h1>
                     <p className="hero-description">
                         <strong>「学習」から「創造」、そして「社会実装」へ。</strong><br />
-                        大阪公立大学を中心としたイノベーション・コミュニティ。<br />
+                        Google公認学生コミュニティ（GDGoC）の運営母体。<br />
                         技術とビジネスを横断し、世界を変える企業と人材を輩出します。
                     </p>
 

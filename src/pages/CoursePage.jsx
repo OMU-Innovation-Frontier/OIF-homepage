@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Calendar, User, Target, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 import './CoursePage.css';
 import heroBg1 from '../assets/hero_bg_1.jpg';
@@ -11,97 +11,57 @@ import heroBg3 from '../assets/hero_bg_3.jpg';
 const courseData = {
     ai: {
         title: 'AI Course',
-        subtitle: 'The Brain: 技術の核',
+        subtitle: 'The Brain: 理論の習得と、論文の社会実装',
         color: '#ff0055',
-        description: '最先端のAI技術を学び、社会実装を目指すエンジニア・研究者集団。',
-        mission: '「理論」と「実装」の両輪で、実社会で通用するAIエンジニアを育成する。',
+        description: 'APIを叩くだけの体験（GDGoC層）を超え、数学的背景からAIを深く理解したいメンバーが集まります。',
+        mission: '「金融×AI」「生成AI」「強化学習」など、興味のあるテーマごとにグループを作り、論文実装やコンペに挑みます。',
         trainingProgram: [
             { title: '基礎研修', desc: '未経験からでも安心して学べる基礎カリキュラム。Pythonや数学の基礎からスタートします。' },
             { title: '応用実践', desc: '実際のデータを扱った分析や、AIモデルの構築を通じて実践的なスキルを磨きます。' }
         ],
         coreActivities: [
-            { title: '輪読会 (Reading Circle)', desc: '最新論文（LLM、画像生成など）を読み解き、技術的知見を深める。' },
-            { title: 'Works Showcase', desc: '自身のAIモデルや分析結果を発表し、フィードバックを得る。' },
-            { title: 'Kaggle Challenge', desc: 'コンペティション期間中にチームを結成し、上位入賞を目指して実装を行う。' },
-            { title: 'Hackathon', desc: '短期間で集中的に開発を行い、アイデアを形にするイベント。' },
-            { title: 'LT大会', desc: '興味のある技術や学習成果をライトニングトーク形式で発表し合う。' },
-            { title: '合宿 (Dev Camp)', desc: '長期休暇などを利用して、技術漬けの合宿を行うこともあります。' }
+            { title: '金融AIギルド', desc: '株価や仮想通貨の予測モデルを構築し、実際の市場データで検証する。' },
+            { title: 'LLM開発チーム', desc: '最新の論文（RAG, Agents等）を読み解き、サークル専用のチャットボットをゼロから実装する。' },
+            { title: 'Kaggle部', desc: 'コンペ開催期間中にチームを結成し、夜通し議論しながら金メダルを目指す。' },
+            { title: '松尾研講座 修了チャレンジ', desc: '東大松尾研の講座（GCI/DL）を、有志メンバーで集まって脱落者ゼロで完走する。' }
         ],
-        schedule: '毎週 火・金 19:00〜 (オンライン/オフライン併用)'
+        schedule: '週1回の定例会 + プロジェクト活動'
     },
     dev: {
         title: 'Dev Course',
-        subtitle: 'The Body: 形を作る',
+        subtitle: 'The Body: チーム開発によるプロダクトの社会実装',
         color: '#00f0ff',
-        description: 'モダンな技術スタックで、ユーザーの心を動かすWebサービスを創り出す。',
-        mission: '「動くもの」を作る楽しさを知り、ユーザーファーストな開発者になる。',
+        description: 'チュートリアルをなぞる学習（GDGoC層）を超え、ユーザーに使われるレベルの品質を追求したいメンバーが集まります。',
+        mission: '「このアプリがあったら便利だよね」というアイデアを出し合い、モダンな技術選定で開発・リリースまで行います。',
         trainingProgram: [
             { title: '基礎研修', desc: 'Web開発の基礎となるHTML/CSS/JavaScriptから、Gitなどのツール使いまでを習得します。' },
-            { title: '応用実践', desc: 'モダンなフレームワークを用いたアプリケーション開発に挑戦します。' }
+            { title: '応用実践', desc: 'Firebase や Next.js を用いたモダンなアプリケーション開発に挑戦します。' }
         ],
         coreActivities: [
-            { title: 'Monthly Demo Day', desc: '自身が開発したWeb/モバイルアプリのLT（ライトニングトーク）を行い、技術スタックやこだわりを共有する。' },
-            { title: 'Tech Talk', desc: '新しいフレームワークやライブラリの知見を共有する技術勉強会を開催する。' },
-            { title: 'Official Works', desc: 'サークル公式サイトや運営に必要なツールの開発・保守を行う。' },
-            { title: 'Hackathon', desc: 'チームで協力して短期間でプロダクトを作り上げるイベント。' },
-            { title: 'もくもく会', desc: '各自が作業を持ち寄り、困ったときに相談し合いながら開発を進める。' },
-            { title: '企業連携プロジェクト', desc: '企業からの依頼を受けて、実際のサービス開発に携わる機会も。' }
+            { title: 'SaaS開発プロジェクト', desc: 'サークルの出席管理や会計を自動化するWebシステムを開発し、実際に運用する。' },
+            { title: 'モダン技術研究会', desc: 'Next.jsの最新機能や、Rust、Go言語など、個人的に触りたい技術を教え合うLT会。' },
+            { title: 'ハッカソン特攻隊', desc: '外部のハッカソンイベントに「OIFチーム」として出場し、賞金稼ぎに行く。' },
+            { title: '個人開発の相互レビュー', desc: '自分が作っているポートフォリオを持ち寄り、コードの汚い部分を指摘し合う（レビュー会）。' }
         ],
-        schedule: '毎週 月・木 19:00〜'
+        schedule: '週1回の定例会 + プロジェクト活動'
     },
     biz: {
         title: 'Biz Course',
-        subtitle: 'The Direction: 道を作る',
+        subtitle: 'The Direction: 組織の経営と、事業のインキュベーション',
         color: '#ffaa00',
-        description: 'テクノロジーを社会に届けるための「ビジネスモデル」と「戦略」を描く。',
-        mission: '技術を「事業」に変え、持続可能なイノベーションを生み出す。',
+        description: '組織を動かす経営視点や、事業を作る感覚を養いたいメンバーが集まります。',
+        mission: 'GDGoCという巨大な組織を「実験場」として使い、マーケティングやマネジメントの実践を行います。',
         trainingProgram: [
             { title: '基礎研修', desc: 'ビジネスの基礎知識や、論理的思考力、プレゼンテーションスキルを学びます。' },
             { title: '応用実践', desc: '実際のビジネス課題に対する解決策の立案や、事業計画の作成を行います。' }
         ],
         coreActivities: [
-            { title: 'Operations (運営局)', desc: 'サークルの会計、スケジュール管理、新歓活動などの組織運営全般を担う。' },
-            { title: 'External Relations', desc: '企業協賛の獲得、他大学との連携、イベント共催などの交渉を行う。' },
-            { title: 'Incubation', desc: 'AI/Devメンバーのプロダクトに対する事業化検証や、起業プロジェクトのマネジメントを行う。' },
-            { title: 'Workshop Host', desc: '学内・中高生向けのAI/ITワークショップを企画・運営し、サークルのプレゼンスを高める。' },
-            { title: 'Business Contest', desc: '学内外のビジネスコンテストに参加し、アイデアを競い合う。' },
-            { title: 'Pitch Practice', desc: '投資家やメンターに向けて、事業アイデアをプレゼンする練習を行う。' }
+            { title: 'GDGoC経営会議', desc: '組織を拡大するための広報戦略や、予算獲得のための企業スポンサー営業を行う（実際に企業と商談する）。' },
+            { title: 'テックイベント主催', desc: '他大学や企業を巻き込んだ、100人規模のLT大会やハッカソンをゼロから企画・運営する。' },
+            { title: 'Start-up Studio', desc: 'AI/Devコースのメンバーが作ったアプリに対し、「どうマネタイズするか？」「競合優位性は？」を分析し、ビジネスコンテストに出場する。' },
+            { title: 'UI/UXギルド', desc: '既存の大学ポータルサイトやアプリのUIを勝手にリデザインし、Figmaで理想のプロトタイプを作る。' }
         ],
-        schedule: '毎週 土 10:00〜'
-    },
-    ds: {
-        title: 'Data Science Course',
-        subtitle: 'Data Intelligence',
-        color: '#00ffaa',
-        description: 'データから価値を引き出し、ビジネスの意思決定を加速させる。',
-        mission: '「データ」を「武器」に変え、不確実な世界を読み解く力を養う。',
-        trainingProgram: [
-            { title: '基礎研修', desc: '統計学の基礎や、データ分析に必要なツールの使い方を学びます。' },
-            { title: '応用実践', desc: '実データを用いた分析プロジェクトに取り組み、インサイトを導き出します。' }
-        ],
-        coreActivities: [
-            { title: 'Kaggle Challenge', desc: 'データ分析コンペティションに参加し、スキルを磨く。' },
-            { title: 'Data Viz', desc: '分析結果を効果的に可視化し、伝える技術を学ぶ。' },
-            { title: 'Study Session', desc: '統計や機械学習の理論について深く学ぶ勉強会。' }
-        ],
-        schedule: '毎週 水 19:00〜'
-    },
-    web3: {
-        title: 'Web3 Course',
-        subtitle: 'Next Gen Internet',
-        color: '#aa00ff',
-        description: 'ブロックチェーン技術で新しい社会システムを実験する。',
-        mission: '次世代のインターネット「Web3」の思想と技術を深く理解し、実装する。',
-        trainingProgram: [
-            { title: '基礎研修', desc: 'ブロックチェーンの仕組みや、スマートコントラクトの基礎を学びます。' },
-            { title: '応用実践', desc: 'DApps（分散型アプリケーション）の開発や、トークンエコノミーの設計に挑戦します。' }
-        ],
-        coreActivities: [
-            { title: 'Smart Contract Dev', desc: 'Solidityなどを用いてスマートコントラクトを開発する。' },
-            { title: 'DAO Lab', desc: 'DAO（自律分散型組織）の運営や仕組みについて研究・実践する。' },
-            { title: 'Whitepaper Reading', desc: '主要なWeb3プロジェクトのホワイトペーパーを読み解く。' }
-        ],
-        schedule: '毎週 金 20:00〜'
+        schedule: '週1回の定例会 + プロジェクト活動'
     }
 };
 
@@ -144,6 +104,7 @@ const CoursePage = () => {
                             <span className="glow-text">{course.subtitle.split(':')[1]}</span>
                         </h1>
                         <p className="course-hero-desc-premium">{course.description}</p>
+                        <p className="course-hero-mission">{course.mission}</p>
                     </motion.div>
                 </div>
             </section>
@@ -198,7 +159,7 @@ const CoursePage = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            自由に構築されるコミュニティーによる活動例
+                            Project Examples (活動例)
                         </motion.h2>
                         <div className="core-activities-grid-premium">
                             {course.coreActivities.map((activity, index) => (
@@ -249,7 +210,7 @@ const CoursePage = () => {
                         >
                             <div className="cta-content">
                                 <h4>Start Your Journey</h4>
-                                <p>まずは全体説明会へお越しください。</p>
+                                <p>まずはGDGoC OMUのイベントへお越しください。</p>
                             </div>
                             <HashLink to="/#join" className="btn-course-join-premium" style={{ backgroundColor: course.color }}>
                                 説明会に申し込む <ExternalLink size={18} />

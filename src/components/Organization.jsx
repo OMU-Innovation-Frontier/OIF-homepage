@@ -7,6 +7,9 @@ const Organization = () => {
         <section id="organization" className="section org-section">
             <div className="container">
                 <h2 className="section-title">組織構成</h2>
+                <p className="org-intro">
+                    OIFは、広く門戸を開く「GDGoC（コミュニティ層）」と、その運営母体となる「OIF（正規メンバー）」の2層構造で成り立っています。
+                </p>
 
                 <div className="org-content-wrapper">
                     {/* Left Side: Venn Diagram */}
@@ -15,7 +18,7 @@ const Organization = () => {
                             <div className="venn-container">
                                 {/* Community Circle (Outer) */}
                                 <div className="venn-community">
-                                    <span className="label-community">コミュニティメンバー</span>
+                                    <span className="label-community">GDGoC Audience</span>
                                 </div>
 
                                 {/* Core Circles (Inner) */}
@@ -31,7 +34,7 @@ const Organization = () => {
                                     </div>
                                     {/* Intersection */}
                                     <div className="venn-center">
-                                        <span>正規<br />メンバー</span>
+                                        <span>OIF<br />Core</span>
                                     </div>
                                 </div>
                             </div>
@@ -49,14 +52,26 @@ const Organization = () => {
                                 transition={{ duration: 0.8 }}
                             >
                                 <div className="layer-badge">Layer 1</div>
-                                <h4>正規メンバー</h4>
+                                <h4>正規メンバー (Core Member)</h4>
                                 <p className="definition">
-                                    <strong>定義:</strong> OIFが定める研修プログラムを修了し、主体的にプロジェクトや運営に関わるメンバー。
+                                    <strong>定義:</strong> OIFの選抜研修（Bootcamp）を修了したメンバー。全員がいずれかの専門コース（AI/Dev/Biz）に所属し、プロジェクト活動を行います。
                                 </p>
-                                <ul className="feature-list">
-                                    <li>学年不問。研修を修了すれば即座に正規メンバーとして活動可能。</li>
-                                    <li>サークルの中核として、技術を極め、チーム開発や対外活動を主導する。</li>
-                                </ul>
+                                <div className="activity-block">
+                                    <h5>主な活動:</h5>
+                                    <ul className="feature-list">
+                                        <li>Solution Challengeやハッカソンに向けたチーム開発</li>
+                                        <li>受託開発や研究開発（R&D）への取り組み</li>
+                                        <li>GDGoC OMU Core Teamとして運営に参加</li>
+                                    </ul>
+                                </div>
+                                <div className="privilege-block">
+                                    <h5>正規メンバーの特権:</h5>
+                                    <ul className="feature-list">
+                                        <li><strong>リソース活用:</strong> サーバー代などのサークル予算使用権</li>
+                                        <li><strong>案件参加:</strong> 企業連携プロジェクトや受託開発へのアサイン</li>
+                                        <li><strong>Closed Community:</strong> 正規メンバー専用Discordへのアクセス</li>
+                                    </ul>
+                                </div>
                             </motion.div>
 
                             <motion.div
@@ -67,16 +82,16 @@ const Organization = () => {
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="layer-badge">Layer 2</div>
-                                <h4>コミュニティメンバー</h4>
+                                <h4>コミュニティメンバー (GDGoC Audience)</h4>
                                 <p className="definition">
-                                    <strong>定義:</strong> サークルの活動に興味があり、自身のペースでゆるく関わりたい層。
+                                    <strong>定義:</strong> テクノロジーに興味があり、イベントや学習リソースを活用したい層。
                                 </p>
                                 <div className="rights-block">
                                     <h5>参加できること:</h5>
                                     <ul>
-                                        <li><strong>教材アクセス:</strong> 学習ロードマップや限定教材の閲覧</li>
-                                        <li><strong>講座参加:</strong> 初心者向けスキルアップ講座への参加</li>
-                                        <li><strong>交流:</strong> Discordでの情報交換やイベントへの参加</li>
+                                        <li><strong>Google公式イベント:</strong> ハンズオンやLT会への参加</li>
+                                        <li><strong>教材アクセス:</strong> OIF監修の学習ロードマップやGoogle教材の利用</li>
+                                        <li><strong>交流:</strong> Discordでの情報交換、他大学GDGoCとの交流</li>
                                     </ul>
                                 </div>
                             </motion.div>
