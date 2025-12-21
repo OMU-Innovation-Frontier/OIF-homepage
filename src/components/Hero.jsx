@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Rocket } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 import heroBg1 from '../assets/hero_bg_1.jpg';
 import heroBg2 from '../assets/hero_bg_2.jpg';
@@ -33,26 +33,29 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
                 >
-                    <h2 className="hero-subtitle">
-                        <span className="line"></span>
-                        Mission：技術と情熱を「社会価値」へ
-                    </h2>
+                    <div className="hero-badge">
+                        <Rocket size={16} />
+                        <span>GDGoC (Google Developer Groups on Campus) 設立準備中</span>
+                    </div>
                     <h1 className="hero-title">
                         OMU Innovation <br />
                         <span className="text-primary glow-text">Frontier</span>
                     </h1>
+                    <h2 className="hero-subtitle">
+                        大阪公立大学 IT・イノベーションサークル
+                    </h2>
                     <p className="hero-description">
-                        <strong>「学習」から「創造」、そして「社会実装」へ。</strong><br />
-                        Google公認学生コミュニティ（GDGoC）の運営母体。<br />
-                        技術とビジネスを横断し、世界を変える企業と人材を輩出します。
+                        <strong>勉強だけで、終わらせない。</strong><br />
+                        ここは、技術を「武器」に変える場所。<br />
+                        <span className="hero-concept">「作りたい」が見つかり、「仲間」が集まる。</span>
                     </p>
 
                     <div className="hero-buttons">
                         <HashLink to="/#join" className="btn btn-primary" scroll={scrollWithOffset}>
-                            説明会に申し込む <ArrowRight size={18} />
+                            Discordに参加する <ArrowRight size={18} />
                         </HashLink>
-                        <HashLink to="/#courses" className="btn btn-outline" scroll={scrollWithOffset}>
-                            コースを見る
+                        <HashLink to="/#areas" className="btn btn-outline" scroll={scrollWithOffset}>
+                            活動テーマを見る
                         </HashLink>
                     </div>
                 </motion.div>

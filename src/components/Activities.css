@@ -145,6 +145,40 @@
     line-height: 1.6;
 }
 
+/* Timeline Items List */
+.timeline-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-items li {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    padding-left: 15px;
+    position: relative;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.timeline-item.left .timeline-items li {
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+.timeline-items li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: inherit;
+    opacity: 0.6;
+}
+
+.timeline-item.left .timeline-items li::before {
+    left: auto;
+    right: 0;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .activities-section {
@@ -193,5 +227,15 @@
 
     .section-title {
         font-size: 2rem;
+    }
+
+    .timeline-item.left .timeline-items li {
+        padding-left: 15px;
+        padding-right: 0;
+    }
+
+    .timeline-item.left .timeline-items li::before {
+        left: 0;
+        right: auto;
     }
 }

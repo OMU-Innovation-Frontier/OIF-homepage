@@ -1,57 +1,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, PartyPopper, Code, Rocket, Flag, Award, Sprout } from 'lucide-react';
+import { Sprout, Sun, Leaf, Snowflake } from 'lucide-react';
 import './Activities.css';
 
 const roadmap = [
     {
-        period: '4月',
-        title: '新歓',
-        icon: <Users size={28} />,
-        desc: 'GDGoC新歓イベントで新入生を集客。OIFの活動内容と熱量を伝えます。',
+        period: '春 (4-6月)',
+        title: 'メンバー募集期間',
+        icon: <Sprout size={28} />,
+        items: [
+            '新入生歓迎会（体験会）',
+            'Discordでの仲間探し',
+            'チーム結成'
+        ],
         color: '#7CFC00'
     },
     {
-        period: '6月',
-        title: '友好祭',
-        icon: <PartyPopper size={28} />,
-        desc: '大学祭でのイベント出展。技術デモやワークショップを開催します。',
-        color: '#FF69B4'
-    },
-    {
-        period: '8-9月',
-        title: '夏休みハッカソン',
-        icon: <Code size={28} />,
-        desc: '夏休み期間を活用した集中開発イベント。チームでプロダクトを作り上げます。',
+        period: '夏 (7-9月)',
+        title: 'GDGoC始動？',
+        icon: <Sun size={28} />,
+        items: [
+            'Googleコミュニティ(GDGoC)としての活動開始を目指す',
+            '夏休みを利用した集中開発（ハッカソン）'
+        ],
         color: '#FFD700'
     },
     {
-        period: '10月',
-        title: 'Solution Challenge チーム結成',
-        icon: <Rocket size={28} />,
-        desc: 'Google世界大会に挑戦するAI/Dev/Biz混成チームを結成（任意参加）。',
-        color: '#00BFFF'
-    },
-    {
-        period: '11月',
-        title: '白鷺祭',
-        icon: <Flag size={28} />,
-        desc: '大学祭でのイベント出展。1年間の成果を外部に発信します。',
+        period: '秋 (10-12月)',
+        title: 'チャレンジ期間',
+        icon: <Leaf size={28} />,
+        items: [
+            'ビジネスコンテストや学外イベントへの参加',
+            '学園祭での成果発表'
+        ],
         color: '#FF6347'
     },
     {
-        period: '1月',
-        title: 'Solution Challenge 提出 & 成果発表会',
-        icon: <Award size={28} />,
-        desc: 'Google主催の世界大会にアプリを提出。1年間の活動成果を発表します。',
-        color: '#9370DB'
-    },
-    {
-        period: '2-3月',
-        title: '春休みハッカソン',
-        icon: <Sprout size={28} />,
-        desc: '春休み期間を活用した集中開発イベント。新年度に向けてスキルを磨きます。',
-        color: '#00FA9A'
+        period: '冬 (1-3月)',
+        title: '成果発表',
+        icon: <Snowflake size={28} />,
+        items: [
+            '1年間の活動を振り返る発表会',
+            '次年度に向けた準備'
+        ],
+        color: '#00BFFF'
     }
 ];
 
@@ -66,9 +58,9 @@ const Activities = () => {
                     transition={{ duration: 0.8 }}
                     className="roadmap-header"
                 >
-                    <h2 className="section-title">活動ロードマップ</h2>
+                    <h2 className="section-title">年間スケジュール（予定）</h2>
                     <p className="section-desc">
-                        OIF全体の基本的な活動スケジュール
+                        1年目は、みんなで組織を作り上げていくフェーズです。
                     </p>
                 </motion.div>
 
@@ -91,7 +83,11 @@ const Activities = () => {
                                 <div className="timeline-content">
                                     <span className="timeline-period" style={{ color: item.color }}>{item.period}</span>
                                     <h3 className="timeline-title">{item.title}</h3>
-                                    <p className="timeline-desc">{item.desc}</p>
+                                    <ul className="timeline-items">
+                                        {item.items.map((listItem, i) => (
+                                            <li key={i}>{listItem}</li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         </motion.div>

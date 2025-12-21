@@ -1,26 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, GraduationCap, Briefcase } from 'lucide-react';
+import { Compass, Users, Zap } from 'lucide-react';
 import './Strengths.css';
 
 const strengths = [
     {
-        icon: <Globe size={80} strokeWidth={1.5} />,
-        title: '世界標準の技術',
-        subtitle: 'Global Standard',
-        text: 'GDGoCの活動を通じ、Googleの最新技術（Gemini, Firebase, Cloud）を実践レベルで習得。Google主催の世界大会「Solution Challenge」には、本気のチームで挑む環境があります。'
+        icon: <Compass size={80} strokeWidth={1.5} />,
+        title: '視座は高く、世界へ',
+        subtitle: 'Global Mindset',
+        text: '世界中のスタートアップや巨大テック企業が使っている「最先端の技術（生成AI、モダンWeb開発）」をキャッチアップ。英語の情報や新しいトレンドにも貪欲に触れ、視野を世界へ広げます。'
     },
     {
-        icon: <GraduationCap size={80} strokeWidth={1.5} />,
-        title: '領域横断の学び',
-        subtitle: 'Multi-disciplinary',
-        text: 'AI・開発・ビジネス。一点突破ではなく、これらを掛け合わせることで市場価値の高い人材を目指します。文系・理系を問わず、多様なバックグラウンドを持つメンバーが在籍。'
+        icon: <Users size={80} strokeWidth={1.5} />,
+        title: '知識を共有する',
+        subtitle: 'Knowledge Sharing',
+        text: '学んだことはアウトプットし、仲間と共有する文化を大切にします。勉強会やLT（ライトニングトーク）を通じて、お互いの知識やノウハウを交換。教えることで自分の理解も深まり、教わることで新しい視点が生まれます。'
     },
     {
-        icon: <Briefcase size={80} strokeWidth={1.5} />,
-        title: 'キャリアへの導線',
-        subtitle: 'Career Pipeline',
-        text: '学んだ技術をサークル内で終わらせません。実力がつけば、企業からの受託開発や、テックベンチャーへのインターンなど、リアルなキャリアにつながるチャンスがあります。'
+        icon: <Zap size={80} strokeWidth={1.5} />,
+        title: '実践中心',
+        subtitle: 'Real Experience',
+        text: '手を動かして、作りながら学ぶ。チームを組んでアプリを作る、ビジネスコンテストに出る、ハッカソンで賞金を狙う。将来的には企業と連携し、「強いチーム」をみんなで作っていきます。'
     }
 ];
 
@@ -35,7 +35,7 @@ const Strengths = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    OIFの3つの強み
+                    OIFの3つの特徴
                 </motion.h2>
 
                 <div className="strengths-grid">

@@ -1,25 +1,53 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Instagram } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import './JoinUs.css';
 
 const steps = [
-    { number: '01', title: 'GDGoC 参加', desc: 'まずはGDGoC OMUのイベント（新歓・勉強会）に参加し、Discordに入る。ここでコミュニティメンバーとなります。' },
-    { number: '02', title: 'OIF エントリー', desc: '「もっと深くやりたい」「運営側に回りたい」と思ったら、OIFの研修（Bootcamp）にエントリー。' },
-    { number: '03', title: 'Bootcamp', desc: 'Notionで配られる課題に取り組む。メンターがレビューし、成長をサポートします。' },
-    { number: '04', title: '正規メンバー', desc: '研修プログラムを修了し、晴れてOIF正規メンバーとなります。' },
+    {
+        number: '01',
+        title: 'Discordに参加',
+        desc: 'SNS (X/Instagram) のリンクからDiscordサーバーに参加。'
+    },
+    {
+        number: '02',
+        title: '自己紹介',
+        desc: '「自己紹介チャンネル」で挨拶＆興味のある分野を教えてください。'
+    },
+    {
+        number: '03',
+        title: '交流する',
+        desc: '興味のある話題にリアクションしたり、相談したりしてみましょう。'
+    },
+    {
+        number: '04',
+        title: '参加する',
+        desc: '「一緒にやりたい！」と思ったら、プロジェクトに参加したり、運営に手を挙げてください。'
+    },
 ];
 
 const JoinUs = () => {
     return (
         <section id="join" className="section join-section">
             <div className="container">
-                <h2 className="section-title">Join Us</h2>
-                <p className="join-intro">
-                    入り口は「GDGoC」、目指す場所は「OIF Core」。<br />
-                    あなたの挑戦を待っています。
-                </p>
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    Join Us
+                </motion.h2>
+                <div className="join-intro">
+                    <p className="intro-highlight">初期メンバー募集中！</p>
+                    <p>
+                        プログラミング未経験でも、「何か新しいことを始めたい」という熱意があれば大歓迎です。<br />
+                        まずはDiscordという「広場」に来てください。
+                    </p>
+                </div>
 
+                <h3 className="steps-heading">参加ステップ</h3>
                 <div className="steps-container">
                     {steps.map((step, index) => (
                         <motion.div
@@ -40,10 +68,7 @@ const JoinUs = () => {
                 </div>
 
                 <div className="join-cta">
-                    <a href="#" className="btn btn-primary btn-large">
-                        説明会に申し込む <ArrowRight />
-                    </a>
-                    <p className="cta-note">※次回説明会の日程はSNSで告知します</p>
+                    <p className="cta-note">最新情報はSNSで発信中。DMでのお問い合わせもお気軽に。</p>
                     <div className="sns-links">
                         <a href="https://x.com/OIF_OMU" target="_blank" rel="noopener noreferrer" className="sns-btn sns-btn-x">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

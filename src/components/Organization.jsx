@@ -6,87 +6,96 @@ const Organization = () => {
     return (
         <section id="organization" className="section org-section">
             <div className="container">
-                <h2 className="section-title">組織構成</h2>
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    参加の仕組み
+                </motion.h2>
                 <p className="org-intro">
-                    OIFは、広く門戸を開く「GDGoC（コミュニティ層）」と、その運営母体となる「OIF（正規メンバー）」の2層構造で成り立っています。
+                    堅苦しい組織ではありません。<br />
+                    興味レベルに合わせて自由に参加できます。
                 </p>
 
-                <div className="org-content-wrapper">
-                    {/* Left Side: Venn Diagram */}
-                    <div className="org-visual-area">
-                        <div className="venn-diagram-wrapper">
-                            <div className="venn-container">
-                                {/* Community Circle (Outer) */}
-                                <div className="venn-community">
-                                    <span className="label-community">GDGoC Audience</span>
-                                </div>
-
-                                {/* Core Circles (Inner) */}
-                                <div className="venn-core-group">
-                                    <div className="venn-circle ai">
-                                        <span className="label-core">AI<br />コース</span>
-                                    </div>
-                                    <div className="venn-circle dev">
-                                        <span className="label-core">Dev<br />コース</span>
-                                    </div>
-                                    <div className="venn-circle biz">
-                                        <span className="label-core">Biz<br />コース</span>
-                                    </div>
-                                    {/* Intersection */}
-                                    <div className="venn-center">
-                                        <span>OIF<br />Core</span>
-                                    </div>
-                                </div>
+                <div className="membership-grid">
+                    {/* Community Member */}
+                    <motion.div
+                        className="membership-card community-card"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="card-header">
+                            <div className="member-info">
+                                <h3>コミュニティメンバー</h3>
+                                <span className="member-subtitle">一般参加</span>
                             </div>
                         </div>
-                    </div>
+                        <p className="member-tagline">「まずは気軽に、のぞいてみる」</p>
 
-                    {/* Right Side: Membership Details */}
-                    <div className="org-details-area">
-                        <div className="membership-grid">
-                            <motion.div
-                                className="membership-card layer-1"
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8 }}
-                            >
-                                <div className="layer-badge">Layer 1</div>
-                                <h4>正規メンバー (Core Member)</h4>
-                                <p className="definition">
-                                    <strong>定義:</strong> OIFの研修プログラムを修了したメンバー。
-                                </p>
-                                <div className="activity-block">
-                                    <h5>主な活動:</h5>
-                                    <ul className="feature-list">
-                                        <li>Solution Challengeやハッカソンに向けたチーム開発</li>
-                                        <li>GDGoC OMU Core Teamとして運営に参加</li>
-                                    </ul>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="membership-card layer-2"
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                            >
-                                <div className="layer-badge">Layer 2</div>
-                                <h4>コミュニティメンバー (GDGoC Audience)</h4>
-                                <p className="definition">
-                                    <strong>定義:</strong> イベントや学習リソースを活用したい層。
-                                </p>
-                                <div className="rights-block">
-                                    <h5>参加できること:</h5>
-                                    <ul>
-                                        <li><strong>Google公式イベント:</strong> ハンズオンやLT会への参加</li>
-                                        <li><strong>教材アクセス:</strong> OIF監修の学習ロードマップやGoogle教材の利用</li>
-                                    </ul>
-                                </div>
-                            </motion.div>
+                        <div className="member-details">
+                            <div className="detail-item">
+                                <span><strong>対象:</strong> 全学生（学部・学年不問）</span>
+                            </div>
+                            <div className="detail-item">
+                                <span><strong>活動:</strong> Discord（チャットツール）への参加</span>
+                            </div>
                         </div>
-                    </div>
+
+                        <div className="member-benefits">
+                            <h4>できること:</h4>
+                            <ul>
+                                <li>勉強会やイベントへの参加</li>
+                                <li>技術やキャリアについての情報交換</li>
+                            </ul>
+                        </div>
+
+                        <div className="member-join">
+                            <p><strong>参加方法:</strong> Discordサーバーに入るだけ。出入り自由です。</p>
+                        </div>
+                    </motion.div>
+
+                    {/* Core Member */}
+                    <motion.div
+                        className="membership-card core-card"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <div className="card-header">
+                            <div className="member-info">
+                                <h3>コアメンバー</h3>
+                                <span className="member-subtitle">運営・開発</span>
+                            </div>
+                        </div>
+                        <p className="member-tagline">「ガッツリ開発する・組織を作る」</p>
+
+                        <div className="member-details">
+                            <div className="detail-item">
+                                <span><strong>対象:</strong> 本気でスキルを伸ばしたい人、初期メンバーとして組織を作りたい人</span>
+                            </div>
+                            <div className="detail-item">
+                                <span><strong>活動:</strong> プロジェクト開発、サークル運営</span>
+                            </div>
+                        </div>
+
+                        <div className="member-benefits">
+                            <h4>できること:</h4>
+                            <ul>
+                                <li><strong>チーム開発:</strong> コンテストやアプリリリースに向けた活動</li>
+                                <li><strong>Discord専門チャンネルへのアクセス</strong></li>
+                            </ul>
+                        </div>
+
+                        <div className="member-join">
+                            <p><strong>参加方法:</strong> 運営にお申し出ください。</p>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

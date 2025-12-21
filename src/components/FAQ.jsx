@@ -5,20 +5,24 @@ import './FAQ.css';
 
 const faqs = [
     {
-        question: 'プログラミング未経験でも「正規メンバー」になれますか？',
-        answer: 'なれます。OIFのBootcampは未経験者をプロレベルに引き上げるために設計されています。Googleのわかりやすい教材と先輩のサポートがあれば、文系未経験からでもアプリが作れるようになります。'
+        question: 'プログラミング未経験でも参加できますか？',
+        answer: 'もちろんです。OIFはこれから一緒に学んでいく仲間を求めています。Discordで質問すれば、先輩や仲間が教えてくれます。まずは「やってみたい」という気持ちがあればOKです。'
     },
     {
-        question: 'GDGoCとOIFの違いは何ですか？',
-        answer: '対外的には「GDGoC OMU」として活動し、Googleの支援を受けますが、その運営母体としてより高度な技術・起業を目指すチームが「OIF」です。'
-    },
-    {
-        question: 'Googleの技術しか学べませんか？',
-        answer: 'いいえ。Web開発の標準であるNext.jsや、AIの基礎となるPython/数学など、「エンジニアとして市場価値の高い技術」はGoogle製品以外でも積極的に取り入れます。'
+        question: '文系学部でも大丈夫ですか？',
+        answer: '大歓迎です。むしろ求めています。技術は一緒に学べますが、あなたの学部ならではの視点や知識は、面白いプロダクトを作るための貴重な材料になります。'
     },
     {
         question: '活動頻度はどのくらいですか？',
-        answer: 'コミュニティメンバーは自由参加です。正規メンバーは週1回の定例会＋プロジェクト活動があります。テスト期間などは柔軟に休みが取れます。'
+        answer: 'コミュニティメンバーは完全に自由参加です。イベントや勉強会に興味があるときだけ参加してください。コアメンバーは週1回程度のミーティングがありますが、テスト期間などは柔軟に調整できます。'
+    },
+    {
+        question: '他のサークルと掛け持ちできますか？',
+        answer: 'できます。多くのメンバーが他のサークルや部活と両立しています。自分のペースで参加してください。'
+    },
+    {
+        question: '費用はかかりますか？',
+        answer: '費用は一切かかりません。'
     }
 ];
 
@@ -54,7 +58,15 @@ const FAQ = () => {
     return (
         <section className="section faq-section">
             <div className="container">
-                <h2 className="section-title">FAQ</h2>
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    よくある質問
+                </motion.h2>
                 <motion.div
                     className="faq-list"
                     initial="hidden"
@@ -65,7 +77,7 @@ const FAQ = () => {
                         visible: {
                             opacity: 1,
                             transition: {
-                                staggerChildren: 0.3
+                                staggerChildren: 0.2
                             }
                         }
                     }}
@@ -75,7 +87,7 @@ const FAQ = () => {
                             key={index}
                             variants={{
                                 hidden: { opacity: 0, y: 20 },
-                                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
                             }}
                         >
                             <FAQItem {...faq} />
