@@ -44,11 +44,6 @@ const Hero = () => {
                     <h2 className="hero-subtitle">
                         大阪公立大学 IT・イノベーションサークル
                     </h2>
-                    <p className="hero-description">
-                        <strong>勉強だけで、終わらせない。</strong><br />
-                        ここは、技術を「武器」に変える場所。<br />
-                        <span className="hero-concept">「作りたい」が見つかり、「仲間」が集まる。</span>
-                    </p>
 
                     <div className="hero-buttons">
                         <HashLink to="/#join" className="btn btn-primary" scroll={scrollWithOffset}>
