@@ -21,7 +21,6 @@ const Navbar = () => {
         { name: 'Strengths', to: '/#strengths' },
         { name: 'Organization', to: '/#organization' },
         { name: 'Areas', to: '/#areas' },
-        { name: 'Activities', to: '/#activities' },
         { name: 'Join', to: '/#join' },
     ];
 
