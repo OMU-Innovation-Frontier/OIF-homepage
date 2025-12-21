@@ -158,6 +158,13 @@
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
+/* Discord */
+.sns-btn-discord:hover {
+    border-color: #5865F2;
+    color: #5865F2;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
+}
+
 /* Instagram */
 .sns-btn-instagram:hover {
     border-color: #E1306C;
