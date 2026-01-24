@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { useChapter, Chapter } from "@/contexts/ChapterContext";
 
 type NewsScope = "global" | "omu" | "all";
@@ -14,57 +13,9 @@ interface NewsItem {
 
 const allNewsItems: NewsItem[] = [
   {
-    date: "2026.04.05",
-    title: "OIF Global LT大会 参加者募集",
-    isNew: true,
-    scope: "global",
-  },
-  {
-    date: "2026.04.01",
-    title: "新入生向け説明会のお知らせ",
-    isNew: true,
-    scope: "omu",
-  },
-  {
-    date: "2026.03.20",
-    title: "阪大・東科大との合同ハッカソン開催",
-    isNew: true,
-    scope: "global",
-  },
-  {
-    date: "2026.03.15",
-    title: "ハッカソンの開催報告",
-    isNew: false,
-    scope: "omu",
-  },
-  {
-    date: "2026.03.01",
-    title: "新規チャプター設立のお知らせ",
-    isNew: false,
-    scope: "global",
-  },
-  {
-    date: "2026.02.28",
-    title: "春季輪読会の参加者募集",
-    isNew: false,
-    scope: "omu",
-  },
-  {
-    date: "2026.02.10",
-    title: "Code.Gate?との合同LT会を開催しました",
-    isNew: false,
-    scope: "all",
-  },
-  {
-    date: "2026.01.20",
-    title: "冬季開発合宿の報告",
-    isNew: false,
-    scope: "omu",
-  },
-  {
-    date: "2026.01.10",
+    date: "2026.01.24",
     title: "公式サイトを公開しました",
-    isNew: false,
+    isNew: true,
     scope: "all",
   },
 ];
@@ -100,10 +51,9 @@ export default function NewsPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="border-t border-black">
             {newsItems.map((item, index) => (
-              <a
+              <div
                 key={index}
-                href="#"
-                className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-6 border-b border-black hover:bg-black hover:text-white hover:px-6 transition-all duration-200"
+                className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-6 border-b border-black"
               >
                 {/* Date */}
                 <time className="text-sm font-medium tracking-wider w-28 shrink-0">
@@ -112,7 +62,7 @@ export default function NewsPage() {
 
                 {/* Scope Badge */}
                 {item.scope !== chapter && item.scope === "all" && (
-                  <span className="text-xs font-medium tracking-widest border border-current px-2 py-0.5 w-fit">
+                  <span className="text-xs font-medium tracking-widest border border-black px-2 py-0.5 w-fit">
                     ALL
                   </span>
                 )}
@@ -124,18 +74,11 @@ export default function NewsPage() {
 
                 {/* New Badge */}
                 {item.isNew && (
-                  <span className="text-xs font-bold tracking-widest bg-black text-white group-hover:bg-white group-hover:text-black px-3 py-1 w-fit">
+                  <span className="text-xs font-bold tracking-widest bg-black text-white px-3 py-1 w-fit">
                     NEW
                   </span>
                 )}
-
-                {/* Arrow */}
-                <ArrowUpRight
-                  size={16}
-                  strokeWidth={1.5}
-                  className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                />
-              </a>
+              </div>
             ))}
           </div>
         </div>
