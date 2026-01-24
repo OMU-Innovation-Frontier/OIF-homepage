@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useChapter } from "@/contexts/ChapterContext";
 
 const socialLinks = [
-  { label: "Discord", href: "#" },
+  { label: "Discord", href: "https://discord.gg/TfdmrXKNgD" },
   { label: "X", href: "https://x.com/OIF_OMU" },
   { label: "Instagram", href: "https://www.instagram.com/omu.innovation.frontier/" },
 ];

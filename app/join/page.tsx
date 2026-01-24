@@ -142,7 +142,9 @@ export default function JoinPage() {
             すべてはDiscordから始まります。
           </p>
           <a
-            href="#"
+            href="https://discord.gg/TfdmrXKNgD"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-black text-white px-12 py-6 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
           >
             まずはDiscordへ
