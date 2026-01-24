@@ -116,7 +116,7 @@ export default function AboutPage() {
               {chapter === "global" ? "Hub" : "Part B"}
             </p>
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">
-              {chapter === "global" ? "Global Discord" : "公立大チャプター"}
+              {chapter === "global" ? "Global Discord" : "OMUチャプター"}
             </h3>
             <div className="space-y-4 text-base leading-relaxed text-white/80">
               {chapter === "global" ? (
