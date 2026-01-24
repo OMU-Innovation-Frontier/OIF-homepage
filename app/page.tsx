@@ -38,34 +38,50 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-center">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full py-20">
-          <div className="max-w-3xl">
-            {/* Established Badge */}
-            <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-4">
-              Est. 2026
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16 lg:gap-20">
+            {/* Left: Main Content */}
+            <div className="max-w-3xl lg:max-w-none lg:flex-1">
+              {/* Main Visual - Massive OIF */}
+              <h1 className="text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] font-black leading-[0.8] tracking-tighter mb-8">
+                OIF
+              </h1>
 
-            {/* Main Visual - Massive OIF */}
-            <h1 className="text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[16rem] font-black leading-[0.8] tracking-tighter mb-8">
-              OIF
-            </h1>
+              {/* Sub */}
+              <p className="text-base md:text-lg font-medium tracking-wide mb-6">
+                {subtitle}
+              </p>
 
-            {/* Sub */}
-            <p className="text-base md:text-lg font-medium tracking-wide mb-6">
-              {subtitle}
-            </p>
+              {/* Statement */}
+              <p className="text-xl md:text-2xl font-medium mb-16">
+                {statement}
+              </p>
 
-            {/* Statement */}
-            <p className="text-xl md:text-2xl font-medium mb-16">
-              {statement}
-            </p>
+              {/* CTA Button */}
+              <Link
+                href="/about"
+                className="inline-block bg-black text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
+              >
+                About
+              </Link>
+            </div>
 
-            {/* CTA Button */}
-            <Link
-              href="/about"
-              className="inline-block bg-black text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
-            >
-              About
-            </Link>
+            {/* Right: Description (Desktop only) */}
+            <div className="hidden lg:block lg:w-80 xl:w-96 border-l border-black pl-10 xl:pl-12">
+              <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-6">
+                2025年設立
+              </p>
+              <div className="space-y-4 text-sm leading-relaxed text-black/70">
+                <p>
+                  OIFは2025年に誕生したばかりの新しい技術コミュニティです。
+                </p>
+                <p>
+                  まだ発展途上の団体ですが、だからこそ一緒に形を作っていける仲間を募集しています。
+                </p>
+                <p className="font-medium text-black">
+                  完成を待つより、一緒に創りませんか。
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
