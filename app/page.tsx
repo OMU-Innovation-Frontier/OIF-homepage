@@ -31,11 +31,11 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-white via-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+      {/* Hero Section - Full viewport height */}
+      <section className="min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-white via-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
           {/* Desktop Layout */}
-          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
+          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
             {/* Left: Main Content */}
             <div className="lg:col-span-7">
               {/* Main Visual - OIF */}
@@ -92,7 +92,7 @@ export default function Home() {
           </div>
 
           {/* Mobile/Tablet Layout */}
-          <div className="lg:hidden">
+          <div className="lg:hidden py-12">
             {/* Main Visual - OIF */}
             <h1 className="text-[4rem] sm:text-[5rem] md:text-[6rem] font-black leading-[0.9] tracking-tighter mb-2">
               OIF
