@@ -27,21 +27,21 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-center">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full py-20">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12 md:gap-12 lg:gap-20">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-8 lg:gap-16">
             {/* Left: Main Content */}
             <div className="max-w-3xl md:max-w-none md:flex-1">
               {/* Main Visual - Massive OIF */}
-              <h1 className="text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] font-black leading-[0.8] tracking-tighter mb-8">
+              <h1 className="text-[6rem] sm:text-[8rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-black leading-[0.85] tracking-tighter mb-6">
                 OIF
               </h1>
 
               {/* Sub */}
-              <p className="text-base md:text-lg font-medium tracking-wide mb-6">
+              <p className="text-sm md:text-base font-medium tracking-wide mb-4 text-black/70">
                 {subtitle}
               </p>
 
               {/* Statement */}
-              <p className="text-xl md:text-2xl font-medium mb-16">
+              <p className="text-lg md:text-xl lg:text-2xl font-medium mb-12">
                 {statement}
               </p>
 
@@ -55,13 +55,13 @@ export default function Home() {
             </div>
 
             {/* Right: Description (Desktop only) */}
-            <div className="hidden md:block md:w-64 lg:w-80 xl:w-96 border-l border-black pl-8 lg:pl-10 xl:pl-12">
-              <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-6">
-                2025年設立
+            <div className="hidden md:block md:w-56 lg:w-72 xl:w-80 border-l border-black pl-6 lg:pl-8 xl:pl-10">
+              <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-4">
+                2026年設立
               </p>
-              <div className="space-y-4 text-sm leading-relaxed text-black/70">
+              <div className="space-y-3 text-sm leading-relaxed text-black/70">
                 <p>
-                  OIFは2025年に誕生したばかりの新しい技術コミュニティです。
+                  OIFは2026年に誕生したばかりの新しい技術コミュニティです。
                 </p>
                 <p>
                   まだ発展途上の団体ですが、だからこそ一緒に形を作っていける仲間を募集しています。

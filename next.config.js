@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: process.env.NODE_ENV === "production" ? "/OIF-homepage" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/OIF-homepage/" : "",
+  basePath: "/OIF-homepage",
+  assetPrefix: "/OIF-homepage/",
   images: {
     unoptimized: true,
   },
