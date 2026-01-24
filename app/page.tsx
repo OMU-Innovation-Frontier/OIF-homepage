@@ -77,9 +77,6 @@ export default function Home() {
                 <p>
                   まだ発展途上の団体ですが、だからこそ一緒に形を作っていける仲間を募集しています。
                 </p>
-                <p className="font-medium text-black">
-                  完成を待つより、一緒に創りませんか。
-                </p>
               </div>
             </div>
           </div>
