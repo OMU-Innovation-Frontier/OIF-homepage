@@ -39,6 +39,11 @@ export default function Home() {
       <section className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-center">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full py-20">
           <div className="max-w-3xl">
+            {/* Established Badge */}
+            <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-4">
+              Est. 2026
+            </p>
+
             {/* Main Visual - Massive OIF */}
             <h1 className="text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[16rem] font-black leading-[0.8] tracking-tighter mb-8">
               OIF
