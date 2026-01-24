@@ -5,8 +5,8 @@ import { useChapter } from "@/contexts/ChapterContext";
 
 const socialLinks = [
   { label: "Discord", href: "#" },
-  { label: "X", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "X", href: "https://x.com/OIF_OMU" },
+  { label: "Instagram", href: "https://www.instagram.com/omu.innovation.frontier/" },
 ];
 
 const content = {

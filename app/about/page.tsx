@@ -149,7 +149,9 @@ export default function AboutPage() {
                   Code.Gate?
                 </h3>
                 <a
-                  href="#"
+                  href="https://code-gate.webflow.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm font-medium tracking-wide border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors shrink-0"
                 >
                   Website
