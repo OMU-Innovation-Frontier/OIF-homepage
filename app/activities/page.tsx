@@ -1,11 +1,12 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import { BookOpen, Code2, Users, ExternalLink } from "lucide-react";
+import { BookOpen, Code2, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Activities",
   description: "OIFの活動内容 - 学ぶ、創る、繋がる",
 };
+
+const basePath = "/OIF-homepage";
 
 const products = [
   {
@@ -20,9 +21,9 @@ const products = [
       "ゲーム性を重視した学習設計",
     ],
     images: [
-      { src: "/images/samurai-screenshot.png", caption: "MLワークフロー" },
-      { src: "/images/samurai-conquest.png", caption: "天下統一モード" },
-      { src: "/images/samurai-algorithm.png", caption: "アルゴリズム学習" },
+      { src: `${basePath}/images/samurai-screenshot.png`, caption: "MLワークフロー" },
+      { src: `${basePath}/images/samurai-conquest.png`, caption: "天下統一モード" },
+      { src: `${basePath}/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
     ],
   },
 ];
@@ -35,7 +36,7 @@ const contests = [
     result: "ファイナル進出",
     description:
       "大阪信用金庫主催の学生ビジネスプランコンテストにて、samurAIを発表しファイナルに進出。機械学習をノーコードで学べるプラットフォームとして評価されました。",
-    image: "/images/obucs-contest.png",
+    image: `${basePath}/images/obucs-contest.png`,
   },
 ];
 
@@ -190,11 +191,10 @@ export default function ActivitiesPage() {
                         : ""
                     }`}
                   >
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                       src={image.src}
                       alt={`${product.name} - ${image.caption}`}
-                      width={600}
-                      height={400}
                       className="w-full h-auto border border-black/10 mb-3"
                     />
                     <p className="text-xs font-medium tracking-wide text-black/60 text-center">
@@ -228,11 +228,10 @@ export default function ActivitiesPage() {
               <div className="grid md:grid-cols-2">
                 {/* Contest Image */}
                 <div className="border-b md:border-b-0 md:border-r border-black">
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={contest.image}
                     alt={contest.name}
-                    width={800}
-                    height={500}
                     className="w-full h-full object-cover"
                   />
                 </div>
