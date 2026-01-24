@@ -10,9 +10,9 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Activities", href: "/activities" },
-  { label: "News", href: "/news" },
   { label: "Join", href: "/join" },
   { label: "FAQ", href: "/faq" },
+  { label: "News", href: "/news" },
 ];
 
 export default function Header() {
@@ -21,55 +21,57 @@ export default function Header() {
   const { chapter, setChapter } = useChapter();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl md:text-3xl font-black tracking-tighter"
-        >
-          OIF
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-14 md:h-16">
+        {/* Left: Logo + Chapter Switch */}
+        <div className="flex items-center gap-6">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-xl md:text-2xl font-black tracking-tighter"
+          >
+            OIF
+          </Link>
 
-        {/* Chapter Switch - Desktop */}
-        <div className="hidden md:flex items-center gap-2 text-xs font-medium tracking-wide">
-          <button
-            onClick={() => setChapter("global")}
-            className={`px-2 py-1 transition-all ${
-              chapter === "global"
-                ? "font-bold border-b border-black"
-                : "text-black/60 hover:text-black"
-            }`}
-          >
-            Global
-          </button>
-          <span className="text-black/30">|</span>
-          <button
-            onClick={() => setChapter("omu")}
-            className={`px-2 py-1 transition-all ${
-              chapter === "omu"
-                ? "font-bold border-b border-black"
-                : "text-black/60 hover:text-black"
-            }`}
-          >
-            OMU
-          </button>
+          {/* Chapter Switch - Desktop */}
+          <div className="hidden md:flex items-center gap-1 text-xs text-black/50">
+            <span className="mr-1">Chapters:</span>
+            <button
+              onClick={() => setChapter("global")}
+              className={`px-1 transition-all ${
+                chapter === "global"
+                  ? "font-bold text-black"
+                  : "hover:text-black"
+              }`}
+            >
+              Global
+            </button>
+            <button
+              onClick={() => setChapter("omu")}
+              className={`px-1 transition-all ${
+                chapter === "omu"
+                  ? "font-bold text-black"
+                  : "hover:text-black"
+              }`}
+            >
+              OMU
+            </button>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="relative text-sm font-medium tracking-wide group"
+              className={`text-sm font-medium tracking-wide transition-colors ${
+                pathname === item.href
+                  ? "text-black border-b border-black"
+                  : "text-black/60 hover:text-black"
+              }`}
             >
               {item.label}
-              <span
-                className={`absolute left-0 bottom-[-4px] h-[1px] bg-black transition-all duration-300 ${
-                  pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              />
             </Link>
           ))}
         </nav>
@@ -90,9 +92,9 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-white z-40 border-t border-black">
+        <div className="md:hidden fixed inset-0 top-14 bg-white z-40 border-t border-black/10">
           {/* Mobile Chapter Switch */}
-          <div className="flex items-center justify-center gap-4 py-4 border-b border-black">
+          <div className="flex items-center justify-center gap-4 py-4 border-b border-black/10">
             <button
               onClick={() => setChapter("global")}
               className={`px-4 py-2 text-sm font-medium tracking-wide transition-all ${
@@ -121,7 +123,7 @@ export default function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-xl font-medium tracking-wide border-b border-black py-6 px-8 ${
+                className={`text-lg font-medium tracking-wide border-b border-black/10 py-5 px-6 ${
                   pathname === item.href ? "bg-black text-white" : ""
                 }`}
               >

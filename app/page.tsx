@@ -5,18 +5,25 @@ import { useChapter } from "@/contexts/ChapterContext";
 
 const news = [
   { date: "2026.01.24", title: "公式サイトを公開しました" },
+  { date: "", title: "→ メンバー募集を開始しました" },
 ];
 
 const content = {
   global: {
     subtitle: "Osaka Innovation Frontier",
-    statement: "大学の壁を越える、技術者のネットワーク。",
+    statement: "大学の壁を越え、技術で未来をつくる学生ネットワーク。",
   },
   omu: {
     subtitle: "Osaka Innovation Frontier - OMU Chapter",
     statement: "大阪公立大学のAI・IT学習コミュニティー",
   },
 };
+
+const features = [
+  "大学横断の技術コミュニティ",
+  "AI / Web / 起業　研究志向",
+  "学生主導で設計・運営",
+];
 
 export default function Home() {
   const { chapter } = useChapter();
@@ -25,117 +32,150 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-12 md:py-16 lg:py-20">
+      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-white via-white to-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           {/* Desktop Layout */}
-          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-8 lg:items-end">
-            {/* Left: Main Content - takes more space */}
-            <div className="lg:col-span-8">
+          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
+            {/* Left: Main Content */}
+            <div className="lg:col-span-7">
               {/* Main Visual - OIF */}
-              <h1 className="text-[7rem] xl:text-[9rem] font-black leading-[0.85] tracking-tighter mb-4">
+              <h1 className="text-[6rem] xl:text-[7rem] font-black leading-[0.9] tracking-tighter mb-2">
                 OIF
               </h1>
 
               {/* Sub */}
-              <p className="text-base font-medium tracking-wide mb-2 text-black/60">
+              <p className="text-sm font-medium tracking-wide mb-4 text-black/60">
                 {subtitle}
               </p>
 
               {/* Statement */}
-              <p className="text-xl xl:text-2xl font-medium mb-8">
+              <p className="text-xl xl:text-2xl font-medium mb-8 leading-relaxed">
                 {statement}
               </p>
 
-              {/* CTA Button */}
-              <Link
-                href="/about"
-                className="inline-block bg-black text-white px-8 py-4 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
-              >
-                About
-              </Link>
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/join"
+                  className="inline-block bg-black text-white px-8 py-4 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
+                >
+                  Join OIF
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-block bg-white text-black px-8 py-4 text-sm font-medium tracking-widest uppercase border border-black hover:bg-black hover:text-white transition-colors duration-200"
+                >
+                  About OIF
+                </Link>
+              </div>
             </div>
 
-            {/* Right: Description */}
-            <div className="lg:col-span-4 border-l border-black pl-8">
-              <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-3">
-                2026年設立
+            {/* Right: Info Box */}
+            <div className="lg:col-span-5 bg-gray-100 p-8 xl:p-10">
+              <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6">
+                Founded in 2026
               </p>
-              <div className="space-y-2 text-sm leading-relaxed text-black/70">
-                <p>
-                  OIFは2026年に誕生した新しい技術コミュニティです。
-                </p>
-                <p>
-                  一緒に形を作っていける仲間を募集しています。
-                </p>
-              </div>
+              
+              <ul className="space-y-3 mb-8">
+                {features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-base">
+                    <span className="text-black/40 mt-1">●</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="text-sm leading-relaxed text-black/70">
+                一緒に、次の当たり前を作りませんか。
+              </p>
             </div>
           </div>
 
           {/* Mobile/Tablet Layout */}
           <div className="lg:hidden">
             {/* Main Visual - OIF */}
-            <h1 className="text-[5rem] sm:text-[6rem] md:text-[7rem] font-black leading-[0.9] tracking-tighter mb-4">
+            <h1 className="text-[4rem] sm:text-[5rem] md:text-[6rem] font-black leading-[0.9] tracking-tighter mb-2">
               OIF
             </h1>
 
             {/* Sub */}
-            <p className="text-sm md:text-base font-medium tracking-wide mb-3 text-black/60">
+            <p className="text-sm font-medium tracking-wide mb-4 text-black/60">
               {subtitle}
             </p>
 
             {/* Statement */}
-            <p className="text-lg md:text-xl font-medium mb-8">
+            <p className="text-lg md:text-xl font-medium mb-8 leading-relaxed">
               {statement}
             </p>
 
-            {/* CTA Button */}
-            <Link
-              href="/about"
-              className="inline-block bg-black text-white px-8 py-4 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
-            >
-              About
-            </Link>
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-3 mb-10">
+              <Link
+                href="/join"
+                className="inline-block bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
+              >
+                Join OIF
+              </Link>
+              <Link
+                href="/about"
+                className="inline-block bg-white text-black px-6 py-3 text-sm font-medium tracking-widest uppercase border border-black hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                About OIF
+              </Link>
+            </div>
 
-            {/* Description - shown below on mobile */}
-            <div className="mt-12 pt-8 border-t border-black">
-              <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-3">
-                2026年設立
+            {/* Info Box - Mobile */}
+            <div className="bg-gray-100 p-6">
+              <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
+                Founded in 2026
               </p>
-              <div className="space-y-2 text-sm leading-relaxed text-black/70">
-                <p>
-                  OIFは2026年に誕生した新しい技術コミュニティです。
-                </p>
-                <p>
-                  一緒に形を作っていける仲間を募集しています。
-                </p>
-              </div>
+              
+              <ul className="space-y-2 mb-6">
+                {features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <span className="text-black/40">●</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="text-sm leading-relaxed text-black/70">
+                一緒に、次の当たり前を作りませんか。
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Updates Section */}
+      {/* Latest Updates Section */}
       <section className="border-t border-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-10 md:py-12">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
             {/* Section Label */}
-            <p className="text-xs font-medium tracking-widest uppercase shrink-0">
-              Updates
+            <p className="text-sm font-bold tracking-wide shrink-0">
+              Latest Updates
             </p>
 
             {/* News List */}
-            <div className="flex-1 max-w-2xl">
+            <div className="flex-1">
               {news.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-6 py-3 border-b border-black last:border-b-0"
+                  className="flex items-center gap-6 py-2"
                 >
-                  <time className="text-sm font-medium tracking-wider w-24 shrink-0">
-                    {item.date}
-                  </time>
-                  <span className="flex-1 text-base font-medium">
+                  {item.date && (
+                    <time className="text-sm font-medium tracking-wider w-24 shrink-0 text-black/60">
+                      {item.date}
+                    </time>
+                  )}
+                  <span className={`flex-1 text-base ${!item.date ? "ml-24 hidden md:block" : ""}`}>
                     {item.title}
                   </span>
+                  {!item.date && (
+                    <span className="flex-1 text-base md:hidden">
+                      {item.title}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
