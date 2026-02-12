@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useChapter } from "@/contexts/ChapterContext";
 
 const socialLinks = [
   { label: "Discord", href: "https://discord.gg/TfdmrXKNgD" },
@@ -9,23 +8,7 @@ const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/omu.innovation.frontier/" },
 ];
 
-const content = {
-  global: {
-    name: "Osaka Innovation Frontier",
-    description: "大学を超える技術者ネットワーク",
-    copyright: "© 2026 OIF. All rights reserved.",
-  },
-  omu: {
-    name: "OIF - OMU Chapter",
-    description: "大阪公立大学 技術コミュニティ",
-    copyright: "© 2026 OIF - OMU Chapter. All rights reserved.",
-  },
-};
-
 export default function Footer() {
-  const { chapter } = useChapter();
-  const { name, description, copyright } = content[chapter];
-
   return (
     <footer className="border-t border-black bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-20">
@@ -39,9 +22,9 @@ export default function Footer() {
               OIF
             </Link>
             <p className="text-sm text-black mt-4">
-              {name}
+              OMU Innovation Frontier
               <br />
-              {description}
+              大阪公立大学 技術コミュニティ
             </p>
           </div>
 
@@ -62,7 +45,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-black">
-          <p className="text-xs text-black tracking-wide">{copyright}</p>
+          <p className="text-xs text-black tracking-wide">© 2026 OIF. All rights reserved.</p>
         </div>
       </div>
     </footer>

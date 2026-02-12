@@ -1,34 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useChapter } from "@/contexts/ChapterContext";
 
 const news = [
   { date: "2026.01.24", title: "公式サイトを公開しました" },
   { date: "", title: "→ メンバー募集を開始しました" },
 ];
 
-const content = {
-  global: {
-    subtitle: "Osaka Innovation Frontier",
-    statement: "大学の壁を越え、技術で未来をつくる学生ネットワーク。",
-  },
-  omu: {
-    subtitle: "Osaka Innovation Frontier - OMU Chapter",
-    statement: "大阪公立大学のAI・IT学習コミュニティー",
-  },
-};
-
 const features = [
-  "大学横断の技術コミュニティ",
+  "大阪公立大学の技術コミュニティ",
   "AI / Web / 起業　研究志向",
   "学生主導で設計・運営",
 ];
 
 export default function Home() {
-  const { chapter } = useChapter();
-  const { subtitle, statement } = content[chapter];
-
   return (
     <>
       {/* Hero Section - Full viewport height */}
@@ -45,12 +30,12 @@ export default function Home() {
 
               {/* Sub */}
               <p className="text-sm font-medium tracking-wide mb-4 text-black/60">
-                {subtitle}
+                OMU Innovation Frontier
               </p>
 
               {/* Statement */}
               <p className="text-xl xl:text-2xl font-medium mb-8 leading-relaxed">
-                {statement}
+                大阪公立大学のAI・IT学習コミュニティー
               </p>
 
               {/* CTA Buttons */}
@@ -100,12 +85,12 @@ export default function Home() {
 
             {/* Sub */}
             <p className="text-sm font-medium tracking-wide mb-4 text-black/60">
-              {subtitle}
+              OMU Innovation Frontier
             </p>
 
             {/* Statement */}
             <p className="text-lg md:text-xl font-medium mb-8 leading-relaxed">
-              {statement}
+              大阪公立大学のAI・IT学習コミュニティー
             </p>
 
             {/* CTA Buttons */}

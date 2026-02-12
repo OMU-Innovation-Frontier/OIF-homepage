@@ -6,12 +6,12 @@ import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "OIF - Osaka Innovation Frontier",
+    default: "OIF - OMU Innovation Frontier",
     template: "%s | OIF",
   },
   description:
-    "大学を超える技術者ネットワーク。理論を学び、応用する。",
-  keywords: ["OIF", "技術コミュニティ", "プログラミング", "学生団体", "大学連携"],
+    "大阪公立大学のAI・IT学習コミュニティー。理論を学び、応用する。",
+  keywords: ["OIF", "OMU Innovation Frontier", "技術コミュニティ", "プログラミング", "学生団体", "大阪公立大学"],
 };
 
 export default function RootLayout({

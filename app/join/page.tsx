@@ -59,10 +59,9 @@ export default function JoinPage() {
             Discord サーバーの構成
           </h2>
           <div className="max-w-3xl space-y-6 text-base md:text-lg leading-relaxed">
-            <p>入り口は一つの Global サーバーです。</p>
+            <p>OIFの活動はすべてDiscordサーバーで行われます。</p>
             <p>
-              参加後、所属大学のロール（@OMU など）を申請すると、
-              学内専用チャンネルが見えるようになります。
+              参加後、自己紹介を済ませると各チャンネルにアクセスできるようになります。
             </p>
           </div>
 
@@ -70,7 +69,7 @@ export default function JoinPage() {
           <div className="mt-12 max-w-xl">
             <div className="border border-white p-6 md:p-8">
               <p className="text-sm font-medium tracking-widest uppercase mb-6">
-                OIF Global Discord
+                OIF Discord
               </p>
               <div className="space-y-3 text-sm md:text-base">
                 <div className="flex items-center gap-3">
@@ -85,14 +84,14 @@ export default function JoinPage() {
                 </div>
                 <div className="border-t border-white/20 my-4" />
                 <div className="flex items-center gap-3">
-                  <span className="text-white/60">🔒</span>
-                  <span>omu-internal</span>
-                  <span className="text-white/40 text-xs ml-auto">@OMU</span>
+                  <span className="text-white/60">#</span>
+                  <span>projects</span>
+                  <span className="text-white/40 text-xs ml-auto">全員</span>
                 </div>
-                <div className="flex items-center gap-3 pl-6">
-                  <span className="text-white/60">🔒</span>
-                  <span>omu-projects</span>
-                  <span className="text-white/40 text-xs ml-auto">@OMU</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-white/60">#</span>
+                  <span>study</span>
+                  <span className="text-white/40 text-xs ml-auto">全員</span>
                 </div>
               </div>
             </div>

@@ -1,48 +1,6 @@
 "use client";
 
-import { useChapter } from "@/contexts/ChapterContext";
-
-const content = {
-  global: {
-    intro: {
-      title: "Osaka Innovation Frontier",
-      description: [
-        "OIFは、大学を超えて技術者が集まるネットワークです。",
-        "各大学に「チャプター」を置き、ローカルな活動拠点を確保しながら、全体としては一つのコミュニティとして機能しています。",
-      ],
-    },
-    reason: {
-      title: "なぜ、大学を超えるのか",
-      description: [
-        "一つの大学だけでは、出会える仲間や技術の幅に限界があります。",
-        "異なる環境で学ぶエンジニアが交わることで、新しい視点と刺激が生まれます。",
-        "OIFは、そのための「窓」を提供します。",
-      ],
-    },
-  },
-  omu: {
-    intro: {
-      title: "大阪公立大学 技術コミュニティ OIF",
-      description: [
-        "OIFは、公立大の学生が主体となって活動する技術サークルです。",
-        "しかし、ただのサークルではありません。",
-      ],
-    },
-    reason: {
-      title: "閉ざさず、拠り所を持つ",
-      description: [
-        "大学の中だけで完結していると、技術の視野は狭くなりがちです。",
-        "逆に、ネット上の繋がりだけでは、深い議論や継続的な開発は難しくなります。",
-        "だから、OIFは「学外とのネットワーク」と「学内の活動拠点」の両方を持っています。",
-      ],
-    },
-  },
-};
-
 export default function AboutPage() {
-  const { chapter } = useChapter();
-  const { intro, reason } = content[chapter];
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -58,84 +16,93 @@ export default function AboutPage() {
       <section className="py-20 md:py-28 border-b border-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-3xl">
-            <p className="text-lg md:text-xl font-medium mb-8">{intro.title}</p>
+            <p className="text-lg md:text-xl font-medium mb-8">
+              OIF — OMU Innovation Frontier
+            </p>
             <div className="space-y-6 text-base md:text-lg leading-relaxed">
-              {intro.description.map((text, i) => (
-                <p key={i}>{text}</p>
-              ))}
+              <p>
+                OIFは、大阪公立大学の学生が運営するAI・ITの技術サークルです。
+              </p>
+              <p>
+                「技術を学び、ものを創り、発信する。」
+                この3つを軸に、メンバー一人ひとりが主体的に活動しています。
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Reason */}
+      {/* Section 2: What We Do */}
       <section className="border-b border-black">
         <div className="py-20 md:py-28 border-b border-black">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-12">
-              {reason.title}
+              OIFでできること
             </h2>
             <div className="max-w-3xl space-y-6 text-base md:text-lg leading-relaxed">
-              {reason.description.map((text, i) => (
-                <p key={i} className={i === reason.description.length - 1 ? "font-medium" : ""}>
-                  {text}
-                </p>
-              ))}
+              <p>
+                機械学習やWeb開発など、興味のある分野を仲間と一緒に深掘りできます。
+              </p>
+              <p>
+                輪読会や勉強会で基礎を固め、プロジェクト開発やハッカソンで実践に繋げます。
+              </p>
+              <p className="font-medium">
+                「やりたいこと」があれば、誰でも活動を始められる場所です。
+              </p>
             </div>
           </div>
         </div>
 
         {/* Two Parts Grid */}
         <div className="grid md:grid-cols-2">
-          {/* Part A: Network */}
+          {/* Part A: Study */}
           <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-black">
             <p className="text-xs font-medium tracking-widest uppercase mb-4">
-              {chapter === "global" ? "Structure" : "Part A"}
+              Learn
             </p>
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">
-              {chapter === "global" ? "チャプター制" : "広域ネットワーク"}
+              学ぶ・深める
             </h3>
             <div className="space-y-4 text-base leading-relaxed">
-              {chapter === "global" ? (
-                <>
-                  <p>各大学に「チャプター」を設置し、ローカルな活動拠点を確保。</p>
-                  <p>現在、大阪公立大学（OMU Chapter）を中心に活動中。</p>
-                </>
-              ) : (
-                <>
-                  <p>大阪大学や東京科学大学（旧東工大）などのエンジニア学生と接続しています。</p>
-                  <p>普段会えないレベルの仲間と交流し、常に視座を高く保つための「窓」です。</p>
-                </>
-              )}
+              <p>技術書の輪読会や論文解説会を定期的に開催しています。</p>
+              <p>AI・機械学習からWeb開発まで、幅広いテーマを扱います。</p>
             </div>
           </div>
 
-          {/* Part B: Base */}
+          {/* Part B: Create */}
           <div className="p-8 md:p-12 lg:p-16 bg-black text-white">
             <p className="text-xs font-medium tracking-widest uppercase mb-4">
-              {chapter === "global" ? "Hub" : "Part B"}
+              Create
             </p>
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">
-              {chapter === "global" ? "Global Discord" : "OMUチャプター"}
+              創る・発信する
             </h3>
             <div className="space-y-4 text-base leading-relaxed text-white/80">
-              {chapter === "global" ? (
-                <>
-                  <p>すべてのメンバーが集まる一つのDiscordサーバー。</p>
-                  <p>チャプター間の交流、全体イベント、知識の共有が行われます。</p>
-                </>
-              ) : (
-                <>
-                  <p>私たちのホームグラウンドです。</p>
-                  <p>大阪公立大学のAI・IT学習コミュニティーです。</p>
-                </>
-              )}
+              <p>学んだ知識を活かして、チームでプロダクトを開発します。</p>
+              <p>ハッカソンやコンテストへの参加を通じて、成果を社会に発信します。</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 3: Partner */}
+      {/* Section 3: Environment */}
+      <section className="py-20 md:py-28 border-b border-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-12">
+            活動環境
+          </h2>
+          <div className="max-w-3xl space-y-6 text-base md:text-lg leading-relaxed">
+            <p>
+              活動の拠点はDiscordサーバーです。オンラインでの情報共有や議論を日常的に行っています。
+            </p>
+            <p>
+              また、他大学のエンジニア学生との交流機会もあり、学外からの刺激を受けながら成長できる環境です。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Partner */}
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-12">
