@@ -28,7 +28,7 @@ export default function Header() {
           className="flex items-center"
         >
           <Image
-            src="/logo.png"
+            src="/OIF-homepage/logo.png"
             alt="OIF Logo"
             width={120}
             height={120}
@@ -44,8 +44,8 @@ export default function Header() {
               key={item.label}
               href={item.href}
               className={`text-sm font-medium tracking-wide transition-colors ${pathname === item.href
-                  ? "text-black border-b border-black"
-                  : "text-black/60 hover:text-black"
+                ? "text-black border-b border-black"
+                : "text-black/60 hover:text-black"
                 }`}
             >
               {item.label}

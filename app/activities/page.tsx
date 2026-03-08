@@ -22,9 +22,9 @@ const products = [
       "ゲーム性を重視した学習設計",
     ],
     images: [
-      { src: `/images/samurai-screenshot.png`, caption: "MLワークフロー" },
-      { src: `/images/samurai-conquest.png`, caption: "天下統一モード" },
-      { src: `/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
+      { src: `/OIF-homepage/images/samurai-screenshot.png`, caption: "MLワークフロー" },
+      { src: `/OIF-homepage/images/samurai-conquest.png`, caption: "天下統一モード" },
+      { src: `/OIF-homepage/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
     ],
   },
 ];
@@ -37,7 +37,7 @@ const contests = [
     result: "ファイナル進出",
     description:
       "大阪信用金庫主催の学生ビジネスプランコンテストにて、samurAIを発表しファイナルに進出。機械学習をノーコードで学べるプラットフォームとして評価されました。",
-    image: `/images/obucs-contest.png`,
+    image: `/OIF-homepage/images/obucs-contest.png`,
   },
 ];
 

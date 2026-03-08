@@ -21,7 +21,7 @@ export default function Footer() {
               className="inline-block"
             >
               <Image
-                src="/logo.png"
+                src="/OIF-homepage/logo.png"
                 alt="OIF Logo"
                 width={160}
                 height={160}

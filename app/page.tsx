@@ -21,7 +21,7 @@ export default function Home() {
               {/* Logo icon */}
               <div className="mb-8">
                 <Image
-                  src="/logo.png"
+                  src="/OIF-homepage/logo.png"
                   alt="OIF Logo"
                   width={200}
                   height={200}
@@ -84,7 +84,7 @@ export default function Home() {
           <div className="lg:hidden">
             <div className="mb-6">
               <Image
-                src="/logo.png"
+                src="/OIF-homepage/logo.png"
                 alt="OIF Logo"
                 width={160}
                 height={160}
