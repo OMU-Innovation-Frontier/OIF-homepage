@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://OMU-Innovation-Frontier.github.io/OIF-homepage/sitemap.xml
-
