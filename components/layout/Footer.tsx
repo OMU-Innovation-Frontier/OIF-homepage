@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const socialLinks = [
   { label: "Discord", href: "https://discord.gg/TfdmrXKNgD" },
@@ -17,12 +18,18 @@ export default function Footer() {
           <div>
             <Link
               href="/"
-              className="text-3xl md:text-4xl font-black tracking-tighter"
+              className="inline-block"
             >
-              OIF
+              <Image
+                src="/logo.png"
+                alt="OIF Logo"
+                width={160}
+                height={160}
+                className="h-16 w-auto md:h-20 mb-4"
+              />
             </Link>
-            <p className="text-sm text-black mt-4">
-              OMU Innovation Frontier
+            <p className="text-sm text-black mt-4 font-medium">
+              OIF
               <br />
               大阪公立大学 技術コミュニティ
             </p>

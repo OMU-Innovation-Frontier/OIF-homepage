@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
@@ -24,9 +25,16 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl md:text-2xl font-black tracking-tighter"
+          className="flex items-center"
         >
-          OIF
+          <Image
+            src="/logo.png"
+            alt="OIF Logo"
+            width={120}
+            height={120}
+            className="h-10 w-auto md:h-12"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -35,11 +43,10 @@ export default function Header() {
             <Link
               key={item.label}
               href={item.href}
-              className={`text-sm font-medium tracking-wide transition-colors ${
-                pathname === item.href
+              className={`text-sm font-medium tracking-wide transition-colors ${pathname === item.href
                   ? "text-black border-b border-black"
                   : "text-black/60 hover:text-black"
-              }`}
+                }`}
             >
               {item.label}
             </Link>
@@ -69,9 +76,8 @@ export default function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-lg font-medium tracking-wide border-b border-black/10 py-5 px-6 ${
-                  pathname === item.href ? "bg-black text-white" : ""
-                }`}
+                className={`text-lg font-medium tracking-wide border-b border-black/10 py-5 px-6 ${pathname === item.href ? "bg-black text-white" : ""
+                  }`}
               >
                 {item.label}
               </Link>

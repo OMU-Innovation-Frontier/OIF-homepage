@@ -2,38 +2,80 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 const faqs = [
   {
-    question: "初心者でも参加できますか？",
-    answer:
-      "はい。技術への興味と学ぶ意欲があれば歓迎します。初心者向けの勉強会も開催しています。",
+    question: "誰でも参加できますか？",
+    answer: (
+      <>
+        大坂公立大学以外の学生でも参加できます。<br />
+        AIやテクノロジーに興味があれば、学部や専攻は問いません。
+      </>
+    )
+  },
+  {
+    question: "プログラミング経験がなくても大丈夫ですか？",
+    answer: (
+      <>
+        はい、大丈夫です。<br />
+        OIF には、AIやテクノロジーに興味を持つさまざまな学生が参加できます。<br />
+        初心者の方も歓迎しています。
+      </>
+    )
+  },
+  {
+    question: "どのような活動をしていますか？",
+    answer: (
+      <>
+        AIやテクノロジーに関する学びや交流を中心に活動しています。<br /><br />
+        例えば<br />
+        ・AIツールの紹介<br />
+        ・技術の共有<br />
+        ・小さなプロジェクト<br />
+        ・技術ディスカッション<br />
+        などを行っています。
+      </>
+    )
   },
   {
     question: "活動頻度はどのくらいですか？",
-    answer:
-      "プロジェクトや勉強会によって異なります。自分のペースで自由に参加可能です。強制的な出席義務はありません。",
+    answer: (
+      <>
+        イベントや勉強会は不定期に開催されます。<br />
+        最新情報はDiscordで共有しています。
+      </>
+    )
   },
   {
-    question: "他大学の学生も参加できますか？",
-    answer:
-      "はい。学外メンバーとして参加可能です。オンラインでの活動には特に制限なく参加できます。",
+    question: "どのように参加できますか？",
+    answer: (
+      <>
+        まずは Discordコミュニティに参加してください。<br />
+        イベント案内やコミュニティの情報はDiscordで共有されています。<br /><br />
+        JoinページからDiscordに参加できます。
+      </>
+    )
   },
   {
-    question: "他のサークルとの兼部はできますか？",
-    answer:
-      "できます。活動は主にオンライン（Discord）で行われるため、物理的な制約は少ないです。",
+    question: "メンバー同士でプロジェクトを作ることはできますか？",
+    answer: (
+      <>
+        はい、可能です。<br />
+        OIF では、AIやテクノロジーに関するアイデアを共有し、<br />
+        メンバー同士でプロジェクトを進めることも歓迎しています。
+      </>
+    )
   },
   {
-    question: "どんな技術を扱っていますか？",
-    answer:
-      "Web開発、機械学習、競技プログラミングなど、メンバーの興味に応じて幅広く扱っています。",
-  },
-  {
-    question: "費用はかかりますか？",
-    answer:
-      "基本的な活動への参加は無料です。合宿や外部イベントへの参加には実費がかかる場合があります。",
-  },
+    question: "他の技術コミュニティと連携する予定はありますか？",
+    answer: (
+      <>
+        将来的には、AIやテクノロジーに関するさまざまなコミュニティとの連携も視野に入れています。<br />
+        コミュニティの成長に合わせて、新しい活動が生まれていく予定です。
+      </>
+    )
+  }
 ];
 
 export default function FAQPage() {
@@ -44,15 +86,16 @@ export default function FAQPage() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40 border-b border-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
-            FAQ
+          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">FAQ</p>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter">
+            よくあるご質問
           </h1>
         </div>
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-3xl mx-auto px-6 md:px-12 lg:px-20">
+      <section className="py-12 md:py-24">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="border-t border-black">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-black">
@@ -61,27 +104,27 @@ export default function FAQPage() {
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
                   }
-                  className="w-full flex items-start justify-between gap-6 py-6 text-left"
+                  className="w-full flex items-start justify-between gap-6 py-6 md:py-8 text-left hover:text-black/70 transition-colors"
                 >
-                  <span className="text-base md:text-lg font-medium">
-                    {faq.question}
+                  <span className="text-lg md:text-xl font-bold tracking-tight">
+                    Q. {faq.question}
                   </span>
                   <ChevronDown
-                    size={20}
+                    size={24}
                     strokeWidth={1.5}
-                    className={`shrink-0 mt-1 transition-transform duration-200 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
+                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
                 {/* Answer */}
                 <div
-                  className={`overflow-hidden transition-all duration-200 ${
-                    openIndex === index ? "max-h-48 pb-6" : "max-h-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96 pb-8" : "max-h-0"
+                    }`}
                 >
-                  <p className="text-base leading-relaxed">{faq.answer}</p>
+                  <div className="text-base md:text-lg leading-relaxed font-medium text-black/80 pl-6 md:pl-8 border-l-2 border-black/20">
+                    {faq.answer}
+                  </div>
                 </div>
               </div>
             ))}
@@ -90,22 +133,25 @@ export default function FAQPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 md:py-28 border-t border-black">
+      <section className="py-20 md:py-32 border-t border-black bg-black text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
-          <h2 className="text-xl md:text-2xl font-bold tracking-tight mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
             その他の質問
           </h2>
-          <p className="text-base mb-10 max-w-lg mx-auto">
+          <p className="text-base md:text-lg mb-10 max-w-lg mx-auto font-medium text-white/80">
             上記以外の質問は、Discordでお気軽にお問い合わせください。
           </p>
           <a
-            href="#"
-            className="inline-block bg-black text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
+            href="https://discord.gg/TfdmrXKNgD"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-white text-black px-12 py-5 text-sm font-bold tracking-widest uppercase border border-white hover:bg-black hover:text-white transition-colors duration-200"
           >
-            Discordに参加
+            Join our Discord
           </a>
         </div>
       </section>
     </div>
   );
 }
+

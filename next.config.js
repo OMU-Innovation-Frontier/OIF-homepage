@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   basePath: "/OIF-homepage",
   assetPrefix: "/OIF-homepage/",
+  output: "export",
   images: {
     unoptimized: true,
   },

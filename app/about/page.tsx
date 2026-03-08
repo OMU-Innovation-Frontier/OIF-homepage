@@ -1,137 +1,92 @@
 "use client";
 
+const pillars = [
+  {
+    title: "Learning",
+    description: "AIやプログラミング、最新技術について学びます。",
+    examples: ["AI入門", "機械学習", "LLM（大規模言語モデル）", "技術勉強会"]
+  },
+  {
+    title: "Building",
+    description: "学んだ知識をもとに、実際にプロジェクトを作ります。",
+    examples: ["AIアプリケーション", "AIツール", "個人・チーム開発"]
+  },
+  {
+    title: "Exploration",
+    description: "最新のAI技術や社会への影響について探究します。",
+    examples: ["AIニュース共有", "技術ディスカッション", "研究テーマの探究"]
+  }
+];
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-24 md:py-32 lg:py-40 border-b border-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter">
-            About
+          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">About the Community</p>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9]">
+            OIF について
           </h1>
         </div>
       </section>
 
       {/* Section 1: Introduction */}
-      <section className="py-20 md:py-28 border-b border-black">
+      <section className="py-20 md:py-32 border-b border-black bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-3xl">
-            <p className="text-lg md:text-xl font-medium mb-8">
-              OIF — OMU Innovation Frontier
-            </p>
-            <div className="space-y-6 text-base md:text-lg leading-relaxed">
-              <p>
-                OIFは、大阪公立大学の学生が運営するAI・ITの技術サークルです。
-              </p>
-              <p>
-                「技術を学び、ものを創り、発信する。」
-                この3つを軸に、メンバー一人ひとりが主体的に活動しています。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: What We Do */}
-      <section className="border-b border-black">
-        <div className="py-20 md:py-28 border-b border-black">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-12">
-              OIFでできること
+          <div className="max-w-4xl">
+            <h2 className="text-2xl md:text-3xl font-black mb-12 tracking-tight">
+              OIF は、<br />
+              AI・テクノロジー・イノベーションに関心のある学生が集まり、<br />
+              学び・実験し・創造するコミュニティです。
             </h2>
-            <div className="max-w-3xl space-y-6 text-base md:text-lg leading-relaxed">
-              <p>
-                機械学習やWeb開発など、興味のある分野を仲間と一緒に深掘りできます。
-              </p>
-              <p>
-                輪読会や勉強会で基礎を固め、プロジェクト開発やハッカソンで実践に繋げます。
-              </p>
-              <p className="font-medium">
-                「やりたいこと」があれば、誰でも活動を始められる場所です。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Two Parts Grid */}
-        <div className="grid md:grid-cols-2">
-          {/* Part A: Study */}
-          <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-black">
-            <p className="text-xs font-medium tracking-widest uppercase mb-4">
-              Learn
-            </p>
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">
-              学ぶ・深める
-            </h3>
-            <div className="space-y-4 text-base leading-relaxed">
-              <p>技術書の輪読会や論文解説会を定期的に開催しています。</p>
-              <p>AI・機械学習からWeb開発まで、幅広いテーマを扱います。</p>
-            </div>
-          </div>
-
-          {/* Part B: Create */}
-          <div className="p-8 md:p-12 lg:p-16 bg-black text-white">
-            <p className="text-xs font-medium tracking-widest uppercase mb-4">
-              Create
-            </p>
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">
-              創る・発信する
-            </h3>
-            <div className="space-y-4 text-base leading-relaxed text-white/80">
-              <p>学んだ知識を活かして、チームでプロダクトを開発します。</p>
-              <p>ハッカソンやコンテストへの参加を通じて、成果を社会に発信します。</p>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Section 3: Environment */}
-      <section className="py-20 md:py-28 border-b border-black">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-12">
-            活動環境
-          </h2>
-          <div className="max-w-3xl space-y-6 text-base md:text-lg leading-relaxed">
-            <p>
-              活動の拠点はDiscordサーバーです。オンラインでの情報共有や議論を日常的に行っています。
-            </p>
-            <p>
-              また、他大学のエンジニア学生との交流機会もあり、学外からの刺激を受けながら成長できる環境です。
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Section 2: Pillars */}
+      <section className="border-b border-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-32">
+          <h2 className="text-3xl md:text-4xl font-black mb-20 tracking-tighter uppercase">私たちは次の3つを軸に活動しています。</h2>
 
-      {/* Section 4: Partner */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-12">
-            Partner
-          </h2>
-
-          <div className="max-w-2xl">
-            <div className="border border-black p-8 md:p-10">
-              <div className="flex items-start justify-between gap-6 mb-6">
-                <h3 className="text-xl md:text-2xl font-bold tracking-tight">
-                  Code.Gate?
+          <div className="grid grid-cols-1 md:grid-cols-3 border border-black">
+            {pillars.map((pillar, i) => (
+              <div key={i} className={`p-10 ${i !== pillars.length - 1 ? "border-b md:border-b-0 md:border-r" : ""} border-black`}>
+                <h3 className="text-2xl font-black mb-6 tracking-tight flex items-center gap-4">
+                  <span className="text-xs opacity-40">0{i + 1}</span>
+                  {pillar.title}
                 </h3>
-                <a
-                  href="https://code-gate.webflow.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium tracking-wide border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors shrink-0"
-                >
-                  Website
-                </a>
+                <p className="text-lg font-medium mb-8 leading-relaxed">
+                  {pillar.description}
+                </p>
+                <div className="pt-6 border-t border-black/10">
+                  <p className="text-xs font-bold uppercase tracking-widest opacity-40 mb-4">Examples</p>
+                  <ul className="space-y-2">
+                    {pillar.examples.map((ex, j) => (
+                      <li key={j} className="text-sm font-medium flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-black rounded-full" />
+                        {ex}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <p className="text-base leading-relaxed">
-                プログラミングの基礎から始めたい方は、提携団体の Code.Gate?
-                を推奨しています。
-              </p>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* Section 4: Conclusion */}
+      <section className="py-24 md:py-40 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
+          <h2 className="text-3xl md:text-5xl font-black mb-12 leading-tight tracking-tighter">
+            OIF は、<br />
+            AIやテクノロジーの可能性を探りながら、<br />
+            学生同士が学び合い成長する場を目指しています。
+          </h2>
         </div>
       </section>
     </div>
   );
 }
+

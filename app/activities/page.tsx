@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "OIFの活動内容 - 学ぶ、創る、繋がる",
 };
 
-const basePath = "/OIF-homepage";
+const basePath = "";
 
 const products = [
   {
@@ -101,11 +101,10 @@ export default function ActivitiesPage() {
             {activities.map((activity, index) => (
               <div
                 key={activity.title}
-                className={`p-8 md:p-10 lg:p-12 ${
-                  index < activities.length - 1
+                className={`p-8 md:p-10 lg:p-12 ${index < activities.length - 1
                     ? "border-b md:border-b-0 md:border-r border-black"
                     : ""
-                }`}
+                  }`}
               >
                 {/* Icon */}
                 <activity.icon size={28} strokeWidth={1.5} className="mb-8" />
@@ -185,11 +184,10 @@ export default function ActivitiesPage() {
                 {product.images.map((image, i) => (
                   <div
                     key={i}
-                    className={`bg-black/5 p-4 md:p-6 ${
-                      i < product.images.length - 1
+                    className={`bg-black/5 p-4 md:p-6 ${i < product.images.length - 1
                         ? "border-b md:border-b-0 md:border-r border-black"
                         : ""
-                    }`}
+                      }`}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
