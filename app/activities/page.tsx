@@ -6,8 +6,9 @@ export const metadata: Metadata = {
   description: "OIFの活動内容 - 学ぶ、創る、繋がる",
 };
 
-const basePath = "";
+import Image from "next/image";
 
+// `next/image` handles `basePath` automatically when the `src` starts with `/`
 const products = [
   {
     name: "samurAI",
@@ -21,9 +22,9 @@ const products = [
       "ゲーム性を重視した学習設計",
     ],
     images: [
-      { src: `${basePath}/images/samurai-screenshot.png`, caption: "MLワークフロー" },
-      { src: `${basePath}/images/samurai-conquest.png`, caption: "天下統一モード" },
-      { src: `${basePath}/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
+      { src: `/images/samurai-screenshot.png`, caption: "MLワークフロー" },
+      { src: `/images/samurai-conquest.png`, caption: "天下統一モード" },
+      { src: `/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
     ],
   },
 ];
@@ -36,7 +37,7 @@ const contests = [
     result: "ファイナル進出",
     description:
       "大阪信用金庫主催の学生ビジネスプランコンテストにて、samurAIを発表しファイナルに進出。機械学習をノーコードで学べるプラットフォームとして評価されました。",
-    image: `${basePath}/images/obucs-contest.png`,
+    image: `/images/obucs-contest.png`,
   },
 ];
 
@@ -102,8 +103,8 @@ export default function ActivitiesPage() {
               <div
                 key={activity.title}
                 className={`p-8 md:p-10 lg:p-12 ${index < activities.length - 1
-                    ? "border-b md:border-b-0 md:border-r border-black"
-                    : ""
+                  ? "border-b md:border-b-0 md:border-r border-black"
+                  : ""
                   }`}
               >
                 {/* Icon */}
@@ -185,14 +186,15 @@ export default function ActivitiesPage() {
                   <div
                     key={i}
                     className={`bg-black/5 p-4 md:p-6 ${i < product.images.length - 1
-                        ? "border-b md:border-b-0 md:border-r border-black"
-                        : ""
+                      ? "border-b md:border-b-0 md:border-r border-black"
+                      : ""
                       }`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={image.src}
                       alt={`${product.name} - ${image.caption}`}
+                      width={600}
+                      height={400}
                       className="w-full h-auto border border-black/10 mb-3"
                     />
                     <p className="text-xs font-medium tracking-wide text-black/60 text-center">
@@ -226,10 +228,11 @@ export default function ActivitiesPage() {
               <div className="grid md:grid-cols-2">
                 {/* Contest Image */}
                 <div className="border-b md:border-b-0 md:border-r border-black">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={contest.image}
                     alt={contest.name}
+                    width={800}
+                    height={600}
                     className="w-full h-full object-cover"
                   />
                 </div>
