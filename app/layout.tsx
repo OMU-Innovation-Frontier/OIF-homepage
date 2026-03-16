@@ -32,20 +32,20 @@ export const metadata: Metadata = {
     siteName: "OIF - OMU Innovation Frontier",
     images: [
       {
-        url: "/logo.png",
-        width: 800,
-        height: 800,
-        alt: "OIF Logo",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "OIF - OMU Innovation Frontier",
       },
     ],
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "OIF - OMU Innovation Frontier",
     description: "大阪公立大学のAI・IT学習コミュニティ。理論を学び、応用する。",
-    images: ["/logo.png"],
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",

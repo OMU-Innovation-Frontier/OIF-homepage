@@ -6,12 +6,14 @@ export default function JsonLd() {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "OMU Innovation Frontier (OIF)",
+    "name": "OIF",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
     "description": "大阪公立大学のAI・IT学習コミュニティ。理論を学び、応用する。",
     "sameAs": [
       "https://github.com/OMU-Innovation-Frontier",
+      "https://x.com/OIF_OMU",
+      "https://www.instagram.com/omu.innovation.frontier/",
       "https://discord.gg/TfdmrXKNgD"
     ]
   };
