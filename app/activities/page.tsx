@@ -1,12 +1,11 @@
 import { Metadata } from "next";
 import { BookOpen, Code2, Users } from "lucide-react";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Activities",
-  description: "OIFの活動内容 - 学ぶ、創る、繋がる",
+  description: "OMU Innovation Frontier (OIF) の活動内容。AI勉強会、プロジェクト開発、イベント企画など、テクノロジーを探究する多様な活動を紹介します。",
 };
-
-import Image from "next/image";
 
 // `next/image` handles `basePath` automatically when the `src` starts with `/`
 const products = [
@@ -22,9 +21,9 @@ const products = [
       "ゲーム性を重視した学習設計",
     ],
     images: [
-      { src: `/OIF-homepage/images/samurai-screenshot.png`, caption: "MLワークフロー" },
-      { src: `/OIF-homepage/images/samurai-conquest.png`, caption: "天下統一モード" },
-      { src: `/OIF-homepage/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
+      { src: `/images/samurai-screenshot.png`, caption: "MLワークフロー" },
+      { src: `/images/samurai-conquest.png`, caption: "天下統一モード" },
+      { src: `/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
     ],
   },
 ];
@@ -37,7 +36,7 @@ const contests = [
     result: "ファイナル進出",
     description:
       "大阪信用金庫主催の学生ビジネスプランコンテストにて、samurAIを発表しファイナルに進出。機械学習をノーコードで学べるプラットフォームとして評価されました。",
-    image: `/OIF-homepage/images/obucs-contest.png`,
+    image: `/images/obucs-contest.png`,
   },
 ];
 

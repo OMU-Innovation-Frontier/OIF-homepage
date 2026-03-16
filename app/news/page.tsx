@@ -1,4 +1,9 @@
-"use client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "News",
+  description: "OMU Innovation Frontier (OIF) の最新ニュースと更新情報。イベント告知や活動レポートをお届けします。",
+};
 
 interface NewsItem {
   date: string;

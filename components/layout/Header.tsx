@@ -28,7 +28,7 @@ export default function Header() {
           className="flex items-center"
         >
           <Image
-            src="/OIF-homepage/logo.png"
+            src="/logo.png"
             alt="OIF Logo"
             width={120}
             height={120}

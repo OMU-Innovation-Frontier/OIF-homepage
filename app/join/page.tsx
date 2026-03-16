@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, CheckCircle2, MessageSquare, Terminal, Lightbulb, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Join",
-  description: "OIFへの参加方法 - OIFに参加する",
+  title: "Join the Community",
+  description: "OMU Innovation Frontier (OIF) への加入方法。AIやITに興味のある大阪公立大学の学生を募集しています。初心者も大歓迎です。",
 };
 
 const discordActivities = [
