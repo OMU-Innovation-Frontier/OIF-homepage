@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description:
     "大阪公立大学のAI・IT学習コミュニティー。理論を学び、応用する。",
   keywords: ["OIF", "OMU Innovation Frontier", "技術コミュニティ", "プログラミング", "学生団体", "大阪公立大学"],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
