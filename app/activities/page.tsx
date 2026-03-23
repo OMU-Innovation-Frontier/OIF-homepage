@@ -5,6 +5,9 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Activities",
   description: "OMU Innovation Frontier (OIF) の活動内容。AI勉強会、プロジェクト開発、イベント企画など、テクノロジーを探究する多様な活動を紹介します。",
+  alternates: {
+    canonical: "https://oif-ai.com/activities/",
+  },
 };
 
 // `next/image` handles `basePath` automatically when the `src` starts with `/`

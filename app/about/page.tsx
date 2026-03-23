@@ -5,6 +5,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description: "OMU Innovation Frontier (OIF) について。大阪公立大学のAI・IT学習コミュニティのビジョン、活動内容、組織概要を紹介します。",
+  alternates: {
+    canonical: "https://oif-ai.com/about/",
+  },
 };
 
 const pillars = [

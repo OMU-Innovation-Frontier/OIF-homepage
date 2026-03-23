@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "News",
   description: "OMU Innovation Frontier (OIF) の最新ニュースと更新情報。イベント告知や活動レポートをお届けします。",
+  alternates: {
+    canonical: "https://oif-ai.com/news/",
+  },
 };
 
 interface NewsItem {

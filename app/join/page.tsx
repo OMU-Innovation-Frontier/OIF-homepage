@@ -5,6 +5,9 @@ import { ArrowRight, CheckCircle2, MessageSquare, Terminal, Lightbulb, Users } f
 export const metadata: Metadata = {
   title: "Join the Community",
   description: "OMU Innovation Frontier (OIF) への加入方法。AIやITに興味のある大阪公立大学の学生を募集しています。初心者も大歓迎です。",
+  alternates: {
+    canonical: "https://oif-ai.com/join/",
+  },
 };
 
 const discordActivities = [
