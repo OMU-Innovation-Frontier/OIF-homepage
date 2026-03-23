@@ -3,23 +3,27 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://oif-ai.com',
+      url: 'https://oif-ai.com/',
       lastModified: new Date(),
     },
     {
-      url: 'https://oif-ai.com/about',
+      url: 'https://oif-ai.com/about/',
       lastModified: new Date(),
     },
     {
-      url: 'https://oif-ai.com/activities',
+      url: 'https://oif-ai.com/activities/',
       lastModified: new Date(),
     },
     {
-      url: 'https://oif-ai.com/faq',
+      url: 'https://oif-ai.com/faq/',
       lastModified: new Date(),
     },
     {
-      url: 'https://oif-ai.com/join',
+      url: 'https://oif-ai.com/join/',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://oif-ai.com/news/',
       lastModified: new Date(),
     },
   ]

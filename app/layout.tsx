@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://oif-ai.com",
   },
   openGraph: {
     title: "OIF - OMU Innovation Frontier",
