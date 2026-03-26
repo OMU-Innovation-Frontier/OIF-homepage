@@ -8,6 +8,15 @@ const news = [
   { date: "", title: "→ メンバー募集を開始しました" },
 ];
 
+const partners = [
+  {
+    name: "takeforest株式会社",
+    href: "https://takeforest.com",
+    tagline: "事業の枠にとらわれず、学生のやりたいを実現する会社",
+    body: "OIFとは、インターンとしての実務経験の提供、スポンサー支援、そして会社そのものを実践フィールドとして開放するという形で連携しています。学内では得られない「本物の経験」をOIFメンバーに届けます。",
+  },
+];
+
 export default function HomeClient() {
   return (
     <>
@@ -126,29 +135,77 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="border-t border-b border-black bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
+          {/* Section Header */}
+          <div className="mb-10 md:mb-14">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-3">
+              Partners
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              連携パートナー
+            </h2>
+          </div>
+
+          {/* Partner Cards */}
+          <div className="grid gap-4">
+            {partners.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-6 border border-black bg-white px-8 py-7 hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                <div>
+                  {/* Badge */}
+                  <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white group-hover:bg-white group-hover:text-black px-2 py-0.5 mb-4 transition-colors duration-200">
+                    Official Partner
+                  </span>
+                  {/* Name */}
+                  <p className="text-xl md:text-2xl font-bold tracking-tight mb-2">
+                    {partner.name}
+                  </p>
+                  {/* Tagline */}
+                  <p className="text-base font-semibold tracking-tight mb-3 group-hover:text-white transition-colors duration-200">
+                    {partner.tagline}
+                  </p>
+                  {/* Body */}
+                  <p className="text-sm leading-relaxed text-black/60 group-hover:text-white/70 max-w-xl transition-colors duration-200">
+                    {partner.body}
+                  </p>
+                </div>
+                {/* Arrow */}
+                <span className="text-2xl font-light shrink-0 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Latest Updates Section */}
-      <section className="bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-10 md:py-12">
-          <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
-            <p className="text-sm font-bold tracking-wide shrink-0 uppercase opacity-40">
+      <section className="bg-white border-b border-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
+          <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-20">
+            <p className="text-xs font-bold tracking-[0.2em] shrink-0 uppercase opacity-30 mt-1">
               Latest Updates
             </p>
-            <div className="flex-1">
+            <div className="flex-1 divide-y divide-black/5">
               {news.map((item, index) => (
-                <div key={index} className="flex items-center gap-6 py-2">
-                  {item.date && (
-                    <time className="text-sm font-medium tracking-wider w-24 shrink-0 text-black/60">
+                <div key={index} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 first:pt-0 last:pb-0 group">
+                  {item.date ? (
+                    <time className="text-xs font-bold tracking-widest text-black/40 w-24 shrink-0">
                       {item.date}
                     </time>
+                  ) : (
+                    <div className="w-24 shrink-0 hidden sm:block" />
                   )}
-                  <span className={`flex-1 text-base ${!item.date ? "ml-24 hidden md:block" : ""}`}>
+                  <span className="text-base md:text-lg font-bold tracking-tight group-hover:text-black/60 transition-colors duration-200">
                     {item.title}
                   </span>
-                  {!item.date && (
-                    <span className="flex-1 text-base md:hidden">
-                      {item.title}
-                    </span>
-                  )}
                 </div>
               ))}
             </div>

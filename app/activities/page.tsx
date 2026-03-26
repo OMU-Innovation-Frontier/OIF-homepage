@@ -49,25 +49,20 @@ const activities = [
     title: "Study",
     titleJa: "学ぶ",
     description:
-      "技術書の輪読会や、論文の解説会。情報科学の基礎や数理を深く学びます。",
-    items: [
-      "技術書の輪読会",
-      "最新論文の解説会",
-      "アルゴリズム勉強会",
-      "数学・統計の基礎学習",
-    ],
+      "資格・講座・書籍・論文。そのときの興味やノリに合わせて、各自の方法でAIを深めています。",
+    items: [],
   },
   {
     icon: Code2,
     title: "Develop",
     titleJa: "創る",
     description:
-      "WebアプリやAIモデルの実装。個人開発やチームでのハッカソン参加を支援します。",
+      "KaggleへのチャレンジやAIモデルの実装、アプリ開発まで。個人でもチームでも、手を動かす機会をつくります。",
     items: [
-      "Webアプリケーション開発",
+      "Kaggleなどのコンペ",
       "機械学習モデルの実装",
+      "AIアプリ開発",
       "ハッカソン参加・主催",
-      "学内向けツール開発",
     ],
   },
   {
@@ -75,15 +70,38 @@ const activities = [
     title: "Connect",
     titleJa: "繋がる",
     description:
-      "Discordでの情報交換や、LT会（ライトニングトーク）を通じた知見の共有。",
+      "インターンや共同開発を通じて学外とつながる。Discordでの日常的な情報交換も。",
     items: [
-      "Discordでの日常的な交流",
-      "月例LT会の開催",
-      "開発合宿の実施",
-      "他大学との合同イベント",
+      "大阪公立大学発ITベンチャーでのインターン",
+      "Discordでの日常的な情報交換",
+      "チームでAI開発",
+      "Kaggleチーム戦",
     ],
   },
 ];
+
+const studyCategories = [
+  {
+    label: "資格",
+    examples: ["E資格", "G検定", "DS検定など"],
+  },
+  {
+    label: "講座",
+    examples: ["東大松尾研 GCI", "DL基礎講座", "LLM講座など"],
+  },
+  {
+    label: "書籍",
+    examples: ["ベイズ推論による機械学習", "パターン認識と機械学習 (PRML)", "Kaggleで学ぶ大規模言語モデル入門など"],
+  },
+  {
+    label: "その他",
+    examples: ["論文読み会", "勉強会・解説会など"],
+  },
+];
+
+const StudyIcon = activities[0].icon;
+const DevelopIcon = activities[1].icon;
+const ConnectIcon = activities[2].icon;
 
 export default function ActivitiesPage() {
   return (
@@ -100,45 +118,88 @@ export default function ActivitiesPage() {
       {/* Activities Grid */}
       <section className="border-b border-black">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3">
-            {activities.map((activity, index) => (
-              <div
-                key={activity.title}
-                className={`p-8 md:p-10 lg:p-12 ${index < activities.length - 1
-                  ? "border-b md:border-b-0 md:border-r border-black"
-                  : ""
-                  }`}
-              >
-                {/* Icon */}
-                <activity.icon size={28} strokeWidth={1.5} className="mb-8" />
 
-                {/* Title */}
-                <div className="mb-8">
-                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                    {activity.title}
-                  </h2>
-                  <p className="text-sm text-black">{activity.titleJa}</p>
-                </div>
-
-                {/* Description */}
-                <p className="text-base leading-relaxed mb-8">
-                  {activity.description}
-                </p>
-
-                {/* Items List */}
-                <ul className="space-y-3">
-                  {activity.items.map((item, i) => (
-                    <li key={i} className="text-sm flex items-start gap-3">
-                      <span className="w-1 h-1 bg-black mt-2 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          {/* Row 1: Study — full width, 2カラム */}
+          <div className="border-b border-black grid lg:grid-cols-2">
+            {/* Left: アイコン + タイトル + 説明 */}
+            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black">
+              <StudyIcon size={32} strokeWidth={1.5} className="mb-10" />
+              <div className="mb-6">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
+                  {activities[0].title}
+                </h2>
+                <p className="text-sm text-black/50 mt-1">{activities[0].titleJa}</p>
               </div>
-            ))}
+              <p className="text-base md:text-lg leading-relaxed text-black/70">
+                {activities[0].description}
+              </p>
+            </div>
+
+            {/* Right: カテゴリ行リスト */}
+            <div className="divide-y divide-black">
+              {studyCategories.map((cat) => (
+                <div key={cat.label} className="flex items-baseline gap-4 px-6 md:px-10 lg:px-12 py-5 md:py-6">
+                  <span className="text-xs font-bold tracking-widest uppercase text-black/40 shrink-0 w-10">
+                    {cat.label}
+                  </span>
+                  <span className="text-sm md:text-base leading-relaxed text-black/80">
+                    {cat.examples.join("、")}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Row 2: Develop + Connect — 均等2カラム */}
+          <div className="grid lg:grid-cols-2">
+            {/* Develop */}
+            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black">
+              <DevelopIcon size={32} strokeWidth={1.5} className="mb-10" />
+              <div className="mb-6">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
+                  {activities[1].title}
+                </h2>
+                <p className="text-sm text-black/50 mt-1">{activities[1].titleJa}</p>
+              </div>
+              <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
+                {activities[1].description}
+              </p>
+              <ul className="space-y-3">
+                {activities[1].items.map((item, i) => (
+                  <li key={i} className="text-sm md:text-base flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-black mt-1.5 shrink-0 rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Connect — 黒背景 */}
+            <div className="bg-black text-white p-8 md:p-12 lg:p-16">
+              <ConnectIcon size={32} strokeWidth={1.5} className="mb-10 text-white" />
+              <div className="mb-6">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
+                  {activities[2].title}
+                </h2>
+                <p className="text-sm text-white/40 mt-1">{activities[2].titleJa}</p>
+              </div>
+              <p className="text-base md:text-lg leading-relaxed text-white/60 mb-10">
+                {activities[2].description}
+              </p>
+              <ul className="space-y-3">
+                {activities[2].items.map((item, i) => (
+                  <li key={i} className="text-sm md:text-base flex items-start gap-3 text-white/90">
+                    <span className="w-1.5 h-1.5 bg-white mt-1.5 shrink-0 rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
+
 
       {/* Products Section */}
       <section className="py-20 md:py-28 border-b border-black">
