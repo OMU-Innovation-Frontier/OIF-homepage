@@ -91,7 +91,7 @@ const studyCategories = [
   },
   {
     label: "書籍",
-    examples: ["ベイズ推論による機械学習", "パターン認識と機械学習 (PRML)", "Kaggleで学ぶ大規模言語モデル入門など"],
+    examples: ["ベイズ推論による機械学習", "パターン認識と機械学習 (PRML)", "Kaggleではじめる大規模言語モデル入門など"],
   },
   {
     label: "その他",
