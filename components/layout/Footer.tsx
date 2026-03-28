@@ -6,7 +6,7 @@ import Image from "next/image";
 const socialLinks = [
   { label: "Discord", href: "https://discord.gg/TfdmrXKNgD" },
   { label: "X", href: "https://x.com/OIF_OMU" },
-  { label: "Instagram", href: "https://www.instagram.com/omu.innovation.frontier/" },
+  { label: "Instagram", href: "https://l.instagram.com/?u=https%3A%2F%2Fwww.instagram.com%2Foif.ai.omu%3Figsh%3Dd2cxejNrZDNqbjJx%26utm_source%3Dqr%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnnbYboA4tmoihonSEBvfEynm7atfF9qWskK1nkvfD_UmzZQNGgZF8zHj9O-Q_aem_l9foD11qqP5-zvJqDi-gGw&e=AT7AICjtMP1LfRonDhjlWXWsLnufZ296J7U78LIB5RouH3aKGzD8WCWCCJGzoYfeSXDMz3sMAdhjv02vbcXSktPyheIt6m1CKkmWj_X32rHx38etgd7KgFE4Vw" },
 ];
 
 const navLinks = [
@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="border-t border-black bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
-          
+
           {/* Brand & Description */}
           <div className="md:col-span-5">
             <Link href="/" className="inline-block mb-10">
