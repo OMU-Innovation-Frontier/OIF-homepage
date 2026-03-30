@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: [{ url: "/apple-icon.png" }],
   },
+  verification: {
+    other: {
+      "msvalidate.01": "B000C411350589C064A6B35ACBF14EA8",
+    },
+  },
 };
 
 export default function RootLayout({
