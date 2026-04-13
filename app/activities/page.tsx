@@ -13,10 +13,24 @@ export const metadata: Metadata = {
 // `next/image` handles `basePath` automatically when the `src` starts with `/`
 const products = [
   {
+    name: "NOEMA",
+    badge: "Member Product",
+    tagline: "Pythonから深層学習まで、コードを動かしながら学ぶAI学習サービス",
+    description:
+      "Pythonの基礎から機械学習、深層学習など、AI技術についてコードを実行しながら学べるサービス。松尾研講座の予習/復習としても、読み物としてもご使用いただけます。",
+    href: "https://noema-learn.uk/",
+    image: `/images/noema-screenshot.png`,
+    layout: "hero" as const,
+  },
+  {
     name: "samurAI",
+    badge: undefined as string | undefined,
     tagline: "ノーコードで学ぶ機械学習",
     description:
       "コードを書かずに機械学習の本質を体験できる学習アプリ。データの前処理からモデル構築、評価までの一連の流れをゲーム感覚で学べます。",
+    href: undefined as string | undefined,
+    image: undefined as string | undefined,
+    layout: "gallery" as const,
     features: [
       "ノーコードで機械学習のワークフローを体験",
       "データの可視化・前処理・特徴量エンジニアリング",
@@ -218,54 +232,94 @@ export default function ActivitiesPage() {
               key={product.name}
               className="border border-black"
             >
-              {/* Product Header */}
-              <div className="p-8 md:p-12 border-b border-black">
-                <div className="mb-6">
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm font-medium text-black/60">
-                    {product.tagline}
-                  </p>
-                </div>
-
-                <p className="text-base leading-relaxed mb-8 max-w-2xl">
-                  {product.description}
-                </p>
-
-                <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl">
-                  {product.features.map((feature, i) => (
-                    <li key={i} className="text-sm flex items-start gap-3">
-                      <span className="w-1 h-1 bg-black mt-2 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Product Screenshots Gallery */}
-              <div className="grid md:grid-cols-3">
-                {product.images.map((image, i) => (
-                  <div
-                    key={i}
-                    className={`bg-black/5 p-4 md:p-6 ${i < product.images.length - 1
-                      ? "border-b md:border-b-0 md:border-r border-black"
-                      : ""
-                      }`}
-                  >
+              {product.layout === "hero" ? (
+                /* O-BUCs style: left image, right info */
+                <div className="grid md:grid-cols-2">
+                  {/* Image */}
+                  <div className="border-b md:border-b-0 md:border-r border-black">
                     <Image
-                      src={image.src}
-                      alt={`${product.name} - ${image.caption}`}
-                      width={600}
-                      height={400}
-                      className="w-full h-auto border border-black/10 mb-3"
+                      src={product.image!}
+                      alt={product.name}
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover"
                     />
-                    <p className="text-xs font-medium tracking-wide text-black/60 text-center">
-                      {image.caption}
-                    </p>
                   </div>
-                ))}
-              </div>
+                  {/* Info */}
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <div className="mb-6">
+                      {product.badge && (
+                        <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white px-3 py-1 mb-4">
+                          {product.badge}
+                        </span>
+                      )}
+                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm font-medium text-black/60">
+                        {product.tagline}
+                      </p>
+                    </div>
+                    <p className="text-base leading-relaxed mb-8">
+                      {product.description}
+                    </p>
+                    {product.href && (
+                      <a
+                        href={product.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200 self-start"
+                      >
+                        サービスを見る →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                /* Gallery style: header + multi-image grid */
+                <>
+                  <div className="p-8 md:p-12 border-b border-black">
+                    <div className="mb-6">
+                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm font-medium text-black/60">
+                        {product.tagline}
+                      </p>
+                    </div>
+                    <p className="text-base leading-relaxed mb-8 max-w-2xl">
+                      {product.description}
+                    </p>
+                    <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl">
+                      {product.features?.map((feature, i) => (
+                        <li key={i} className="text-sm flex items-start gap-3">
+                          <span className="w-1 h-1 bg-black mt-2 shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={`grid ${!product.images || product.images.length <= 1 ? "" : product.images.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+                    {product.images?.map((image, i) => (
+                      <div
+                        key={i}
+                        className={`bg-black/5 p-4 md:p-6 ${product.images && i < product.images.length - 1 ? "border-b md:border-b-0 md:border-r border-black" : ""}`}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={`${product.name} - ${image.caption}`}
+                          width={600}
+                          height={400}
+                          className="w-full h-auto border border-black/10 mb-3"
+                        />
+                        <p className="text-xs font-medium tracking-wide text-black/60 text-center">
+                          {image.caption}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
