@@ -236,13 +236,13 @@ export default function ActivitiesPage() {
                 /* O-BUCs style: left image, right info */
                 <div className="grid md:grid-cols-2">
                   {/* Image */}
-                  <div className="border-b md:border-b-0 md:border-r border-black">
+                  <div className="border-b md:border-b-0 md:border-r border-black bg-[#141e2e] flex items-center justify-center min-h-[280px] md:min-h-[360px] p-4 md:p-6">
                     <Image
                       src={product.image!}
                       alt={product.name}
                       width={800}
-                      height={600}
-                      className="w-full h-full object-cover"
+                      height={500}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                   {/* Info */}
