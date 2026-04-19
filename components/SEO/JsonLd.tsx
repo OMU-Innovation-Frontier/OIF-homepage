@@ -9,12 +9,12 @@ export default function JsonLd() {
     "name": "OIF",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
-    "description": "大阪公立大学のAI・IT学習コミュニティ。理論を学び、応用する。",
+    "description": "大阪公立大学のAI・IT学習コミュニティ。理論を学び、応用する、E,
     "sameAs": [
       "https://github.com/OMU-Innovation-Frontier",
       "https://x.com/OIF_OMU",
       "https://www.instagram.com/omu.innovation.frontier/",
-      "https://discord.gg/TfdmrXKNgD"
+      "https://discord.gg/pEHeeYKUnX"
     ]
   };
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const socialLinks = [
-  { label: "Discord", href: "https://discord.gg/TfdmrXKNgD" },
+  { label: "Discord", href: "https://discord.gg/pEHeeYKUnX" },
   { label: "X", href: "https://x.com/OIF_OMU" },
   { label: "Instagram", href: "https://l.instagram.com/?u=https%3A%2F%2Fwww.instagram.com%2Foif.ai.omu%3Figsh%3Dd2cxejNrZDNqbjJx%26utm_source%3Dqr%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnnbYboA4tmoihonSEBvfEynm7atfF9qWskK1nkvfD_UmzZQNGgZF8zHj9O-Q_aem_l9foD11qqP5-zvJqDi-gGw&e=AT7AICjtMP1LfRonDhjlWXWsLnufZ296J7U78LIB5RouH3aKGzD8WCWCCJGzoYfeSXDMz3sMAdhjv02vbcXSktPyheIt6m1CKkmWj_X32rHx38etgd7KgFE4Vw" },
 ];
@@ -38,7 +38,7 @@ export default function Footer() {
               OMU Innovation Frontier
             </p>
             <p className="text-sm text-black/60 font-medium leading-relaxed max-w-xs">
-              大阪公立大学の学生による<br /> AI・テクノロジーを探究するコミュニティ
+              大阪公立大学の学生による<br /> AI・チE��ノロジーを探究するコミュニティ
             </p>
           </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
                   className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-black/5 pb-2 hover:border-black transition-colors duration-300"
                 >
                   {link.label}
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">ↁE/span>
                 </a>
               ))}
             </div>
