@@ -1,29 +1,29 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { Metadata } from "next";
-import { ArrowRight, CheckCircle2, MessageSquare, Terminal, Lightbulb, Users } from "lucide-react";
+import { ArrowRight, MessageSquare, Terminal, Lightbulb, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Join the Community",
-  description: "OMU Innovation Frontier (OIF) への加入方法、EIやITに興味のある大阪公立大学の学生を募集してぁE��す。�E忁E��E��大歓迎です、E,
+  description: "OMU Innovation Frontier (OIF) への加入方法。AIやITに興味のある大阪公立大学の学生を募集しています。初心者大歓迎です。",
   alternates: {
     canonical: "https://oif-ai.com/join/",
   },
 };
 
 const discordActivities = [
-  { icon: MessageSquare, text: "AIニュース共朁E },
-  { icon: Users, text: "イベント案�E" },
-  { icon: Terminal, text: "技術�E質問�E相諁E },
-  { icon: Lightbulb, text: "プロジェクト�EアイチE��共朁E },
-  { icon: MessageSquare, text: "メンバ�E同士の交流E },
+  { icon: MessageSquare, text: "AIニュース共有" },
+  { icon: Users, text: "イベント案内" },
+  { icon: Terminal, text: "技術的な質問・相談" },
+  { icon: Lightbulb, text: "プロジェクトのアイデア共有" },
+  { icon: MessageSquare, text: "メンバー同士の交流" },
 ];
 
 const recommendedFor = [
-  "AIに興味があめE,
+  "AIに興味がある",
   "プログラミングを始めてみたい",
-  "AIチE�Eルを触ってみたい",
-  "技術系のコミュニティに参加したぁE,
-  "一緒にプロジェクトを作る仲間がほしい"
+  "AIツールを触ってみたい",
+  "技術系のコミュニティに参加したい",
+  "一緒にプロジェクトを作る仲間がほしい",
 ];
 
 export default function JoinPage() {
@@ -36,7 +36,8 @@ export default function JoinPage() {
             Join the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
-            Discordから、Ebr />はじめよう、E          </h1>
+            Discordから、<br />はじめよう
+          </h1>
         </div>
       </section>
 
@@ -45,15 +46,18 @@ export default function JoinPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-12 leading-tight">
-              AIをもっと身近に、Ebr />
-              もっと日常の選択肢に、E            </h2>
+              AIをもっと身近に、<br />
+              もっと日常の選択肢に
+            </h2>
             <div className="space-y-6 text-base md:text-lg lg:text-xl leading-relaxed text-black/80 font-medium">
               <p>
-                OIFは、特定�E専門スキルを持った人だけ�E場所ではありません、Ebr className="hidden md:block" />
-                「AIってなんだろう」「何かチE�Eルを使ってみようかな」——そんな、ごく�E然な好奁E��E��ら活動が始まります、E              </p>
+                OIFは、特定の専門スキルを持った人だけの場所ではありません。<br className="hidden md:block" />
+                「AIってなんだろう」「何かツールを使ってみようかな」——そんな、ごく自然な好奇心から活動が始まります。
+              </p>
               <p>
-                プログラミングの経験�Eあってもなくても、どちらでも構いません、Ebr className="hidden md:block" />
-                まず�E同じ興味を持つ仲間とつながること。そこから�E刁E��ちのペ�Eスで進んでぁE��ましょぁE��E              </p>
+                プログラミングの経験はあってもなくても、どちらでも構いません。<br className="hidden md:block" />
+                まずは同じ興味を持つ仲間とつながること。そこから自分たちのペースで進んでいきましょう。
+              </p>
             </div>
           </div>
         </div>
@@ -62,7 +66,7 @@ export default function JoinPage() {
       {/* Main Content Grid */}
       <section className="border-b border-black">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 divide-x-0 lg:divide-x divide-black">
-          
+
           {/* Left: Recommended For */}
           <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-black bg-gray-50/50">
             <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-6">
@@ -87,9 +91,13 @@ export default function JoinPage() {
               How to Join
             </p>
             <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-12">
-              参加はDiscordから、E            </h2>
+              参加はDiscordから
+            </h2>
             <p className="text-base md:text-lg leading-relaxed text-white/60 mb-12 lg:pr-10">
-              OIFのコミュニケーションはすべて Discord 上で行われてぁE��す、E              ニュースの共有や技術的な相諁E���Eロジェクト�E募集など、E              日常皁E��めE��取りに参加するだけで、新しい景色が見えてくるはずです、E            </p>
+              OIFのコミュニケーションはすべて Discord 上で行われています。
+              ニュースの共有や技術的な相談、プロジェクトの募集など、
+              日常的なやり取りに参加するだけで、新しい景色が見えてくるはずです。
+            </p>
 
             <div className="grid grid-cols-2 gap-y-8 gap-x-8 mb-20">
               {discordActivities.map((activity, index) => (
@@ -189,15 +197,19 @@ export default function JoinPage() {
           </p>
         </div>
       </section>
+
       {/* Final Message */}
       <section className="py-24 md:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-10 leading-tight">
-              特別な準備は、Ebr />忁E��ありません、E            </h2>
+              特別な準備は、<br />必要ありません
+            </h2>
             <p className="text-lg md:text-xl font-medium text-black/60 leading-relaxed mb-16 px-4">
-              Discordに入った後�E、�E味のあるチャンネルを眺めてみたり、E              たまにあるイベントに参加してみたりするだけで十�Eです、Ebr />
-              一歩、外�E世界を�Eぞいてみませんか、E            </p>
+              Discordに入った後は、興味のあるチャンネルを眺めてみたり、
+              たまにあるイベントに参加してみたりするだけで十分です。<br />
+              一歩、外の世界を覗いてみませんか。
+            </p>
             <p className="text-xs font-bold tracking-[0.3em] uppercase opacity-20">
               OIF Community Office
             </p>

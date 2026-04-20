@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
 export default function JsonLd() {
   const baseUrl = "https://oif-ai.com";
-  
+
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "OIF",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
-    "description": "大阪公立大学のAI・IT学習コミュニティ。理論を学び、応用する、E,
+    "description": "大阪公立大学のAI・IT学習コミュニティ。",
     "sameAs": [
       "https://github.com/OMU-Innovation-Frontier",
       "https://x.com/OIF_OMU",
