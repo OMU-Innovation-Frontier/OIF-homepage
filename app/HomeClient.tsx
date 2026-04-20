@@ -8,6 +8,15 @@ const news = [
   { date: "", title: "新メンバー募集を開始しました" },
 ];
 
+const partners = [
+  {
+    name: "takeforest株式会社",
+    tagline: "AIを活用した新しい学習体験を",
+    body: "OIFとのパートナーシップを通じて、メンバーへの知識共有やAI学習機会の提供を行っています。",
+    href: "https://takeforest.com",
+  },
+];
+
 export default function HomeClient() {
   return (
     <>
@@ -27,17 +36,12 @@ export default function HomeClient() {
                   className="w-24 h-24 xl:w-28 xl:h-28"
                 />
               </div>
-              {/* Main Visual - OIF */}
               <h1 className="text-[6rem] xl:text-[7rem] font-black leading-[0.9] tracking-tighter mb-4">
                 OMU<br />Innovation<br />Frontier
               </h1>
-
-              {/* Statement */}
               <p className="text-xl xl:text-2xl font-medium mb-12 leading-relaxed max-w-lg">
                 AIとテクノロジーの未来を探究する学生コミュニティ
               </p>
-
-              {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/join"
@@ -59,7 +63,6 @@ export default function HomeClient() {
               <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-8 border-b border-black/10 pb-4">
                 Introduction
               </p>
-
               <div className="space-y-6 text-sm md:text-base leading-relaxed text-black/80">
                 <p>
                   OIF は、<br />
@@ -96,7 +99,6 @@ export default function HomeClient() {
             <p className="text-lg md:text-xl font-medium mb-10 leading-relaxed">
               AIとテクノロジーの未来を探究する学生コミュニティ
             </p>
-
             <div className="flex flex-wrap gap-3 mb-12">
               <Link
                 href="/join"
@@ -111,7 +113,6 @@ export default function HomeClient() {
                 About
               </Link>
             </div>
-
             <div className="bg-white border border-black p-6">
               <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6 pb-2 border-b border-black/10">
                 Introduction
@@ -121,6 +122,49 @@ export default function HomeClient() {
                 <p>私たちは、その変化を理解し、創り、未来を形作る側として関わることを目指しています。</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="border-t border-b border-black bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
+          <div className="mb-10 md:mb-14">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-3">
+              Partners
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              連携パートナー
+            </h2>
+          </div>
+          <div className="grid gap-4">
+            {partners.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-6 border border-black bg-white px-8 py-7 hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                <div>
+                  <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white group-hover:bg-white group-hover:text-black px-2 py-0.5 mb-4 transition-colors duration-200">
+                    Official Partner
+                  </span>
+                  <p className="text-xl md:text-2xl font-bold tracking-tight mb-2">
+                    {partner.name}
+                  </p>
+                  <p className="text-base font-semibold tracking-tight mb-3 group-hover:text-white transition-colors duration-200">
+                    {partner.tagline}
+                  </p>
+                  <p className="text-sm leading-relaxed text-black/60 group-hover:text-white/70 max-w-xl transition-colors duration-200">
+                    {partner.body}
+                  </p>
+                </div>
+                <span className="text-2xl font-light shrink-0 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                  →
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
