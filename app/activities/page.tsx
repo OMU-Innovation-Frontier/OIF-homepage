@@ -3,8 +3,8 @@ import { BookOpen, Code2, Users } from "lucide-react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Activities",
-  description: "OMU Innovation Frontier (OIF) の活動内容。AI勉強会、プロジェクト開発、イベント企画など、テクノロジーを探究する多様な活動を紹介します。",
+  title: "Activities | OIF 大阪公立大学のAIサークルの活動",
+  description: "OIF（OMU Innovation Frontier）の活動内容。大阪公立大学のAIサークルとして、AI勉強会・機械学習・深層学習の実装・プログラミングコンテストへの参加など、多様な活動を行っています。",
   alternates: {
     canonical: "https://oif-ai.com/activities/",
   },

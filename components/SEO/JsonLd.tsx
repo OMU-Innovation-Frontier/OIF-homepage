@@ -6,10 +6,19 @@ export default function JsonLd() {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "OIF",
+    "name": "OMU Innovation Frontier",
+    "alternateName": "OIF",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
-    "description": "大阪公立大学のAI・IT学習コミュニティ。",
+    "description": "大阪公立大学のAI・プログラミングサークル。AIや機械学習に兴味のある学生が集まるコミュニティです。",
+    "keywords": "大阪公立大学 AI, 大阪公立大学 AIサークル, 大阪公立大学 プログラミングサークル, OMU AI, OIF, 機械学習, 深層学習",
+    "foundingDate": "2024",
+    "memberOf": {
+      "@type": "EducationalOrganization",
+      "name": "大阪公立大学",
+      "alternateName": "OMU",
+      "url": "https://www.omu.ac.jp"
+    },
     "sameAs": [
       "https://github.com/OMU-Innovation-Frontier",
       "https://x.com/OIF_OMU",
@@ -23,9 +32,11 @@ export default function JsonLd() {
     "@type": "WebSite",
     "name": "OIF - OMU Innovation Frontier",
     "url": baseUrl,
+    "description": "大阪公立大学のAI・プログラミングサークル OIFの公式サイト。",
     "publisher": {
       "@type": "Organization",
-      "name": "OMU Innovation Frontier"
+      "name": "OMU Innovation Frontier",
+      "alternateName": "OIF"
     }
   };
 

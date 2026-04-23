@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import { ArrowRight, MessageSquare, Terminal, Lightbulb, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Join the Community",
-  description: "OMU Innovation Frontier (OIF) への加入方法。AIやITに興味のある学生を募集しています。初心者大歓迎です。",
+  title: "Join | OIF 大阪公立大学のAIサークルに参加",
+  description: "OIF（OMU Innovation Frontier）への加入は簡単。大阪公立大学のAI・プログラミングサークルで、AIや機械学習に興味のある学生を募集中。初心者歓迎、プログラミング経験不問。Discordから参加できます。",
   alternates: {
     canonical: "https://oif-ai.com/join/",
   },
