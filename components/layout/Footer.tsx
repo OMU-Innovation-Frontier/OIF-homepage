@@ -10,6 +10,7 @@ const socialLinks = [
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Developers", href: "/developers" },
   { label: "Activities", href: "/activities" },
   { label: "Join", href: "/join" },
   { label: "FAQ", href: "/faq" },
