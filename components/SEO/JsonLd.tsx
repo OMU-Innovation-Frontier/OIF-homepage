@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function JsonLd() {
   const baseUrl = "https://oif-ai.com";
 
@@ -10,7 +8,7 @@ export default function JsonLd() {
     "alternateName": "OIF",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
-    "description": "大阪公立大学のAI・プログラミングサークル。AIや機械学習に兴味のある学生が集まるコミュニティです。",
+    "description": "大阪公立大学のAI・プログラミングサークル。AIや機械学習に興味のある学生が集まるコミュニティです。",
     "keywords": "大阪公立大学 AI, 大阪公立大学 AIサークル, 大阪公立大学 プログラミングサークル, OMU AI, OIF, 機械学習, 深層学習",
     "foundingDate": "2024",
     "memberOf": {

@@ -1,9 +1,10 @@
 import { Metadata } from "next";
+import SectionDivider from "@/components/site/SectionDivider";
 
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・プログラミングサークルです。深く考え、とにかく作ってみる、外の世界に出てみる——AIに兴味のある大阪公立大学の学生には最適な環境です。",
+    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・プログラミングサークルです。深く考え、とにかく作ってみる、外の世界に出てみる——AIに興味のある大阪公立大学の学生には最適な環境です。",
   alternates: {
     canonical: "https://oif-ai.com/about/",
   },
@@ -31,7 +32,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="py-24 md:py-32 lg:py-48 border-b border-black">
+      <section className="py-24 md:py-32 lg:py-48">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">
             About the Community
@@ -42,8 +43,10 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Section 1 */}
-      <section className="py-24 md:py-40 border-b border-black bg-white">
+      <section className="py-24 md:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tighter mb-16 leading-tight">
@@ -64,8 +67,10 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Section 2: 3つの信条 */}
-      <section className="border-b border-black">
+      <section>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-40">
           <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
             How we learn
@@ -98,8 +103,10 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Section 3: メンバー */}
-      <section className="py-24 md:py-40 border-b border-black bg-gray-50">
+      <section className="py-24 md:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
@@ -109,11 +116,13 @@ export default function AboutPage() {
               すでに動いているメンバーもいる
             </h2>
             <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-black/80 font-medium">
-              大阪公立大学発ベンチャーのAffectify・Mi&Tでインターンとして実務経験を積んでいるメンバーが在籍しています。勉強会に参加するだけでなく、実際の現場に出ていることも自然にできる環境です。
+              大阪公立大学発ベンチャーのAffectify・Mi&amp;Tでインターンとして実務経験を積んでいるメンバーが在籍しています。勉強会に参加するだけでなく、実際の現場に出ていることも自然にできる環境です。
             </p>
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* Section 4: 黒背景メッセージ */}
       <section className="py-32 md:py-48 lg:py-64 bg-black text-white">

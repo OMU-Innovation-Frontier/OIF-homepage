@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import SectionDivider from "@/components/site/SectionDivider";
 
 interface FAQItem {
   question: string;
@@ -112,7 +113,7 @@ export default function FAQClient() {
   return (
     <div className="min-h-screen">
       {/* Title Section */}
-      <section className="py-24 md:py-32 lg:py-40 border-b border-black">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">FAQ</p>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter">
@@ -121,13 +122,14 @@ export default function FAQClient() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* FAQ Accordion */}
       <section className="py-12 md:py-24">
         <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="border-t border-black">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-black">
-                {/* Question */}
                 <button
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
@@ -145,7 +147,6 @@ export default function FAQClient() {
                   />
                 </button>
 
-                {/* Answer */}
                 <div
                   className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96 pb-8" : "max-h-0"
                     }`}
@@ -160,8 +161,10 @@ export default function FAQClient() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Contact Section */}
-      <section className="py-20 md:py-32 border-t border-black bg-black text-white">
+      <section className="py-20 md:py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
             その他のご質問

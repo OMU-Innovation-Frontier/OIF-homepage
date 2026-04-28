@@ -70,7 +70,7 @@ export default function Header() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 top-14 bg-white z-40 border-t border-black/10">
-          <nav className="flex flex-col">
+          <nav className="container-wide flex flex-col pt-6">
             {navItems.map((item) => (
               <Link
                 key={item.label}

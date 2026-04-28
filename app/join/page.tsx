@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, MessageSquare, Terminal, Lightbulb, Users } from "lucide-react";
+import SectionDivider from "@/components/site/SectionDivider";
 
 export const metadata: Metadata = {
   title: "Join | OIF 大阪公立大学のAIサークルに参加",
@@ -30,7 +30,7 @@ export default function JoinPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-24 md:py-32 lg:py-40 border-b border-black">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">
             Join the Community
@@ -41,8 +41,10 @@ export default function JoinPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Introduction */}
-      <section className="py-20 md:py-32 border-b border-black">
+      <section className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-12 leading-tight">
@@ -63,8 +65,10 @@ export default function JoinPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Main Content Grid */}
-      <section className="border-b border-black">
+      <section>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 divide-x-0 lg:divide-x divide-black">
 
           {/* Left: Recommended For */}
@@ -125,8 +129,10 @@ export default function JoinPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Member Types Section */}
-      <section className="py-24 md:py-40 border-b border-black bg-gray-50">
+      <section className="py-24 md:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
             Community Structure
@@ -139,7 +145,6 @@ export default function JoinPage() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-0 border border-black">
-            {/* Member */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-black bg-white">
               <p className="text-xs font-bold tracking-widest uppercase text-black/30 mb-6">
                 Style 01
@@ -165,7 +170,6 @@ export default function JoinPage() {
               </ul>
             </div>
 
-            {/* Core Member */}
             <div className="p-8 md:p-12 bg-black text-white">
               <p className="text-xs font-bold tracking-widest uppercase text-white/30 mb-6">
                 Style 02
@@ -197,6 +201,8 @@ export default function JoinPage() {
           </p>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* Final Message */}
       <section className="py-24 md:py-40 bg-white">

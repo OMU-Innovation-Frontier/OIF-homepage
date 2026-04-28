@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { BookOpen, Code2, Users } from "lucide-react";
 import Image from "next/image";
+import SectionDivider from "@/components/site/SectionDivider";
 
 export const metadata: Metadata = {
   title: "Activities | OIF 大阪公立大学のAIサークルの活動",
@@ -120,7 +121,7 @@ export default function ActivitiesPage() {
   return (
     <div className="min-h-screen">
       {/* Title Section */}
-      <section className="py-24 md:py-32 lg:py-40 border-b border-black">
+      <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
             Activities
@@ -128,8 +129,10 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Activities Grid */}
-      <section className="border-b border-black">
+      <section>
         <div className="max-w-7xl mx-auto">
 
           {/* Row 1: Study - full width, 2カラム */}
@@ -213,9 +216,10 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
+      <SectionDivider />
 
       {/* Products Section */}
-      <section className="py-20 md:py-28 border-b border-black">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
             <p className="text-xs font-medium tracking-widest uppercase mb-4">
@@ -232,9 +236,7 @@ export default function ActivitiesPage() {
               className="border border-black"
             >
               {product.layout === "hero" ? (
-                /* O-BUCs style: left image, right info */
                 <div className="grid md:grid-cols-2">
-                  {/* Image */}
                   <div className="border-b md:border-b-0 md:border-r border-black bg-[#141e2e] flex items-center justify-center min-h-[280px] md:min-h-[360px] p-4 md:p-6">
                     <Image
                       src={product.image!}
@@ -244,7 +246,6 @@ export default function ActivitiesPage() {
                       className="w-full h-auto object-contain"
                     />
                   </div>
-                  {/* Info */}
                   <div className="p-8 md:p-12 flex flex-col justify-center">
                     <div className="mb-6">
                       {product.badge && (
@@ -275,7 +276,6 @@ export default function ActivitiesPage() {
                   </div>
                 </div>
               ) : (
-                /* Gallery style: header + multi-image grid */
                 <>
                   <div className="p-8 md:p-12 border-b border-black">
                     <div className="mb-6">
@@ -324,8 +324,10 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Contest Section */}
-      <section className="py-20 md:py-28 border-b border-black">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
             <p className="text-xs font-medium tracking-widest uppercase mb-4">
@@ -342,7 +344,6 @@ export default function ActivitiesPage() {
               className="border border-black"
             >
               <div className="grid md:grid-cols-2">
-                {/* Contest Image */}
                 <div className="border-b md:border-b-0 md:border-r border-black">
                   <Image
                     src={contest.image}
@@ -353,7 +354,6 @@ export default function ActivitiesPage() {
                   />
                 </div>
 
-                {/* Contest Info */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="mb-6">
                     <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white px-3 py-1 mb-4">
@@ -376,6 +376,8 @@ export default function ActivitiesPage() {
           ))}
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* CTA Section */}
       <section className="py-20 md:py-28">

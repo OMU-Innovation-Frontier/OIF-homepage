@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/SEO/JsonLd";
@@ -90,11 +89,9 @@ export default function RootLayout({
     <html lang="ja">
       <body className="flex flex-col min-h-screen">
         <JsonLd />
-        <Providers>
-          <Header />
-          <main className="flex-1 pt-14 md:pt-16">{children}</main>
-          <Footer />
-        </Providers>
+        <Header />
+        <main className="flex-1 pt-14 md:pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SectionDivider from "@/components/site/SectionDivider";
 
 const news = [
   { date: "2026.01.24", title: "公式サイトを公開しました" },
@@ -21,7 +22,7 @@ export default function HomeClient() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center border-b border-black bg-white">
+      <section className="min-h-screen flex items-center bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
 
           {/* Desktop Layout */}
@@ -126,8 +127,10 @@ export default function HomeClient() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Partners Section */}
-      <section className="border-t border-b border-black bg-gray-50">
+      <section className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
           <div className="mb-10 md:mb-14">
             <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-3">
@@ -169,8 +172,10 @@ export default function HomeClient() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Latest Updates Section */}
-      <section className="bg-white border-b border-black">
+      <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
           <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-20">
             <p className="text-xs font-bold tracking-[0.2em] shrink-0 uppercase opacity-30 mt-1">
