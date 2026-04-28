@@ -129,6 +129,76 @@ export default function HomeClient() {
 
       <SectionDivider />
 
+      {/* Departments Section */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+          <div className="mb-12 md:mb-16">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-3">
+              Departments
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              2つの部門
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-0 border border-black">
+            {/* 開発部 */}
+            <div className="border-r border-black p-8 md:p-10 flex flex-col" style={{borderLeft: '4px solid #1e3a8a'}}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-900/60 mb-6">
+                Development
+              </p>
+              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
+                開発部
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-black/60 mb-8 flex-1">
+                最新のAI技術を実際に試し、LLMやWebアプリなどのプロダクトを形にする部門。
+                「面白そう」で終わらせず、動くものを作ることにこだわります。
+              </p>
+              <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
+                <span className="border border-black/20 text-black/50 px-3 py-1">LLM</span>
+                <span className="border border-black/20 text-black/50 px-3 py-1">Web Dev</span>
+                <span className="border border-black/20 text-black/50 px-3 py-1">AI Tools</span>
+                <span className="border border-black/20 text-black/50 px-3 py-1">Prototype</span>
+              </div>
+              <Link
+                href="/developers"
+                className="inline-flex items-center gap-2 bg-blue-900 text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-black transition-colors duration-200 self-start"
+              >
+                開発部について →
+              </Link>
+            </div>
+
+            {/* 理論部 */}
+            <div className="p-8 md:p-10 flex flex-col" style={{borderLeft: '4px solid #991b1b'}}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-red-800/60 mb-6">
+                Theory
+              </p>
+              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
+                理論部
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-black/60 mb-8 flex-1">
+                AIや機械学習の仕組みを数学・統計から深く理解する部門。
+                論文読解やゼミ形式のディスカッションを通じて、AIの本質を探究します。
+              </p>
+              <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
+                <span className="border border-black/20 text-black/50 px-3 py-1">数学</span>
+                <span className="border border-black/20 text-black/50 px-3 py-1">ML理論</span>
+                <span className="border border-black/20 text-black/50 px-3 py-1">論文読解</span>
+                <span className="border border-black/20 text-black/50 px-3 py-1">ゼミ</span>
+              </div>
+              <Link
+                href="/theory"
+                className="inline-flex items-center gap-2 bg-red-800 text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-black transition-colors duration-200 self-start"
+              >
+                理論部について →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* Partners Section */}
       <section className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
