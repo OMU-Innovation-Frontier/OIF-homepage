@@ -142,13 +142,13 @@ export default function HomeClient() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-0 border border-black">
-            {/* 開発部 */}
+            {/* 開発部門 */}
             <div className="border-r border-black p-8 md:p-10 flex flex-col" style={{borderLeft: '4px solid #1e3a8a'}}>
               <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-900/60 mb-6">
                 Development
               </p>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                開発部
+                開発部門
               </h3>
               <p className="text-sm md:text-base leading-relaxed text-black/60 mb-8 flex-1">
                 最新のAI技術を実際に試し、LLMやWebアプリなどのプロダクトを形にする部門。
@@ -164,17 +164,17 @@ export default function HomeClient() {
                 href="/developers"
                 className="inline-flex items-center gap-2 bg-blue-900 text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-black transition-colors duration-200 self-start"
               >
-                開発部について →
+                開発部門について →
               </Link>
             </div>
 
-            {/* 理論部 */}
+            {/* 理論部門 */}
             <div className="p-8 md:p-10 flex flex-col" style={{borderLeft: '4px solid #991b1b'}}>
               <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-red-800/60 mb-6">
                 Theory
               </p>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                理論部
+                理論部門
               </h3>
               <p className="text-sm md:text-base leading-relaxed text-black/60 mb-8 flex-1">
                 AIや機械学習の仕組みを数学・統計から深く理解する部門。
@@ -190,7 +190,7 @@ export default function HomeClient() {
                 href="/theory"
                 className="inline-flex items-center gap-2 bg-red-800 text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-black transition-colors duration-200 self-start"
               >
-                理論部について →
+                理論部門について →
               </Link>
             </div>
           </div>

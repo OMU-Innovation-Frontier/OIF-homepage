@@ -3,9 +3,9 @@ import { Code2, Sparkles, Wrench } from "lucide-react";
 import SectionDivider from "@/components/site/SectionDivider";
 
 export const metadata: Metadata = {
-  title: "Developers | OIF開発部",
+  title: "Developers | OIF開発部門",
   description:
-    "OIF開発部は、最新技術を試し、実際に開発し、形にする部門です。AIツール、LLM、Web開発、ワークフロー自動化などを通じて、使えるものを作っていきます。",
+    "OIF開発部門は、最新技術を試し、実際に開発し、形にする部門です。AIツール、LLM、Web開発、ワークフロー自動化などを通じて、使えるものを作っていきます。",
   alternates: {
     canonical: "https://oif-ai.com/developers/",
   },
@@ -51,10 +51,10 @@ export default function DevelopersPage() {
           <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <p className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-blue-600/70">
-                OIF Development Club
+                OIF Development Division
               </p>
               <h1 className="text-5xl font-black leading-[0.9] tracking-tighter md:text-6xl lg:text-7xl xl:text-8xl">
-                OIF開発部
+                OIF開発部門
               </h1>
               <p className="mt-10 max-w-2xl text-lg leading-relaxed text-black/72 md:text-xl">
                 理論を理解するだけで終わらせず、最新技術を実際に試し、
@@ -103,7 +103,7 @@ export default function DevelopersPage() {
             </h2>
             <div className="mt-14 space-y-8 text-lg font-medium leading-relaxed text-black/80 md:text-xl lg:text-2xl">
               <p>
-                OIF開発部は、理論を学ぶだけで終わらせず、最新技術を実際に触り、試し、プロダクトやワークフローとして形にしていくための部門です。
+                OIF開発部門は、理論を学ぶだけで終わらせず、最新技術を実際に触り、試し、プロダクトやワークフローとして形にしていくための部門です。
               </p>
               <p>
                 AI、LLM、Web開発、デザイン、自動化、ツール作り。AI関連のものなら広く対象にして、新しい技術が出たらまず使ってみて、自分たちの手で価値がある形へ落とし込みます。
@@ -126,7 +126,7 @@ export default function DevelopersPage() {
                 What we do
               </p>
               <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-                開発部でやること
+                開発部門でやること
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-relaxed text-black/55 md:text-base">
