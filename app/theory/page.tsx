@@ -3,9 +3,9 @@ import { BookOpen, Brain, FlaskConical } from "lucide-react";
 import SectionDivider from "@/components/site/SectionDivider";
 
 export const metadata: Metadata = {
-  title: "Theory | OIF理論部",
+  title: "Theory | OIF理論部門",
   description:
-    "OIF理論部は、AIや機械学習の仕組みを数学・統計から深く理解し、理論的な基礎を固める部門です。論文読解、数学学習、ゼミ形式のディスカッションを通じて、AIの本質を探究します。",
+    "OIF理論部門は、AIや機械学習の仕組みを数学・統計から深く理解し、理論的な基礎を固める部門です。論文読解、数学学習、ゼミ形式のディスカッションを通じて、AIの本質を探究します。",
   alternates: {
     canonical: "https://oif-ai.com/theory/",
   },
@@ -51,10 +51,10 @@ export default function TheoryPage() {
           <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <p className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-red-800/60">
-                OIF Theory Club
+                OIF Theory Division
               </p>
               <h1 className="text-5xl font-black leading-[0.9] tracking-tighter md:text-6xl lg:text-7xl xl:text-8xl">
-                OIF理論部
+                OIF理論部門
               </h1>
               <p className="mt-10 max-w-2xl text-lg leading-relaxed text-black/72 md:text-xl">
                 AIの表面をなぞるだけでなく、数学・統計・アルゴリズムの根幹から
@@ -103,7 +103,7 @@ export default function TheoryPage() {
             </h2>
             <div className="mt-14 space-y-8 text-lg font-medium leading-relaxed text-black/80 md:text-xl lg:text-2xl">
               <p>
-                OIF理論部は、AIや機械学習を「ツールとして使う」だけで終わらせず、
+                OIF理論部門は、AIや機械学習を「ツールとして使う」だけで終わらせず、
                 その背後にある数学・アルゴリズム・理論的な仕組みを深く理解することを目指す部門です。
               </p>
               <p>
@@ -128,7 +128,7 @@ export default function TheoryPage() {
                 What we do
               </p>
               <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-                理論部でやること
+                理論部門でやること
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-relaxed text-black/55 md:text-base">

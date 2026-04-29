@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import SectionDivider from "@/components/site/SectionDivider";
 
 export const metadata: Metadata = {
@@ -62,6 +63,64 @@ export default function AboutPage() {
               <p className="text-black">
                 プログラミング経験の有無は問いません。
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Section: 部門紹介 */}
+      <section className="py-24 md:py-32 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <div className="max-w-4xl mb-14">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
+              Departments
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-8">
+              OIFには2つの部門があります
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed text-black/75 font-medium">
+              理論を深く掘る部門と、実際に作って試す部門の2つを軸に活動しています。
+              興味に応じて片方に寄ってもいいし、両方を行き来しながら学ぶこともできます。
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-0 border border-black bg-white">
+            <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10 flex flex-col">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-900/60 mb-6">
+                Development
+              </p>
+              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
+                開発部門
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-black/65 mb-8 flex-1">
+                最新のAI技術やLLM、Webアプリ、デザインなどを実際に触って、試作し、形にしていく部門です。
+              </p>
+              <Link
+                href="/developers"
+                className="inline-flex items-center gap-2 self-start bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-blue-900 transition-colors duration-200"
+              >
+                開発部門を見る →
+              </Link>
+            </div>
+
+            <div className="p-8 md:p-10 flex flex-col">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-red-800/60 mb-6">
+                Theory
+              </p>
+              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
+                理論部門
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-black/65 mb-8 flex-1">
+                数学、統計、機械学習理論、論文読解を通じて、AIの仕組みを根本から理解していく部門です。
+              </p>
+              <Link
+                href="/theory"
+                className="inline-flex items-center gap-2 self-start bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-red-800 transition-colors duration-200"
+              >
+                理論部門を見る →
+              </Link>
             </div>
           </div>
         </div>
