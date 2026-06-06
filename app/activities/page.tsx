@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { BookOpen, Code2, Users } from "lucide-react";
+import { BookOpen, Code2, ExternalLink, Users } from "lucide-react";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
 
@@ -54,6 +54,19 @@ const contests = [
     description:
       "大阪信用金庫主催の学生ビジネスプランコンテストにて、samurAIを発表しファイナルに進出。機械学習をノーコードで学べるプラットフォームとして評価されました。",
     image: `/images/obucs-contest.png`,
+  },
+];
+
+const featuredSessions = [
+  {
+    date: "2026/5/22",
+    title: "ローカルLLMハンズオン",
+    category: "Hands-on",
+    description:
+      "ローカル環境でLLMを動かすための導入ハンズオンを実施。セットアップの流れを追いながら、実際に手元でモデルを動かして試しました。",
+    materialLabel: "公開資料（PDF）",
+    materialHref:
+      "https://drive.google.com/file/d/1E6FYe200ioRtAAPW8TDyS8e2XkS2g-qu/view?usp=sharing",
   },
 ];
 
@@ -213,6 +226,55 @@ export default function ActivitiesPage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Featured Sessions Section */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <div className="mb-16">
+            <p className="text-xs font-medium tracking-widest uppercase mb-4">
+              Sessions
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              勉強会・ハンズオン
+            </h2>
+          </div>
+
+          <div className="border border-black">
+            {featuredSessions.map((session) => (
+              <div key={`${session.date}-${session.title}`} className="grid md:grid-cols-[220px_1fr]">
+                <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10">
+                  <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-3">
+                    {session.category}
+                  </p>
+                  <p className="text-2xl md:text-3xl font-bold tracking-tight">
+                    {session.date}
+                  </p>
+                </div>
+
+                <div className="p-8 md:p-10">
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
+                    {session.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-black/75 mb-6 max-w-2xl">
+                    {session.description}
+                  </p>
+                  <a
+                    href={session.materialHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-black/60 transition-colors duration-200"
+                  >
+                    {session.materialLabel}
+                    <ExternalLink size={16} strokeWidth={1.75} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
