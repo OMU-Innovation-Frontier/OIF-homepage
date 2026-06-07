@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { MessageSquare, Compass, Rocket } from "lucide-react";
 import DiscordCTA from "@/components/ui/DiscordCTA";
+import Reveal from "@/components/ui/Reveal";
+import Tilt from "@/components/ui/Tilt";
 
 export const metadata: Metadata = {
   title: "Join | OIF 大阪公立大学のAIサークルに参加",
@@ -87,11 +89,13 @@ export default function JoinPage() {
           <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-14">
             参加までの3ステップ
           </h2>
-          <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            {steps.map((s) => {
+          <div className="grid md:grid-cols-3 gap-4">
+            {steps.map((s, i) => {
               const Icon = s.icon;
               return (
-                <div key={s.n} className="bg-night-2 p-8 md:p-10">
+                <Reveal key={s.n} delay={i * 100}>
+                <Tilt max={5}>
+                <div className="h-full border border-white/10 bg-night-2 p-8 md:p-10 hover:border-accent-bright/40 transition-colors">
                   <div className="flex items-center justify-between mb-8">
                     <Icon size={26} strokeWidth={1.5} className="text-accent-bright" />
                     <span className="font-mono text-sm text-white/30">{s.n}</span>
@@ -99,6 +103,8 @@ export default function JoinPage() {
                   <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{s.title}</h3>
                   <p className="text-sm md:text-base leading-relaxed text-white/60">{s.body}</p>
                 </div>
+                </Tilt>
+                </Reveal>
               );
             })}
           </div>

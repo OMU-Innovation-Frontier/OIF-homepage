@@ -159,7 +159,7 @@ export default function ActivitiesPage() {
 
       {/* Activities Grid */}
       <section>
-        <div className="max-w-7xl mx-auto">
+        <Reveal className="max-w-7xl mx-auto">
 
           {/* Row 1: Study - full width, 2カラム */}
           <div className="border-b border-white/12 grid lg:grid-cols-2">
@@ -239,7 +239,7 @@ export default function ActivitiesPage() {
             </div>
           </div>
 
-        </div>
+        </Reveal>
       </section>
 
       <SectionDivider />

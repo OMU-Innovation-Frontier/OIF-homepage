@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects } from "@/lib/projects";
+import Reveal from "@/components/ui/Reveal";
+import Tilt from "@/components/ui/Tilt";
 
 export const metadata: Metadata = {
   title: "Projects | OIF メンバー開発プロダクト事例",
@@ -32,12 +34,13 @@ export default function ProjectsIndexPage() {
 
       <section className="bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <div className="grid gap-px bg-white/10 border border-white/10 md:grid-cols-2">
-            {projects.map((p) => (
+          <div className="grid gap-4 md:grid-cols-2">
+            {projects.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100}>
+              <Tilt max={4}>
               <Link
-                key={p.slug}
                 href={`/projects/${p.slug}/`}
-                className="group flex flex-col bg-night-2 hover:bg-night-3 transition-colors"
+                className="group flex flex-col h-full border border-white/10 bg-night-2 hover:bg-night-3 hover:border-accent-bright/40 transition-colors"
               >
                 {p.image && (
                   <div className="bg-[#141e2e] border-b border-white/10 p-6 flex items-center justify-center min-h-[220px]">
@@ -68,6 +71,8 @@ export default function ProjectsIndexPage() {
                   </span>
                 </div>
               </Link>
+              </Tilt>
+              </Reveal>
             ))}
           </div>
         </div>

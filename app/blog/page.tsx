@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts, formatDate } from "@/lib/blog";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Blog | OIF 技術ブログ・輪読ノート",
@@ -36,7 +37,7 @@ export default function BlogIndexPage() {
           {posts.length === 0 ? (
             <p className="font-mono text-sm text-white/40">// no posts yet</p>
           ) : (
-            <div className="border-t border-white/10">
+            <Reveal className="border-t border-white/10">
               {posts.map((post) => (
                 <Link
                   key={post.slug}
@@ -64,7 +65,7 @@ export default function BlogIndexPage() {
                   </div>
                 </Link>
               ))}
-            </div>
+            </Reveal>
           )}
         </div>
       </section>
