@@ -28,11 +28,11 @@ const recommendedFor = [
 
 export default function JoinPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-night">
       {/* Hero Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
             Join the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
@@ -51,7 +51,7 @@ export default function JoinPage() {
               AIをもっと身近に、<br />
               もっと日常の選択肢に
             </h2>
-            <div className="space-y-6 text-base md:text-lg lg:text-xl leading-relaxed text-black/80 font-medium">
+            <div className="space-y-6 text-base md:text-lg lg:text-xl leading-relaxed text-white/80 font-medium">
               <p>
                 OIFは、特定の専門スキルを持った人だけの場所ではありません。<br className="hidden md:block" />
                 「AIってなんだろう」「何かツールを使ってみようかな」——そんな、ごく自然な好奇心から活動が始まります。
@@ -69,11 +69,11 @@ export default function JoinPage() {
 
       {/* Main Content Grid */}
       <section>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 divide-x-0 lg:divide-x divide-black">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 divide-x-0 lg:divide-x divide-white/12">
 
           {/* Left: Recommended For */}
-          <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-ink bg-muted/60">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-6">
+          <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-white/12 bg-night-2">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-6">
               Recommended for
             </p>
             <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-16">
@@ -83,14 +83,14 @@ export default function JoinPage() {
               {recommendedFor.map((item, index) => (
                 <li key={index} className="flex items-center gap-5 group">
                   <div className="w-1.5 h-1.5 bg-accent rounded-full shrink-0 group-hover:scale-150 transition-transform duration-300" />
-                  <span className="text-lg md:text-xl font-bold tracking-tight text-black/80">{item}</span>
+                  <span className="text-lg md:text-xl font-bold tracking-tight text-white/80">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Right: How to Join (Discord) */}
-          <div className="on-dark p-8 md:p-12 lg:p-16 bg-ink text-white">
+          <div className="on-dark p-8 md:p-12 lg:p-16 bg-night-2 text-white">
             <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
               How to Join
             </p>
@@ -117,7 +117,7 @@ export default function JoinPage() {
                 href="https://discord.gg/Brg6GxJnBW"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-between gap-12 bg-white text-ink px-8 py-5 text-sm font-black tracking-widest uppercase hover:bg-accent hover:text-white border-2 border-white hover:border-accent transition-all duration-300 group overflow-hidden relative"
+                className="inline-flex items-center justify-between gap-12 bg-accent text-white px-8 py-5 text-sm font-black tracking-widest uppercase hover:bg-accent-bright hover:text-night border-2 border-accent hover:border-accent-bright transition-all duration-300 group overflow-hidden relative shadow-[0_0_50px_-12px_rgba(99,102,241,0.8)]"
               >
                 <span className="relative z-10 flex items-center gap-4">
                   Discordに参加
@@ -134,25 +134,25 @@ export default function JoinPage() {
       {/* Member Types Section */}
       <section className="section-y-lg bg-muted">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+          <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
             Community Structure
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 leading-tight">
             Discordに入ると、<br className="hidden md:block" />どうなるの？
           </h2>
-          <p className="text-base md:text-lg text-black/60 font-medium mb-16 max-w-2xl">
+          <p className="text-base md:text-lg text-white/60 font-medium mb-16 max-w-2xl">
             誰でも無料でDiscordに参加できます。入った後は、自分のペースに合わせて2つのスタイルから関わり方を選べます。
           </p>
 
-          <div className="grid md:grid-cols-2 gap-0 border border-black">
-            <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-black bg-white">
-              <p className="text-xs font-bold tracking-widest uppercase text-accent mb-6">
+          <div className="grid md:grid-cols-2 gap-0 border border-white/12">
+            <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/12 bg-night-2">
+              <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-6">
                 Style 01
               </p>
               <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6">
                 メンバー
               </h3>
-              <p className="text-sm md:text-base text-black/60 leading-relaxed mb-8 font-medium">
+              <p className="text-sm md:text-base text-white/60 leading-relaxed mb-8 font-medium">
                 気軽に覗きに来るだけでOK。特別な参加義務はありません。
               </p>
               <ul className="space-y-4">
@@ -163,14 +163,14 @@ export default function JoinPage() {
                   "自分のペースで眺めるだけでもOK",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 bg-black/30 rounded-full shrink-0" />
-                    <span className="text-sm md:text-base font-medium text-black/70">{item}</span>
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-white/30 rounded-full shrink-0" />
+                    <span className="text-sm md:text-base font-medium text-white/70">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="on-dark p-8 md:p-12 bg-ink text-white">
+            <div className="on-dark p-8 md:p-12 bg-night-2 text-white">
               <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
                 Style 02
               </p>
@@ -196,7 +196,7 @@ export default function JoinPage() {
             </div>
           </div>
 
-          <p className="mt-8 text-sm text-black/60 font-medium text-center">
+          <p className="mt-8 text-sm text-white/60 font-medium text-center">
             ※ どちらのスタイルも、まずDiscordに参加するところから始まります
           </p>
         </div>
@@ -205,13 +205,13 @@ export default function JoinPage() {
       <SectionDivider />
 
       {/* Final Message */}
-      <section className="py-24 md:py-40 bg-white">
+      <section className="py-24 md:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-10 leading-tight">
               特別な準備は、<br />必要ありません
             </h2>
-            <p className="text-lg md:text-xl font-medium text-black/60 leading-relaxed mb-16 px-4">
+            <p className="text-lg md:text-xl font-medium text-white/60 leading-relaxed mb-16 px-4">
               Discordに入った後は、興味のあるチャンネルを眺めてみたり、
               たまにあるイベントに参加してみたりするだけで十分です。<br />
               一歩、外の世界を覗いてみませんか。

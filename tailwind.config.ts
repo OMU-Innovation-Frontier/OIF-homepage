@@ -14,13 +14,15 @@ const config: Config = {
         // site (text / borders / dark sections / buttons) warms up at once.
         // `ink` is the semantic alias to prefer in new code.
         black: "#0B0C0E",
-        ink: "#0B0C0E",
         white: "#ffffff",
 
-        // Warm neutral foundation
-        paper: "#FAFAF8", // base page background
-        muted: "#F2F0EA", // subtle section blocks (replaces cool gray-50)
-        line: "#E7E4DD", // hairline borders (warm, low-emphasis)
+        // Dark "Frontier OS" foundation (v2 — site-wide dark theme).
+        // `ink` is the primary text/element color (now light), `paper` is the
+        // dark page base, `muted` a slightly raised dark surface.
+        ink: "#E8E9EC",
+        paper: "#0A0B0E", // base page background (dark)
+        muted: "#101218", // subtle section blocks (raised dark surface)
+        line: "#23272F", // hairline borders on dark
 
         // Brand signature accent (used for primary actions & highlights)
         accent: {

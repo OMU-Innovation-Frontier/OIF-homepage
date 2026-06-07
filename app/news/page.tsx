@@ -16,7 +16,7 @@ export default function NewsPage() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
             Updates
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
@@ -30,11 +30,11 @@ export default function NewsPage() {
       {/* News List */}
       <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="border-t border-black">
+          <div className="border-t border-white/12">
             {newsItems.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-6 border-b border-black"
+                className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-6 border-b border-white/12"
               >
                 {item.date ? (
                   <time className="text-sm font-medium tracking-wider w-28 shrink-0">

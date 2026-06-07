@@ -20,27 +20,27 @@ const A: Record<
   }
 > = {
   dev: {
-    text: "text-dev",
+    text: "text-dev-bright",
     eyebrow: "dev",
-    tint: "bg-dev-tint/40",
-    border: "border-dev/20",
+    tint: "bg-dev/10",
+    border: "border-dev/30",
     borderL: "border-l-dev",
-    dot: "bg-dev",
-    icon: "text-dev",
-    flowNum: "text-dev/20",
-    headline: "text-dev",
+    dot: "bg-dev-bright",
+    icon: "text-dev-bright",
+    flowNum: "text-dev-bright/30",
+    headline: "text-dev-bright",
     bright: "text-dev-bright",
   },
   theory: {
-    text: "text-theory",
+    text: "text-theory-bright",
     eyebrow: "theory",
-    tint: "bg-theory-tint/40",
-    border: "border-theory/20",
+    tint: "bg-theory/10",
+    border: "border-theory/30",
     borderL: "border-l-theory",
-    dot: "bg-theory",
-    icon: "text-theory",
-    flowNum: "text-theory/20",
-    headline: "text-theory",
+    dot: "bg-theory-bright",
+    icon: "text-theory-bright",
+    flowNum: "text-theory-bright/30",
+    headline: "text-theory-bright",
     bright: "text-theory-bright",
   },
 };
@@ -155,14 +155,14 @@ export default function DivisionPage({
             </p>
           </div>
 
-          <div className="grid gap-0 border-t border-ink lg:grid-cols-3">
+          <div className="grid gap-0 border-t border-white/12 lg:grid-cols-3">
             {pillars.map((pillar, i) => {
               const Icon = pillar.icon;
               return (
                 <div
                   key={pillar.title}
                   className={`pt-12 pb-16 ${
-                    i < pillars.length - 1 ? "border-b border-ink lg:border-b-0 lg:border-r" : ""
+                    i < pillars.length - 1 ? "border-b border-white/12 lg:border-b-0 lg:border-r" : ""
                   } ${i === 0 ? "pr-8" : "lg:px-10"} ${i === pillars.length - 1 ? "lg:pl-10" : ""}`}
                 >
                   <Icon size={28} strokeWidth={1.5} className={`mb-8 ${a.icon}`} />
@@ -192,7 +192,7 @@ export default function DivisionPage({
               </h2>
             </div>
 
-            <div className="border border-ink bg-white shadow-card">
+            <div className="border border-white/12 bg-night-2 shadow-card">
               {themes.map((item, index) => (
                 <div
                   key={item}
@@ -225,7 +225,7 @@ export default function DivisionPage({
             {flow.map((item) => (
               <div
                 key={item.step}
-                className="border border-ink bg-white p-6 shadow-card transition-transform duration-300 ease-smooth hover:-translate-y-1"
+                className="border border-white/12 bg-night-2 p-6 shadow-card transition-transform duration-300 ease-smooth hover:-translate-y-1"
               >
                 <p className={`text-4xl font-black tracking-tighter ${a.flowNum}`}>
                   {item.step}
@@ -241,7 +241,7 @@ export default function DivisionPage({
       <SectionDivider />
 
       {/* Closing statement */}
-      <section className="on-dark py-32 md:py-48 lg:py-64 bg-ink text-white">
+      <section className="on-dark py-32 md:py-48 lg:py-64 bg-night-2 text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <h2 className="max-w-5xl text-4xl font-black tracking-tighter leading-[1.1] md:text-5xl lg:text-7xl">
             <span className={a.bright}>{closing.accent}</span>

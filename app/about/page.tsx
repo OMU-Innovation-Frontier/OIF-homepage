@@ -35,7 +35,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-24 md:py-32 lg:py-48">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
             About the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9]">
@@ -47,20 +47,20 @@ export default function AboutPage() {
       <SectionDivider />
 
       {/* Section 1 */}
-      <section className="py-24 md:py-40 bg-white">
+      <section className="py-24 md:py-40 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tighter mb-16 leading-tight">
               AIに興味がある学生が、<br className="hidden md:block" />集まっている場所
             </h2>
-            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-black/80 font-medium">
+            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80 font-medium">
               <p>
                 OIFは、大阪公立大学の学生を中心にAIやテクノロジーに関心を持つ人が集まる学生コミュニティです。
               </p>
               <p>
                 仕組みを理解し、自分たちの手で実装し、社会に問いを立てる。
               </p>
-              <p className="text-black">
+              <p className="text-white">
                 プログラミング経験の有無は問いません。
               </p>
             </div>
@@ -74,50 +74,50 @@ export default function AboutPage() {
       <section className="section-y-lg bg-muted">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
               Departments
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-8">
               OIFには2つの部門があります
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed text-black/75 font-medium">
+            <p className="text-lg md:text-xl leading-relaxed text-white/75 font-medium">
               理論を深く掘る部門と、実際に作って試す部門の2つを軸に活動しています。
               興味に応じて片方に寄ってもいいし、両方を行き来しながら学ぶこともできます。
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-0 border border-black bg-white">
-            <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-dev mb-6">
+          <div className="grid md:grid-cols-2 gap-0 border border-white/12 bg-night-2">
+            <div className="border-b md:border-b-0 md:border-r border-white/12 p-8 md:p-10 flex flex-col">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-dev-bright mb-6">
                 Development
               </p>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
                 開発部門
               </h3>
-              <p className="text-sm md:text-base leading-relaxed text-black/65 mb-8 flex-1">
+              <p className="text-sm md:text-base leading-relaxed text-white/65 mb-8 flex-1">
                 最新のAI技術やLLM、Webアプリ、デザインなどを実際に触って、試作し、形にしていく部門です。
               </p>
               <Link
                 href="/developers"
-                className="inline-flex items-center gap-2 self-start bg-dev text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-ink transition-colors duration-200"
+                className="inline-flex items-center gap-2 self-start bg-dev text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-night-3 transition-colors duration-200"
               >
                 開発部門を見る →
               </Link>
             </div>
 
             <div className="p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-theory mb-6">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-theory-bright mb-6">
                 Theory
               </p>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
                 理論部門
               </h3>
-              <p className="text-sm md:text-base leading-relaxed text-black/65 mb-8 flex-1">
+              <p className="text-sm md:text-base leading-relaxed text-white/65 mb-8 flex-1">
                 数学、統計、機械学習理論、論文読解を通じて、AIの仕組みを根本から理解していく部門です。
               </p>
               <Link
                 href="/theory"
-                className="inline-flex items-center gap-2 self-start bg-theory text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-ink transition-colors duration-200"
+                className="inline-flex items-center gap-2 self-start bg-theory text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-night-3 transition-colors duration-200"
               >
                 理論部門を見る →
               </Link>
@@ -131,29 +131,29 @@ export default function AboutPage() {
       {/* Section 2: 3つの信条 */}
       <section>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-40">
-          <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+          <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
             How we learn
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-20">
             大事にしていること
           </h2>
 
-          <div className="grid lg:grid-cols-3 border-t border-black">
+          <div className="grid lg:grid-cols-3 border-t border-white/12">
             {beliefs.map((belief, i) => (
               <div
                 key={i}
                 className={`pt-12 pb-16 pr-8 ${i < beliefs.length - 1
-                    ? "border-b lg:border-b-0 lg:border-r border-black"
+                    ? "border-b lg:border-b-0 lg:border-r border-white/12"
                     : ""
                   } ${i > 0 ? "lg:pl-12" : ""}`}
               >
-                <span className="block text-5xl md:text-6xl font-black text-black/5 tracking-tighter mb-8">
+                <span className="block text-5xl md:text-6xl font-black text-white/5 tracking-tighter mb-8">
                   {belief.number}
                 </span>
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-8">
                   {belief.title}
                 </h3>
-                <p className="text-base md:text-lg lg:text-xl leading-relaxed text-black/70 font-medium">
+                <p className="text-base md:text-lg lg:text-xl leading-relaxed text-white/70 font-medium">
                   {belief.body}
                 </p>
               </div>
@@ -168,13 +168,13 @@ export default function AboutPage() {
       <section className="section-y-lg bg-muted">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
               Members
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-12">
               すでに動いているメンバーもいる
             </h2>
-            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-black/80 font-medium">
+            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80 font-medium">
               大阪公立大学発ベンチャーのAffectify・Mi&amp;Tでインターンとして実務経験を積んでいるメンバーが在籍しています。勉強会に参加するだけでなく、実際の現場に出ていることも自然にできる環境です。
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
       <SectionDivider />
 
       {/* Section 4: 黒背景メッセージ */}
-      <section className="on-dark py-32 md:py-48 lg:py-64 bg-ink text-white">
+      <section className="on-dark py-32 md:py-48 lg:py-64 bg-night-2 text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl">
             求められる学びじゃなく、<br />

@@ -138,7 +138,7 @@ export default function ActivitiesPage() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
             What we do
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
@@ -154,29 +154,29 @@ export default function ActivitiesPage() {
         <div className="max-w-7xl mx-auto">
 
           {/* Row 1: Study - full width, 2カラム */}
-          <div className="border-b border-black grid lg:grid-cols-2">
+          <div className="border-b border-white/12 grid lg:grid-cols-2">
             {/* Left: アイコン + タイトル + 説明 */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black">
+            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/12">
               <StudyIcon size={32} strokeWidth={1.5} className="mb-10" />
               <div className="mb-6">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[0].title}
                 </h2>
-                <p className="text-sm text-black/60 mt-1">{activitiesData[0].titleJa}</p>
+                <p className="text-sm text-white/60 mt-1">{activitiesData[0].titleJa}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-black/70">
+              <p className="text-base md:text-lg leading-relaxed text-white/70">
                 {activitiesData[0].description}
               </p>
             </div>
 
             {/* Right: カテゴリ行リスト */}
-            <div className="divide-y divide-black">
+            <div className="divide-y divide-white/12">
               {studyCategories.map((cat) => (
                 <div key={cat.label} className="flex items-baseline gap-4 px-6 md:px-10 lg:px-12 py-5 md:py-6">
-                  <span className="text-xs font-bold tracking-widest uppercase text-black/60 shrink-0 w-10">
+                  <span className="text-xs font-bold tracking-widest uppercase text-white/60 shrink-0 w-10">
                     {cat.label}
                   </span>
-                  <span className="text-sm md:text-base leading-relaxed text-black/80">
+                  <span className="text-sm md:text-base leading-relaxed text-white/80">
                     {cat.examples.join("、")}
                   </span>
                 </div>
@@ -187,15 +187,15 @@ export default function ActivitiesPage() {
           {/* Row 2: Develop + Connect - 左右2カラム */}
           <div className="grid lg:grid-cols-2">
             {/* Develop */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black">
+            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/12">
               <DevelopIcon size={32} strokeWidth={1.5} className="mb-10" />
               <div className="mb-6">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[1].title}
                 </h2>
-                <p className="text-sm text-black/60 mt-1">{activitiesData[1].titleJa}</p>
+                <p className="text-sm text-white/60 mt-1">{activitiesData[1].titleJa}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
+              <p className="text-base md:text-lg leading-relaxed text-white/70 mb-10">
                 {activitiesData[1].description}
               </p>
               <ul className="space-y-3">
@@ -215,9 +215,9 @@ export default function ActivitiesPage() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[2].title}
                 </h2>
-                <p className="text-sm text-black/60 mt-1">{activitiesData[2].titleJa}</p>
+                <p className="text-sm text-white/60 mt-1">{activitiesData[2].titleJa}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
+              <p className="text-base md:text-lg leading-relaxed text-white/70 mb-10">
                 {activitiesData[2].description}
               </p>
               <ul className="space-y-3">
@@ -240,7 +240,7 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
               Sessions
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -248,11 +248,11 @@ export default function ActivitiesPage() {
             </h2>
           </div>
 
-          <div className="border border-black">
+          <div className="border border-white/12">
             {featuredSessions.map((session) => (
               <div key={`${session.date}-${session.title}`} className="grid md:grid-cols-[220px_1fr]">
-                <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10">
-                  <p className="text-xs font-medium tracking-widest uppercase text-black/60 mb-3">
+                <div className="border-b md:border-b-0 md:border-r border-white/12 p-8 md:p-10">
+                  <p className="text-xs font-medium tracking-widest uppercase text-white/60 mb-3">
                     {session.category}
                   </p>
                   <p className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -265,14 +265,14 @@ export default function ActivitiesPage() {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
                       {session.title}
                     </h3>
-                    <p className="text-base leading-relaxed text-black/75 mb-6 max-w-2xl">
+                    <p className="text-base leading-relaxed text-white/75 mb-6 max-w-2xl">
                       {session.description}
                     </p>
                     <a
                       href={session.materialHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-black/60 transition-colors duration-200 self-start"
+                      className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-white/60 transition-colors duration-200 self-start"
                     >
                       {session.materialLabel}
                       <ExternalLink size={16} strokeWidth={1.75} />
@@ -280,7 +280,7 @@ export default function ActivitiesPage() {
                   </div>
 
                   {session.image && (
-                    <div className="border-t lg:border-t-0 lg:border-l border-black bg-black/[0.03] flex items-center justify-center p-4 md:p-6">
+                    <div className="border-t lg:border-t-0 lg:border-l border-white/12 bg-white/[0.05] flex items-center justify-center p-4 md:p-6">
                       <Image
                         src={session.image}
                         alt={session.imageAlt ?? session.title}
@@ -303,7 +303,7 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
               Products
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -314,11 +314,11 @@ export default function ActivitiesPage() {
           {products.map((product) => (
             <div
               key={product.name}
-              className="border border-black"
+              className="border border-white/12"
             >
               {product.layout === "hero" ? (
                 <div className="grid md:grid-cols-2">
-                  <div className="border-b md:border-b-0 md:border-r border-black bg-[#141e2e] flex items-center justify-center min-h-[280px] md:min-h-[360px] p-4 md:p-6">
+                  <div className="border-b md:border-b-0 md:border-r border-white/12 bg-[#141e2e] flex items-center justify-center min-h-[280px] md:min-h-[360px] p-4 md:p-6">
                     <Image
                       src={product.image!}
                       alt={product.name}
@@ -337,7 +337,7 @@ export default function ActivitiesPage() {
                       <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
                         {product.name}
                       </h3>
-                      <p className="text-sm font-medium text-black/60">
+                      <p className="text-sm font-medium text-white/60">
                         {product.tagline}
                       </p>
                     </div>
@@ -349,7 +349,7 @@ export default function ActivitiesPage() {
                         href={product.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-accent text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-ink hover:text-white transition-colors duration-200 self-start"
+                        className="inline-block bg-accent text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night transition-colors duration-200 self-start"
                       >
                         サービスを見る →
                       </a>
@@ -358,12 +358,12 @@ export default function ActivitiesPage() {
                 </div>
               ) : (
                 <>
-                  <div className="p-8 md:p-12 border-b border-black">
+                  <div className="p-8 md:p-12 border-b border-white/12">
                     <div className="mb-6">
                       <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
                         {product.name}
                       </h3>
-                      <p className="text-sm font-medium text-black/60">
+                      <p className="text-sm font-medium text-white/60">
                         {product.tagline}
                       </p>
                     </div>
@@ -383,16 +383,16 @@ export default function ActivitiesPage() {
                     {product.images?.map((image, i) => (
                       <div
                         key={i}
-                        className={`bg-black/5 p-4 md:p-6 ${product.images && i < product.images.length - 1 ? "border-b md:border-b-0 md:border-r border-black" : ""}`}
+                        className={`bg-white/5 p-4 md:p-6 ${product.images && i < product.images.length - 1 ? "border-b md:border-b-0 md:border-r border-white/12" : ""}`}
                       >
                         <Image
                           src={image.src}
                           alt={`${product.name} - ${image.caption}`}
                           width={600}
                           height={400}
-                          className="w-full h-auto border border-black/10 mb-3"
+                          className="w-full h-auto border border-white/10 mb-3"
                         />
-                        <p className="text-xs font-medium tracking-wide text-black/60 text-center">
+                        <p className="text-xs font-medium tracking-wide text-white/60 text-center">
                           {image.caption}
                         </p>
                       </div>
@@ -411,7 +411,7 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
               Contest
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -422,10 +422,10 @@ export default function ActivitiesPage() {
           {contests.map((contest) => (
             <div
               key={contest.name}
-              className="border border-black"
+              className="border border-white/12"
             >
               <div className="grid md:grid-cols-2">
-                <div className="border-b md:border-b-0 md:border-r border-black">
+                <div className="border-b md:border-b-0 md:border-r border-white/12">
                   <Image
                     src={contest.image}
                     alt={contest.name}
@@ -443,7 +443,7 @@ export default function ActivitiesPage() {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
                       {contest.name}
                     </h3>
-                    <p className="text-sm font-medium text-black/60">
+                    <p className="text-sm font-medium text-white/60">
                       {contest.fullName} / {contest.organizer}
                     </p>
                   </div>
@@ -471,7 +471,7 @@ export default function ActivitiesPage() {
             href="https://discord.gg/Brg6GxJnBW"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-accent text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-ink hover:text-white transition-colors duration-200"
+            className="inline-block bg-accent text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night transition-colors duration-200"
           >
             Discordに参加
           </a>
