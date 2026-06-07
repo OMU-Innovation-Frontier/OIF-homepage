@@ -1,21 +1,36 @@
 import { Metadata } from "next";
-import { ArrowRight, MessageSquare, Terminal, Lightbulb, Users } from "lucide-react";
-import SectionDivider from "@/components/site/SectionDivider";
+import Link from "next/link";
+import { MessageSquare, Compass, Rocket } from "lucide-react";
+import DiscordCTA from "@/components/ui/DiscordCTA";
 
 export const metadata: Metadata = {
   title: "Join | OIF 大阪公立大学のAIサークルに参加",
-  description: "OIF（OMU Innovation Frontier）への加入は簡単。大阪公立大学のAI・プログラミングサークルで、AIや機械学習に興味のある学生を募集中。初心者歓迎、プログラミング経験不問。Discordから参加できます。",
+  description:
+    "OIF（OMU Innovation Frontier）への加入はDiscordから。大阪公立大学のAI・プログラミングサークルで、AIや機械学習に興味のある学生を募集中。初心者歓迎、プログラミング経験不問。",
   alternates: {
     canonical: "https://oif-ai.com/join/",
   },
 };
 
-const discordActivities = [
-  { icon: MessageSquare, text: "AIニュース共有" },
-  { icon: Users, text: "イベント案内" },
-  { icon: Terminal, text: "技術的な質問・相談" },
-  { icon: Lightbulb, text: "プロジェクトのアイデア共有" },
-  { icon: MessageSquare, text: "メンバー同士の交流" },
+const steps = [
+  {
+    icon: MessageSquare,
+    n: "01",
+    title: "Discordに参加",
+    body: "メールアドレスだけで無料登録。スマホからもPCからも、1分で入れます。",
+  },
+  {
+    icon: Compass,
+    n: "02",
+    title: "チャンネルを覗く",
+    body: "AIニュース、勉強会の案内、開発の様子。気になるチャンネルを眺めるだけでOK。",
+  },
+  {
+    icon: Rocket,
+    n: "03",
+    title: "興味のあることに参加",
+    body: "ハンズオン、輪読会、プロジェクト。自分のペースで関わり方を選べます。",
+  },
 ];
 
 const recommendedFor = [
@@ -26,199 +41,142 @@ const recommendedFor = [
   "一緒にプロジェクトを作る仲間がほしい",
 ];
 
+const faqHighlights = [
+  { q: "参加は無料ですか？", a: "はい、完全無料です。Discordに入るだけで費用は一切かかりません。" },
+  { q: "大阪公立大学の学生じゃないと無理？", a: "他大学の学生も歓迎です。AIに興味があれば学校・学部・専攻は問いません。" },
+  { q: "プログラミング初心者でも大丈夫？", a: "もちろんです。経験不問。まず眺めるだけの参加スタイルもあります。" },
+];
+
 export default function JoinPage() {
   return (
-    <div className="min-h-screen bg-night">
-      {/* Hero Section */}
-      <section className="py-24 md:py-32 lg:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
-            Join the Community
+    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16">
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
+        <div aria-hidden className="absolute -top-32 right-0 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
+          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
+            // JOIN THE COMMUNITY
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-8">
             Discordから、<br />はじめよう
           </h1>
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-12 leading-relaxed">
+            OIFのコミュニケーションはすべて Discord 上で。
+            ニュース共有も、勉強会も、プロジェクトも、まずは覗いてみることから始まります。
+          </p>
+          <div className="flex flex-wrap items-center gap-5">
+            <DiscordCTA location="join_hero" />
+            <Link
+              href="/activities/"
+              className="inline-flex items-center gap-2 px-8 py-5 text-sm font-bold tracking-widest uppercase border border-white/20 text-white hover:bg-white/5 hover:border-white/40 transition-colors duration-200"
+            >
+              活動を見る
+            </Link>
+          </div>
+          <p className="mt-6 font-mono text-xs text-white/40">
+            無料 · 経験不問 · 初心者歓迎
+          </p>
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* Introduction */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-12 leading-tight">
-              AIをもっと身近に、<br />
-              もっと日常の選択肢に
-            </h2>
-            <div className="space-y-6 text-base md:text-lg lg:text-xl leading-relaxed text-white/80 font-medium">
-              <p>
-                OIFは、特定の専門スキルを持った人だけの場所ではありません。<br className="hidden md:block" />
-                「AIってなんだろう」「何かツールを使ってみようかな」——そんな、ごく自然な好奇心から活動が始まります。
-              </p>
-              <p>
-                プログラミングの経験はあってもなくても、どちらでも構いません。<br className="hidden md:block" />
-                まずは同じ興味を持つ仲間とつながること。そこから自分たちのペースで進んでいきましょう。
-              </p>
-            </div>
+      {/* 3 Steps */}
+      <section className="border-t border-white/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// HOW IT WORKS</p>
+          <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-14">
+            参加までの3ステップ
+          </h2>
+          <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+            {steps.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.n} className="bg-night-2 p-8 md:p-10">
+                  <div className="flex items-center justify-between mb-8">
+                    <Icon size={26} strokeWidth={1.5} className="text-accent-bright" />
+                    <span className="font-mono text-sm text-white/30">{s.n}</span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{s.title}</h3>
+                  <p className="text-sm md:text-base leading-relaxed text-white/60">{s.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* Main Content Grid */}
-      <section>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 divide-x-0 lg:divide-x divide-white/12">
-
-          {/* Left: Recommended For */}
-          <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-white/12 bg-night-2">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-6">
-              Recommended for
-            </p>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-16">
-              こんな人におすすめ
-            </h2>
-            <ul className="space-y-6">
-              {recommendedFor.map((item, index) => (
-                <li key={index} className="flex items-center gap-5 group">
-                  <div className="w-1.5 h-1.5 bg-accent rounded-full shrink-0 group-hover:scale-150 transition-transform duration-300" />
-                  <span className="text-lg md:text-xl font-bold tracking-tight text-white/80">{item}</span>
+      {/* Interest: recommended for */}
+      <section className="border-t border-white/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
+            <div>
+              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// IS THIS YOU?</p>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tighter leading-tight mb-6">
+                こんな人に<br />おすすめ
+              </h2>
+              <p className="text-base text-white/55 leading-relaxed mb-8 max-w-md">
+                ひとつでも当てはまれば、きっと楽しめます。完璧な準備は要りません。
+              </p>
+              <DiscordCTA location="join_interest" size="md" label="いま参加する" />
+            </div>
+            <ul className="space-y-5">
+              {recommendedFor.map((item) => (
+                <li key={item} className="flex items-center gap-5 border-b border-white/10 pb-5">
+                  <span className="font-mono text-accent-bright text-sm shrink-0">✓</span>
+                  <span className="text-lg md:text-xl font-bold tracking-tight">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Right: How to Join (Discord) */}
-          <div className="on-dark p-8 md:p-12 lg:p-16 bg-night-2 text-white">
-            <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
-              How to Join
-            </p>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-12">
-              参加はDiscordから
-            </h2>
-            <p className="text-base md:text-lg leading-relaxed text-white/60 mb-12 lg:pr-10">
-              OIFのコミュニケーションはすべて Discord 上で行われています。
-              ニュースの共有や技術的な相談、プロジェクトの募集など、
-              日常的なやり取りに参加するだけで、新しい景色が見えてくるはずです。
-            </p>
-
-            <div className="grid grid-cols-2 gap-y-8 gap-x-8 mb-20">
-              {discordActivities.map((activity, index) => (
-                <div key={index} className="flex flex-col gap-3 group">
-                  <activity.icon className="w-6 h-6 text-white/70 group-hover:text-white transition-colors duration-300" />
-                  <span className="text-sm md:text-base font-bold tracking-tight">{activity.text}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-10 border-t border-white/20">
-              <a
-                href="https://discord.gg/Brg6GxJnBW"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between gap-12 bg-accent text-white px-8 py-5 text-sm font-black tracking-widest uppercase hover:bg-accent-bright hover:text-night border-2 border-accent hover:border-accent-bright transition-all duration-300 group overflow-hidden relative shadow-[0_0_50px_-12px_rgba(99,102,241,0.8)]"
-              >
-                <span className="relative z-10 flex items-center gap-4">
-                  Discordに参加
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
-                </span>
-              </a>
-            </div>
-          </div>
         </div>
       </section>
 
-      <SectionDivider />
+      {/* FAQ highlights */}
+      <section className="border-t border-white/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <div className="flex items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// QUICK ANSWERS</p>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tighter">不安な点は？</h2>
+            </div>
+            <Link
+              href="/faq/"
+              className="hidden md:inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors shrink-0"
+            >
+              すべてのFAQ →
+            </Link>
+          </div>
+          <div className="border-t border-white/10">
+            {faqHighlights.map((f) => (
+              <div key={f.q} className="grid md:grid-cols-[0.8fr_1.2fr] gap-3 md:gap-10 py-7 border-b border-white/10">
+                <p className="text-lg font-bold tracking-tight">{f.q}</p>
+                <p className="text-base text-white/65 leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="/faq/"
+            className="md:hidden mt-8 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors"
+          >
+            すべてのFAQ →
+          </Link>
+        </div>
+      </section>
 
-      {/* Member Types Section */}
-      <section className="section-y-lg bg-muted">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-4">
-            Community Structure
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 leading-tight">
-            Discordに入ると、<br className="hidden md:block" />どうなるの？
+      {/* Final CTA */}
+      <section className="relative overflow-hidden border-t border-white/10 bg-night">
+        <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
+        <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">$ ./join</p>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-10">
+            一歩、<span className="accent-gradient-text">外の世界</span>を<br />覗いてみませんか。
           </h2>
-          <p className="text-base md:text-lg text-white/60 font-medium mb-16 max-w-2xl">
-            誰でも無料でDiscordに参加できます。入った後は、自分のペースに合わせて2つのスタイルから関わり方を選べます。
+          <p className="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-12">
+            特別な準備は必要ありません。まずはDiscordに入るところから。
           </p>
-
-          <div className="grid md:grid-cols-2 gap-0 border border-white/12">
-            <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/12 bg-night-2">
-              <p className="text-xs font-bold tracking-widest uppercase text-accent-bright mb-6">
-                Style 01
-              </p>
-              <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6">
-                メンバー
-              </h3>
-              <p className="text-sm md:text-base text-white/60 leading-relaxed mb-8 font-medium">
-                気軽に覗きに来るだけでOK。特別な参加義務はありません。
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "AIニュースや情報をDiscordで受け取る",
-                  "イベント・勉強会の案内を見られる",
-                  "気になることをDiscordで相談できる",
-                  "自分のペースで眺めるだけでもOK",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 bg-white/30 rounded-full shrink-0" />
-                    <span className="text-sm md:text-base font-medium text-white/70">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="on-dark p-8 md:p-12 bg-night-2 text-white">
-              <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
-                Style 02
-              </p>
-              <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6">
-                コアメンバー
-              </h3>
-              <p className="text-sm md:text-base text-white/60 leading-relaxed mb-8 font-medium">
-                一緒に学び、作りたい人へ。プロジェクトや勉強会に積極的に参加します。
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "勉強会・輪読会に参加して深く学ぶ",
-                  "AI・アプリ開発プロジェクトを一緒に進める",
-                  "メンバーと積極的に議論・交流する",
-                  "外部インターンなど実務経験への道も",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 bg-white/40 rounded-full shrink-0" />
-                    <span className="text-sm md:text-base font-medium text-white/70">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <p className="mt-8 text-sm text-white/60 font-medium text-center">
-            ※ どちらのスタイルも、まずDiscordに参加するところから始まります
-          </p>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Final Message */}
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter mb-10 leading-tight">
-              特別な準備は、<br />必要ありません
-            </h2>
-            <p className="text-lg md:text-xl font-medium text-white/60 leading-relaxed mb-16 px-4">
-              Discordに入った後は、興味のあるチャンネルを眺めてみたり、
-              たまにあるイベントに参加してみたりするだけで十分です。<br />
-              一歩、外の世界を覗いてみませんか。
-            </p>
-            <p className="text-xs font-bold tracking-[0.3em] uppercase opacity-60">
-              OIF Community Office
-            </p>
+          <div className="flex justify-center">
+            <DiscordCTA location="join_footer" />
           </div>
         </div>
       </section>

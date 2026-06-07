@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import SectionDivider from "@/components/site/SectionDivider";
+import DiscordCTA from "@/components/ui/DiscordCTA";
 
 interface FAQItem {
   question: string;
@@ -173,14 +174,9 @@ export default function FAQClient() {
           <p className="text-base md:text-lg mb-10 max-w-lg mx-auto font-medium text-white/80">
             上記以外のご質問は、Discordでお気軽にお問い合わせください。
           </p>
-          <a
-            href="https://discord.gg/Brg6GxJnBW"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-accent text-white px-12 py-5 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(99,102,241,0.8)]"
-          >
-            Join our Discord
-          </a>
+          <div className="flex justify-center">
+            <DiscordCTA location="faq_contact" label="Join our Discord" />
+          </div>
         </div>
       </section>
     </div>

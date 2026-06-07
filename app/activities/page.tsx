@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { BookOpen, Code2, ExternalLink, Users } from "lucide-react";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
+import DiscordCTA from "@/components/ui/DiscordCTA";
 
 export const metadata: Metadata = {
   title: "Activities | OIF 大阪公立大学のAIサークルの活動",
@@ -467,14 +468,9 @@ export default function ActivitiesPage() {
             どんな活動にも気軽に参加できます。<br />
             まずはDiscordに参加してみて。
           </p>
-          <a
-            href="https://discord.gg/Brg6GxJnBW"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-accent text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night transition-colors duration-200"
-          >
-            Discordに参加
-          </a>
+          <div className="flex justify-center">
+            <DiscordCTA location="activities_cta" />
+          </div>
         </div>
       </section>
     </div>
