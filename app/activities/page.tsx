@@ -67,6 +67,8 @@ const featuredSessions = [
     materialLabel: "公開資料（PDF）",
     materialHref:
       "https://drive.google.com/file/d/1E6FYe200ioRtAAPW8TDyS8e2XkS2g-qu/view?usp=sharing",
+    image: `/images/llm-handson.png`,
+    imageAlt: "ローカルLLMハンズオンの様子（参加メンバーの集合写真）",
   },
 ];
 
@@ -157,7 +159,7 @@ export default function ActivitiesPage() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[0].title}
                 </h2>
-                <p className="text-sm text-black/50 mt-1">{activitiesData[0].titleJa}</p>
+                <p className="text-sm text-black/60 mt-1">{activitiesData[0].titleJa}</p>
               </div>
               <p className="text-base md:text-lg leading-relaxed text-black/70">
                 {activitiesData[0].description}
@@ -168,7 +170,7 @@ export default function ActivitiesPage() {
             <div className="divide-y divide-black">
               {studyCategories.map((cat) => (
                 <div key={cat.label} className="flex items-baseline gap-4 px-6 md:px-10 lg:px-12 py-5 md:py-6">
-                  <span className="text-xs font-bold tracking-widest uppercase text-black/40 shrink-0 w-10">
+                  <span className="text-xs font-bold tracking-widest uppercase text-black/60 shrink-0 w-10">
                     {cat.label}
                   </span>
                   <span className="text-sm md:text-base leading-relaxed text-black/80">
@@ -188,7 +190,7 @@ export default function ActivitiesPage() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[1].title}
                 </h2>
-                <p className="text-sm text-black/50 mt-1">{activitiesData[1].titleJa}</p>
+                <p className="text-sm text-black/60 mt-1">{activitiesData[1].titleJa}</p>
               </div>
               <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
                 {activitiesData[1].description}
@@ -210,7 +212,7 @@ export default function ActivitiesPage() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[2].title}
                 </h2>
-                <p className="text-sm text-black/50 mt-1">{activitiesData[2].titleJa}</p>
+                <p className="text-sm text-black/60 mt-1">{activitiesData[2].titleJa}</p>
               </div>
               <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
                 {activitiesData[2].description}
@@ -247,7 +249,7 @@ export default function ActivitiesPage() {
             {featuredSessions.map((session) => (
               <div key={`${session.date}-${session.title}`} className="grid md:grid-cols-[220px_1fr]">
                 <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10">
-                  <p className="text-xs font-medium tracking-widest uppercase text-black/50 mb-3">
+                  <p className="text-xs font-medium tracking-widest uppercase text-black/60 mb-3">
                     {session.category}
                   </p>
                   <p className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -255,22 +257,36 @@ export default function ActivitiesPage() {
                   </p>
                 </div>
 
-                <div className="p-8 md:p-10">
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-                    {session.title}
-                  </h3>
-                  <p className="text-base leading-relaxed text-black/75 mb-6 max-w-2xl">
-                    {session.description}
-                  </p>
-                  <a
-                    href={session.materialHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-black/60 transition-colors duration-200"
-                  >
-                    {session.materialLabel}
-                    <ExternalLink size={16} strokeWidth={1.75} />
-                  </a>
+                <div className="grid lg:grid-cols-[1fr_minmax(0,360px)]">
+                  <div className="p-8 md:p-10 flex flex-col justify-center">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
+                      {session.title}
+                    </h3>
+                    <p className="text-base leading-relaxed text-black/75 mb-6 max-w-2xl">
+                      {session.description}
+                    </p>
+                    <a
+                      href={session.materialHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-black/60 transition-colors duration-200 self-start"
+                    >
+                      {session.materialLabel}
+                      <ExternalLink size={16} strokeWidth={1.75} />
+                    </a>
+                  </div>
+
+                  {session.image && (
+                    <div className="border-t lg:border-t-0 lg:border-l border-black bg-black/[0.03] flex items-center justify-center p-4 md:p-6">
+                      <Image
+                        src={session.image}
+                        alt={session.imageAlt ?? session.title}
+                        width={481}
+                        height={399}
+                        className="w-full h-auto max-w-md object-contain"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -449,7 +465,7 @@ export default function ActivitiesPage() {
             まずはDiscordに参加してみて。
           </p>
           <a
-            href="https://discord.gg/pEHeeYKUnX"
+            href="https://discord.gg/Brg6GxJnBW"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-black text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"

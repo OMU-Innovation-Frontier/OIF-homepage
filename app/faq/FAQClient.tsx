@@ -115,7 +115,7 @@ export default function FAQClient() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">FAQ</p>
+          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-60 mb-6">FAQ</p>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter">
             よくあるご質問
           </h1>
@@ -173,7 +173,7 @@ export default function FAQClient() {
             上記以外のご質問は、Discordでお気軽にお問い合わせください。
           </p>
           <a
-            href="https://discord.gg/pEHeeYKUnX"
+            href="https://discord.gg/Brg6GxJnBW"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white text-black px-12 py-5 text-sm font-bold tracking-widest uppercase border border-white hover:bg-black hover:text-white transition-colors duration-200"

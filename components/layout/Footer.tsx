@@ -2,17 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 const socialLinks = [
-  { label: "Discord", href: "https://discord.gg/pEHeeYKUnX" },
+  { label: "Discord", href: "https://discord.gg/Brg6GxJnBW" },
   { label: "X", href: "https://x.com/OIF_OMU" },
-  { label: "Instagram", href: "https://l.instagram.com/?u=https%3A%2F%2Fwww.instagram.com%2Foif.ai.omu%3Figsh%3Dd2cxejNrZDNqbjJx%26utm_source%3Dqr%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnnbYboA4tmoihonSEBvfEynm7atfF9qWskK1nkvfD_UmzZQNGgZF8zHj9O-Q_aem_l9foD11qqP5-zvJqDi-gGw&e=AT7AICjtMP1LfRonDhjlWXWsLnufZ296J7U78LIB5RouH3aKGzD8WCWCCJGzoYfeSXDMz3sMAdhjv02vbcXSktPyheIt6m1CKkmWj_X32rHx38etgd7KgFE4Vw" },
+  { label: "Instagram", href: "https://www.instagram.com/oif.ai.omu/" },
 ];
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Activities", href: "/activities" },
-  { label: "Join", href: "/join" },
-  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "/about/" },
+  { label: "Activities", href: "/activities/" },
+  { label: "Join", href: "/join/" },
+  { label: "FAQ", href: "/faq/" },
 ];
 
 export default function Footer() {
@@ -42,7 +42,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/30 mb-8">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-8">
               Navigation
             </p>
             <ul className="space-y-4">
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div className="md:col-span-4">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/30 mb-8">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-8">
               Connect
             </p>
             <div className="flex flex-col gap-4">
@@ -83,10 +83,10 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-24 pt-10 border-t border-black/10 flex flex-col md:flex-row justify-between gap-6 items-center">
-          <p className="text-[10px] md:text-xs text-black/40 font-bold tracking-widest uppercase">
+          <p className="text-[10px] md:text-xs text-black/60 font-bold tracking-widest uppercase">
             © 2026 OMU Innovation Frontier. All rights reserved.
           </p>
-          <p className="text-[10px] md:text-xs text-black/20 font-bold uppercase tracking-widest">
+          <p className="text-[10px] md:text-xs text-black/55 font-bold uppercase tracking-widest">
             Crafting the Future with AI
           </p>
         </div>

@@ -1,13 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
-
-const news = [
-  { date: "2026.01.24", title: "公式サイトを公開しました" },
-  { date: "", title: "新メンバー募集を開始しました" },
-];
+import { newsItems } from "@/lib/news";
 
 const partners = [
   {
@@ -31,7 +25,7 @@ export default function HomeClient() {
               <div className="mb-10">
                 <Image
                   src="/logo.png"
-                  alt="OIF Logo"
+                  alt=""
                   width={160}
                   height={160}
                   className="w-24 h-24 xl:w-28 xl:h-28"
@@ -133,7 +127,7 @@ export default function HomeClient() {
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <div className="mb-12 md:mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-3">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-3">
               Departments
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -143,7 +137,7 @@ export default function HomeClient() {
 
           <div className="grid md:grid-cols-2 gap-0 border border-black">
             {/* 開発部門 */}
-            <div className="border-r border-black p-8 md:p-10 flex flex-col" style={{borderLeft: '4px solid #1e3a8a'}}>
+            <div className="border-r border-black border-l-4 border-l-blue-900 p-8 md:p-10 flex flex-col">
               <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-900/60 mb-6">
                 Development
               </p>
@@ -155,10 +149,10 @@ export default function HomeClient() {
                 「面白そう」で終わらせず、動くものを作ることにこだわります。
               </p>
               <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
-                <span className="border border-black/20 text-black/50 px-3 py-1">LLM</span>
-                <span className="border border-black/20 text-black/50 px-3 py-1">Web Dev</span>
-                <span className="border border-black/20 text-black/50 px-3 py-1">AI Tools</span>
-                <span className="border border-black/20 text-black/50 px-3 py-1">Prototype</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">LLM</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">Web Dev</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">AI Tools</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">Prototype</span>
               </div>
               <Link
                 href="/developers"
@@ -169,7 +163,7 @@ export default function HomeClient() {
             </div>
 
             {/* 理論部門 */}
-            <div className="p-8 md:p-10 flex flex-col" style={{borderLeft: '4px solid #991b1b'}}>
+            <div className="border-l-4 border-l-red-800 p-8 md:p-10 flex flex-col">
               <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-red-800/60 mb-6">
                 Theory
               </p>
@@ -181,10 +175,10 @@ export default function HomeClient() {
                 論文読解やゼミ形式のディスカッションを通じて、AIの本質を探究します。
               </p>
               <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
-                <span className="border border-black/20 text-black/50 px-3 py-1">数学</span>
-                <span className="border border-black/20 text-black/50 px-3 py-1">ML理論</span>
-                <span className="border border-black/20 text-black/50 px-3 py-1">論文読解</span>
-                <span className="border border-black/20 text-black/50 px-3 py-1">ゼミ</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">数学</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">ML理論</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">論文読解</span>
+                <span className="border border-black/20 text-black/60 px-3 py-1">ゼミ</span>
               </div>
               <Link
                 href="/theory"
@@ -203,7 +197,7 @@ export default function HomeClient() {
       <section className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
           <div className="mb-10 md:mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-3">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-3">
               Partners
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -233,7 +227,7 @@ export default function HomeClient() {
                     {partner.body}
                   </p>
                 </div>
-                <span className="text-2xl font-light shrink-0 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                <span className="text-2xl font-light shrink-0 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
                   →
                 </span>
               </a>
@@ -248,14 +242,14 @@ export default function HomeClient() {
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
           <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-20">
-            <p className="text-xs font-bold tracking-[0.2em] shrink-0 uppercase opacity-30 mt-1">
+            <p className="text-xs font-bold tracking-[0.2em] shrink-0 uppercase opacity-60 mt-1">
               Latest Updates
             </p>
             <div className="flex-1 divide-y divide-black/5">
-              {news.map((item, index) => (
+              {newsItems.map((item, index) => (
                 <div key={index} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 first:pt-0 last:pb-0 group">
                   {item.date ? (
-                    <time className="text-xs font-bold tracking-widest text-black/40 w-24 shrink-0">
+                    <time className="text-xs font-bold tracking-widest text-black/60 w-24 shrink-0">
                       {item.date}
                     </time>
                   ) : (

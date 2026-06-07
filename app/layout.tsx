@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/SEO/JsonLd";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://oif-ai.com"),
@@ -86,11 +94,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={inter.variable}>
       <body className="flex flex-col min-h-screen">
         <JsonLd />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium"
+        >
+          本文へスキップ
+        </a>
         <Header />
-        <main className="flex-1 pt-14 md:pt-16">{children}</main>
+        <main id="main-content" className="flex-1 pt-14 md:pt-16">{children}</main>
         <Footer />
       </body>
     </html>

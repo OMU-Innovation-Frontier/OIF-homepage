@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -18,6 +18,27 @@ const navItems = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // ルート遷移したらメニューを閉じる
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // メニュー表示中は背景スクロールをロックし、Escapeで閉じる
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10">
@@ -38,7 +59,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="メインナビゲーション">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -57,7 +78,9 @@ export default function Header() {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden p-2 -mr-2"
-          aria-label="メニュー"
+          aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           {isMenuOpen ? (
             <X size={24} strokeWidth={1.5} />
@@ -69,8 +92,8 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-14 bg-white z-40 border-t border-black/10">
-          <nav className="container-wide flex flex-col pt-6">
+        <div id="mobile-menu" className="md:hidden fixed inset-0 top-14 bg-white z-40 border-t border-black/10">
+          <nav className="container-wide flex flex-col pt-6" aria-label="モバイルナビゲーション">
             {navItems.map((item) => (
               <Link
                 key={item.label}

@@ -35,7 +35,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-24 md:py-32 lg:py-48">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-60 mb-6">
             About the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9]">
@@ -74,7 +74,7 @@ export default function AboutPage() {
       <section className="py-24 md:py-32 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
               Departments
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-8">
@@ -131,7 +131,7 @@ export default function AboutPage() {
       {/* Section 2: 3つの信条 */}
       <section>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-40">
-          <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
+          <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
             How we learn
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-20">
@@ -168,7 +168,7 @@ export default function AboutPage() {
       <section className="py-24 md:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
               Members
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-12">
