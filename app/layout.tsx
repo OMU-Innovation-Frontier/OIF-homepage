@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/SEO/JsonLd";
 import Analytics from "@/components/site/Analytics";
 import CursorGlow from "@/components/site/CursorGlow";
+import ScrollProgress from "@/components/site/ScrollProgress";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -106,6 +107,7 @@ export default function RootLayout({
     <html lang="ja" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="flex flex-col min-h-screen">
         <JsonLd />
+        <ScrollProgress />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium"

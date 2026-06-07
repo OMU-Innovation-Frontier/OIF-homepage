@@ -5,6 +5,7 @@ import HeroBackground from "@/components/site/HeroBackground";
 import DivisionSplit from "@/components/site/DivisionSplit";
 import Reveal from "@/components/ui/Reveal";
 import Typewriter from "@/components/ui/Typewriter";
+import Magnetic from "@/components/ui/Magnetic";
 
 const stats = [
   { k: "EST.", v: "2026" },
@@ -57,19 +58,23 @@ export default function HomeClient() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/join"
-                  className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_50px_-10px_rgba(99,102,241,0.8)]"
-                >
-                  Join the Frontier
-                  <span aria-hidden>→</span>
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold tracking-widest uppercase border border-white/20 text-white hover:bg-white/5 hover:border-white/40 transition-colors duration-200"
-                >
-                  Explore
-                </Link>
+                <Magnetic>
+                  <Link
+                    href="/join"
+                    className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_50px_-10px_rgba(99,102,241,0.8)]"
+                  >
+                    Join the Frontier
+                    <span aria-hidden>→</span>
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold tracking-widest uppercase border border-white/20 text-white hover:bg-white/5 hover:border-white/40 transition-colors duration-200"
+                  >
+                    Explore
+                  </Link>
+                </Magnetic>
               </div>
             </div>
 
@@ -222,13 +227,15 @@ export default function HomeClient() {
           <p className="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-12">
             プログラミング経験は問いません。まずはDiscordを覗いてみることから。
           </p>
-          <Link
-            href="/join"
-            className="inline-flex items-center gap-2 bg-accent text-white px-10 py-5 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_60px_-12px_rgba(99,102,241,0.85)]"
-          >
-            Join the Community
-            <span aria-hidden>→</span>
-          </Link>
+          <Magnetic strength={0.45}>
+            <Link
+              href="/join"
+              className="inline-flex items-center gap-2 bg-accent text-white px-10 py-5 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_60px_-12px_rgba(99,102,241,0.85)]"
+            >
+              Join the Community
+              <span aria-hidden>→</span>
+            </Link>
+          </Magnetic>
         </Reveal>
       </section>
     </div>
