@@ -42,6 +42,13 @@ const config: Config = {
           bright: "#F87171", // for dark backgrounds
           tint: "#FCF1F0",
         },
+
+        // "Frontier OS" dark surfaces (v2 exploration)
+        night: {
+          DEFAULT: "#0A0B0E",
+          2: "#101218",
+          3: "#171A22",
+        },
       },
       fontFamily: {
         sans: [
@@ -53,6 +60,14 @@ const config: Config = {
           "Segoe UI",
           "Roboto",
           "sans-serif",
+        ],
+        mono: [
+          "var(--font-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace",
         ],
       },
       // Sharp corners are part of the brand identity — keep radius at 0.
@@ -91,9 +106,30 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "grid-pan": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "40px 40px" },
+        },
+        "drift": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(4%, -3%) scale(1.08)" },
+        },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        blink: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "grid-pan": "grid-pan 6s linear infinite",
+        "drift-slow": "drift 18s ease-in-out infinite",
+        "drift-slower": "drift 26s ease-in-out infinite",
+        marquee: "marquee 32s linear infinite",
+        blink: "blink 1.2s step-end infinite",
       },
     },
   },
