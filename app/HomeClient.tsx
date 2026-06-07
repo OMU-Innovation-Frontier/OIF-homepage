@@ -2,35 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { newsItems } from "@/lib/news";
 import HeroBackground from "@/components/site/HeroBackground";
+import DivisionSplit from "@/components/site/DivisionSplit";
 import Reveal from "@/components/ui/Reveal";
 import Typewriter from "@/components/ui/Typewriter";
-
-const departments = [
-  {
-    index: "01",
-    href: "/developers",
-    code: "dev",
-    label: "DEVELOPMENT",
-    title: "開発部門",
-    body: "最新のAI技術を実際に試し、LLMやWebアプリなどのプロダクトを形にする。動くものを作ることにこだわる部門。",
-    tags: ["LLM", "WEB", "AI-TOOLS", "PROTOTYPE"],
-    glow: "before:bg-dev-bright",
-    hover: "hover:border-dev-bright/50",
-    accentText: "text-dev-bright",
-  },
-  {
-    index: "02",
-    href: "/theory",
-    code: "theory",
-    label: "THEORY",
-    title: "理論部門",
-    body: "AIや機械学習の仕組みを数学・統計から深く理解する。論文読解やゼミを通じてAIの本質を探究する部門。",
-    tags: ["MATH", "ML-THEORY", "PAPERS", "SEMINAR"],
-    glow: "before:bg-theory-bright",
-    hover: "hover:border-theory-bright/50",
-    accentText: "text-theory-bright",
-  },
-];
 
 const stats = [
   { k: "EST.", v: "2026" },
@@ -152,50 +126,25 @@ export default function HomeClient() {
         </div>
       </div>
 
-      {/* ============ DEPARTMENTS ============ */}
+      {/* ============ DEPARTMENTS (interactive split) ============ */}
       <section className="bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <div className="mb-12 md:mb-16 flex items-end justify-between gap-6">
+          <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">
-                // DEPARTMENTS
+                // CHOOSE YOUR PATH
               </p>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
-                2つの部門
+                進む道を、選ぶ
               </h2>
             </div>
-          </div>
+            <p className="font-mono text-xs text-white/35 md:pb-2">
+              hover to explore — 2 divisions, 1 community
+            </p>
+          </Reveal>
 
-          <Reveal delay={120} className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10">
-            {departments.map((d) => (
-              <Link
-                key={d.code}
-                href={d.href}
-                className={`group relative isolate flex flex-col bg-night-2 p-8 md:p-12 transition-colors duration-300 hover:bg-night-3 before:absolute before:inset-x-0 before:top-0 before:h-px ${d.glow} before:opacity-0 hover:before:opacity-100 before:transition-opacity ${d.hover}`}
-              >
-                <div className="flex items-center justify-between mb-10">
-                  <span className="font-mono text-sm text-white/30">{d.index}</span>
-                  <span className={`font-mono text-[11px] tracking-[0.3em] ${d.accentText}`}>
-                    {d.label}
-                  </span>
-                </div>
-                <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-5">
-                  {d.title}
-                </h3>
-                <p className="text-sm md:text-base leading-relaxed text-white/60 mb-8 flex-1">
-                  {d.body}
-                </p>
-                <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-white/45 mb-8">
-                  {d.tags.map((t) => (
-                    <span key={t} className="border border-white/15 px-2.5 py-1">{t}</span>
-                  ))}
-                </div>
-                <span className="draw-underline pb-1 inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
-                  詳しく見る
-                  <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
-                </span>
-              </Link>
-            ))}
+          <Reveal delay={120}>
+            <DivisionSplit />
           </Reveal>
         </div>
       </section>
