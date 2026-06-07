@@ -138,6 +138,9 @@ export default function ActivitiesPage() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
+            What we do
+          </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
             Activities
           </h1>
@@ -198,7 +201,7 @@ export default function ActivitiesPage() {
               <ul className="space-y-3">
                 {activitiesData[1].items.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm md:text-base">
-                    <span className="w-1 h-1 bg-black rounded-full shrink-0" />
+                    <span className="w-1 h-1 bg-accent rounded-full shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -220,7 +223,7 @@ export default function ActivitiesPage() {
               <ul className="space-y-3">
                 {activitiesData[2].items.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm md:text-base">
-                    <span className="w-1 h-1 bg-black rounded-full shrink-0" />
+                    <span className="w-1 h-1 bg-accent rounded-full shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -237,7 +240,7 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-medium tracking-widest uppercase mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
               Sessions
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -300,7 +303,7 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-medium tracking-widest uppercase mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
               Products
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -327,7 +330,7 @@ export default function ActivitiesPage() {
                   <div className="p-8 md:p-12 flex flex-col justify-center">
                     <div className="mb-6">
                       {product.badge && (
-                        <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white px-3 py-1 mb-4">
+                        <span className="inline-block text-xs font-medium tracking-widest uppercase bg-accent text-white px-3 py-1 mb-4">
                           {product.badge}
                         </span>
                       )}
@@ -346,7 +349,7 @@ export default function ActivitiesPage() {
                         href={product.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200 self-start"
+                        className="inline-block bg-accent text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-ink hover:text-white transition-colors duration-200 self-start"
                       >
                         サービスを見る →
                       </a>
@@ -370,7 +373,7 @@ export default function ActivitiesPage() {
                     <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl">
                       {product.features?.map((feature, i) => (
                         <li key={i} className="text-sm flex items-start gap-3">
-                          <span className="w-1 h-1 bg-black mt-2 shrink-0" />
+                          <span className="w-1 h-1 bg-accent mt-2 shrink-0" />
                           {feature}
                         </li>
                       ))}
@@ -408,7 +411,7 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-medium tracking-widest uppercase mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
               Contest
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -434,7 +437,7 @@ export default function ActivitiesPage() {
 
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="mb-6">
-                    <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white px-3 py-1 mb-4">
+                    <span className="inline-block text-xs font-medium tracking-widest uppercase bg-accent text-white px-3 py-1 mb-4">
                       {contest.result}
                     </span>
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
@@ -468,7 +471,7 @@ export default function ActivitiesPage() {
             href="https://discord.gg/Brg6GxJnBW"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-black text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
+            className="inline-block bg-accent text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-ink hover:text-white transition-colors duration-200"
           >
             Discordに参加
           </a>
