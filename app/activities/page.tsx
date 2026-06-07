@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { BookOpen, Code2, ExternalLink, Users } from "lucide-react";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
@@ -310,6 +311,12 @@ export default function ActivitiesPage() {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               メンバー開発プロダクト
             </h2>
+            <Link
+              href="/projects/"
+              className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors"
+            >
+              事例（課題→技術→成果）を見る →
+            </Link>
           </div>
 
           {products.map((product) => (
