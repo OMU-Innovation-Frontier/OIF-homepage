@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import SectionDivider from "@/components/site/SectionDivider";
+import HeroBackground from "@/components/site/HeroBackground";
+import Reveal from "@/components/ui/Reveal";
 import { newsItems } from "@/lib/news";
 
 export const metadata: Metadata = {
@@ -12,50 +13,53 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
   return (
-    <div className="min-h-screen">
-      {/* Title Section */}
-      <section className="py-24 md:py-32 lg:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
-            Updates
+    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
+      {/* HERO */}
+      <section className="relative overflow-hidden border-b border-white/10">
+        <HeroBackground accent="accent" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 animate-fade-up">
+          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
+            // NEWS — $ tail -f updates.log
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6">
             News
           </h1>
+          <p className="text-lg text-white/60 max-w-2xl leading-relaxed">
+            イベント・募集・お知らせ。OIFの最新の動きはここに記録されます。
+          </p>
         </div>
       </section>
 
-      <SectionDivider />
-
       {/* News List */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="border-t border-white/12">
+      <section className="bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="border-t border-white/10">
             {newsItems.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-6 border-b border-white/12"
+                className="group flex flex-col md:flex-row md:items-center gap-3 md:gap-10 py-7 border-b border-white/10 hover:bg-white/[0.02] transition-colors"
               >
                 {item.date ? (
-                  <time className="text-sm font-medium tracking-wider w-28 shrink-0">
+                  <time className="font-mono text-sm tracking-widest text-white/40 w-28 shrink-0">
                     {item.date}
                   </time>
                 ) : (
                   <div className="w-28 shrink-0 hidden md:block" />
                 )}
 
-                <span className="flex-1 text-base md:text-lg font-medium">
+                <span className="flex-1 text-base md:text-lg font-bold tracking-tight group-hover:text-accent-bright transition-colors">
                   {item.title}
                 </span>
 
                 {item.isNew && (
-                  <span className="text-xs font-bold tracking-widest bg-accent text-white px-3 py-1 w-fit">
+                  <span className="font-mono text-[11px] font-bold tracking-widest bg-accent text-white px-3 py-1 w-fit">
                     NEW
                   </span>
                 )}
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

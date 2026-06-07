@@ -2,7 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { newsItems } from "@/lib/news";
 import HeroBackground from "@/components/site/HeroBackground";
+import NeuralBackground from "@/components/site/NeuralBackground";
 import DivisionSplit from "@/components/site/DivisionSplit";
+import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
 import Typewriter from "@/components/ui/Typewriter";
 import Magnetic from "@/components/ui/Magnetic";
@@ -26,13 +28,14 @@ export default function HomeClient() {
       <section className="relative overflow-hidden min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center">
         {/* animated, parallax background */}
         <HeroBackground accent="dev" />
+        <NeuralBackground className="opacity-70" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
             {/* left */}
-            <div className="lg:col-span-7 animate-fade-up">
-              <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-white/50 mb-8">
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-white/50 mb-8 animate-fade-up">
                 <span className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 bg-emerald-400 animate-blink" />
                   RECRUITING
@@ -43,21 +46,24 @@ export default function HomeClient() {
                 <span>OSAKA METROPOLITAN UNIV.</span>
               </div>
 
-              <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
+              <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6 animate-fade-up [animation-delay:80ms]">
                 [ OMU INNOVATION FRONTIER ]
               </p>
 
-              <h1 className="text-[3.4rem] sm:text-[4.5rem] xl:text-[6.5rem] font-black leading-[0.88] tracking-tighter mb-8">
-                OMU<br />Innovation<br />
-                <span className="accent-gradient-text">Frontier</span>
-              </h1>
+              <Parallax speed={0.12}>
+                <h1 className="text-[3.4rem] sm:text-[4.5rem] xl:text-[6.5rem] font-black leading-[0.88] tracking-tighter mb-8">
+                  <span className="block animate-fade-up [animation-delay:140ms]">OMU</span>
+                  <span className="block animate-fade-up [animation-delay:230ms]">Innovation</span>
+                  <span className="block accent-gradient-text animate-fade-up [animation-delay:320ms]">Frontier</span>
+                </h1>
+              </Parallax>
 
-              <p className="text-lg xl:text-xl font-medium mb-12 leading-relaxed max-w-xl text-white/70">
+              <p className="text-lg xl:text-xl font-medium mb-12 leading-relaxed max-w-xl text-white/70 animate-fade-up [animation-delay:420ms]">
                 AIとテクノロジーの未来を探究する学生コミュニティ。
                 理解し、創り、未来を形作る側へ。
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 animate-fade-up [animation-delay:500ms]">
                 <Magnetic>
                   <Link
                     href="/join"

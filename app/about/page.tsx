@@ -5,6 +5,7 @@ import { Brain, Hammer, Compass } from "lucide-react";
 import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
 import Typewriter from "@/components/ui/Typewriter";
+import Tilt from "@/components/ui/Tilt";
 
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
@@ -177,7 +178,8 @@ export default function AboutPage() {
               const Icon = b.icon;
               return (
                 <Reveal key={b.n} delay={i * 120}>
-                  <div className="group relative h-full bg-night-2 border border-white/10 p-8 md:p-10 overflow-hidden transition-all duration-300 hover:border-accent-bright/40 hover:-translate-y-1.5 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-accent-bright before:opacity-0 hover:before:opacity-100 before:transition-opacity">
+                  <Tilt max={5}>
+                  <div className="group relative h-full bg-night-2 border border-white/10 p-8 md:p-10 overflow-hidden transition-colors duration-300 hover:border-accent-bright/40 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-accent-bright before:opacity-0 hover:before:opacity-100 before:transition-opacity">
                     <div
                       aria-hidden
                       className="absolute -right-8 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -198,6 +200,7 @@ export default function AboutPage() {
                       {b.body}
                     </p>
                   </div>
+                  </Tilt>
                 </Reveal>
               );
             })}
