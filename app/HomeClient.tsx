@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { newsItems } from "@/lib/news";
+import HeroBackground from "@/components/site/HeroBackground";
+import Reveal from "@/components/ui/Reveal";
+import Typewriter from "@/components/ui/Typewriter";
 
 const departments = [
   {
@@ -46,10 +49,8 @@ export default function HomeClient() {
     <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center">
-        {/* background layers */}
-        <div aria-hidden className="absolute inset-0 dot-grid animate-grid-pan opacity-70" />
-        <div aria-hidden className="absolute -top-40 -left-32 h-[40rem] w-[40rem] rounded-full bg-accent/20 blur-[120px] animate-drift-slow" />
-        <div aria-hidden className="absolute top-1/3 -right-40 h-[34rem] w-[34rem] rounded-full bg-dev/20 blur-[120px] animate-drift-slower" />
+        {/* animated, parallax background */}
+        <HeroBackground accent="dev" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
@@ -111,7 +112,11 @@ export default function HomeClient() {
                 </div>
                 <div className="p-6 font-mono text-[13px] leading-relaxed">
                   <p className="text-white/40 mb-4">
-                    <span className="text-accent-bright">~/oif</span> $ ./about --summary
+                    <span className="text-accent-bright">~/oif</span> ${" "}
+                    <Typewriter
+                      className="text-white/80"
+                      words={["./about --summary", "./status", "./projects --list", "./join"]}
+                    />
                   </p>
                   {[
                     ["division", "Development / Theory"],
@@ -126,7 +131,7 @@ export default function HomeClient() {
                     </div>
                   ))}
                   <p className="mt-4 text-white/40">
-                    <span className="text-accent-bright">~/oif</span> $ <span className="animate-blink">▋</span>
+                    <span className="text-accent-bright">~/oif</span> $ <span className="text-white/30">_</span>
                   </p>
                 </div>
               </div>
@@ -161,7 +166,7 @@ export default function HomeClient() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10">
+          <Reveal delay={120} className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10">
             {departments.map((d) => (
               <Link
                 key={d.code}
@@ -185,13 +190,13 @@ export default function HomeClient() {
                     <span key={t} className="border border-white/15 px-2.5 py-1">{t}</span>
                   ))}
                 </div>
-                <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
+                <span className="draw-underline pb-1 inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
                   詳しく見る
                   <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
                 </span>
               </Link>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -200,9 +205,9 @@ export default function HomeClient() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/10">
             {stats.map((s) => (
-              <div key={s.k} className="px-6 py-10 md:py-14">
+              <div key={s.k} className="group px-6 py-10 md:py-14 transition-colors hover:bg-white/[0.02]">
                 <p className="font-mono text-[11px] tracking-[0.25em] text-white/40 mb-3">{s.k}</p>
-                <p className="text-xl md:text-2xl font-bold tracking-tight">{s.v}</p>
+                <p className="text-xl md:text-2xl font-bold tracking-tight transition-colors group-hover:text-accent-bright">{s.v}</p>
               </div>
             ))}
           </div>
@@ -260,7 +265,7 @@ export default function HomeClient() {
       <section className="relative overflow-hidden border-t border-white/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
         <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
+        <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
           <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">$ ./join</p>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] mb-10">
             未来を<span className="accent-gradient-text">形作る側</span>へ。
@@ -275,7 +280,7 @@ export default function HomeClient() {
             Join the Community
             <span aria-hidden>→</span>
           </Link>
-        </div>
+        </Reveal>
       </section>
     </div>
   );
