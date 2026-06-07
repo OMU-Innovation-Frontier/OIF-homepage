@@ -32,7 +32,7 @@ export default function JoinPage() {
       {/* Hero Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-40 mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-60 mb-6">
             Join the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
@@ -73,7 +73,7 @@ export default function JoinPage() {
 
           {/* Left: Recommended For */}
           <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-black bg-gray-50/50">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-6">
+            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6">
               Recommended for
             </p>
             <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-16">
@@ -91,7 +91,7 @@ export default function JoinPage() {
 
           {/* Right: How to Join (Discord) */}
           <div className="p-8 md:p-12 lg:p-16 bg-black text-white">
-            <p className="text-xs font-bold tracking-widest uppercase text-white/30 mb-6">
+            <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
               How to Join
             </p>
             <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-12">
@@ -106,7 +106,7 @@ export default function JoinPage() {
             <div className="grid grid-cols-2 gap-y-8 gap-x-8 mb-20">
               {discordActivities.map((activity, index) => (
                 <div key={index} className="flex flex-col gap-3 group">
-                  <activity.icon className="w-6 h-6 text-white/40 group-hover:text-white transition-colors duration-300" />
+                  <activity.icon className="w-6 h-6 text-white/70 group-hover:text-white transition-colors duration-300" />
                   <span className="text-sm md:text-base font-bold tracking-tight">{activity.text}</span>
                 </div>
               ))}
@@ -114,7 +114,7 @@ export default function JoinPage() {
 
             <div className="pt-10 border-t border-white/20">
               <a
-                href="https://discord.gg/pEHeeYKUnX"
+                href="https://discord.gg/Brg6GxJnBW"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-between gap-12 bg-white text-black px-8 py-5 text-sm font-black tracking-widest uppercase hover:bg-black hover:text-white border-2 border-white transition-all duration-300 group overflow-hidden relative"
@@ -134,7 +134,7 @@ export default function JoinPage() {
       {/* Member Types Section */}
       <section className="py-24 md:py-40 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
+          <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
             Community Structure
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 leading-tight">
@@ -146,7 +146,7 @@ export default function JoinPage() {
 
           <div className="grid md:grid-cols-2 gap-0 border border-black">
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-black bg-white">
-              <p className="text-xs font-bold tracking-widest uppercase text-black/30 mb-6">
+              <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6">
                 Style 01
               </p>
               <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6">
@@ -171,7 +171,7 @@ export default function JoinPage() {
             </div>
 
             <div className="p-8 md:p-12 bg-black text-white">
-              <p className="text-xs font-bold tracking-widest uppercase text-white/30 mb-6">
+              <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
                 Style 02
               </p>
               <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6">
@@ -196,7 +196,7 @@ export default function JoinPage() {
             </div>
           </div>
 
-          <p className="mt-8 text-sm text-black/40 font-medium text-center">
+          <p className="mt-8 text-sm text-black/60 font-medium text-center">
             ※ どちらのスタイルも、まずDiscordに参加するところから始まります
           </p>
         </div>
@@ -216,7 +216,7 @@ export default function JoinPage() {
               たまにあるイベントに参加してみたりするだけで十分です。<br />
               一歩、外の世界を覗いてみませんか。
             </p>
-            <p className="text-xs font-bold tracking-[0.3em] uppercase opacity-20">
+            <p className="text-xs font-bold tracking-[0.3em] uppercase opacity-60">
               OIF Community Office
             </p>
           </div>

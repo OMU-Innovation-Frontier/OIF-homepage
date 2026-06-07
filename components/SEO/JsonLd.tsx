@@ -20,8 +20,8 @@ export default function JsonLd() {
     "sameAs": [
       "https://github.com/OMU-Innovation-Frontier",
       "https://x.com/OIF_OMU",
-      "https://www.instagram.com/omu.innovation.frontier/",
-      "https://discord.gg/pEHeeYKUnX"
+      "https://www.instagram.com/oif.ai.omu/",
+      "https://discord.gg/Brg6GxJnBW"
     ]
   };
 
