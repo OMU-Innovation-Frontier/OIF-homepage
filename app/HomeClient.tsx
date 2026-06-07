@@ -72,7 +72,7 @@ export default function HomeClient() {
                   className="w-24 h-24 xl:w-28 xl:h-28"
                 />
                 <Eyebrow tone="accent" className="border-l border-accent/40 pl-4">
-                  Est. 2024 · Osaka Metropolitan Univ.
+                  Est. 2026 · Osaka Metropolitan Univ.
                 </Eyebrow>
               </div>
               <h1 className="text-[5.5rem] xl:text-[7rem] font-black leading-[0.9] tracking-tighter mb-6">
@@ -122,7 +122,7 @@ export default function HomeClient() {
               />
             </div>
             <Eyebrow tone="accent" className="mb-4">
-              Est. 2024 · Osaka Metropolitan Univ.
+              Est. 2026 · Osaka Metropolitan Univ.
             </Eyebrow>
             <h1 className="text-[3.5rem] sm:text-[4.5rem] font-black leading-[0.9] tracking-tighter mb-4">
               OMU<br />Innovation<br />Frontier
