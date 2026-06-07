@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
+import Button from "@/components/ui/Button";
+import Eyebrow from "@/components/ui/Eyebrow";
 import { newsItems } from "@/lib/news";
 
 const partners = [
@@ -12,17 +14,56 @@ const partners = [
   },
 ];
 
+const departments = [
+  {
+    href: "/developers",
+    eyebrow: "Development",
+    title: "開発部門",
+    body: "最新のAI技術を実際に試し、LLMやWebアプリなどのプロダクトを形にする部門。「面白そう」で終わらせず、動くものを作ることにこだわります。",
+    tags: ["LLM", "Web Dev", "AI Tools", "Prototype"],
+    cta: "開発部門について",
+    accent: "dev" as const,
+  },
+  {
+    href: "/theory",
+    eyebrow: "Theory",
+    title: "理論部門",
+    body: "AIや機械学習の仕組みを数学・統計から深く理解する部門。論文読解やゼミ形式のディスカッションを通じて、AIの本質を探究します。",
+    tags: ["数学", "ML理論", "論文読解", "ゼミ"],
+    cta: "理論部門について",
+    accent: "theory" as const,
+  },
+];
+
+const accentClasses = {
+  dev: {
+    border: "border-l-dev",
+    hoverBg: "md:hover:bg-dev-tint/50",
+    cta: "bg-dev hover:bg-ink",
+  },
+  theory: {
+    border: "border-l-theory",
+    hoverBg: "md:hover:bg-theory-tint/50",
+    cta: "bg-theory hover:bg-ink",
+  },
+} as const;
+
 export default function HomeClient() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
+      <section className="relative flex items-center bg-paper min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] overflow-hidden">
+        {/* Subtle accent glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 -right-32 h-[34rem] w-[34rem] rounded-full bg-accent/5 blur-3xl"
+        />
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-24 w-full">
 
           {/* Desktop Layout */}
-          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-12 xl:gap-20 items-start">
-            <div className="lg:col-span-7 xl:col-span-7">
-              <div className="mb-10">
+          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-12 xl:gap-20 items-center">
+            <div className="lg:col-span-7 animate-fade-up">
+              <div className="mb-10 flex items-center gap-4">
                 <Image
                   src="/logo.png"
                   alt=""
@@ -30,38 +71,30 @@ export default function HomeClient() {
                   height={160}
                   className="w-24 h-24 xl:w-28 xl:h-28"
                 />
+                <Eyebrow tone="accent" className="border-l border-accent/40 pl-4">
+                  Est. 2026 · Osaka Metropolitan Univ.
+                </Eyebrow>
               </div>
-              <h1 className="text-[6rem] xl:text-[7rem] font-black leading-[0.9] tracking-tighter mb-4">
+              <h1 className="text-[5.5rem] xl:text-[7rem] font-black leading-[0.9] tracking-tighter mb-6">
                 OMU<br />Innovation<br />Frontier
               </h1>
-              <p className="text-xl xl:text-2xl font-medium mb-12 leading-relaxed max-w-lg">
-                AIとテクノロジーの未来を探究する学生コミュニティ
+              <p className="text-xl xl:text-2xl font-medium mb-12 leading-relaxed max-w-lg text-ink/80">
+                AIとテクノロジーの未来を探究する<span className="text-accent">学生コミュニティ</span>
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/join"
-                  className="inline-block bg-black text-white px-8 py-4 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
-                >
-                  Join the Community
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-block bg-white text-black px-8 py-4 text-sm font-medium tracking-widest uppercase border border-black hover:bg-black hover:text-white transition-colors duration-200"
-                >
-                  Learn More
-                </Link>
+                <Button href="/join" variant="primary">Join the Community</Button>
+                <Button href="/about" variant="secondary">Learn More</Button>
               </div>
             </div>
 
             {/* Right: Intro Box */}
-            <div className="lg:col-span-5 bg-white border border-black p-8 xl:p-10">
-              <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-8 border-b border-black/10 pb-4">
+            <div className="lg:col-span-5 bg-white border border-line shadow-card p-8 xl:p-10 animate-fade-up [animation-delay:120ms]">
+              <Eyebrow tone="accent" className="mb-8 border-b border-line pb-4 block">
                 Introduction
-              </p>
-              <div className="space-y-6 text-sm md:text-base leading-relaxed text-black/80">
+              </Eyebrow>
+              <div className="space-y-6 text-sm md:text-base leading-relaxed text-ink/75">
                 <p>
-                  OIF は、<br />
-                  大阪公立大学の学生による<br />
+                  OIF は、大阪公立大学の学生による、
                   AI・テクノロジーに関心のある人のためのコミュニティです。
                 </p>
                 <p>
@@ -69,7 +102,7 @@ export default function HomeClient() {
                   私たちは、その変化を「使う側」としてだけでなく、
                   理解し、創り、未来を形作る側として関わることを目指しています。
                 </p>
-                <p className="font-bold">
+                <p className="font-bold text-ink">
                   プログラミング経験の有無は問いません。
                   共に学び、試し、アイデアを形にしていく場です。
                 </p>
@@ -78,41 +111,34 @@ export default function HomeClient() {
           </div>
 
           {/* Mobile/Tablet Layout */}
-          <div className="lg:hidden">
+          <div className="lg:hidden animate-fade-up">
             <div className="mb-6">
               <Image
                 src="/logo.png"
-                alt="OIF Logo"
+                alt=""
                 width={160}
                 height={160}
                 className="w-20 h-20"
               />
             </div>
+            <Eyebrow tone="accent" className="mb-4">
+              Est. 2026 · Osaka Metropolitan Univ.
+            </Eyebrow>
             <h1 className="text-[3.5rem] sm:text-[4.5rem] font-black leading-[0.9] tracking-tighter mb-4">
               OMU<br />Innovation<br />Frontier
             </h1>
-            <p className="text-lg md:text-xl font-medium mb-10 leading-relaxed">
-              AIとテクノロジーの未来を探究する学生コミュニティ
+            <p className="text-lg md:text-xl font-medium mb-10 leading-relaxed text-ink/80">
+              AIとテクノロジーの未来を探究する<span className="text-accent">学生コミュニティ</span>
             </p>
             <div className="flex flex-wrap gap-3 mb-12">
-              <Link
-                href="/join"
-                className="inline-block bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-black hover:bg-white hover:text-black transition-colors duration-200"
-              >
-                Join
-              </Link>
-              <Link
-                href="/about"
-                className="inline-block bg-white text-black px-6 py-3 text-sm font-medium tracking-widest uppercase border border-black hover:bg-black hover:text-white transition-colors duration-200"
-              >
-                About
-              </Link>
+              <Button href="/join" variant="primary" size="md">Join</Button>
+              <Button href="/about" variant="secondary" size="md">About</Button>
             </div>
-            <div className="bg-white border border-black p-6">
-              <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6 pb-2 border-b border-black/10">
+            <div className="bg-white border border-line shadow-card p-6">
+              <Eyebrow tone="accent" className="mb-6 pb-2 border-b border-line block">
                 Introduction
-              </p>
-              <div className="space-y-4 text-sm leading-relaxed text-black/80 font-medium">
+              </Eyebrow>
+              <div className="space-y-4 text-sm leading-relaxed text-ink/75 font-medium">
                 <p>OIF は、大阪公立大学の学生によるAI・テクノロジーに関心のある人のためのコミュニティです。</p>
                 <p>私たちは、その変化を理解し、創り、未来を形作る側として関わることを目指しています。</p>
               </div>
@@ -121,72 +147,52 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <SectionDivider />
-
       {/* Departments Section */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+      <section className="bg-paper">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <div className="mb-12 md:mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-3">
-              Departments
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            <Eyebrow tone="accent" className="mb-3">Departments</Eyebrow>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               2つの部門
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-0 border border-black">
-            {/* 開発部門 */}
-            <div className="border-r border-black border-l-4 border-l-blue-900 p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-900/60 mb-6">
-                Development
-              </p>
-              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                開発部門
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-black/60 mb-8 flex-1">
-                最新のAI技術を実際に試し、LLMやWebアプリなどのプロダクトを形にする部門。
-                「面白そう」で終わらせず、動くものを作ることにこだわります。
-              </p>
-              <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
-                <span className="border border-black/20 text-black/60 px-3 py-1">LLM</span>
-                <span className="border border-black/20 text-black/60 px-3 py-1">Web Dev</span>
-                <span className="border border-black/20 text-black/60 px-3 py-1">AI Tools</span>
-                <span className="border border-black/20 text-black/60 px-3 py-1">Prototype</span>
-              </div>
-              <Link
-                href="/developers"
-                className="inline-flex items-center gap-2 bg-blue-900 text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-black transition-colors duration-200 self-start"
-              >
-                開発部門について →
-              </Link>
-            </div>
-
-            {/* 理論部門 */}
-            <div className="border-l-4 border-l-red-800 p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-red-800/60 mb-6">
-                Theory
-              </p>
-              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                理論部門
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-black/60 mb-8 flex-1">
-                AIや機械学習の仕組みを数学・統計から深く理解する部門。
-                論文読解やゼミ形式のディスカッションを通じて、AIの本質を探究します。
-              </p>
-              <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
-                <span className="border border-black/20 text-black/60 px-3 py-1">数学</span>
-                <span className="border border-black/20 text-black/60 px-3 py-1">ML理論</span>
-                <span className="border border-black/20 text-black/60 px-3 py-1">論文読解</span>
-                <span className="border border-black/20 text-black/60 px-3 py-1">ゼミ</span>
-              </div>
-              <Link
-                href="/theory"
-                className="inline-flex items-center gap-2 bg-red-800 text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-black transition-colors duration-200 self-start"
-              >
-                理論部門について →
-              </Link>
-            </div>
+          <div className="grid md:grid-cols-2 border border-ink shadow-card bg-white">
+            {departments.map((d, i) => {
+              const a = accentClasses[d.accent];
+              return (
+                <div
+                  key={d.title}
+                  className={`group flex flex-col p-8 md:p-10 border-l-4 ${a.border} ${a.hoverBg} transition-colors duration-300 ${
+                    i === 0 ? "border-b md:border-b-0 md:border-r border-ink" : ""
+                  }`}
+                >
+                  <Eyebrow tone={d.accent} className="mb-6 tracking-[0.25em] text-[11px]">
+                    {d.eyebrow}
+                  </Eyebrow>
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
+                    {d.title}
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-ink/65 mb-8 flex-1">
+                    {d.body}
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs font-bold tracking-widest uppercase mb-8">
+                    {d.tags.map((t) => (
+                      <span key={t} className="border border-ink/15 text-ink/60 px-3 py-1">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={d.href}
+                    className={`inline-flex items-center gap-2 ${a.cta} text-white px-6 py-3 text-sm font-medium tracking-widest uppercase transition-colors duration-200 self-start`}
+                  >
+                    {d.cta}
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -194,13 +200,11 @@ export default function HomeClient() {
       <SectionDivider />
 
       {/* Partners Section */}
-      <section className="bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
+      <section className="bg-paper">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-sm">
           <div className="mb-10 md:mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-3">
-              Partners
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            <Eyebrow tone="accent" className="mb-3">Partners</Eyebrow>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               連携パートナー
             </h2>
           </div>
@@ -211,23 +215,23 @@ export default function HomeClient() {
                 href={partner.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-6 border border-black bg-white px-8 py-7 hover:bg-black hover:text-white transition-colors duration-200"
+                className="group flex items-center justify-between gap-6 border border-ink bg-white px-8 py-7 shadow-card hover:bg-ink hover:text-white transition-colors duration-300"
               >
                 <div>
-                  <span className="inline-block text-xs font-medium tracking-widest uppercase bg-black text-white group-hover:bg-white group-hover:text-black px-2 py-0.5 mb-4 transition-colors duration-200">
+                  <span className="inline-block text-xs font-medium tracking-widest uppercase bg-accent text-white px-2 py-0.5 mb-4">
                     Official Partner
                   </span>
                   <p className="text-xl md:text-2xl font-bold tracking-tight mb-2">
                     {partner.name}
                   </p>
-                  <p className="text-base font-semibold tracking-tight mb-3 group-hover:text-white transition-colors duration-200">
+                  <p className="text-base font-semibold tracking-tight mb-3">
                     {partner.tagline}
                   </p>
-                  <p className="text-sm leading-relaxed text-black/60 group-hover:text-white/70 max-w-xl transition-colors duration-200">
+                  <p className="text-sm leading-relaxed text-ink/60 group-hover:text-white/70 max-w-xl transition-colors duration-300">
                     {partner.body}
                   </p>
                 </div>
-                <span className="text-2xl font-light shrink-0 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                <span className="text-2xl font-light shrink-0 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-smooth">
                   →
                 </span>
               </a>
@@ -239,23 +243,29 @@ export default function HomeClient() {
       <SectionDivider />
 
       {/* Latest Updates Section */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
+      <section className="bg-paper">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-20">
-            <p className="text-xs font-bold tracking-[0.2em] shrink-0 uppercase opacity-60 mt-1">
-              Latest Updates
-            </p>
-            <div className="flex-1 divide-y divide-black/5">
+            <div className="shrink-0">
+              <Eyebrow tone="accent" className="tracking-[0.2em]">Latest Updates</Eyebrow>
+              <Link
+                href="/news/"
+                className="mt-4 hidden md:inline-flex items-center gap-1 text-sm font-bold text-ink/60 hover:text-accent transition-colors"
+              >
+                View all →
+              </Link>
+            </div>
+            <div className="flex-1 divide-y divide-ink/10 border-t border-ink/10">
               {newsItems.map((item, index) => (
-                <div key={index} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 first:pt-0 last:pb-0 group">
+                <div key={index} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 group">
                   {item.date ? (
-                    <time className="text-xs font-bold tracking-widest text-black/60 w-24 shrink-0">
+                    <time className="text-xs font-bold tracking-widest text-ink/55 w-24 shrink-0">
                       {item.date}
                     </time>
                   ) : (
                     <div className="w-24 shrink-0 hidden sm:block" />
                   )}
-                  <span className="text-base md:text-lg font-bold tracking-tight group-hover:text-black/60 transition-colors duration-200">
+                  <span className="text-base md:text-lg font-bold tracking-tight group-hover:text-accent transition-colors duration-200">
                     {item.title}
                   </span>
                 </div>

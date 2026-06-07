@@ -35,7 +35,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-24 md:py-32 lg:py-48">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-60 mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
             About the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9]">
@@ -71,10 +71,10 @@ export default function AboutPage() {
       <SectionDivider />
 
       {/* Section: 部門紹介 */}
-      <section className="py-24 md:py-32 bg-gray-50">
+      <section className="section-y-lg bg-muted">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
               Departments
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-8">
@@ -88,7 +88,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 gap-0 border border-black bg-white">
             <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-900/60 mb-6">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-dev mb-6">
                 Development
               </p>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
@@ -99,14 +99,14 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/developers"
-                className="inline-flex items-center gap-2 self-start bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-blue-900 transition-colors duration-200"
+                className="inline-flex items-center gap-2 self-start bg-dev text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-ink transition-colors duration-200"
               >
                 開発部門を見る →
               </Link>
             </div>
 
             <div className="p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-red-800/60 mb-6">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-theory mb-6">
                 Theory
               </p>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
@@ -117,7 +117,7 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/theory"
-                className="inline-flex items-center gap-2 self-start bg-black text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-red-800 transition-colors duration-200"
+                className="inline-flex items-center gap-2 self-start bg-theory text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-ink transition-colors duration-200"
               >
                 理論部門を見る →
               </Link>
@@ -131,7 +131,7 @@ export default function AboutPage() {
       {/* Section 2: 3つの信条 */}
       <section>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-40">
-          <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
+          <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
             How we learn
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-20">
@@ -165,10 +165,10 @@ export default function AboutPage() {
       <SectionDivider />
 
       {/* Section 3: メンバー */}
-      <section className="py-24 md:py-40 bg-gray-50">
+      <section className="section-y-lg bg-muted">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
               Members
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-12">
@@ -184,7 +184,7 @@ export default function AboutPage() {
       <SectionDivider />
 
       {/* Section 4: 黒背景メッセージ */}
-      <section className="py-32 md:py-48 lg:py-64 bg-black text-white">
+      <section className="on-dark py-32 md:py-48 lg:py-64 bg-ink text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl">
             求められる学びじゃなく、<br />

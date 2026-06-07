@@ -115,7 +115,7 @@ export default function FAQClient() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-60 mb-6">FAQ</p>
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">FAQ</p>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter">
             よくあるご質問
           </h1>
@@ -127,22 +127,23 @@ export default function FAQClient() {
       {/* FAQ Accordion */}
       <section className="py-12 md:py-24">
         <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="border-t border-black">
+          <div className="border-t border-ink">
             {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-black">
+              <div key={index} className="border-b border-ink">
                 <button
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
                   }
-                  className="w-full flex items-start justify-between gap-6 py-6 md:py-8 text-left hover:text-black/70 transition-colors"
+                  aria-expanded={openIndex === index}
+                  className="w-full flex items-start justify-between gap-6 py-6 md:py-8 text-left transition-colors group"
                 >
-                  <span className="text-lg md:text-xl font-bold tracking-tight">
+                  <span className={`text-lg md:text-xl font-bold tracking-tight transition-colors group-hover:text-accent ${openIndex === index ? "text-accent" : ""}`}>
                     Q. {faq.question}
                   </span>
                   <ChevronDown
                     size={24}
                     strokeWidth={1.5}
-                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-accent" : "text-ink/50"
                       }`}
                   />
                 </button>
@@ -151,7 +152,7 @@ export default function FAQClient() {
                   className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96 pb-8" : "max-h-0"
                     }`}
                 >
-                  <div className="text-base md:text-lg leading-relaxed font-medium text-black/80 pl-6 md:pl-8 border-l-2 border-black/20">
+                  <div className="text-base md:text-lg leading-relaxed font-medium text-ink/80 pl-6 md:pl-8 border-l-2 border-accent/40">
                     {faq.answer}
                   </div>
                 </div>
@@ -164,7 +165,7 @@ export default function FAQClient() {
       <SectionDivider />
 
       {/* Contact Section */}
-      <section className="py-20 md:py-32 bg-black text-white">
+      <section className="on-dark py-20 md:py-32 bg-ink text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
             その他のご質問
@@ -176,7 +177,7 @@ export default function FAQClient() {
             href="https://discord.gg/Brg6GxJnBW"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-white text-black px-12 py-5 text-sm font-bold tracking-widest uppercase border border-white hover:bg-black hover:text-white transition-colors duration-200"
+            className="inline-block bg-white text-ink px-12 py-5 text-sm font-bold tracking-widest uppercase border border-white hover:bg-accent hover:text-white hover:border-accent transition-colors duration-200"
           >
             Join our Discord
           </a>

@@ -32,7 +32,7 @@ export default function JoinPage() {
       {/* Hero Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase opacity-60 mb-6">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
             Join the Community
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
@@ -72,8 +72,8 @@ export default function JoinPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 divide-x-0 lg:divide-x divide-black">
 
           {/* Left: Recommended For */}
-          <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-black bg-gray-50/50">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6">
+          <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 border-ink bg-muted/60">
+            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-6">
               Recommended for
             </p>
             <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-16">
@@ -82,7 +82,7 @@ export default function JoinPage() {
             <ul className="space-y-6">
               {recommendedFor.map((item, index) => (
                 <li key={index} className="flex items-center gap-5 group">
-                  <div className="w-1.5 h-1.5 bg-black rounded-full shrink-0 group-hover:scale-150 transition-transform duration-300" />
+                  <div className="w-1.5 h-1.5 bg-accent rounded-full shrink-0 group-hover:scale-150 transition-transform duration-300" />
                   <span className="text-lg md:text-xl font-bold tracking-tight text-black/80">{item}</span>
                 </li>
               ))}
@@ -90,7 +90,7 @@ export default function JoinPage() {
           </div>
 
           {/* Right: How to Join (Discord) */}
-          <div className="p-8 md:p-12 lg:p-16 bg-black text-white">
+          <div className="on-dark p-8 md:p-12 lg:p-16 bg-ink text-white">
             <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
               How to Join
             </p>
@@ -117,7 +117,7 @@ export default function JoinPage() {
                 href="https://discord.gg/Brg6GxJnBW"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-between gap-12 bg-white text-black px-8 py-5 text-sm font-black tracking-widest uppercase hover:bg-black hover:text-white border-2 border-white transition-all duration-300 group overflow-hidden relative"
+                className="inline-flex items-center justify-between gap-12 bg-white text-ink px-8 py-5 text-sm font-black tracking-widest uppercase hover:bg-accent hover:text-white border-2 border-white hover:border-accent transition-all duration-300 group overflow-hidden relative"
               >
                 <span className="relative z-10 flex items-center gap-4">
                   Discordに参加
@@ -132,9 +132,9 @@ export default function JoinPage() {
       <SectionDivider />
 
       {/* Member Types Section */}
-      <section className="py-24 md:py-40 bg-gray-50">
+      <section className="section-y-lg bg-muted">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-4">
+          <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
             Community Structure
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 leading-tight">
@@ -146,7 +146,7 @@ export default function JoinPage() {
 
           <div className="grid md:grid-cols-2 gap-0 border border-black">
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-black bg-white">
-              <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-6">
+              <p className="text-xs font-bold tracking-widest uppercase text-accent mb-6">
                 Style 01
               </p>
               <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6">
@@ -170,7 +170,7 @@ export default function JoinPage() {
               </ul>
             </div>
 
-            <div className="p-8 md:p-12 bg-black text-white">
+            <div className="on-dark p-8 md:p-12 bg-ink text-white">
               <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-6">
                 Style 02
               </p>

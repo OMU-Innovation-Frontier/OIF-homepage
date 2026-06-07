@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply bg-white text-black antialiased;
+    @apply bg-paper text-ink antialiased;
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
@@ -25,13 +25,20 @@
     @apply font-bold tracking-tight;
   }
 
-  /* Remove default focus styles, add sharp border instead */
+  /* Focus: invisible by default, sharp ring when keyboard-navigating.
+     Adapts to dark surfaces so the ring never disappears on ink. */
   *:focus {
     outline: none;
   }
 
   *:focus-visible {
-    @apply ring-2 ring-black ring-offset-2;
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-paper;
+  }
+
+  /* On dark (ink) surfaces, use a light ring with a dark offset. */
+  .on-dark *:focus-visible,
+  *:focus-visible.on-dark {
+    @apply ring-white ring-offset-ink;
   }
 
   /* Ensure all buttons and inputs are sharp */
@@ -41,33 +48,52 @@
   select {
     border-radius: 0 !important;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
-  /* Sharp underline hover effect for links */
-  .link-underline {
-    @apply relative;
-  }
-
-  .link-underline::after {
-    content: "";
-    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-black transition-all duration-300;
-  }
-
-  .link-underline:hover::after {
-    @apply w-full;
-  }
-
-  /* Section spacing for extreme whitespace */
-  .section-spacing {
-    @apply py-24 md:py-32 lg:py-40;
-  }
-
   /* Container with generous padding */
   .container-wide {
     @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-20;
   }
 
+  /* Section vertical rhythm — one scale, three sizes */
+  .section-y {
+    @apply py-20 md:py-28;
+  }
+  .section-y-lg {
+    @apply py-24 md:py-36 lg:py-44;
+  }
+  .section-y-sm {
+    @apply py-14 md:py-20;
+  }
+
+  /* Eyebrow / section label */
+  .eyebrow {
+    @apply text-xs font-bold tracking-[0.25em] uppercase;
+  }
+
+  /* Sharp underline hover effect for links */
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-300 ease-smooth;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
 }
 
 @layer utilities {
@@ -78,6 +104,6 @@
 
   /* Selection color */
   ::selection {
-    @apply bg-black text-white;
+    @apply bg-accent text-white;
   }
 }

@@ -16,6 +16,9 @@ export default function NewsPage() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
+            Updates
+          </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
             News
           </h1>
@@ -46,7 +49,7 @@ export default function NewsPage() {
                 </span>
 
                 {item.isNew && (
-                  <span className="text-xs font-bold tracking-widest bg-black text-white px-3 py-1 w-fit">
+                  <span className="text-xs font-bold tracking-widest bg-accent text-white px-3 py-1 w-fit">
                     NEW
                   </span>
                 )}

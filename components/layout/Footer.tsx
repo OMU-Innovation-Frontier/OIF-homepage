@@ -50,7 +50,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm font-bold tracking-tight hover:opacity-50 transition-opacity duration-200"
+                    className="text-sm font-bold tracking-tight text-ink/80 hover:text-accent transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -71,10 +71,10 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-black/5 pb-2 hover:border-black transition-colors duration-300"
+                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-ink/10 pb-2 hover:border-accent hover:text-accent transition-colors duration-300"
                 >
                   {link.label}
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-smooth">→</span>
                 </a>
               ))}
             </div>

@@ -9,12 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Strict monochrome only
-        black: "#000000",
+        // Warm near-black "ink" replaces pure black globally for a softer,
+        // more premium feel. `black` is intentionally remapped so the entire
+        // site (text / borders / dark sections / buttons) warms up at once.
+        // `ink` is the semantic alias to prefer in new code.
+        black: "#0B0C0E",
+        ink: "#0B0C0E",
         white: "#ffffff",
+
+        // Warm neutral foundation
+        paper: "#FAFAF8", // base page background
+        muted: "#F2F0EA", // subtle section blocks (replaces cool gray-50)
+        line: "#E7E4DD", // hairline borders (warm, low-emphasis)
+
+        // Brand signature accent (used for primary actions & highlights)
+        accent: {
+          DEFAULT: "#4F46E5", // indigo-600
+          bright: "#A5B4FC", // for dark backgrounds
+          tint: "#EEF0FF",
+        },
+
+        // Division accents — single source of truth per division
+        dev: {
+          DEFAULT: "#2563EB", // blue-600
+          dark: "#1E3A8A", // blue-900
+          bright: "#60A5FA", // for dark backgrounds
+          tint: "#EEF3FF",
+        },
+        theory: {
+          DEFAULT: "#C0271C",
+          dark: "#991B1B", // red-800
+          bright: "#F87171", // for dark backgrounds
+          tint: "#FCF1F0",
+        },
       },
       fontFamily: {
         sans: [
+          "var(--font-inter)",
           "Inter",
           "system-ui",
           "-apple-system",
@@ -24,7 +55,7 @@ const config: Config = {
           "sans-serif",
         ],
       },
-      // Remove ALL rounded corners globally
+      // Sharp corners are part of the brand identity — keep radius at 0.
       borderRadius: {
         none: "0",
         sm: "0",
@@ -36,6 +67,12 @@ const config: Config = {
         "3xl": "0",
         full: "0",
       },
+      boxShadow: {
+        // Subtle elevation that adds depth without softening the corners.
+        card: "0 1px 2px rgba(11,12,14,0.04), 0 12px 32px -16px rgba(11,12,14,0.18)",
+        "card-hover":
+          "0 2px 4px rgba(11,12,14,0.06), 0 20px 48px -20px rgba(11,12,14,0.28)",
+      },
       spacing: {
         // Extended spacing for extreme whitespace
         "18": "4.5rem",
@@ -45,6 +82,18 @@ const config: Config = {
         "34": "8.5rem",
         "38": "9.5rem",
         "42": "10.5rem",
+      },
+      transitionTimingFunction: {
+        smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
+      keyframes: {
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
       },
     },
   },
