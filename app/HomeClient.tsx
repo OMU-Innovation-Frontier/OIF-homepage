@@ -9,13 +9,6 @@ import Reveal from "@/components/ui/Reveal";
 import Typewriter from "@/components/ui/Typewriter";
 import Magnetic from "@/components/ui/Magnetic";
 
-const stats = [
-  { k: "EST.", v: "2026" },
-  { k: "DIVISIONS", v: "02" },
-  { k: "PRODUCTS", v: "NOEMA · samurAI" },
-  { k: "CONTEST", v: "O-BUCs Finalist" },
-];
-
 const ticker = [
   "LLM", "MACHINE LEARNING", "DEEP LEARNING", "WEB DEV", "PAPERS",
   "TRANSFORMER", "PROTOTYPING", "KAGGLE", "GENERATIVE AI", "RESEARCH",
@@ -157,20 +150,6 @@ export default function HomeClient() {
           <Reveal delay={120}>
             <DivisionSplit />
           </Reveal>
-        </div>
-      </section>
-
-      {/* ============ STATS ============ */}
-      <section className="border-y border-white/10 bg-night-2">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/10">
-            {stats.map((s) => (
-              <div key={s.k} className="group px-6 py-10 md:py-14 transition-colors hover:bg-white/[0.02]">
-                <p className="font-mono text-[11px] tracking-[0.25em] text-white/60 mb-3">{s.k}</p>
-                <p className="text-xl md:text-2xl font-bold tracking-tight transition-colors group-hover:text-accent-bright">{s.v}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
