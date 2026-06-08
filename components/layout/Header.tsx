@@ -10,6 +10,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Activities", href: "/activities/" },
+  { label: "Projects", href: "/projects/" },
   { label: "Blog", href: "/blog/" },
   { label: "Join", href: "/join/" },
   { label: "FAQ", href: "/faq/" },
@@ -60,7 +61,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="メインナビゲーション">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="メインナビゲーション">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -78,7 +79,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 -mr-2"
+          className="lg:hidden p-2 -mr-2"
           aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
@@ -93,7 +94,7 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div id="mobile-menu" className="md:hidden fixed inset-0 top-14 bg-night text-white z-40 border-t border-white/10">
+        <div id="mobile-menu" className="lg:hidden fixed inset-0 top-14 bg-night text-white z-40 border-t border-white/10">
           <nav className="container-wide flex flex-col pt-6" aria-label="モバイルナビゲーション">
             {navItems.map((item) => (
               <Link
