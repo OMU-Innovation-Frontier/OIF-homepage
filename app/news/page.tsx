@@ -41,7 +41,7 @@ export default function NewsPage() {
                 className="group flex flex-col md:flex-row md:items-center gap-3 md:gap-10 py-7 border-b border-white/10 hover:bg-white/[0.02] transition-colors"
               >
                 {item.date ? (
-                  <time className="font-mono text-sm tracking-widest text-white/40 w-28 shrink-0">
+                  <time className="font-mono text-sm tracking-widest text-white/60 w-28 shrink-0">
                     {item.date}
                   </time>
                 ) : (

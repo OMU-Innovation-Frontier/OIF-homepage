@@ -156,11 +156,9 @@
 /* Page-transition entrance (re-mounted by app/template.tsx) */
 @keyframes page-fade {
   from {
-    opacity: 0;
     transform: translateY(10px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
@@ -176,11 +174,9 @@
 /* Scroll-reveal (CSS scroll-driven; graceful + no-JS safe) */
 @keyframes reveal-rise {
   from {
-    opacity: 0;
-    transform: translateY(26px);
+    transform: translateY(28px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }

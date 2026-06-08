@@ -76,7 +76,7 @@ export default function JoinPage() {
               活動を見る
             </Link>
           </div>
-          <p className="mt-6 font-mono text-xs text-white/40">
+          <p className="mt-6 font-mono text-xs text-white/60">
             無料 · 経験不問 · 初心者歓迎
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function JoinPage() {
                 <div className="h-full border border-white/10 bg-night-2 p-8 md:p-10 hover:border-accent-bright/40 transition-colors">
                   <div className="flex items-center justify-between mb-8">
                     <Icon size={26} strokeWidth={1.5} className="text-accent-bright" />
-                    <span className="font-mono text-sm text-white/30">{s.n}</span>
+                    <span className="font-mono text-sm text-white/52">{s.n}</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{s.title}</h3>
                   <p className="text-sm md:text-base leading-relaxed text-white/60">{s.body}</p>
@@ -147,7 +147,7 @@ export default function JoinPage() {
             </div>
             <Link
               href="/faq/"
-              className="hidden md:inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors shrink-0"
+              className="hidden md:inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors shrink-0"
             >
               すべてのFAQ →
             </Link>
@@ -162,7 +162,7 @@ export default function JoinPage() {
           </div>
           <Link
             href="/faq/"
-            className="md:hidden mt-8 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors"
+            className="md:hidden mt-8 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors"
           >
             すべてのFAQ →
           </Link>

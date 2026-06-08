@@ -112,7 +112,7 @@ export default function AboutPage() {
                     <span className="text-3xl font-black tracking-tighter text-accent-bright">{a.l}</span>
                     <span className="font-mono text-sm tracking-wide text-white/80">{a.w}</span>
                   </div>
-                  <p className="mt-2 text-xs text-white/40">{a.s}</p>
+                  <p className="mt-2 text-xs text-white/60">{a.s}</p>
                 </div>
               ))}
             </div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
                 key={i}
                 className="grid md:grid-cols-2 gap-3 md:gap-12 py-7 border-b border-white/10 items-center"
               >
-                <p className="flex items-center gap-3 text-base md:text-lg text-white/35">
+                <p className="flex items-center gap-3 text-base md:text-lg text-white/55">
                   <span className="font-mono text-white/25">✗</span>
                   <span className="line-through decoration-white/20">{c.no}</span>
                 </p>

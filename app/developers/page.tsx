@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 const boot: TermLine[] = [
   { p: "$", t: "oif-dev init" },
-  { t: "→ scanning latest AI…", c: "text-white/45" },
-  { t: "→ found: LLMs · agents · tools", c: "text-white/45" },
+  { t: "→ scanning latest AI…", c: "text-white/60" },
+  { t: "→ found: LLMs · agents · tools", c: "text-white/60" },
   { p: "$", t: "build --fast --with-genai" },
   { t: "✓ prototype ready", c: "text-emerald-400" },
   { p: "$", t: "ship it 🚀", c: "text-dev-bright" },
@@ -145,7 +145,7 @@ export default function DevelopersPage() {
                   <span className="flex-1 text-white/75 group-hover:text-white transition-colors truncate">
                     {c.m}
                   </span>
-                  <span className="text-white/30 shrink-0 text-xs">{c.t}</span>
+                  <span className="text-white/52 shrink-0 text-xs">{c.t}</span>
                 </div>
               ))}
             </Reveal>

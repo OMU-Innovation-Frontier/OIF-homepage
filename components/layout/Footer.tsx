@@ -30,7 +30,7 @@ export default function Footer() {
             <p className="text-xl font-bold tracking-tighter leading-tight mb-4">
               OMU Innovation Frontier
             </p>
-            <p className="font-mono text-xs leading-relaxed text-white/45 max-w-xs">
+            <p className="font-mono text-xs leading-relaxed text-white/60 max-w-xs">
               大阪公立大学の学生による<br />AI・テクノロジー探究コミュニティ
             </p>
           </div>
@@ -77,10 +77,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-24 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between gap-6 items-center">
-          <p className="font-mono text-[10px] md:text-xs text-white/40 tracking-widest uppercase">
+          <p className="font-mono text-[10px] md:text-xs text-white/65 tracking-widest uppercase">
             © 2026 OMU Innovation Frontier. All rights reserved.
           </p>
-          <p className="font-mono text-[10px] md:text-xs text-white/30 uppercase tracking-widest">
+          <p className="font-mono text-[10px] md:text-xs text-white/60 uppercase tracking-widest">
             Crafting the Future with AI
           </p>
         </div>

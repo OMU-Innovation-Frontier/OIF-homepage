@@ -51,7 +51,7 @@ export default function Terminal({ lines, title = "oif@frontier: ~", className =
         <span className="h-2.5 w-2.5 bg-theory-bright/80" />
         <span className="h-2.5 w-2.5 bg-amber-400/80" />
         <span className="h-2.5 w-2.5 bg-emerald-400/80" />
-        <span className="ml-3 text-[11px] tracking-widest text-white/40">{title}</span>
+        <span className="ml-3 text-[11px] tracking-widest text-white/60">{title}</span>
       </div>
       <div className="p-5 space-y-1.5 min-h-[12rem]">
         {lines.map((l, idx) => {
@@ -69,7 +69,7 @@ export default function Terminal({ lines, title = "oif@frontier: ~", className =
           );
         })}
         {done && (
-          <div className="text-white/40">
+          <div className="text-white/60">
             <span className="text-accent-bright">$</span>{" "}
             <span className="animate-blink">▋</span>
           </div>

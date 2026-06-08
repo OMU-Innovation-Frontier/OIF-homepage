@@ -59,12 +59,12 @@ export default async function BlogPostPage({
       <article className="max-w-3xl mx-auto px-6 md:px-12 lg:px-8 py-20 md:py-28">
         <Link
           href="/blog/"
-          className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors mb-12"
+          className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors mb-12"
         >
           ← back to blog
         </Link>
 
-        <div className="flex flex-wrap items-center gap-4 font-mono text-xs tracking-widest text-white/40 mb-6">
+        <div className="flex flex-wrap items-center gap-4 font-mono text-xs tracking-widest text-white/60 mb-6">
           <time>{formatDate(frontmatter.date)}</time>
           {frontmatter.author && (
             <>
@@ -78,7 +78,7 @@ export default async function BlogPostPage({
           {frontmatter.title}
         </h1>
 
-        <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-white/45 mb-12 pb-12 border-b border-white/10">
+        <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-white/60 mb-12 pb-12 border-b border-white/10">
           {frontmatter.tags?.map((t) => (
             <span key={t} className="border border-white/15 px-2.5 py-1">{t}</span>
           ))}

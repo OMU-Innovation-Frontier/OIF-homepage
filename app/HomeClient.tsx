@@ -52,9 +52,9 @@ export default function HomeClient() {
 
               <Parallax speed={0.12}>
                 <h1 className="text-[3.4rem] sm:text-[4.5rem] xl:text-[6.5rem] font-black leading-[0.88] tracking-tighter mb-8">
-                  <span className="block animate-fade-up [animation-delay:140ms]">OMU</span>
-                  <span className="block animate-fade-up [animation-delay:230ms]">Innovation</span>
-                  <span className="block accent-gradient-text animate-fade-up [animation-delay:320ms]">Frontier</span>
+                  <span className="block animate-[reveal-rise_0.7s_cubic-bezier(0.22,1,0.36,1)_both] [animation-delay:60ms]">OMU</span>
+                  <span className="block animate-[reveal-rise_0.7s_cubic-bezier(0.22,1,0.36,1)_both] [animation-delay:140ms]">Innovation</span>
+                  <span className="block accent-gradient-text animate-[reveal-rise_0.7s_cubic-bezier(0.22,1,0.36,1)_both] [animation-delay:220ms]">Frontier</span>
                 </h1>
               </Parallax>
 
@@ -91,12 +91,12 @@ export default function HomeClient() {
                   <span className="h-2.5 w-2.5 bg-theory-bright/80" />
                   <span className="h-2.5 w-2.5 bg-amber-400/80" />
                   <span className="h-2.5 w-2.5 bg-emerald-400/80" />
-                  <span className="ml-3 font-mono text-[11px] tracking-widest text-white/40">
+                  <span className="ml-3 font-mono text-[11px] tracking-widest text-white/60">
                     oif — status
                   </span>
                 </div>
                 <div className="p-6 font-mono text-[13px] leading-relaxed">
-                  <p className="text-white/40 mb-4">
+                  <p className="text-white/60 mb-4">
                     <span className="text-accent-bright">~/oif</span> ${" "}
                     <Typewriter
                       className="text-white/80"
@@ -111,12 +111,12 @@ export default function HomeClient() {
                     ["barrier", "none — 経験不問"],
                   ].map(([k, v]) => (
                     <div key={k} className="flex gap-3 py-1.5 border-b border-white/5 last:border-0">
-                      <span className="w-24 shrink-0 text-white/40">{k}</span>
+                      <span className="w-24 shrink-0 text-white/60">{k}</span>
                       <span className="text-white/85">{v}</span>
                     </div>
                   ))}
-                  <p className="mt-4 text-white/40">
-                    <span className="text-accent-bright">~/oif</span> $ <span className="text-white/30">_</span>
+                  <p className="mt-4 text-white/60">
+                    <span className="text-accent-bright">~/oif</span> $ <span className="text-white/52">_</span>
                   </p>
                 </div>
               </div>
@@ -125,9 +125,9 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ============ TICKER ============ */}
-      <div className="border-y border-white/10 overflow-hidden py-4 bg-night">
-        <div className="flex w-max animate-marquee gap-12 font-mono text-sm tracking-widest text-white/30">
+      {/* ============ TICKER (decorative) ============ */}
+      <div aria-hidden className="border-y border-white/10 overflow-hidden py-4 bg-night">
+        <div className="flex w-max animate-marquee gap-12 font-mono text-sm tracking-widest text-white/55">
           {[...ticker, ...ticker].map((t, i) => (
             <span key={i} className="flex items-center gap-12">
               {t}
@@ -149,7 +149,7 @@ export default function HomeClient() {
                 進む道を、選ぶ
               </h2>
             </div>
-            <p className="font-mono text-xs text-white/35 md:pb-2">
+            <p className="font-mono text-xs text-white/55 md:pb-2">
               hover to explore — 2 divisions, 1 community
             </p>
           </Reveal>
@@ -166,7 +166,7 @@ export default function HomeClient() {
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/10">
             {stats.map((s) => (
               <div key={s.k} className="group px-6 py-10 md:py-14 transition-colors hover:bg-white/[0.02]">
-                <p className="font-mono text-[11px] tracking-[0.25em] text-white/40 mb-3">{s.k}</p>
+                <p className="font-mono text-[11px] tracking-[0.25em] text-white/60 mb-3">{s.k}</p>
                 <p className="text-xl md:text-2xl font-bold tracking-tight transition-colors group-hover:text-accent-bright">{s.v}</p>
               </div>
             ))}
@@ -181,14 +181,14 @@ export default function HomeClient() {
             <div className="shrink-0">
               <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// LOG</p>
               <h2 className="text-2xl md:text-3xl font-black tracking-tighter">Latest Updates</h2>
-              <Link href="/news/" className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors">
+              <Link href="/news/" className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors">
                 view all →
               </Link>
             </div>
             <div className="flex-1 border-t border-white/10">
               {newsItems.map((item, i) => (
                 <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 border-b border-white/10 group">
-                  <time className="font-mono text-xs tracking-widest text-white/40 w-28 shrink-0">
+                  <time className="font-mono text-xs tracking-widest text-white/60 w-28 shrink-0">
                     {item.date || "——.——.——"}
                   </time>
                   <span className="text-base md:text-lg font-bold tracking-tight group-hover:text-accent-bright transition-colors">
@@ -216,7 +216,7 @@ export default function HomeClient() {
               <p className="mt-3 text-xl md:text-2xl font-bold tracking-tight">takeforest株式会社</p>
               <p className="mt-1 text-sm text-white/55">AIを活用した新しい学習体験を</p>
             </div>
-            <span className="text-2xl text-white/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300">→</span>
+            <span className="text-2xl text-white/52 group-hover:text-white group-hover:translate-x-1 transition-all duration-300">→</span>
           </a>
         </div>
       </section>

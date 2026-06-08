@@ -21,7 +21,7 @@ const concepts = [
 ];
 
 const journey = [
-  { label: "なんとなく\n知っている", tone: "text-white/40" },
+  { label: "なんとなく\n知っている", tone: "text-white/60" },
   { label: "仕組みを\n理解する", tone: "text-white/70" },
   { label: "説明\nできる", tone: "text-theory-bright" },
 ];
@@ -68,7 +68,7 @@ export default function TheoryPage() {
             {/* Formula card */}
             <div className="lg:col-span-6 animate-fade-up [animation-delay:140ms]">
               <div className="border border-white/12 bg-night-2/80 backdrop-blur-sm shadow-card p-8 md:p-10 font-mono">
-                <p className="text-[11px] tracking-widest text-white/40 mb-8">
+                <p className="text-[11px] tracking-widest text-white/60 mb-8">
                   // scaled dot-product attention
                 </p>
                 <div className="text-xl md:text-2xl leading-[1.8] text-white/85">
@@ -126,14 +126,14 @@ export default function TheoryPage() {
                 key={c.n}
                 className="group flex items-center gap-5 md:gap-10 py-6 md:py-7 border-b border-white/10 hover:bg-white/[0.02] transition-colors"
               >
-                <span className="font-mono text-sm text-white/30 group-hover:text-theory-bright transition-colors shrink-0 w-8">
+                <span className="font-mono text-sm text-white/52 group-hover:text-theory-bright transition-colors shrink-0 w-8">
                   {c.n}
                 </span>
                 <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:gap-5">
                   <h3 className="text-2xl md:text-4xl font-black tracking-tighter group-hover:text-theory-bright transition-colors">
                     {c.ja}
                   </h3>
-                  <span className="font-mono text-[11px] tracking-[0.3em] text-white/35">{c.en}</span>
+                  <span className="font-mono text-[11px] tracking-[0.3em] text-white/55">{c.en}</span>
                 </div>
                 <p className="hidden md:block text-sm text-white/50 text-right max-w-xs md:opacity-40 md:group-hover:opacity-100 md:translate-x-2 md:group-hover:translate-x-0 transition-all duration-300">
                   {c.d}
@@ -156,7 +156,7 @@ export default function TheoryPage() {
             <div className="grid grid-cols-3 gap-4">
               {journey.map((j, i) => (
                 <div key={i} className="text-center">
-                  <span className="font-mono text-xs text-white/30">{`0${i + 1}`}</span>
+                  <span className="font-mono text-xs text-white/52">{`0${i + 1}`}</span>
                   <p className={`mt-4 text-xl md:text-3xl font-black tracking-tighter whitespace-pre-line leading-tight ${j.tone}`}>
                     {j.label}
                   </p>

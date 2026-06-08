@@ -319,7 +319,7 @@ export default function ActivitiesPage() {
             </h2>
             <Link
               href="/projects/"
-              className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors"
+              className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors"
             >
               事例（課題→技術→成果）を見る →
             </Link>

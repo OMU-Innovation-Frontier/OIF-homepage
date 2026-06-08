@@ -58,7 +58,7 @@ export default async function ProjectPage({
         <div className="relative max-w-5xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Link
             href="/projects/"
-            className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/45 hover:text-accent-bright transition-colors mb-12"
+            className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors mb-12"
           >
             ← back to projects
           </Link>
