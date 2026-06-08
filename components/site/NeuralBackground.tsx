@@ -7,8 +7,23 @@ import { useEffect, useRef } from "react";
  * fading lines. Capped node count, pauses when hidden, static under
  * reduced-motion. Meant to sit behind hero content.
  */
-export default function NeuralBackground({ className = "" }: { className?: string }) {
+type Accent = "accent" | "dev" | "theory";
+
+const palette: Record<Accent, { line: string; node: string }> = {
+  accent: { line: "129,140,248", node: "165,180,252" }, // indigo
+  dev: { line: "96,165,250", node: "147,197,253" }, // blue
+  theory: { line: "248,113,113", node: "252,165,165" }, // red
+};
+
+export default function NeuralBackground({
+  className = "",
+  accent = "accent",
+}: {
+  className?: string;
+  accent?: Accent;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const colors = palette[accent];
 
   useEffect(() => {
     const canvas = ref.current;
@@ -63,7 +78,7 @@ export default function NeuralBackground({ className = "" }: { className?: strin
           const dy = (a.y - b.y) * h;
           const d = Math.hypot(dx, dy);
           if (d < maxDist) {
-            ctx.strokeStyle = `rgba(129,140,248,${(1 - d / maxDist) * 0.16})`;
+            ctx.strokeStyle = `rgba(${colors.line},${(1 - d / maxDist) * 0.16})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x * w, a.y * h);
@@ -73,7 +88,7 @@ export default function NeuralBackground({ className = "" }: { className?: strin
         }
       }
       for (const n of nodes) {
-        ctx.fillStyle = "rgba(165,180,252,0.45)";
+        ctx.fillStyle = `rgba(${colors.node},0.45)`;
         ctx.beginPath();
         ctx.arc(n.x * w, n.y * h, 1.5, 0, Math.PI * 2);
         ctx.fill();

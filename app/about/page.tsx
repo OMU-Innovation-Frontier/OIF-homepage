@@ -97,7 +97,7 @@ export default function AboutPage() {
               私たちは、AIを{" "}
               <Typewriter
                 className="text-white/90"
-                words={["理解する。", "創る。", "問いを立てる。", "形にする。"]}
+                words={["理解する。", "創る。", "形にする。"]}
               />
             </p>
 

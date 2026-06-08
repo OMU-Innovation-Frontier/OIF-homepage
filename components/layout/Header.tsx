@@ -48,14 +48,15 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center"
+          className="group flex items-center"
+          aria-label="OIF ホーム"
         >
           <Image
             src="/logo.png"
             alt="OIF Logo"
             width={120}
             height={120}
-            className="h-10 w-auto md:h-12 invert"
+            className="h-10 w-auto md:h-12 invert transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]"
             priority
           />
         </Link>

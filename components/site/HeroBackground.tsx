@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import NeuralBackground from "@/components/site/NeuralBackground";
 
 interface HeroBackgroundProps {
   /** color of the secondary glow: "dev" (blue) | "theory" (red) | "accent" */
   accent?: "dev" | "theory" | "accent";
+  /** render the animated neural-net layer (default true) */
+  neural?: boolean;
   className?: string;
 }
 
@@ -18,7 +21,7 @@ const glow2: Record<string, string> = {
  * Animated, mouse-parallax hero backdrop: drifting gradient glows over a
  * panning dot grid. Parallax + animations disabled for touch / reduced-motion.
  */
-export default function HeroBackground({ accent = "dev", className = "" }: HeroBackgroundProps) {
+export default function HeroBackground({ accent = "dev", neural = true, className = "" }: HeroBackgroundProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -55,6 +58,7 @@ export default function HeroBackground({ accent = "dev", className = "" }: HeroB
         <div className="absolute -top-40 -left-32 h-[40rem] w-[40rem] rounded-full bg-accent/20 blur-[120px] animate-drift-slow" />
         <div className={`absolute top-1/3 -right-40 h-[34rem] w-[34rem] rounded-full ${glow2[accent]} blur-[120px] animate-drift-slower`} />
       </div>
+      {neural && <NeuralBackground accent={accent} className="opacity-60" />}
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default function HomeClient() {
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center">
         {/* animated, parallax background */}
-        <HeroBackground accent="dev" />
+        <HeroBackground accent="dev" neural={false} />
         <NeuralBackground className="opacity-70" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
 
