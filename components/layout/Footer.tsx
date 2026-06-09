@@ -18,7 +18,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="on-dark border-t border-white/10 bg-night text-white">
+    <footer className="border-t border-ink/10 bg-paper text-ink">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
           {/* Brand */}
@@ -29,7 +29,7 @@ export default function Footer() {
             <p className="text-xl font-bold tracking-tighter leading-tight mb-4">
               OMU Innovation Frontier
             </p>
-            <p className="font-mono text-xs leading-relaxed text-white/60 max-w-xs">
+            <p className="font-mono text-xs leading-relaxed text-ink/60 max-w-xs">
               大阪公立大学の学生による<br />AI・テクノロジー探究コミュニティ
             </p>
           </div>
@@ -44,7 +44,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm font-bold tracking-tight text-white/75 hover:text-accent-bright transition-colors duration-200"
+                    className="text-sm font-bold tracking-tight text-ink/75 hover:text-accent-bright transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -65,7 +65,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-white/10 pb-2 hover:border-accent-bright hover:text-accent-bright transition-colors duration-300"
+                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-ink/10 pb-2 hover:border-accent-bright hover:text-accent-bright transition-colors duration-300"
                 >
                   {link.label}
                   <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-smooth">→</span>
@@ -75,11 +75,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-24 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between gap-6 items-center">
-          <p className="font-mono text-[10px] md:text-xs text-white/65 tracking-widest uppercase">
+        <div className="mt-24 pt-10 border-t border-ink/10 flex flex-col md:flex-row justify-between gap-6 items-center">
+          <p className="font-mono text-[10px] md:text-xs text-ink/65 tracking-widest uppercase">
             © 2026 OMU Innovation Frontier. All rights reserved.
           </p>
-          <p className="font-mono text-[10px] md:text-xs text-white/60 uppercase tracking-widest">
+          <p className="font-mono text-[10px] md:text-xs text-ink/60 uppercase tracking-widest">
             Crafting the Future with AI
           </p>
         </div>

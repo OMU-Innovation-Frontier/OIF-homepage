@@ -9,47 +9,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm near-black "ink" replaces pure black globally for a softer,
-        // more premium feel. `black` is intentionally remapped so the entire
-        // site (text / borders / dark sections / buttons) warms up at once.
-        // `ink` is the semantic alias to prefer in new code.
+        // Light monochrome foundation (main-aligned). The whole site is
+        // black-on-white with no chromatic accents. `ink` is the semantic
+        // alias for the near-black text/element color; `black` stays warm.
         black: "#0B0C0E",
         white: "#ffffff",
 
-        // Dark "Frontier OS" foundation (v2 — site-wide dark theme).
-        // `ink` is the primary text/element color (now light), `paper` is the
-        // dark page base, `muted` a slightly raised dark surface.
-        ink: "#E8E9EC",
-        paper: "#0A0B0E", // base page background (dark)
-        muted: "#101218", // subtle section blocks (raised dark surface)
-        line: "#23272F", // hairline borders on dark
+        // Light foundation: `paper` is the white page base, `ink` the
+        // near-black text/element color, `muted` a subtle light surface.
+        ink: "#0B0C0E", // primary text / elements (near-black)
+        paper: "#FFFFFF", // base page background (white)
+        muted: "#F4F5F7", // subtle section blocks (raised light surface)
+        line: "#E5E7EB", // hairline borders on light
 
-        // Brand signature accent (used for primary actions & highlights)
+        // Brand accent — unified to monochrome (no color). Kept as a token so
+        // the ~180 existing usages recolor in one place. `bright` is the
+        // emphasis variant readable on light surfaces (mid-dark grey).
         accent: {
-          DEFAULT: "#4F46E5", // indigo-600
-          bright: "#A5B4FC", // for dark backgrounds
-          tint: "#EEF0FF",
+          DEFAULT: "#0B0C0E",
+          bright: "#3F3F46",
+          tint: "#F4F5F7",
         },
 
-        // Division accents — single source of truth per division
+        // Division accents — intentionally unified (no per-division color).
         dev: {
-          DEFAULT: "#2563EB", // blue-600
-          dark: "#1E3A8A", // blue-900
-          bright: "#60A5FA", // for dark backgrounds
-          tint: "#EEF3FF",
+          DEFAULT: "#0B0C0E",
+          dark: "#000000",
+          bright: "#3F3F46",
+          tint: "#F4F5F7",
         },
         theory: {
-          DEFAULT: "#C0271C",
-          dark: "#991B1B", // red-800
-          bright: "#F87171", // for dark backgrounds
-          tint: "#FCF1F0",
+          DEFAULT: "#0B0C0E",
+          dark: "#000000",
+          bright: "#3F3F46",
+          tint: "#F4F5F7",
         },
 
-        // "Frontier OS" dark surfaces (v2 exploration)
+        // "night" surfaces flipped to light so `bg-night-*` reads on white.
         night: {
-          DEFAULT: "#0A0B0E",
-          2: "#101218",
-          3: "#171A22",
+          DEFAULT: "#FFFFFF",
+          2: "#F4F5F7",
+          3: "#ECEDEF",
         },
       },
       fontFamily: {

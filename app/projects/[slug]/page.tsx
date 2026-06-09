@@ -33,7 +33,7 @@ export async function generateMetadata({
 
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <section className="border-t border-white/10 py-12 md:py-16">
+    <section className="border-t border-ink/10 py-12 md:py-16">
       <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-6">{label}</p>
       {children}
     </section>
@@ -50,15 +50,15 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-white/10">
+      <section className="relative overflow-hidden border-b border-ink/10">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-30" />
         <div aria-hidden className="absolute -top-32 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-[120px]" />
         <div className="relative max-w-5xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Link
             href="/activities/"
-            className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors mb-12"
+            className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-accent-bright transition-colors mb-12"
           >
             ← back to activities
           </Link>
@@ -66,7 +66,7 @@ export default async function ProjectPage({
             // CASE STUDY · {project.status}
           </p>
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-5">{project.name}</h1>
-          <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mb-8">
+          <p className="text-lg md:text-xl text-ink/70 leading-relaxed max-w-2xl mb-8">
             {project.tagline}
           </p>
           {project.href && (
@@ -86,9 +86,9 @@ export default async function ProjectPage({
         {project.images && project.images.length > 0 ? (
           <>
             {/* パソコン用：3枚並べる */}
-            <div className="hidden md:grid md:grid-cols-3 bg-[#141e2e] border-x border-b border-white/10 p-6 md:p-10 gap-4 justify-items-center items-stretch">
+            <div className="hidden md:grid md:grid-cols-3 bg-[#141e2e] border-x border-b border-ink/10 p-6 md:p-10 gap-4 justify-items-center items-stretch">
               {project.images.map((img, idx) => (
-                <div key={idx} className="flex items-center justify-center w-full bg-[#0d1520] p-2 border border-white/5 rounded-lg shadow-xl">
+                <div key={idx} className="flex items-center justify-center w-full bg-[#0d1520] p-2 border border-ink/5 rounded-lg shadow-xl">
                   <Image
                     src={img}
                     alt={`${project.name} screenshot ${idx + 1}`}
@@ -100,7 +100,7 @@ export default async function ProjectPage({
               ))}
             </div>
             {/* スマホ用：既存の1枚を表示 */}
-            <div className="md:hidden bg-[#141e2e] border-x border-b border-white/10 p-6 flex items-center justify-center">
+            <div className="md:hidden bg-[#141e2e] border-x border-b border-ink/10 p-6 flex items-center justify-center">
               <Image
                 src={project.images[0]}
                 alt={project.name}
@@ -112,7 +112,7 @@ export default async function ProjectPage({
           </>
         ) : (
           project.image && (
-            <div className="bg-[#141e2e] border-x border-b border-white/10 p-6 md:p-10 flex items-center justify-center">
+            <div className="bg-[#141e2e] border-x border-b border-ink/10 p-6 md:p-10 flex items-center justify-center">
               <Image
                 src={project.image}
                 alt={project.name}
@@ -124,12 +124,12 @@ export default async function ProjectPage({
           )
         )}
 
-        <p className="text-lg md:text-xl text-white/75 leading-relaxed py-12 md:py-16">
+        <p className="text-lg md:text-xl text-ink/75 leading-relaxed py-12 md:py-16">
           {project.summary}
         </p>
 
         <Block label="// 課題">
-          <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-3xl">
+          <p className="text-base md:text-lg text-ink/70 leading-relaxed max-w-3xl">
             {project.challenge}
           </p>
         </Block>
@@ -139,7 +139,7 @@ export default async function ProjectPage({
             {project.approach.map((a) => (
               <li key={a} className="flex items-start gap-4">
                 <span className="mt-2 h-1.5 w-1.5 bg-accent-bright shrink-0" />
-                <span className="text-base md:text-lg text-white/80 leading-relaxed">{a}</span>
+                <span className="text-base md:text-lg text-ink/80 leading-relaxed">{a}</span>
               </li>
             ))}
           </ul>
@@ -147,9 +147,9 @@ export default async function ProjectPage({
 
         {project.tech && project.tech.length > 0 && (
           <Block label="// 技術">
-            <div className="flex flex-wrap gap-2 font-mono text-xs tracking-widest text-white/60">
+            <div className="flex flex-wrap gap-2 font-mono text-xs tracking-widest text-ink/60">
               {project.tech.map((t) => (
-                <span key={t} className="border border-white/15 px-3 py-1.5">{t}</span>
+                <span key={t} className="border border-ink/15 px-3 py-1.5">{t}</span>
               ))}
             </div>
           </Block>
@@ -160,16 +160,16 @@ export default async function ProjectPage({
             {project.outcome.map((o) => (
               <li key={o} className="flex items-start gap-4">
                 <span className="mt-2 h-1.5 w-1.5 bg-accent-bright shrink-0" />
-                <span className="text-base md:text-lg text-white/80 leading-relaxed">{o}</span>
+                <span className="text-base md:text-lg text-ink/80 leading-relaxed">{o}</span>
               </li>
             ))}
           </ul>
         </Block>
 
-        <div className="border-t border-white/10 py-16">
+        <div className="border-t border-ink/10 py-16">
           <Link
             href="/join/"
-            className="font-mono text-sm text-white/50 hover:text-accent-bright transition-colors"
+            className="font-mono text-sm text-ink/50 hover:text-accent-bright transition-colors"
           >
             $ こういうものを一緒に作る → /join
           </Link>

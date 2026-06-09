@@ -55,20 +55,20 @@ export default async function BlogPostPage({
   });
 
   return (
-    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
       <article className="max-w-3xl mx-auto px-6 md:px-12 lg:px-8 py-20 md:py-28">
         <Link
           href="/blog/"
-          className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors mb-12"
+          className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-accent-bright transition-colors mb-12"
         >
           ← back to blog
         </Link>
 
-        <div className="flex flex-wrap items-center gap-4 font-mono text-xs tracking-widest text-white/60 mb-6">
+        <div className="flex flex-wrap items-center gap-4 font-mono text-xs tracking-widest text-ink/60 mb-6">
           <time>{formatDate(frontmatter.date)}</time>
           {frontmatter.author && (
             <>
-              <span className="text-white/20">/</span>
+              <span className="text-ink/20">/</span>
               <span>{frontmatter.author}</span>
             </>
           )}
@@ -78,20 +78,20 @@ export default async function BlogPostPage({
           {frontmatter.title}
         </h1>
 
-        <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-white/60 mb-12 pb-12 border-b border-white/10">
+        <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-ink/60 mb-12 pb-12 border-b border-ink/10">
           {frontmatter.tags?.map((t) => (
-            <span key={t} className="border border-white/15 px-2.5 py-1">{t}</span>
+            <span key={t} className="border border-ink/15 px-2.5 py-1">{t}</span>
           ))}
         </div>
 
-        <div className="prose prose-invert max-w-none prose-headings:tracking-tight prose-headings:font-bold prose-a:text-accent-bright prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-blockquote:border-l-accent prose-code:text-accent-bright prose-code:before:content-none prose-code:after:content-none prose-li:marker:text-accent-bright">
+        <div className="prose max-w-none prose-headings:tracking-tight prose-headings:font-bold prose-a:text-accent-bright prose-a:no-underline hover:prose-a:underline prose-strong:text-ink prose-blockquote:border-l-accent prose-code:text-accent-bright prose-code:before:content-none prose-code:after:content-none prose-li:marker:text-accent-bright">
           {content}
         </div>
 
-        <div className="mt-16 pt-10 border-t border-white/10">
+        <div className="mt-16 pt-10 border-t border-ink/10">
           <Link
             href="/join/"
-            className="font-mono text-sm text-white/50 hover:text-accent-bright transition-colors"
+            className="font-mono text-sm text-ink/50 hover:text-accent-bright transition-colors"
           >
             $ こうした活動に参加する → /join
           </Link>

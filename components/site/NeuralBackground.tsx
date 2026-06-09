@@ -9,10 +9,11 @@ import { useEffect, useRef } from "react";
  */
 type Accent = "accent" | "dev" | "theory";
 
+// Monochrome (light theme): dark ink lines/nodes on a white background.
 const palette: Record<Accent, { line: string; node: string }> = {
-  accent: { line: "129,140,248", node: "165,180,252" }, // indigo
-  dev: { line: "96,165,250", node: "147,197,253" }, // blue
-  theory: { line: "248,113,113", node: "252,165,165" }, // red
+  accent: { line: "11,12,14", node: "11,12,14" },
+  dev: { line: "11,12,14", node: "11,12,14" },
+  theory: { line: "11,12,14", node: "11,12,14" },
 };
 
 export default function NeuralBackground({
@@ -78,7 +79,7 @@ export default function NeuralBackground({
           const dy = (a.y - b.y) * h;
           const d = Math.hypot(dx, dy);
           if (d < maxDist) {
-            ctx.strokeStyle = `rgba(${colors.line},${(1 - d / maxDist) * 0.16})`;
+            ctx.strokeStyle = `rgba(${colors.line},${(1 - d / maxDist) * 0.1})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x * w, a.y * h);
@@ -88,7 +89,7 @@ export default function NeuralBackground({
         }
       }
       for (const n of nodes) {
-        ctx.fillStyle = `rgba(${colors.node},0.45)`;
+        ctx.fillStyle = `rgba(${colors.node},0.28)`;
         ctx.beginPath();
         ctx.arc(n.x * w, n.y * h, 1.5, 0, Math.PI * 2);
         ctx.fill();

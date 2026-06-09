@@ -12,9 +12,9 @@ interface HeroBackgroundProps {
 }
 
 const glow2: Record<string, string> = {
-  dev: "bg-dev/20",
-  theory: "bg-theory/20",
-  accent: "bg-accent/20",
+  dev: "bg-dev/10",
+  theory: "bg-theory/10",
+  accent: "bg-accent/10",
 };
 
 /**
@@ -55,7 +55,7 @@ export default function HeroBackground({ accent = "dev", neural = true, classNam
         style={{ transform: "translate3d(var(--px,0), var(--py,0), 0)" }}
       >
         <div className="absolute inset-0 dot-grid animate-grid-pan opacity-70" />
-        <div className="absolute -top-40 -left-32 h-[40rem] w-[40rem] rounded-full bg-accent/20 blur-[120px] animate-drift-slow" />
+        <div className="absolute -top-40 -left-32 h-[40rem] w-[40rem] rounded-full bg-accent/10 blur-[120px] animate-drift-slow" />
         <div className={`absolute top-1/3 -right-40 h-[34rem] w-[34rem] rounded-full ${glow2[accent]} blur-[120px] animate-drift-slower`} />
       </div>
       {neural && <NeuralBackground accent={accent} className="opacity-60" />}

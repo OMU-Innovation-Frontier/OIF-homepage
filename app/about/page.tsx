@@ -79,7 +79,7 @@ const divisions = [
 
 export default function AboutPage() {
   return (
-    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16">
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden min-h-[88svh] flex items-center">
         <HeroBackground accent="accent" />
@@ -93,16 +93,16 @@ export default function AboutPage() {
               <span className="accent-gradient-text">OIF</span>
               <br />について
             </h1>
-            <p className="font-mono text-sm md:text-base text-white/55 mb-12">
+            <p className="font-mono text-sm md:text-base text-ink/55 mb-12">
               私たちは、AIを{" "}
               <Typewriter
-                className="text-white/90"
+                className="text-ink/90"
                 words={["理解する。", "創る。", "形にする。"]}
               />
             </p>
 
             {/* acronym spec */}
-            <div className="flex flex-col sm:flex-row gap-px bg-white/10 border border-white/10 max-w-2xl">
+            <div className="flex flex-col sm:flex-row gap-px bg-ink/10 border border-ink/10 max-w-2xl">
               {acronym.map((a) => (
                 <div
                   key={a.l}
@@ -110,9 +110,9 @@ export default function AboutPage() {
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="text-3xl font-black tracking-tighter text-accent-bright">{a.l}</span>
-                    <span className="font-mono text-sm tracking-wide text-white/80">{a.w}</span>
+                    <span className="font-mono text-sm tracking-wide text-ink/80">{a.w}</span>
                   </div>
-                  <p className="mt-2 text-xs text-white/60">{a.s}</p>
+                  <p className="mt-2 text-xs text-ink/60">{a.s}</p>
                 </div>
               ))}
             </div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== MANIFESTO ===== */}
-      <section className="border-t border-white/10 bg-night">
+      <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-14">
@@ -129,31 +129,31 @@ export default function AboutPage() {
               <br className="hidden md:block" />
               <span className="accent-gradient-text">集まっている場所</span>
             </h2>
-            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-white/75 font-medium">
+            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium">
               <p>OIFは、大阪公立大学の学生を中心にAIやテクノロジーに関心を持つ人が集まる学生コミュニティです。</p>
               <p>仕組みを理解し、自分たちの手で実装し、社会に問いを立てる。</p>
-              <p className="text-white">プログラミング経験の有無は問いません。</p>
+              <p className="text-ink">プログラミング経験の有無は問いません。</p>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* ===== WE ARE / WE ARE NOT ===== */}
-      <section className="border-t border-white/10 bg-night-2">
+      <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12 md:mb-16">
             <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// WE ARE / WE ARE NOT</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">こういう場所。</h2>
           </Reveal>
-          <Reveal delay={100} className="border-t border-white/10">
+          <Reveal delay={100} className="border-t border-ink/10">
             {contrasts.map((c, i) => (
               <div
                 key={i}
-                className="grid md:grid-cols-2 gap-3 md:gap-12 py-7 border-b border-white/10 items-center"
+                className="grid md:grid-cols-2 gap-3 md:gap-12 py-7 border-b border-ink/10 items-center"
               >
-                <p className="flex items-center gap-3 text-base md:text-lg text-white/55">
-                  <span className="font-mono text-white/25">✗</span>
-                  <span className="line-through decoration-white/20">{c.no}</span>
+                <p className="flex items-center gap-3 text-base md:text-lg text-ink/55">
+                  <span className="font-mono text-ink/25">✗</span>
+                  <span className="line-through decoration-ink/20">{c.no}</span>
                 </p>
                 <p className="flex items-center gap-3 text-lg md:text-2xl font-bold tracking-tight">
                   <span className="font-mono text-accent-bright">✓</span>
@@ -166,7 +166,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== BELIEFS ===== */}
-      <section className="border-t border-white/10 bg-night">
+      <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14 md:mb-20">
             <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// HOW WE LEARN</p>
@@ -179,13 +179,13 @@ export default function AboutPage() {
               return (
                 <Reveal key={b.n} delay={i * 120}>
                   <Tilt max={5}>
-                  <div className="group relative h-full bg-night-2 border border-white/10 p-8 md:p-10 overflow-hidden transition-colors duration-300 hover:border-accent-bright/40 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-accent-bright before:opacity-0 hover:before:opacity-100 before:transition-opacity">
+                  <div className="group relative h-full bg-night-2 border border-ink/10 p-8 md:p-10 overflow-hidden transition-colors duration-300 hover:border-accent-bright/40 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-accent-bright before:opacity-0 hover:before:opacity-100 before:transition-opacity">
                     <div
                       aria-hidden
                       className="absolute -right-8 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     />
                     <div className="relative flex items-start justify-between mb-10">
-                      <span className="text-6xl md:text-7xl font-black tracking-tighter text-white/[0.08] group-hover:text-accent-bright/30 transition-colors duration-300">
+                      <span className="text-6xl md:text-7xl font-black tracking-tighter text-ink/[0.08] group-hover:text-accent-bright/30 transition-colors duration-300">
                         {b.n}
                       </span>
                       <Icon size={28} strokeWidth={1.5} className="text-accent-bright mt-2" />
@@ -196,7 +196,7 @@ export default function AboutPage() {
                     <h3 className="relative text-2xl md:text-3xl font-bold tracking-tight mb-5">
                       {b.title}
                     </h3>
-                    <p className="relative text-sm md:text-base leading-relaxed text-white/60">
+                    <p className="relative text-sm md:text-base leading-relaxed text-ink/60">
                       {b.body}
                     </p>
                   </div>
@@ -209,7 +209,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== HOW OIF WORKS (flow) ===== */}
-      <section className="border-t border-white/10 bg-night-2">
+      <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
             <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// HOW OIF WORKS</p>
@@ -218,10 +218,10 @@ export default function AboutPage() {
           <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
             {flow.map((f, i) => (
               <Fragment key={f.tag}>
-                <div className="flex-1 border border-white/10 bg-night p-7 md:p-8">
+                <div className="flex-1 border border-ink/10 bg-night p-7 md:p-8">
                   <p className="font-mono text-[11px] tracking-[0.3em] text-accent-bright mb-5">{f.tag}</p>
                   <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">{f.title}</h3>
-                  <p className="text-sm text-white/55 leading-relaxed">{f.body}</p>
+                  <p className="text-sm text-ink/55 leading-relaxed">{f.body}</p>
                 </div>
                 {i < flow.length - 1 && (
                   <div className="flex items-center justify-center py-2 md:px-1" aria-hidden>
@@ -235,13 +235,13 @@ export default function AboutPage() {
       </section>
 
       {/* ===== DIVISIONS ===== */}
-      <section className="border-t border-white/10 bg-night">
+      <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-12">
             <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// TWO DIVISIONS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">2つの軸で動く</h2>
           </Reveal>
-          <Reveal delay={100} className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10">
+          <Reveal delay={100} className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
             {divisions.map((d) => (
               <Link
                 key={d.href}
@@ -249,9 +249,9 @@ export default function AboutPage() {
                 className={`group bg-night-2 p-8 md:p-12 transition-colors duration-300 hover:bg-night-3 border-y-2 border-transparent ${d.hoverCls}`}
               >
                 <p className={`font-mono text-[11px] tracking-[0.3em] mb-6 ${d.labelCls}`}>{d.label}</p>
-                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-4">{d.title}</h3>
-                <p className="text-white/60 mb-8">{d.body}</p>
-                <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-white">
+                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-ink mb-4">{d.title}</h3>
+                <p className="text-ink/60 mb-8">{d.body}</p>
+                <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-ink">
                   見る
                   <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
                 </span>
@@ -262,20 +262,20 @@ export default function AboutPage() {
       </section>
 
       {/* ===== MEMBERS ===== */}
-      <section className="border-t border-white/10 bg-night-2">
+      <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
             <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// MEMBERS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">
               すでに、<span className="accent-gradient-text">動いている</span>
             </h2>
-            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/75 font-medium mb-10">
+            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium mb-10">
               大阪公立大学発ベンチャーのAffectify・Mi&amp;Tでインターンとして実務経験を積んでいるメンバーが在籍しています。
               勉強会に参加するだけでなく、実際の現場に出ていることも自然にできる環境です。
             </p>
-            <div className="flex flex-wrap gap-3 font-mono text-xs tracking-widest text-white/70">
+            <div className="flex flex-wrap gap-3 font-mono text-xs tracking-widest text-ink/70">
               {["INTERNSHIP", "Affectify", "Mi&T", "REAL-WORLD EXPERIENCE"].map((c) => (
-                <span key={c} className="border border-white/15 px-3 py-1.5">{c}</span>
+                <span key={c} className="border border-ink/15 px-3 py-1.5">{c}</span>
               ))}
             </div>
           </Reveal>
@@ -283,7 +283,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== CLOSING ===== */}
-      <section className="relative overflow-hidden border-t border-white/10 bg-night">
+      <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
         <div aria-hidden className="absolute left-1/3 top-1/2 -translate-y-1/2 h-[34rem] w-[34rem] rounded-full bg-accent/15 blur-[130px]" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48 lg:py-64">
@@ -296,7 +296,7 @@ export default function AboutPage() {
           </h2>
           <Link
             href="/join/"
-            className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(99,102,241,0.8)]"
+            className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)]"
           >
             参加する
             <span aria-hidden>→</span>

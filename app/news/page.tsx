@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
   return (
-    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-white/10">
+      <section className="relative overflow-hidden border-b border-ink/10">
         <HeroBackground accent="accent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night to-transparent" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 animate-fade-up">
@@ -25,7 +25,7 @@ export default function NewsPage() {
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6">
             News
           </h1>
-          <p className="text-lg text-white/60 max-w-2xl leading-relaxed">
+          <p className="text-lg text-ink/60 max-w-2xl leading-relaxed">
             イベント・募集・お知らせ。OIFの最新の動きはここに記録されます。
           </p>
         </div>
@@ -34,14 +34,14 @@ export default function NewsPage() {
       {/* News List */}
       <section className="bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <Reveal className="border-t border-white/10">
+          <Reveal className="border-t border-ink/10">
             {newsItems.map((item, index) => (
               <div
                 key={index}
-                className="group flex flex-col md:flex-row md:items-center gap-3 md:gap-10 py-7 border-b border-white/10 hover:bg-white/[0.02] transition-colors"
+                className="group flex flex-col md:flex-row md:items-center gap-3 md:gap-10 py-7 border-b border-ink/10 hover:bg-ink/[0.02] transition-colors"
               >
                 {item.date ? (
-                  <time className="font-mono text-sm tracking-widest text-white/60 w-28 shrink-0">
+                  <time className="font-mono text-sm tracking-widest text-ink/60 w-28 shrink-0">
                     {item.date}
                   </time>
                 ) : (

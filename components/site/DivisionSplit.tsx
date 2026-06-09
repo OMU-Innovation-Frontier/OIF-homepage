@@ -50,7 +50,7 @@ export default function DivisionSplit() {
   const [hovered, setHovered] = useState<Side | null>(null);
 
   return (
-    <div className="flex flex-col md:flex-row gap-px bg-white/10 border border-white/10">
+    <div className="flex flex-col md:flex-row gap-px bg-ink/10 border border-ink/10">
       {panels.map((p) => {
         const grow = hovered === p.side ? 1.7 : hovered ? 0.75 : 1;
         return (
@@ -69,7 +69,7 @@ export default function DivisionSplit() {
             />
             <span
               aria-hidden
-              className="absolute -top-6 right-6 text-[7rem] md:text-[10rem] font-black leading-none tracking-tighter text-white/[0.04] group-hover:text-white/[0.06] transition-colors"
+              className="absolute -top-6 right-6 text-[7rem] md:text-[10rem] font-black leading-none tracking-tighter text-ink/[0.04] group-hover:text-ink/[0.06] transition-colors"
             >
               {p.index}
             </span>
@@ -79,11 +79,11 @@ export default function DivisionSplit() {
                 {p.label}
               </p>
               <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">{p.title}</h3>
-              <p className="text-lg md:text-xl text-white/70 mb-6">{p.line}</p>
+              <p className="text-lg md:text-xl text-ink/70 mb-6">{p.line}</p>
 
-              <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-white/50 mb-7 opacity-100 md:max-h-0 md:opacity-0 md:overflow-hidden md:-translate-y-2 md:group-hover:max-h-24 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-smooth">
+              <div className="flex flex-wrap gap-2 font-mono text-[11px] tracking-widest text-ink/50 mb-7 opacity-100 md:max-h-0 md:opacity-0 md:overflow-hidden md:-translate-y-2 md:group-hover:max-h-24 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-smooth">
                 {p.tags.map((t) => (
-                  <span key={t} className="border border-white/15 px-2.5 py-1">
+                  <span key={t} className="border border-ink/15 px-2.5 py-1">
                     {t}
                   </span>
                 ))}

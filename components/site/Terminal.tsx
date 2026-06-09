@@ -45,13 +45,13 @@ export default function Terminal({ lines, title = "oif@frontier: ~", className =
 
   return (
     <div
-      className={`border border-white/12 bg-night-2/80 backdrop-blur-sm shadow-card font-mono text-[13px] leading-relaxed ${className}`}
+      className={`border border-ink/12 bg-night-2/80 backdrop-blur-sm shadow-card font-mono text-[13px] leading-relaxed ${className}`}
     >
-      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-        <span className="h-2.5 w-2.5 bg-theory-bright/80" />
-        <span className="h-2.5 w-2.5 bg-amber-400/80" />
-        <span className="h-2.5 w-2.5 bg-emerald-400/80" />
-        <span className="ml-3 text-[11px] tracking-widest text-white/60">{title}</span>
+      <div className="flex items-center gap-2 border-b border-ink/10 px-4 py-3">
+        <span className="h-2.5 w-2.5 bg-ink/40" />
+        <span className="h-2.5 w-2.5 bg-ink/25" />
+        <span className="h-2.5 w-2.5 bg-ink/15" />
+        <span className="ml-3 text-[11px] tracking-widest text-ink/60">{title}</span>
       </div>
       <div className="p-5 space-y-1.5 min-h-[12rem]">
         {lines.map((l, idx) => {
@@ -59,7 +59,7 @@ export default function Terminal({ lines, title = "oif@frontier: ~", className =
           const complete = idx < line;
           const text = complete ? l.t : l.t.slice(0, chars);
           return (
-            <div key={idx} className={l.c ?? "text-white/80"}>
+            <div key={idx} className={l.c ?? "text-ink/80"}>
               {l.p && <span className="text-accent-bright">{l.p} </span>}
               {text}
               {idx === line && !reduced.current && (
@@ -69,7 +69,7 @@ export default function Terminal({ lines, title = "oif@frontier: ~", className =
           );
         })}
         {done && (
-          <div className="text-white/60">
+          <div className="text-ink/60">
             <span className="text-accent-bright">$</span>{" "}
             <span className="animate-blink">▋</span>
           </div>

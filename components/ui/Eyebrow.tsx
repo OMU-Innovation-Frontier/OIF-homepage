@@ -6,8 +6,8 @@ const tones: Record<Tone, string> = {
   accent: "text-accent-bright",
   dev: "text-dev-bright",
   theory: "text-theory-bright",
-  muted: "text-white/55",
-  onDark: "text-white/70",
+  muted: "text-ink/55",
+  onDark: "text-ink/70",
 };
 
 interface EyebrowProps {

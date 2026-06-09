@@ -137,9 +137,9 @@ export default function ActivitiesPage() {
   const projects = getAllProjects();
 
   return (
-    <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16">
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[70svh] flex items-center border-b border-white/10">
+      <section className="relative overflow-hidden min-h-[70svh] flex items-center border-b border-ink/10">
         <HeroBackground accent="accent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full animate-fade-up">
@@ -149,7 +149,7 @@ export default function ActivitiesPage() {
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8">
             Activities
           </h1>
-          <p className="text-lg md:text-xl text-white/65 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-ink/65 max-w-2xl leading-relaxed">
             学ぶ、つくる、外に出る。勉強会・ハンズオン・プロダクト・コンテスト——
             手を動かしてきた記録。
           </p>
@@ -161,29 +161,29 @@ export default function ActivitiesPage() {
         <Reveal className="max-w-7xl mx-auto">
 
           {/* Row 1: Study - full width, 2カラム */}
-          <div className="border-b border-white/12 grid lg:grid-cols-2">
+          <div className="border-b border-ink/12 grid lg:grid-cols-2">
             {/* Left: アイコン + タイトル + 説明 */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/12">
+            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-ink/12">
               <StudyIcon size={32} strokeWidth={1.5} className="mb-10" />
               <div className="mb-6">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[0].title}
                 </h2>
-                <p className="text-sm text-white/60 mt-1">{activitiesData[0].titleJa}</p>
+                <p className="text-sm text-ink/60 mt-1">{activitiesData[0].titleJa}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-white/70">
+              <p className="text-base md:text-lg leading-relaxed text-ink/70">
                 {activitiesData[0].description}
               </p>
             </div>
 
             {/* Right: カテゴリ行リスト */}
-            <div className="divide-y divide-white/12">
+            <div className="divide-y divide-ink/12">
               {studyCategories.map((cat) => (
                 <div key={cat.label} className="flex items-baseline gap-4 px-6 md:px-10 lg:px-12 py-5 md:py-6">
-                  <span className="text-xs font-bold tracking-widest uppercase text-white/60 shrink-0 w-10">
+                  <span className="text-xs font-bold tracking-widest uppercase text-ink/60 shrink-0 w-10">
                     {cat.label}
                   </span>
-                  <span className="text-sm md:text-base leading-relaxed text-white/80">
+                  <span className="text-sm md:text-base leading-relaxed text-ink/80">
                     {cat.examples.join("、")}
                   </span>
                 </div>
@@ -194,15 +194,15 @@ export default function ActivitiesPage() {
           {/* Row 2: Develop + Connect - 左右2カラム */}
           <div className="grid lg:grid-cols-2">
             {/* Develop */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/12">
+            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-ink/12">
               <DevelopIcon size={32} strokeWidth={1.5} className="mb-10" />
               <div className="mb-6">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[1].title}
                 </h2>
-                <p className="text-sm text-white/60 mt-1">{activitiesData[1].titleJa}</p>
+                <p className="text-sm text-ink/60 mt-1">{activitiesData[1].titleJa}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-white/70 mb-10">
+              <p className="text-base md:text-lg leading-relaxed text-ink/70 mb-10">
                 {activitiesData[1].description}
               </p>
               <ul className="space-y-3">
@@ -222,9 +222,9 @@ export default function ActivitiesPage() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
                   {activitiesData[2].title}
                 </h2>
-                <p className="text-sm text-white/60 mt-1">{activitiesData[2].titleJa}</p>
+                <p className="text-sm text-ink/60 mt-1">{activitiesData[2].titleJa}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-white/70 mb-10">
+              <p className="text-base md:text-lg leading-relaxed text-ink/70 mb-10">
                 {activitiesData[2].description}
               </p>
               <ul className="space-y-3">
@@ -255,11 +255,11 @@ export default function ActivitiesPage() {
             </h2>
           </Reveal>
 
-          <div className="border border-white/12">
+          <div className="border border-ink/12">
             {featuredSessions.map((session) => (
               <div key={`${session.date}-${session.title}`} className="grid md:grid-cols-[220px_1fr]">
-                <div className="border-b md:border-b-0 md:border-r border-white/12 p-8 md:p-10">
-                  <p className="text-xs font-medium tracking-widest uppercase text-white/60 mb-3">
+                <div className="border-b md:border-b-0 md:border-r border-ink/12 p-8 md:p-10">
+                  <p className="text-xs font-medium tracking-widest uppercase text-ink/60 mb-3">
                     {session.category}
                   </p>
                   <p className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -272,7 +272,7 @@ export default function ActivitiesPage() {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
                       {session.title}
                     </h3>
-                    <p className="text-base leading-relaxed text-white/75 mb-6 max-w-2xl">
+                    <p className="text-base leading-relaxed text-ink/75 mb-6 max-w-2xl">
                       {session.description}
                     </p>
                     {session.materialHref && (
@@ -280,7 +280,7 @@ export default function ActivitiesPage() {
                         href={session.materialHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-white/60 transition-colors duration-200 self-start"
+                        className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-ink/60 transition-colors duration-200 self-start"
                       >
                         {session.materialLabel}
                         <ExternalLink size={16} strokeWidth={1.75} />
@@ -289,7 +289,7 @@ export default function ActivitiesPage() {
                   </div>
 
                   {session.image && (
-                    <div className="border-t lg:border-t-0 lg:border-l border-white/12 bg-white/[0.05] flex items-center justify-center p-4 md:p-6">
+                    <div className="border-t lg:border-t-0 lg:border-l border-ink/12 bg-ink/[0.05] flex items-center justify-center p-4 md:p-6">
                       <Image
                         src={session.image}
                         alt={session.imageAlt ?? session.title}
@@ -318,7 +318,7 @@ export default function ActivitiesPage() {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               メンバー開発プロダクト
             </h2>
-            <p className="mt-4 text-base text-white/60 max-w-2xl leading-relaxed">
+            <p className="mt-4 text-base text-ink/60 max-w-2xl leading-relaxed">
               「面白そう」で終わらせず、実際に動くものへ。課題から成果まで、メンバーが開発したプロダクトの事例を紹介します。
             </p>
           </div>
@@ -329,10 +329,10 @@ export default function ActivitiesPage() {
                 <Tilt max={4}>
                   <Link
                     href={`/projects/${p.slug}/`}
-                    className="group flex flex-col h-full border border-white/10 bg-night-2 hover:bg-night-3 hover:border-accent-bright/40 transition-colors"
+                    className="group flex flex-col h-full border border-ink/10 bg-night-2 hover:bg-night-3 hover:border-accent-bright/40 transition-colors"
                   >
                     {p.image && (
-                      <div className="bg-[#141e2e] border-b border-white/10 p-6 flex items-center justify-center min-h-[220px]">
+                      <div className="bg-[#141e2e] border-b border-ink/10 p-6 flex items-center justify-center min-h-[220px]">
                         <Image
                           src={p.image}
                           alt={p.name}
@@ -351,7 +351,7 @@ export default function ActivitiesPage() {
                       <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3 group-hover:text-accent-bright transition-colors">
                         {p.name}
                       </h3>
-                      <p className="text-sm md:text-base text-white/60 leading-relaxed mb-6 flex-1">
+                      <p className="text-sm md:text-base text-ink/60 leading-relaxed mb-6 flex-1">
                         {p.tagline}
                       </p>
                       <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
@@ -384,10 +384,10 @@ export default function ActivitiesPage() {
           {contests.map((contest) => (
             <div
               key={contest.name}
-              className="border border-white/12"
+              className="border border-ink/12"
             >
               <div className="grid md:grid-cols-2">
-                <div className="border-b md:border-b-0 md:border-r border-white/12">
+                <div className="border-b md:border-b-0 md:border-r border-ink/12">
                   <Image
                     src={contest.image}
                     alt={contest.name}
@@ -405,7 +405,7 @@ export default function ActivitiesPage() {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
                       {contest.name}
                     </h3>
-                    <p className="text-sm font-medium text-white/60">
+                    <p className="text-sm font-medium text-ink/60">
                       {contest.fullName} / {contest.organizer}
                     </p>
                   </div>

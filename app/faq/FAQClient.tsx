@@ -128,9 +128,9 @@ export default function FAQClient() {
       {/* FAQ Accordion */}
       <section className="py-12 md:py-24">
         <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="border-t border-white/12">
+          <div className="border-t border-ink/12">
             {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-white/12">
+              <div key={index} className="border-b border-ink/12">
                 <button
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
@@ -166,12 +166,12 @@ export default function FAQClient() {
       <SectionDivider />
 
       {/* Contact Section */}
-      <section className="on-dark py-20 md:py-32 bg-night-2 text-white">
+      <section className="py-20 md:py-32 bg-night-2 text-ink">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
             その他のご質問
           </h2>
-          <p className="text-base md:text-lg mb-10 max-w-lg mx-auto font-medium text-white/80">
+          <p className="text-base md:text-lg mb-10 max-w-lg mx-auto font-medium text-ink/80">
             上記以外のご質問は、Discordでお気軽にお問い合わせください。
           </p>
           <div className="flex justify-center">

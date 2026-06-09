@@ -45,7 +45,7 @@ export default function CursorGlow() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[60] hidden md:block h-[400px] w-[400px] rounded-full bg-accent/10 blur-[90px] mix-blend-screen"
+      className="pointer-events-none fixed left-0 top-0 z-[60] hidden md:block h-[400px] w-[400px] rounded-full bg-ink/10 blur-[90px] mix-blend-multiply"
     />
   );
 }

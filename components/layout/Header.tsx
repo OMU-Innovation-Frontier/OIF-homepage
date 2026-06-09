@@ -42,7 +42,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-night/80 backdrop-blur-md border-b border-white/10 text-white">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-night/80 backdrop-blur-md border-b border-ink/10 text-ink">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <Link
@@ -67,8 +67,8 @@ export default function Header() {
               key={item.label}
               href={item.href}
               className={`font-mono text-xs tracking-widest uppercase transition-colors duration-200 ${pathname === item.href
-                ? "text-white border-b-2 border-accent-bright pb-0.5"
-                : "text-white/50 hover:text-white"
+                ? "text-ink border-b-2 border-accent-bright pb-0.5"
+                : "text-ink/50 hover:text-ink"
                 }`}
             >
               {item.label}
@@ -94,14 +94,14 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div id="mobile-menu" className="lg:hidden fixed inset-0 top-14 bg-night text-white z-40 border-t border-white/10">
+        <div id="mobile-menu" className="lg:hidden fixed inset-0 top-14 bg-paper text-ink z-40 border-t border-ink/10">
           <nav className="container-wide flex flex-col pt-6" aria-label="モバイルナビゲーション">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`font-mono text-sm tracking-widest uppercase border-b border-white/10 py-5 px-6 transition-colors ${pathname === item.href ? "bg-accent-bright text-night" : "hover:bg-white/5"
+                className={`font-mono text-sm tracking-widest uppercase border-b border-ink/10 py-5 px-6 transition-colors ${pathname === item.href ? "bg-accent-bright text-night" : "hover:bg-ink/5"
                   }`}
               >
                 {item.label}
