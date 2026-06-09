@@ -5,7 +5,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/SEO/JsonLd";
 import Analytics from "@/components/site/Analytics";
-import CursorGlow from "@/components/site/CursorGlow";
 import ScrollProgress from "@/components/site/ScrollProgress";
 
 const inter = Inter({
@@ -117,7 +116,6 @@ export default function RootLayout({
         <Header />
         <main id="main-content" className="flex-1 pt-14 md:pt-16">{children}</main>
         <Footer />
-        <CursorGlow />
         <Analytics />
       </body>
     </html>

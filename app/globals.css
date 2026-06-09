@@ -102,13 +102,10 @@
     text-wrap: balance;
   }
 
-  /* "Frontier OS" dot-grid background overlay (v2). Dark dots on light bg. */
+  /* dot-grid overlay disabled — kept as a no-op so existing usages stay clean
+     (clean flat white background, no texture/haze). */
   .dot-grid {
-    background-image: radial-gradient(
-      rgba(11, 12, 14, 0.06) 1px,
-      transparent 1px
-    );
-    background-size: 40px 40px;
+    background-image: none;
   }
 
   /* Animated monochrome gradient text (v2). Grey shimmer on light bg. */

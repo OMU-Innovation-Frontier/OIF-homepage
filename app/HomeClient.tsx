@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { newsItems } from "@/lib/news";
 import HeroBackground from "@/components/site/HeroBackground";
-import NeuralBackground from "@/components/site/NeuralBackground";
 import DivisionSplit from "@/components/site/DivisionSplit";
 import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
@@ -21,8 +20,6 @@ export default function HomeClient() {
       <section className="relative overflow-hidden min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center">
         {/* animated, parallax background */}
         <HeroBackground accent="dev" neural={false} />
-        <NeuralBackground className="opacity-70" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
