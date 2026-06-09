@@ -6,6 +6,8 @@ import SectionDivider from "@/components/site/SectionDivider";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
+import Tilt from "@/components/ui/Tilt";
+import { getAllProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Activities | OIF 大阪公立大学のAIサークルの活動",
@@ -14,40 +16,6 @@ export const metadata: Metadata = {
     canonical: "https://oif-ai.com/activities/",
   },
 };
-
-const products = [
-  {
-    name: "NOEMA",
-    badge: "Member Product",
-    tagline: "Pythonから深層学習まで、コードを動かしながら学ぶAI学習サービス",
-    description:
-      "Pythonの基礎から機械学習、深層学習など、AI技術についてコードを実行しながら学べるサービス。松尾研講座の予習・復習としても、読み物としてもご使用いただけます。",
-    href: "https://noema-learn.uk/",
-    image: `/images/noema-screenshot.png`,
-    layout: "hero" as const,
-  },
-  {
-    name: "samurAI",
-    badge: undefined as string | undefined,
-    tagline: "ノーコードで学ぶ機械学習",
-    description:
-      "コードを書かずに機械学習の本質を体験できる学習アプリ。データの前処理からモデル構築、評価までの一連の流れをゲーム感覚で学べます。",
-    href: undefined as string | undefined,
-    image: undefined as string | undefined,
-    layout: "gallery" as const,
-    features: [
-      "ノーコードで機械学習のワークフローを体験",
-      "データの可視化・前処理・特徴量エンジニアリング",
-      "モデルの学習と評価を直感的に理解",
-      "ゲーム性を重視した学習設計",
-    ],
-    images: [
-      { src: `/images/samurai-screenshot.png`, caption: "MLワークフロー" },
-      { src: `/images/samurai-conquest.png`, caption: "天下統一モード" },
-      { src: `/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
-    ],
-  },
-];
 
 const contests = [
   {
@@ -73,6 +41,35 @@ const featuredSessions = [
       "https://drive.google.com/file/d/1E6FYe200ioRtAAPW8TDyS8e2XkS2g-qu/view?usp=sharing",
     image: `/images/llm-handson.png`,
     imageAlt: "ローカルLLMハンズオンの様子（参加メンバーの集合写真）",
+    imageWidth: 481,
+    imageHeight: 399,
+  },
+  {
+    date: "2026/3/18",
+    title: "Vibe Codingワークショップ",
+    category: "Workshop",
+    description:
+      "「環境構築不要。Vibe Codingで学ぶ次世代エンジニアリング」をテーマに、大阪公立大学スマートエネルギー棟でハイブリッド開催（計8名参加）。最新のAI開発手法を解説したのち、約50分でひとり一人が自分のアイデアをもとにオリジナルのアプリやホームページを制作しました。",
+    materialLabel: "活動レポートを見る",
+    materialHref:
+      "https://www.omu.ac.jp/i-academy/info/activity/entry-105828.html",
+    image: `/images/vibe-coding-workshop.png`,
+    imageAlt: "Vibe Codingワークショップの様子（スマートエネルギー棟での開催）",
+    imageWidth: 723,
+    imageHeight: 484,
+  },
+  {
+    date: "2025/12/25",
+    title: "第1回ワークショップ",
+    category: "Workshop",
+    description:
+      "記念すべき第1回のワークショップを開催。参加者一人ひとりがAIを駆使して、アプリの発案から実装、発表用スライドの作成までを行い、完成したアプリを発表しました。AIツール（Google Antigravity・Gemini）を実際に使い、その実用性と可能性を確かめ合いました。",
+    materialLabel: undefined as string | undefined,
+    materialHref: undefined as string | undefined,
+    image: `/images/first-workshop.png`,
+    imageAlt: "第1回ワークショップの様子（成果アプリの発表）",
+    imageWidth: 894,
+    imageHeight: 751,
   },
 ];
 
@@ -137,6 +134,8 @@ const DevelopIcon = activitiesData[1].icon;
 const ConnectIcon = activitiesData[2].icon;
 
 export default function ActivitiesPage() {
+  const projects = getAllProjects();
+
   return (
     <div className="on-dark bg-night text-white -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* HERO */}
@@ -276,15 +275,17 @@ export default function ActivitiesPage() {
                     <p className="text-base leading-relaxed text-white/75 mb-6 max-w-2xl">
                       {session.description}
                     </p>
-                    <a
-                      href={session.materialHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-white/60 transition-colors duration-200 self-start"
-                    >
-                      {session.materialLabel}
-                      <ExternalLink size={16} strokeWidth={1.75} />
-                    </a>
+                    {session.materialHref && (
+                      <a
+                        href={session.materialHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-white/60 transition-colors duration-200 self-start"
+                      >
+                        {session.materialLabel}
+                        <ExternalLink size={16} strokeWidth={1.75} />
+                      </a>
+                    )}
                   </div>
 
                   {session.image && (
@@ -292,8 +293,8 @@ export default function ActivitiesPage() {
                       <Image
                         src={session.image}
                         alt={session.imageAlt ?? session.title}
-                        width={481}
-                        height={399}
+                        width={session.imageWidth ?? 481}
+                        height={session.imageHeight ?? 399}
                         className="w-full h-auto max-w-md object-contain"
                       />
                     </div>
@@ -317,105 +318,52 @@ export default function ActivitiesPage() {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               メンバー開発プロダクト
             </h2>
-            <Link
-              href="/projects/"
-              className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors"
-            >
-              事例（課題→技術→成果）を見る →
-            </Link>
+            <p className="mt-4 text-base text-white/60 max-w-2xl leading-relaxed">
+              「面白そう」で終わらせず、実際に動くものへ。課題から成果まで、メンバーが開発したプロダクトの事例を紹介します。
+            </p>
           </div>
 
-          {products.map((product) => (
-            <div
-              key={product.name}
-              className="border border-white/12"
-            >
-              {product.layout === "hero" ? (
-                <div className="grid md:grid-cols-2">
-                  <div className="border-b md:border-b-0 md:border-r border-white/12 bg-[#141e2e] flex items-center justify-center min-h-[280px] md:min-h-[360px] p-4 md:p-6">
-                    <Image
-                      src={product.image!}
-                      alt={product.name}
-                      width={800}
-                      height={500}
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                  <div className="p-8 md:p-12 flex flex-col justify-center">
-                    <div className="mb-6">
-                      {product.badge && (
-                        <span className="inline-block text-xs font-medium tracking-widest uppercase bg-accent text-white px-3 py-1 mb-4">
-                          {product.badge}
-                        </span>
-                      )}
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-medium text-white/60">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <p className="text-base leading-relaxed mb-8">
-                      {product.description}
-                    </p>
-                    {product.href && (
-                      <a
-                        href={product.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block bg-accent text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night transition-colors duration-200 self-start"
-                      >
-                        サービスを見る →
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <div className="p-8 md:p-12 border-b border-white/12">
-                    <div className="mb-6">
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-medium text-white/60">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <p className="text-base leading-relaxed mb-8 max-w-2xl">
-                      {product.description}
-                    </p>
-                    <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl">
-                      {product.features?.map((feature, i) => (
-                        <li key={i} className="text-sm flex items-start gap-3">
-                          <span className="w-1 h-1 bg-accent mt-2 shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={`grid ${!product.images || product.images.length <= 1 ? "" : product.images.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
-                    {product.images?.map((image, i) => (
-                      <div
-                        key={i}
-                        className={`bg-white/5 p-4 md:p-6 ${product.images && i < product.images.length - 1 ? "border-b md:border-b-0 md:border-r border-white/12" : ""}`}
-                      >
+          <div className="grid gap-4 md:grid-cols-2">
+            {projects.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100}>
+                <Tilt max={4}>
+                  <Link
+                    href={`/projects/${p.slug}/`}
+                    className="group flex flex-col h-full border border-white/10 bg-night-2 hover:bg-night-3 hover:border-accent-bright/40 transition-colors"
+                  >
+                    {p.image && (
+                      <div className="bg-[#141e2e] border-b border-white/10 p-6 flex items-center justify-center min-h-[220px]">
                         <Image
-                          src={image.src}
-                          alt={`${product.name} - ${image.caption}`}
-                          width={600}
+                          src={p.image}
+                          alt={p.name}
+                          width={640}
                           height={400}
-                          className="w-full h-auto border border-white/10 mb-3"
+                          className="w-full h-auto object-contain max-h-56"
                         />
-                        <p className="text-xs font-medium tracking-wide text-white/60 text-center">
-                          {image.caption}
-                        </p>
                       </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
+                    )}
+                    <div className="p-8 md:p-10 flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-mono text-[11px] tracking-widest text-accent-bright">
+                          {p.status}
+                        </span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3 group-hover:text-accent-bright transition-colors">
+                        {p.name}
+                      </h3>
+                      <p className="text-sm md:text-base text-white/60 leading-relaxed mb-6 flex-1">
+                        {p.tagline}
+                      </p>
+                      <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
+                        事例を見る
+                        <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+                      </span>
+                    </div>
+                  </Link>
+                </Tilt>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

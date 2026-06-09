@@ -5,16 +5,37 @@ export interface Project {
   status: string;
   href?: string;
   image?: string;
+  images?: string[];
   summary: string;
   challenge: string;
   approach: string[];
-  tech: string[];
+  tech?: string[];
   outcome: string[];
 }
 
 // メンバー開発プロダクトの事例（課題 → アプローチ → 技術 → 成果）。
 // ※ 技術スタック等は代表的な内容。実プロジェクトの詳細に合わせて更新してください。
 export const projects: Project[] = [
+  {
+    slug: "study-materials",
+    name: "Strategic Study Tracker",
+    tagline: "クラウド同期・手書き・AI支援を統合したスマート学習プラットフォーム",
+    status: "公開中",
+    href: "https://strategic-study-tracker.vercel.app/",
+    image: "/images/study-materials.png",
+    summary:
+      "教材（PDF、講義動画、Webドキュメント等）を一元管理し、進捗や手書きアノテーションをクラウドでリアルタイムに同期。さらにGemini APIを搭載したAI Copilotにより、翻訳・学術的なQ&Aまでをシームレスに行える次世代の学習管理プラットフォーム。",
+    challenge:
+      "PDF教科書、講義動画、ノートアプリ、AI質問ツールなど、学習に必要なツールや教材が分断されているため、デバイス間（PCとiPadなど）の往復や、学習進捗の同期、アノテーションの共有に多大な摩擦が生じ、学習効率が低下していた。",
+    approach: [
+      "PDFビューア、動画プレイヤー、Webブックマークを『Field』と『Material』の階層構造で一元管理するダッシュボードを設計",
+      "iPadでの手書き入力とPCでの閲覧・編集を可能にするため、アノテーションの座標データを0〜1のスケールに正規化してリアルタイムにクラウド（Supabase）と同期",
+    ],
+    outcome: [
+      "PCとiPadの垣根を越えたシームレスな学習体験・アノテーション同期を実現",
+      "AIとの対話から理論の視覚的理解へのスムーズな接続により、高度な数理・情報科学の学習効率を大幅に向上",
+    ],
+  },
   {
     slug: "noema",
     name: "NOEMA",

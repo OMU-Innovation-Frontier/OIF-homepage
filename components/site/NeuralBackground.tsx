@@ -23,7 +23,6 @@ export default function NeuralBackground({
   accent?: Accent;
 }) {
   const ref = useRef<HTMLCanvasElement>(null);
-  const colors = palette[accent];
 
   useEffect(() => {
     const canvas = ref.current;
@@ -31,6 +30,7 @@ export default function NeuralBackground({
     const ctx = canvas?.getContext("2d");
     if (!canvas || !parent || !ctx) return;
 
+    const colors = palette[accent];
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;
@@ -114,7 +114,7 @@ export default function NeuralBackground({
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, []);
+  }, [accent]);
 
   return <canvas ref={ref} aria-hidden className={`absolute inset-0 pointer-events-none ${className}`} />;
 }

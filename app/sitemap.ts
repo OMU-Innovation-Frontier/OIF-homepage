@@ -13,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/developers/`, lastModified: new Date() },
     { url: `${base}/theory/`, lastModified: new Date() },
     { url: `${base}/activities/`, lastModified: new Date() },
-    { url: `${base}/projects/`, lastModified: new Date() },
     { url: `${base}/blog/`, lastModified: new Date() },
     { url: `${base}/faq/`, lastModified: new Date() },
     { url: `${base}/join/`, lastModified: new Date() },

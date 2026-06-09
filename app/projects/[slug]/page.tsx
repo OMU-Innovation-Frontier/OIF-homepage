@@ -57,10 +57,10 @@ export default async function ProjectPage({
         <div aria-hidden className="absolute -top-32 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-[120px]" />
         <div className="relative max-w-5xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Link
-            href="/projects/"
+            href="/activities/"
             className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-white/60 hover:text-accent-bright transition-colors mb-12"
           >
-            ← back to projects
+            ← back to activities
           </Link>
           <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-5">
             // CASE STUDY · {project.status}
@@ -83,16 +83,45 @@ export default async function ProjectPage({
       </section>
 
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-20">
-        {project.image && (
-          <div className="bg-[#141e2e] border-x border-b border-white/10 p-6 md:p-10 flex items-center justify-center">
-            <Image
-              src={project.image}
-              alt={project.name}
-              width={960}
-              height={600}
-              className="w-full h-auto object-contain max-h-[28rem]"
-            />
-          </div>
+        {project.images && project.images.length > 0 ? (
+          <>
+            {/* パソコン用：3枚並べる */}
+            <div className="hidden md:grid md:grid-cols-3 bg-[#141e2e] border-x border-b border-white/10 p-6 md:p-10 gap-4 justify-items-center items-stretch">
+              {project.images.map((img, idx) => (
+                <div key={idx} className="flex items-center justify-center w-full bg-[#0d1520] p-2 border border-white/5 rounded-lg shadow-xl">
+                  <Image
+                    src={img}
+                    alt={`${project.name} screenshot ${idx + 1}`}
+                    width={320}
+                    height={480}
+                    className="w-full h-auto object-contain max-h-[32rem]"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* スマホ用：既存の1枚を表示 */}
+            <div className="md:hidden bg-[#141e2e] border-x border-b border-white/10 p-6 flex items-center justify-center">
+              <Image
+                src={project.images[0]}
+                alt={project.name}
+                width={640}
+                height={400}
+                className="w-full h-auto object-contain max-h-[28rem]"
+              />
+            </div>
+          </>
+        ) : (
+          project.image && (
+            <div className="bg-[#141e2e] border-x border-b border-white/10 p-6 md:p-10 flex items-center justify-center">
+              <Image
+                src={project.image}
+                alt={project.name}
+                width={960}
+                height={600}
+                className="w-full h-auto object-contain max-h-[28rem]"
+              />
+            </div>
+          )
         )}
 
         <p className="text-lg md:text-xl text-white/75 leading-relaxed py-12 md:py-16">
@@ -116,13 +145,15 @@ export default async function ProjectPage({
           </ul>
         </Block>
 
-        <Block label="// 技術">
-          <div className="flex flex-wrap gap-2 font-mono text-xs tracking-widest text-white/60">
-            {project.tech.map((t) => (
-              <span key={t} className="border border-white/15 px-3 py-1.5">{t}</span>
-            ))}
-          </div>
-        </Block>
+        {project.tech && project.tech.length > 0 && (
+          <Block label="// 技術">
+            <div className="flex flex-wrap gap-2 font-mono text-xs tracking-widest text-white/60">
+              {project.tech.map((t) => (
+                <span key={t} className="border border-white/15 px-3 py-1.5">{t}</span>
+              ))}
+            </div>
+          </Block>
+        )}
 
         <Block label="// 成果">
           <ul className="space-y-4 max-w-3xl">
