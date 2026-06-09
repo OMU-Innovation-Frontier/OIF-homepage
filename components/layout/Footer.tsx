@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-5">
             <Link href="/" className="group inline-block mb-10" aria-label="OIF ホーム">
-              <Image src="/logo.png" alt="OIF Logo" width={120} height={120} className="h-14 w-auto invert transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]" />
+              <Image src="/logo.png" alt="OIF Logo" width={120} height={120} className="h-14 w-auto transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]" />
             </Link>
             <p className="text-xl font-bold tracking-tighter leading-tight mb-4">
               OMU Innovation Frontier
