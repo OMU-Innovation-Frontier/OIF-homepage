@@ -42,7 +42,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-night/80 backdrop-blur-md border-b border-ink/10 text-ink">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-paper border-b border-ink/10 text-ink">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <Link
@@ -55,7 +55,7 @@ export default function Header() {
             alt="OIF Logo"
             width={120}
             height={120}
-            className="h-10 w-auto md:h-12 transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]"
+            className="h-10 w-auto md:h-12 mix-blend-multiply transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]"
             priority
           />
         </Link>

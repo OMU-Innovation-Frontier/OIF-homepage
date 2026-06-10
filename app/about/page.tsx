@@ -87,7 +87,7 @@ export default function AboutPage() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
           <div className="animate-fade-up">
             <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-8">
-              // ABOUT — $ whoami
+              ABOUT
             </p>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-10">
               <span className="accent-gradient-text">OIF</span>
@@ -142,7 +142,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12 md:mb-16">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// WE ARE / WE ARE NOT</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">WE ARE / WE ARE NOT</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">こういう場所。</h2>
           </Reveal>
           <Reveal delay={100} className="border-t border-ink/10">
@@ -169,7 +169,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14 md:mb-20">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// HOW WE LEARN</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">HOW WE LEARN</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">大事にしている3つのこと</h2>
           </Reveal>
 
@@ -212,7 +212,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// HOW OIF WORKS</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">HOW OIF WORKS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">好奇心が、かたちになるまで</h2>
           </Reveal>
           <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
@@ -238,7 +238,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-12">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// TWO DIVISIONS</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">TWO DIVISIONS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">2つの軸で動く</h2>
           </Reveal>
           <Reveal delay={100} className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
@@ -265,7 +265,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">// MEMBERS</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">MEMBERS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">
               すでに、<span className="accent-gradient-text">動いている</span>
             </h2>

@@ -144,7 +144,7 @@ export default function ActivitiesPage() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full animate-fade-up">
           <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
-            // ACTIVITIES — $ ls ./
+            ACTIVITIES
           </p>
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8">
             Activities
@@ -248,7 +248,7 @@ export default function ActivitiesPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <Reveal className="mb-16">
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-bright mb-4">
-              // Sessions
+              Sessions
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               勉強会・ハンズオン
@@ -313,7 +313,7 @@ export default function ActivitiesPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-bright mb-4">
-              // Products
+              Products
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               メンバー開発プロダクト
@@ -374,7 +374,7 @@ export default function ActivitiesPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-bright mb-4">
-              // Contest
+              Contest
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               コンテスト実績

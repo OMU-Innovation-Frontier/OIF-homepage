@@ -63,7 +63,7 @@ export default async function ProjectPage({
             ← back to activities
           </Link>
           <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-5">
-            // CASE STUDY · {project.status}
+            CASE STUDY · {project.status}
           </p>
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-5">{project.name}</h1>
           <p className="text-lg md:text-xl text-ink/70 leading-relaxed max-w-2xl mb-8">
@@ -128,13 +128,13 @@ export default async function ProjectPage({
           {project.summary}
         </p>
 
-        <Block label="// 課題">
+        <Block label="課題">
           <p className="text-base md:text-lg text-ink/70 leading-relaxed max-w-3xl">
             {project.challenge}
           </p>
         </Block>
 
-        <Block label="// アプローチ">
+        <Block label="アプローチ">
           <ul className="space-y-4 max-w-3xl">
             {project.approach.map((a) => (
               <li key={a} className="flex items-start gap-4">
@@ -146,7 +146,7 @@ export default async function ProjectPage({
         </Block>
 
         {project.tech && project.tech.length > 0 && (
-          <Block label="// 技術">
+          <Block label="技術">
             <div className="flex flex-wrap gap-2 font-mono text-xs tracking-widest text-ink/60">
               {project.tech.map((t) => (
                 <span key={t} className="border border-ink/15 px-3 py-1.5">{t}</span>
@@ -155,7 +155,7 @@ export default async function ProjectPage({
           </Block>
         )}
 
-        <Block label="// 成果">
+        <Block label="成果">
           <ul className="space-y-4 max-w-3xl">
             {project.outcome.map((o) => (
               <li key={o} className="flex items-start gap-4">

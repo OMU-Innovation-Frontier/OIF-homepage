@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-5">
             <Link href="/" className="group inline-block mb-10" aria-label="OIF ホーム">
-              <Image src="/logo.png" alt="OIF Logo" width={120} height={120} className="h-14 w-auto transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]" />
+              <Image src="/logo.png" alt="OIF Logo" width={120} height={120} className="h-14 w-auto mix-blend-multiply transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]" />
             </Link>
             <p className="text-xl font-bold tracking-tighter leading-tight mb-4">
               OMU Innovation Frontier
@@ -37,7 +37,7 @@ export default function Footer() {
           {/* Navigation */}
           <div className="md:col-span-3">
             <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-accent-bright mb-8">
-              // navigation
+              navigation
             </p>
             <ul className="space-y-4">
               {navLinks.map((link) => (
@@ -56,7 +56,7 @@ export default function Footer() {
           {/* Connect */}
           <div className="md:col-span-4">
             <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-accent-bright mb-8">
-              // connect
+              connect
             </p>
             <div className="flex flex-col gap-4">
               {socialLinks.map((link) => (

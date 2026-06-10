@@ -20,7 +20,7 @@ export default function NewsPage() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night to-transparent" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 animate-fade-up">
           <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
-            // NEWS — $ tail -f updates.log
+            NEWS
           </p>
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6">
             News

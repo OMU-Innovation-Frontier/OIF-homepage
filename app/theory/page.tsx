@@ -45,7 +45,7 @@ export default function TheoryPage() {
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
             <div className="lg:col-span-6 animate-fade-up">
               <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-theory-bright mb-6">
-                // OIF THEORY DIVISION
+                OIF THEORY DIVISION
               </p>
               <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
                 なぜ、
@@ -69,7 +69,7 @@ export default function TheoryPage() {
             <div className="lg:col-span-6 animate-fade-up [animation-delay:140ms]">
               <div className="border border-ink/12 bg-night-2/80 backdrop-blur-sm shadow-card p-8 md:p-10 font-mono">
                 <p className="text-[11px] tracking-widest text-ink/60 mb-8">
-                  // scaled dot-product attention
+                  scaled dot-product attention
                 </p>
                 <div className="text-xl md:text-2xl leading-[1.8] text-ink/85">
                   Attention(Q, K, V) ={" "}
@@ -79,7 +79,6 @@ export default function TheoryPage() {
                   <span className="text-theory-bright">√dₖ</span>) V
                 </div>
                 <div className="mt-8 pt-6 border-t border-ink/10 text-sm text-ink/55">
-                  <span className="text-theory-bright">{">"}</span>{" "}
                   <Typewriter
                     className="text-ink/80"
                     words={[
@@ -117,7 +116,7 @@ export default function TheoryPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12">
-            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">// THE STACK OF UNDERSTANDING</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">THE STACK OF UNDERSTANDING</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">基礎から、積み上げる</h2>
           </Reveal>
           <Reveal delay={100} className="border-t border-ink/10">
@@ -148,7 +147,7 @@ export default function TheoryPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
-            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">// THE JOURNEY</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">THE JOURNEY</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">理解の、グラデーション</h2>
           </Reveal>
           <Reveal delay={100}>
@@ -172,7 +171,7 @@ export default function TheoryPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
             <Reveal>
-              <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">// READING LIST</p>
+              <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">READING LIST</p>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">読む、議論する</h2>
               <p className="text-ink/60 leading-relaxed max-w-md">
                 論文や教材を輪読し、発表・議論・フィードバックを繰り返す。人に説明することで、理解は一段深まる。

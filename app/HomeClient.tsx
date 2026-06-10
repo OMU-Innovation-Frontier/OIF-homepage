@@ -5,7 +5,6 @@ import HeroBackground from "@/components/site/HeroBackground";
 import DivisionSplit from "@/components/site/DivisionSplit";
 import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
-import Typewriter from "@/components/ui/Typewriter";
 import Magnetic from "@/components/ui/Magnetic";
 
 const ticker = [
@@ -74,40 +73,27 @@ export default function HomeClient() {
               </div>
             </div>
 
-            {/* right: console panel */}
+            {/* right: overview panel */}
             <div className="lg:col-span-5 animate-fade-up [animation-delay:140ms]">
-              <div className="border border-ink/12 bg-night-2/70 backdrop-blur-sm shadow-card">
-                <div className="flex items-center gap-2 border-b border-ink/10 px-4 py-3">
-                  <span className="h-2.5 w-2.5 bg-ink/40" />
-                  <span className="h-2.5 w-2.5 bg-ink/25" />
-                  <span className="h-2.5 w-2.5 bg-ink/15" />
-                  <span className="ml-3 font-mono text-[11px] tracking-widest text-ink/60">
-                    oif — status
+              <div className="border border-ink/12 bg-night-2/70 shadow-card">
+                <div className="border-b border-ink/10 px-6 py-3">
+                  <span className="font-mono text-[11px] tracking-widest text-ink/60 uppercase">
+                    OIF Overview
                   </span>
                 </div>
                 <div className="p-6 font-mono text-[13px] leading-relaxed">
-                  <p className="text-ink/60 mb-4">
-                    <span className="text-accent-bright">~/oif</span> ${" "}
-                    <Typewriter
-                      className="text-ink/80"
-                      words={["./about --summary", "./status", "./projects --list", "./join"]}
-                    />
-                  </p>
                   {[
-                    ["division", "Development / Theory"],
-                    ["focus", "LLM · ML · Web · Papers"],
-                    ["community", "Discord-native"],
-                    ["members", "building & shipping"],
-                    ["barrier", "none — 経験不問"],
+                    ["部門", "開発 / 理論"],
+                    ["テーマ", "LLM · ML · Web · 論文"],
+                    ["拠点", "Discord"],
+                    ["活動", "作って、出す"],
+                    ["条件", "経験不問"],
                   ].map(([k, v]) => (
                     <div key={k} className="flex gap-3 py-1.5 border-b border-ink/5 last:border-0">
                       <span className="w-24 shrink-0 text-ink/60">{k}</span>
                       <span className="text-ink/85">{v}</span>
                     </div>
                   ))}
-                  <p className="mt-4 text-ink/60">
-                    <span className="text-accent-bright">~/oif</span> $ <span className="text-ink/52">_</span>
-                  </p>
                 </div>
               </div>
             </div>
@@ -133,7 +119,7 @@ export default function HomeClient() {
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">
-                // CHOOSE YOUR PATH
+                CHOOSE YOUR PATH
               </p>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
                 進む道を、選ぶ
@@ -155,7 +141,7 @@ export default function HomeClient() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-20">
             <div className="shrink-0">
-              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// LOG</p>
+              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">LOG</p>
               <h2 className="text-2xl md:text-3xl font-black tracking-tighter">Latest Updates</h2>
               <Link href="/news/" className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-accent-bright transition-colors">
                 view all →
@@ -180,7 +166,7 @@ export default function HomeClient() {
       {/* ============ PARTNER ============ */}
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-sm">
-          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-6">// PARTNER</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-6">PARTNER</p>
           <a
             href="https://takeforest.com"
             target="_blank"
@@ -202,7 +188,7 @@ export default function HomeClient() {
         <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
         <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
-          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">$ ./join</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">JOIN</p>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] mb-10">
             未来を<span className="accent-gradient-text">形作る側</span>へ。
           </h2>

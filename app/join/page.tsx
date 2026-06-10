@@ -58,7 +58,7 @@ export default function JoinPage() {
         <div aria-hidden className="absolute -top-32 right-0 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
           <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
-            // JOIN THE COMMUNITY
+            JOIN THE COMMUNITY
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-8">
             Discordから、<br />はじめよう
@@ -85,7 +85,7 @@ export default function JoinPage() {
       {/* 3 Steps */}
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// HOW IT WORKS</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">HOW IT WORKS</p>
           <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-14">
             参加までの3ステップ
           </h2>
@@ -116,7 +116,7 @@ export default function JoinPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
             <div>
-              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// IS THIS YOU?</p>
+              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">IS THIS YOU?</p>
               <h2 className="text-3xl md:text-4xl font-black tracking-tighter leading-tight mb-6">
                 こんな人に<br />おすすめ
               </h2>
@@ -142,7 +142,7 @@ export default function JoinPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <div className="flex items-end justify-between gap-6 mb-12">
             <div>
-              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">// QUICK ANSWERS</p>
+              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">QUICK ANSWERS</p>
               <h2 className="text-3xl md:text-4xl font-black tracking-tighter">不安な点は？</h2>
             </div>
             <Link
@@ -174,7 +174,7 @@ export default function JoinPage() {
         <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
         <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
-          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">$ ./join</p>
+          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">JOIN</p>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-10">
             一歩、<span className="accent-gradient-text">外の世界</span>を<br />覗いてみませんか。
           </h2>

@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
 import HeroBackground from "@/components/site/HeroBackground";
-import Terminal, { type TermLine } from "@/components/site/Terminal";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -12,15 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://oif-ai.com/developers/" },
 };
 
-const boot: TermLine[] = [
-  { p: "$", t: "oif-dev init" },
-  { t: "→ scanning latest AI…", c: "text-ink/60" },
-  { t: "→ found: LLMs · agents · tools", c: "text-ink/60" },
-  { p: "$", t: "build --fast --with-genai" },
-  { t: "✓ prototype ready", c: "text-ink" },
-  { p: "$", t: "ship it 🚀", c: "text-dev-bright" },
-];
-
 const pipeline = [
   { n: "01", en: "PICK", body: "気になる技術やテーマを選ぶ" },
   { n: "02", en: "TEST", body: "まず小さく触って検証する" },
@@ -28,12 +18,12 @@ const pipeline = [
   { n: "04", en: "SHIP", body: "使えるところまで出す" },
 ];
 
-const gitlog = [
-  { h: "a1f3c9", m: "feat: 新しいLLM APIを試す", t: "2h ago" },
-  { h: "7b2e10", m: "build: ハンズオン用デモを実装", t: "1d ago" },
-  { h: "c40d8a", m: "fix: プロンプトを調整して精度を上げる", t: "3d ago" },
-  { h: "e91b22", m: "ship: 試作プロダクト v0.1 を公開", t: "1w ago" },
-  { h: "2d77f5", m: "chore: 生成AIで開発を高速化", t: "2w ago" },
+const works = [
+  "新しいLLM APIを試す",
+  "ハンズオン用デモを実装",
+  "プロンプトを調整して精度を上げる",
+  "試作プロダクトを公開",
+  "生成AIで開発を高速化",
 ];
 
 const stack = [
@@ -50,9 +40,9 @@ export default function DevelopersPage() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
-            <div className="lg:col-span-6 animate-fade-up">
+            <div className="lg:col-span-8 animate-fade-up">
               <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-dev-bright mb-6">
-                // OIF DEVELOPMENT DIVISION
+                OIF DEVELOPMENT DIVISION
               </p>
               <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
                 つくって、
@@ -70,9 +60,6 @@ export default function DevelopersPage() {
                 作る側になる
                 <span aria-hidden>→</span>
               </Link>
-            </div>
-            <div className="lg:col-span-6 animate-fade-up [animation-delay:140ms]">
-              <Terminal title="oif-dev — zsh" lines={boot} />
             </div>
           </div>
         </div>
@@ -100,7 +87,7 @@ export default function DevelopersPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
-            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">// THE PIPELINE</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">THE PIPELINE</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">アイデアが、出荷されるまで</h2>
           </Reveal>
           <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
@@ -129,23 +116,22 @@ export default function DevelopersPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
             <Reveal>
-              <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">// git log --oneline</p>
+              <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">RECENT WORK</p>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">手を動かした分だけ、進む</h2>
               <p className="text-ink/60 leading-relaxed max-w-md">
                 派手な計画より、小さなコミットの積み重ね。試して、直して、出す。その繰り返しが力になる。
               </p>
             </Reveal>
-            <Reveal delay={100} className="border border-ink/10 bg-night-2 font-mono text-sm">
-              {gitlog.map((c) => (
+            <Reveal delay={100} className="border border-ink/10 bg-night-2 text-sm">
+              {works.map((w, i) => (
                 <div
-                  key={c.h}
+                  key={w}
                   className="group flex items-center gap-4 px-5 py-4 border-b border-ink/5 last:border-0 hover:bg-ink/[0.03] transition-colors"
                 >
-                  <span className="text-dev-bright shrink-0">{c.h}</span>
-                  <span className="flex-1 text-ink/75 group-hover:text-ink transition-colors truncate">
-                    {c.m}
+                  <span className="font-mono text-dev-bright shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="flex-1 text-ink/75 group-hover:text-ink transition-colors">
+                    {w}
                   </span>
-                  <span className="text-ink/52 shrink-0 text-xs">{c.t}</span>
                 </div>
               ))}
             </Reveal>
@@ -157,7 +143,7 @@ export default function DevelopersPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10">
-            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">// STACK WE PLAY WITH</p>
+            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">STACK WE PLAY WITH</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">手札</h2>
           </Reveal>
           <Reveal delay={80} className="flex flex-wrap gap-3">

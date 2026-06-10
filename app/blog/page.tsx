@@ -20,7 +20,7 @@ export default function BlogIndexPage() {
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
         <div aria-hidden className="absolute -top-32 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-[120px]" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
-          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">// BLOG</p>
+          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">BLOG</p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6">
             技術ブログ・ノート
           </h1>
@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
       <section className="bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           {posts.length === 0 ? (
-            <p className="font-mono text-sm text-ink/60">// no posts yet</p>
+            <p className="font-mono text-sm text-ink/60">まだ記事がありません</p>
           ) : (
             <Reveal className="border-t border-ink/10">
               {posts.map((post) => (
