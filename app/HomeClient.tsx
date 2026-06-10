@@ -113,8 +113,29 @@ export default function HomeClient() {
         </div>
       </div>
 
-      {/* ============ DEPARTMENTS (interactive split) ============ */}
+      {/* ============ MISSION ============ */}
       <section className="bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="max-w-4xl">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight">
+              仕組みを理解し、
+              <br className="hidden md:block" />
+              自分たちの手で実装し、
+              <br className="hidden md:block" />
+              <span className="accent-gradient-text">社会に問いを立てる。</span>
+            </h2>
+            <Link
+              href="/about/"
+              className="mt-10 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors link-underline"
+            >
+              OIFについて →
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ DEPARTMENTS (interactive split) ============ */}
+      <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
@@ -132,6 +153,46 @@ export default function HomeClient() {
 
           <Reveal delay={120}>
             <DivisionSplit />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ SNAPSHOTS (real activity photos) ============ */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">
+                SNAPSHOTS
+              </p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
+                活動の風景
+              </h2>
+            </div>
+            <Link
+              href="/activities/"
+              className="font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors md:pb-2 link-underline"
+            >
+              view all →
+            </Link>
+          </Reveal>
+
+          <Reveal delay={120} className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+            {[
+              { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子" },
+              { src: "/images/vibe-coding-workshop.png", alt: "Vibe Codingワークショップの様子" },
+              { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの様子" },
+            ].map((p) => (
+              <Link key={p.src} href="/activities/" className="group relative block aspect-[4/3] overflow-hidden bg-night-2">
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-smooth"
+                />
+              </Link>
+            ))}
           </Reveal>
         </div>
       </section>
