@@ -40,12 +40,14 @@ export default function NewsPage() {
                 key={index}
                 className="group flex flex-col md:flex-row md:items-center gap-3 md:gap-10 py-7 border-b border-ink/10 hover:bg-ink/[0.02] transition-colors"
               >
-                {item.date ? (
-                  <time className="font-mono text-sm tracking-widest text-ink/60 w-28 shrink-0">
-                    {item.date}
-                  </time>
-                ) : (
-                  <div className="w-28 shrink-0 hidden md:block" />
+                <time className="font-mono text-sm tracking-widest text-ink/60 w-28 shrink-0">
+                  {item.date}
+                </time>
+
+                {item.tag && (
+                  <span className="font-mono text-[10px] tracking-widest border border-ink/20 px-2 py-0.5 text-ink/60 w-fit shrink-0">
+                    {item.tag}
+                  </span>
                 )}
 
                 <span className="flex-1 text-base md:text-lg font-bold tracking-tight group-hover:text-accent-bright transition-colors">
