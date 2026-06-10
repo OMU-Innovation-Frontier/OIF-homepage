@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { newsItems } from "@/lib/news";
-import { getAllProjects } from "@/lib/projects";
 import HeroBackground from "@/components/site/HeroBackground";
 import DivisionSplit from "@/components/site/DivisionSplit";
 import Parallax from "@/components/ui/Parallax";
@@ -69,39 +68,27 @@ export default function HomeClient() {
               </div>
             </div>
 
-            {/* right: photo (diagonal clip) + overview card overlap */}
+            {/* right: overview panel */}
             <div className="lg:col-span-5 animate-fade-up [animation-delay:140ms]">
-              <div className="relative">
-                <div className="relative aspect-[4/3] [clip-path:polygon(0_5%,100%_0,100%_95%,0_100%)]">
-                  <Image
-                    src="/images/vibe-coding-workshop.png"
-                    alt="ワークショップの様子"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover grayscale"
-                  />
+              <div className="border border-ink/12 bg-night-2/70 shadow-card">
+                <div className="border-b border-ink/10 px-6 py-3">
+                  <span className="font-mono text-[11px] tracking-widest text-ink/60 uppercase">
+                    OIF Overview
+                  </span>
                 </div>
-                <div className="relative -mt-14 md:-mt-16 ml-5 md:ml-10 border border-ink/12 bg-paper shadow-card">
-                  <div className="border-b border-ink/10 px-6 py-3">
-                    <span className="font-mono text-[11px] tracking-widest text-ink/60 uppercase">
-                      OIF Overview
-                    </span>
-                  </div>
-                  <div className="p-6 font-mono text-[13px] leading-relaxed">
-                    {[
-                      ["部門", "開発 / 理論"],
-                      ["テーマ", "LLM · ML · Web · 論文"],
-                      ["拠点", "Discord"],
-                      ["活動", "作って、出す"],
-                      ["条件", "経験不問"],
-                    ].map(([k, v]) => (
-                      <div key={k} className="flex gap-3 py-1.5 border-b border-ink/5 last:border-0">
-                        <span className="w-24 shrink-0 text-ink/60">{k}</span>
-                        <span className="text-ink/85">{v}</span>
-                      </div>
-                    ))}
-                  </div>
+                <div className="p-6 font-mono text-[13px] leading-relaxed">
+                  {[
+                    ["部門", "開発 / 理論"],
+                    ["テーマ", "LLM · ML · Web · 論文"],
+                    ["拠点", "Discord"],
+                    ["活動", "作って、出す"],
+                    ["条件", "経験不問"],
+                  ].map(([k, v]) => (
+                    <div key={k} className="flex gap-3 py-1.5 border-b border-ink/5 last:border-0">
+                      <span className="w-24 shrink-0 text-ink/60">{k}</span>
+                      <span className="text-ink/85">{v}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -165,58 +152,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ============ PRODUCTS (member-built, real) ============ */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-3">
-                PRODUCTS
-              </p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
-                作ったものが、ある
-              </h2>
-            </div>
-            <Link
-              href="/activities/"
-              className="font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors md:pb-2 link-underline"
-            >
-              view all →
-            </Link>
-          </Reveal>
-
-          <Reveal delay={120} className="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
-            {getAllProjects().map((p) => (
-              <Link key={p.slug} href={`/projects/${p.slug}/`} className="group block bg-paper">
-                <div className="relative aspect-video overflow-hidden border-b border-ink/10 bg-night-2">
-                  <Image
-                    // study-materials.png は 5.5MB あるため、home では軽量な jpg を使う
-                    src={p.slug === "study-materials" ? "/images/study-materials.jpg" : p.image ?? ""}
-                    alt={`${p.name} のスクリーンショット`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-smooth"
-                  />
-                </div>
-                <div className="p-6 md:p-7">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-xl md:text-2xl font-black tracking-tight">{p.name}</h3>
-                    <span className="shrink-0 font-mono text-[10px] tracking-widest border border-ink/20 px-2 py-1 text-ink/60">
-                      {p.status}
-                    </span>
-                  </div>
-                  <p className="mt-3 text-sm text-ink/60 leading-relaxed">{p.tagline}</p>
-                  <span className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 group-hover:text-ink transition-colors">
-                    詳しく見る →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ SNAPSHOTS (real activity photos, mosaic) ============ */}
+      {/* ============ SNAPSHOTS (real activity photos) ============ */}
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -236,25 +172,18 @@ export default function HomeClient() {
             </Link>
           </Reveal>
 
-          <Reveal
-            delay={120}
-            className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[200px] gap-px bg-ink/10 border border-ink/10"
-          >
+          <Reveal delay={120} className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
             {[
-              { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子", span: "col-span-2 row-span-2" },
-              { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの様子", span: "col-span-2 row-span-1" },
-              { src: "/images/obucs-contest.png", alt: "O-BUCsコンテストの様子", span: "col-span-2 row-span-1" },
+              { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子" },
+              { src: "/images/vibe-coding-workshop.png", alt: "Vibe Codingワークショップの様子" },
+              { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの様子" },
             ].map((p) => (
-              <Link
-                key={p.src}
-                href="/activities/"
-                className={`group relative block overflow-hidden bg-night-2 ${p.span}`}
-              >
+              <Link key={p.src} href="/activities/" className="group relative block aspect-[4/3] overflow-hidden bg-night-2">
                 <Image
                   src={p.src}
                   alt={p.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, 33vw"
                   className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-smooth"
                 />
               </Link>
@@ -276,15 +205,10 @@ export default function HomeClient() {
             </div>
             <div className="flex-1 border-t border-ink/10">
               {newsItems.map((item, i) => (
-                <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8 py-6 border-b border-ink/10 group">
-                  <time className="font-mono text-xs tracking-widest text-ink/60 w-24 shrink-0">
-                    {item.date}
+                <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 border-b border-ink/10 group">
+                  <time className="font-mono text-xs tracking-widest text-ink/60 w-28 shrink-0">
+                    {item.date || "——.——.——"}
                   </time>
-                  {item.tag && (
-                    <span className="font-mono text-[10px] tracking-widest border border-ink/20 px-2 py-0.5 text-ink/60 w-fit shrink-0">
-                      {item.tag}
-                    </span>
-                  )}
                   <span className="text-base md:text-lg font-bold tracking-tight group-hover:text-accent-bright transition-colors">
                     {item.title}
                   </span>
