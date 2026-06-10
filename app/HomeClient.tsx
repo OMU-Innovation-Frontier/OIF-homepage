@@ -5,7 +5,6 @@ import HeroBackground from "@/components/site/HeroBackground";
 import DivisionSplit from "@/components/site/DivisionSplit";
 import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
-import Magnetic from "@/components/ui/Magnetic";
 
 const ticker = [
   "LLM", "MACHINE LEARNING", "DEEP LEARNING", "WEB DEV", "PAPERS",
@@ -53,23 +52,19 @@ export default function HomeClient() {
               </p>
 
               <div className="flex flex-wrap gap-4 animate-fade-up [animation-delay:500ms]">
-                <Magnetic>
-                  <Link
-                    href="/join"
-                    className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_50px_-10px_rgba(11,12,14,0.25)]"
-                  >
-                    Join the Frontier
-                    <span aria-hidden>→</span>
-                  </Link>
-                </Magnetic>
-                <Magnetic>
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
-                  >
-                    Explore
-                  </Link>
-                </Magnetic>
+                <Link
+                  href="/join"
+                  className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_50px_-10px_rgba(11,12,14,0.25)]"
+                >
+                  Join the Frontier
+                  <span aria-hidden>→</span>
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
+                >
+                  Explore
+                </Link>
               </div>
             </div>
 
@@ -246,8 +241,10 @@ export default function HomeClient() {
 
       {/* ============ CTA BAND ============ */}
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
-        <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
-        <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
+        {/* brand motif: the OIF swirl, oversized and barely-there */}
+        <div aria-hidden className="absolute -right-32 top-1/2 -translate-y-1/2 h-[34rem] w-[34rem] opacity-[0.05] mix-blend-multiply animate-[spin_120s_linear_infinite] pointer-events-none">
+          <Image src="/logo-square.png" alt="" fill className="object-contain" />
+        </div>
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
           <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-8">JOIN</p>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] mb-10">
@@ -256,15 +253,13 @@ export default function HomeClient() {
           <p className="text-base md:text-lg text-ink/60 max-w-xl mx-auto mb-12">
             プログラミング経験は問いません。まずはDiscordを覗いてみることから。
           </p>
-          <Magnetic strength={0.45}>
-            <Link
-              href="/join"
-              className="inline-flex items-center gap-2 bg-accent text-white px-10 py-5 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_60px_-12px_rgba(11,12,14,0.25)]"
-            >
-              Join the Community
-              <span aria-hidden>→</span>
-            </Link>
-          </Magnetic>
+          <Link
+            href="/join"
+            className="inline-flex items-center gap-2 bg-accent text-white px-10 py-5 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:border-accent-bright hover:text-night transition-colors duration-200 shadow-[0_0_60px_-12px_rgba(11,12,14,0.25)]"
+          >
+            Join the Community
+            <span aria-hidden>→</span>
+          </Link>
         </Reveal>
       </section>
     </div>

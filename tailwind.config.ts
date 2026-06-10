@@ -130,7 +130,7 @@ const config: Config = {
         "grid-pan": "grid-pan 6s linear infinite",
         "drift-slow": "drift 18s ease-in-out infinite",
         "drift-slower": "drift 26s ease-in-out infinite",
-        marquee: "marquee 32s linear infinite",
+        marquee: "marquee 64s linear infinite",
         blink: "blink 1.2s step-end infinite",
       },
     },
