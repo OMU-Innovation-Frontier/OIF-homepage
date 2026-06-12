@@ -52,7 +52,7 @@ export default function TheoryPage() {
               </p>
               <Link
                 href="/join/"
-                className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)]"
+                className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200"
               >
                 深く知る側になる
                 <span aria-hidden>→</span>
@@ -61,7 +61,7 @@ export default function TheoryPage() {
 
             {/* Formula card */}
             <div className="lg:col-span-6 animate-fade-up [animation-delay:140ms]">
-              <div className="border border-ink/12 bg-night-2/80 backdrop-blur-sm shadow-card p-8 md:p-10 font-mono">
+              <div className="border border-ink/12 bg-night-2 shadow-card p-8 md:p-10 font-mono">
                 <p className="text-[11px] tracking-widest text-ink/60 mb-8">
                   scaled dot-product attention
                 </p>
@@ -184,7 +184,6 @@ export default function TheoryPage() {
       {/* CLOSING */}
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
-        <div aria-hidden className="absolute left-1/3 top-1/2 -translate-y-1/2 h-[34rem] w-[34rem] rounded-full bg-theory/20 blur-[130px]" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl mb-12">
             <span className="text-theory-bright">なんとなく</span>から、
@@ -193,7 +192,7 @@ export default function TheoryPage() {
           </h2>
           <Link
             href="/join/"
-            className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)]"
+            className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200"
           >
             理論に参加する
             <span aria-hidden>→</span>

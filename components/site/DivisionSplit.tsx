@@ -62,11 +62,6 @@ export default function DivisionSplit() {
             style={{ flexGrow: grow }}
             className={`group relative overflow-hidden bg-night-2 min-h-[22rem] md:min-h-[34rem] p-8 md:p-12 flex flex-col justify-end border-2 border-transparent transition-[flex-grow,background-color,border-color] duration-500 ease-smooth hover:bg-night-3 ${p.hoverBorder} basis-0`}
           >
-            <div aria-hidden className="absolute inset-0 dot-grid opacity-25" />
-            <div
-              aria-hidden
-              className={`absolute -bottom-24 -right-12 h-96 w-96 rounded-full ${p.glow} blur-[110px] opacity-40 group-hover:opacity-90 transition-opacity duration-500`}
-            />
             <span
               aria-hidden
               className="absolute -top-6 right-6 text-[7rem] md:text-[10rem] font-black leading-none tracking-tighter text-ink/[0.04] group-hover:text-ink/[0.06] transition-colors"

@@ -50,7 +50,7 @@ export default function DevelopersPage() {
               </p>
               <Link
                 href="/join/"
-                className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)]"
+                className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200"
               >
                 作る側になる
                 <span aria-hidden>→</span>
@@ -157,7 +157,6 @@ export default function DevelopersPage() {
       {/* CLOSING */}
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
-        <div aria-hidden className="absolute left-1/3 top-1/2 -translate-y-1/2 h-[34rem] w-[34rem] rounded-full bg-dev/20 blur-[130px]" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl mb-12">
             <span className="text-dev-bright">面白そう</span>で終わらせず、
@@ -166,7 +165,7 @@ export default function DevelopersPage() {
           </h2>
           <Link
             href="/join/"
-            className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)]"
+            className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200"
           >
             開発に参加する
             <span aria-hidden>→</span>

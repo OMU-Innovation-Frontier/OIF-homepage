@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { Brain, Hammer, Compass } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import Tilt from "@/components/ui/Tilt";
 
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
@@ -96,7 +95,7 @@ export default function AboutPage() {
               {acronym.map((a) => (
                 <div
                   key={a.l}
-                  className="group flex-1 bg-night-2/70 backdrop-blur-sm px-6 py-5 hover:bg-night-3 transition-colors"
+                  className="group flex-1 bg-night-2 px-6 py-5 hover:bg-night-3 transition-colors"
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="text-3xl font-black tracking-tighter text-accent-bright">{a.l}</span>
@@ -168,29 +167,23 @@ export default function AboutPage() {
               const Icon = b.icon;
               return (
                 <Reveal key={b.n} delay={i * 120}>
-                  <Tilt max={5}>
-                  <div className="group relative h-full bg-night-2 border border-ink/10 p-8 md:p-10 overflow-hidden transition-colors duration-300 hover:border-accent-bright/40 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-accent-bright before:opacity-0 hover:before:opacity-100 before:transition-opacity">
-                    <div
-                      aria-hidden
-                      className="absolute -right-8 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    />
-                    <div className="relative flex items-start justify-between mb-10">
-                      <span className="text-6xl md:text-7xl font-black tracking-tighter text-ink/[0.08] group-hover:text-accent-bright/30 transition-colors duration-300">
+                  <div className="h-full bg-night-2 border border-ink/10 p-8 md:p-10 transition-colors duration-300 hover:border-ink/30">
+                    <div className="flex items-start justify-between mb-10">
+                      <span className="text-6xl md:text-7xl font-black tracking-tighter text-ink/[0.08]">
                         {b.n}
                       </span>
-                      <Icon size={28} strokeWidth={1.5} className="text-accent-bright mt-2" />
+                      <Icon size={28} strokeWidth={1.5} className="text-ink/70 mt-2" />
                     </div>
-                    <p className="relative section-label mb-3">
+                    <p className="section-label mb-3">
                       {b.en}
                     </p>
-                    <h3 className="relative text-2xl md:text-3xl font-bold tracking-tight mb-5">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-5">
                       {b.title}
                     </h3>
-                    <p className="relative text-sm md:text-base leading-relaxed text-ink/60">
+                    <p className="text-sm md:text-base leading-relaxed text-ink/60">
                       {b.body}
                     </p>
                   </div>
-                  </Tilt>
                 </Reveal>
               );
             })}
@@ -275,7 +268,6 @@ export default function AboutPage() {
       {/* ===== CLOSING ===== */}
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
-        <div aria-hidden className="absolute left-1/3 top-1/2 -translate-y-1/2 h-[34rem] w-[34rem] rounded-full bg-accent/15 blur-[130px]" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48 lg:py-64">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.12] max-w-5xl">
             求められる学びじゃなく、
@@ -286,7 +278,7 @@ export default function AboutPage() {
           </h2>
           <Link
             href="/join/"
-            className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)]"
+            className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200"
           >
             参加する
             <span aria-hidden>→</span>

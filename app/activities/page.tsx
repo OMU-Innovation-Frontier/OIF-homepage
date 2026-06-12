@@ -5,7 +5,6 @@ import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
-import Tilt from "@/components/ui/Tilt";
 import { getAllProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -311,7 +310,6 @@ export default function ActivitiesPage() {
           <div className="grid gap-4 md:grid-cols-2">
             {projects.map((p, i) => (
               <Reveal key={p.slug} delay={i * 100}>
-                <Tilt max={4}>
                   <Link
                     href={`/projects/${p.slug}/`}
                     className="group flex flex-col h-full border border-ink/10 bg-night-2 hover:bg-night-3 hover:border-ink/30 transition-colors"
@@ -345,7 +343,6 @@ export default function ActivitiesPage() {
                       </span>
                     </div>
                   </Link>
-                </Tilt>
               </Reveal>
             ))}
           </div>

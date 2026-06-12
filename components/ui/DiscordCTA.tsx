@@ -34,7 +34,7 @@ export default function DiscordCTA({
       data-cta="discord"
       data-cta-location={location}
       onClick={() => trackEvent("discord_join_click", { location })}
-      className={`group inline-flex items-center gap-3 bg-ink text-paper font-bold tracking-widest uppercase border border-ink hover:bg-ink/85 hover:border-ink/85 transition-colors duration-200 shadow-[0_0_50px_-12px_rgba(11,12,14,0.25)] ${sizes[size]} ${className}`}
+      className={`group inline-flex items-center gap-3 bg-ink text-paper font-bold tracking-widest uppercase border border-ink hover:bg-ink/85 hover:border-ink/85 transition-colors duration-200 ${sizes[size]} ${className}`}
     >
       {label}
       <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { MessageSquare, Compass, Rocket } from "lucide-react";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
-import Tilt from "@/components/ui/Tilt";
 
 export const metadata: Metadata = {
   title: "Join | OIF 大阪公立大学のAIサークルに参加",
@@ -90,16 +89,14 @@ export default function JoinPage() {
               const Icon = s.icon;
               return (
                 <Reveal key={s.n} delay={i * 100}>
-                <Tilt max={5}>
-                <div className="h-full border border-ink/10 bg-night-2 p-8 md:p-10 hover:border-accent-bright/40 transition-colors">
+                <div className="h-full border border-ink/10 bg-night-2 p-8 md:p-10 hover:border-ink/30 transition-colors">
                   <div className="flex items-center justify-between mb-8">
-                    <Icon size={26} strokeWidth={1.5} className="text-accent-bright" />
+                    <Icon size={26} strokeWidth={1.5} className="text-ink/70" />
                     <span className="font-mono text-sm text-ink/52">{s.n}</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{s.title}</h3>
                   <p className="text-sm md:text-base leading-relaxed text-ink/60">{s.body}</p>
                 </div>
-                </Tilt>
                 </Reveal>
               );
             })}
@@ -168,7 +165,6 @@ export default function JoinPage() {
       {/* Final CTA */}
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
-        <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
           <p className="section-label mb-8">JOIN</p>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-10">
