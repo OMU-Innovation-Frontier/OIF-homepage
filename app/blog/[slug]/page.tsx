@@ -59,7 +59,7 @@ export default async function BlogPostPage({
       <article className="max-w-3xl mx-auto px-6 md:px-12 lg:px-8 py-20 md:py-28">
         <Link
           href="/blog/"
-          className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-accent-bright transition-colors mb-12"
+          className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors mb-12"
         >
           ← back to blog
         </Link>
@@ -91,7 +91,7 @@ export default async function BlogPostPage({
         <div className="mt-16 pt-10 border-t border-ink/10">
           <Link
             href="/join/"
-            className="font-mono text-sm text-ink/50 hover:text-accent-bright transition-colors"
+            className="font-mono text-sm text-ink/50 hover:text-ink transition-colors"
           >
             $ こうした活動に参加する → /join
           </Link>

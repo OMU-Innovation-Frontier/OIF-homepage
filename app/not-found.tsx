@@ -4,9 +4,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-        <p className="font-mono text-xs font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">
-          404 — Not Found
-        </p>
+        <p className="section-label mb-6">404 — Not Found</p>
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] mb-8">
           ページが<br />見つかりません
         </h1>

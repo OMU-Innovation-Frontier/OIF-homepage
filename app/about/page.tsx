@@ -2,9 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Brain, Hammer, Compass } from "lucide-react";
-import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
-import Typewriter from "@/components/ui/Typewriter";
 import Tilt from "@/components/ui/Tilt";
 
 export const metadata: Metadata = {
@@ -81,24 +79,16 @@ export default function AboutPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden min-h-[88svh] flex items-center">
-        <HeroBackground accent="accent" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
+      <section className="relative min-h-[80svh] flex items-center bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
           <div className="animate-fade-up">
-            <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-8">
-              ABOUT
-            </p>
+            <p className="section-label mb-8">ABOUT</p>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-10">
-              <span className="accent-gradient-text">OIF</span>
+              OIF
               <br />について
             </h1>
             <p className="font-mono text-sm md:text-base text-ink/55 mb-12">
-              私たちは、AIを{" "}
-              <Typewriter
-                className="text-ink/90"
-                words={["理解する。", "創る。", "形にする。"]}
-              />
+              私たちは、AIを<span className="text-ink/90">理解し、創り、形にする。</span>
             </p>
 
             {/* acronym spec */}
@@ -127,7 +117,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-14">
               AIに興味がある学生が、
               <br className="hidden md:block" />
-              <span className="accent-gradient-text">集まっている場所</span>
+              <span>集まっている場所</span>
             </h2>
             <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium">
               <p>OIFは、大阪公立大学の学生を中心にAIやテクノロジーに関心を持つ人が集まる学生コミュニティです。</p>
@@ -142,7 +132,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12 md:mb-16">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">WE ARE / WE ARE NOT</p>
+            <p className="section-label mb-4">WE ARE / WE ARE NOT</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">こういう場所。</h2>
           </Reveal>
           <Reveal delay={100} className="border-t border-ink/10">
@@ -169,7 +159,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14 md:mb-20">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">HOW WE LEARN</p>
+            <p className="section-label mb-4">HOW WE LEARN</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">大事にしている3つのこと</h2>
           </Reveal>
 
@@ -190,7 +180,7 @@ export default function AboutPage() {
                       </span>
                       <Icon size={28} strokeWidth={1.5} className="text-accent-bright mt-2" />
                     </div>
-                    <p className="relative font-mono text-[11px] tracking-[0.3em] text-accent-bright mb-3">
+                    <p className="relative section-label mb-3">
                       {b.en}
                     </p>
                     <h3 className="relative text-2xl md:text-3xl font-bold tracking-tight mb-5">
@@ -212,14 +202,14 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">HOW OIF WORKS</p>
+            <p className="section-label mb-4">HOW OIF WORKS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">好奇心が、かたちになるまで</h2>
           </Reveal>
           <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
             {flow.map((f, i) => (
               <Fragment key={f.tag}>
                 <div className="flex-1 border border-ink/10 bg-night p-7 md:p-8">
-                  <p className="font-mono text-[11px] tracking-[0.3em] text-accent-bright mb-5">{f.tag}</p>
+                  <p className="section-label mb-5">{f.tag}</p>
                   <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">{f.title}</h3>
                   <p className="text-sm text-ink/55 leading-relaxed">{f.body}</p>
                 </div>
@@ -238,7 +228,7 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-12">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">TWO DIVISIONS</p>
+            <p className="section-label mb-4">TWO DIVISIONS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter">2つの軸で動く</h2>
           </Reveal>
           <Reveal delay={100} className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
@@ -265,9 +255,9 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
-            <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-4">MEMBERS</p>
+            <p className="section-label mb-4">MEMBERS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">
-              すでに、<span className="accent-gradient-text">動いている</span>
+              すでに、<span>動いている</span>
             </h2>
             <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium mb-10">
               大阪公立大学発ベンチャーのAffectify・Mi&amp;Tでインターンとして実務経験を積んでいるメンバーが在籍しています。
@@ -290,7 +280,7 @@ export default function AboutPage() {
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.12] max-w-5xl">
             求められる学びじゃなく、
             <br />
-            自分たちが<span className="accent-gradient-text">やりたいこと</span>を、
+            自分たちが<span>やりたいこと</span>を、
             <br />
             自分たちのペースで
           </h2>

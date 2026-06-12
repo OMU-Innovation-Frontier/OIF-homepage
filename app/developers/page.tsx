@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
-import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -35,15 +34,11 @@ export default function DevelopersPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[calc(100svh-3.5rem)] flex items-center">
-        <HeroBackground accent="dev" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
+      <section className="relative min-h-[calc(100svh-3.5rem)] flex items-center bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
             <div className="lg:col-span-8 animate-fade-up">
-              <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-dev-bright mb-6">
-                OIF DEVELOPMENT DIVISION
-              </p>
+              <p className="section-label mb-6">OIF DEVELOPMENT DIVISION</p>
               <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
                 つくって、
                 <br />

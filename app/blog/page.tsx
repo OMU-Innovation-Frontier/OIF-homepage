@@ -16,11 +16,9 @@ export default function BlogIndexPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
-        <div aria-hidden className="absolute -top-32 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-[120px]" />
+      <section className="relative border-b border-ink/10 bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
-          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">BLOG</p>
+          <p className="section-label mb-6">BLOG</p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6">
             技術ブログ・ノート
           </h1>
@@ -50,7 +48,7 @@ export default function BlogIndexPage() {
                       <span className="block mt-2 text-ink/25">{post.readingMinutes} min read</span>
                     </div>
                     <div>
-                      <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3 group-hover:text-accent-bright transition-colors">
+                      <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
                         {post.title}
                       </h2>
                       <p className="text-base text-ink/60 leading-relaxed mb-5 max-w-2xl">

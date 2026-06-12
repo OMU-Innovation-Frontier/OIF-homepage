@@ -34,7 +34,7 @@ export async function generateMetadata({
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <section className="border-t border-ink/10 py-12 md:py-16">
-      <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-6">{label}</p>
+      <p className="section-label mb-6">{label}</p>
       {children}
     </section>
   );
@@ -52,17 +52,15 @@ export default async function ProjectPage({
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <div aria-hidden className="absolute inset-0 dot-grid opacity-30" />
-        <div aria-hidden className="absolute -top-32 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-[120px]" />
+      <section className="relative border-b border-ink/10 bg-paper">
         <div className="relative max-w-5xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Link
             href="/activities/"
-            className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-accent-bright transition-colors mb-12"
+            className="inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors mb-12"
           >
             ← back to activities
           </Link>
-          <p className="font-mono text-xs tracking-[0.3em] text-accent-bright mb-5">
+          <p className="section-label mb-5">
             CASE STUDY · {project.status}
           </p>
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-5">{project.name}</h1>
@@ -169,7 +167,7 @@ export default async function ProjectPage({
         <div className="border-t border-ink/10 py-16">
           <Link
             href="/join/"
-            className="font-mono text-sm text-ink/50 hover:text-accent-bright transition-colors"
+            className="font-mono text-sm text-ink/50 hover:text-ink transition-colors"
           >
             $ こういうものを一緒に作る → /join
           </Link>

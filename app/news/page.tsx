@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
 import { newsItems } from "@/lib/news";
 
@@ -15,16 +14,10 @@ export default function NewsPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16 min-h-screen">
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-ink/10">
-        <HeroBackground accent="accent" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night to-transparent" />
+      <section className="relative border-b border-ink/10 bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 animate-fade-up">
-          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
-            NEWS
-          </p>
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6">
-            News
-          </h1>
+          <p className="section-label mb-6">NEWS</p>
+          <h1 className="display mb-6">News</h1>
           <p className="text-lg text-ink/60 max-w-2xl leading-relaxed">
             イベント・募集・お知らせ。OIFの最新の動きはここに記録されます。
           </p>
@@ -48,7 +41,7 @@ export default function NewsPage() {
                   <div className="w-28 shrink-0 hidden md:block" />
                 )}
 
-                <span className="flex-1 text-base md:text-lg font-bold tracking-tight group-hover:text-accent-bright transition-colors">
+                <span className="flex-1 text-base md:text-lg font-bold tracking-tight">
                   {item.title}
                 </span>
 

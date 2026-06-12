@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
-import Typewriter from "@/components/ui/Typewriter";
 
 export const metadata: Metadata = {
   title: "Theory | OIF理論部門",
@@ -38,15 +36,11 @@ export default function TheoryPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[calc(100svh-3.5rem)] flex items-center">
-        <HeroBackground accent="theory" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
+      <section className="relative min-h-[calc(100svh-3.5rem)] flex items-center bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
             <div className="lg:col-span-6 animate-fade-up">
-              <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-theory-bright mb-6">
-                OIF THEORY DIVISION
-              </p>
+              <p className="section-label mb-6">OIF THEORY DIVISION</p>
               <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
                 なぜ、
                 <br />
@@ -78,16 +72,11 @@ export default function TheoryPage() {
                   <span className="text-theory-bright">QKᵀ</span> /{" "}
                   <span className="text-theory-bright">√dₖ</span>) V
                 </div>
-                <div className="mt-8 pt-6 border-t border-ink/10 text-sm text-ink/55">
-                  <Typewriter
-                    className="text-ink/80"
-                    words={[
-                      "QKᵀ → 関連度を測る",
-                      "√dₖ → 勾配を安定させる",
-                      "softmax → 割合に変える",
-                      "V → 中身を混ぜる",
-                    ]}
-                  />
+                <div className="mt-8 pt-6 border-t border-ink/10 text-sm text-ink/65 space-y-1.5">
+                  <p>QKᵀ → 関連度を測る</p>
+                  <p>√dₖ → 勾配を安定させる</p>
+                  <p>softmax → 割合に変える</p>
+                  <p>V → 中身を混ぜる</p>
                 </div>
               </div>
             </div>

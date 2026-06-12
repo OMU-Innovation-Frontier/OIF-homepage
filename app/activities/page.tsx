@@ -4,7 +4,6 @@ import { BookOpen, Code2, ExternalLink, Users } from "lucide-react";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
 import DiscordCTA from "@/components/ui/DiscordCTA";
-import HeroBackground from "@/components/site/HeroBackground";
 import Reveal from "@/components/ui/Reveal";
 import Tilt from "@/components/ui/Tilt";
 import { getAllProjects } from "@/lib/projects";
@@ -139,17 +138,11 @@ export default function ActivitiesPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[70svh] flex items-center border-b border-ink/10">
-        <HeroBackground accent="accent" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
+      <section className="relative min-h-[60svh] flex items-center border-b border-ink/10 bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full animate-fade-up">
-          <p className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent-bright mb-6">
-            ACTIVITIES
-          </p>
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8">
-            Activities
-          </h1>
-          <p className="text-lg md:text-xl text-ink/65 max-w-2xl leading-relaxed">
+          <p className="section-label mb-6">Activities</p>
+          <h1 className="display mb-8">Activities</h1>
+          <p className="lede max-w-2xl">
             学ぶ、つくる、外に出る。勉強会・ハンズオン・プロダクト・コンテスト——
             手を動かしてきた記録。
           </p>
@@ -247,12 +240,8 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <Reveal className="mb-16">
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-bright mb-4">
-              Sessions
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              勉強会・ハンズオン
-            </h2>
+            <p className="section-label mb-4">Sessions</p>
+            <h2 className="headline">勉強会・ハンズオン</h2>
           </Reveal>
 
           <div className="border border-ink/12">
@@ -312,12 +301,8 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-bright mb-4">
-              Products
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              メンバー開発プロダクト
-            </h2>
+            <p className="section-label mb-4">Products</p>
+            <h2 className="headline">メンバー開発プロダクト</h2>
             <p className="mt-4 text-base text-ink/60 max-w-2xl leading-relaxed">
               「面白そう」で終わらせず、実際に動くものへ。課題から成果まで、メンバーが開発したプロダクトの事例を紹介します。
             </p>
@@ -329,7 +314,7 @@ export default function ActivitiesPage() {
                 <Tilt max={4}>
                   <Link
                     href={`/projects/${p.slug}/`}
-                    className="group flex flex-col h-full border border-ink/10 bg-night-2 hover:bg-night-3 hover:border-accent-bright/40 transition-colors"
+                    className="group flex flex-col h-full border border-ink/10 bg-night-2 hover:bg-night-3 hover:border-ink/30 transition-colors"
                   >
                     {p.image && (
                       <div className="bg-[#141e2e] border-b border-ink/10 p-6 flex items-center justify-center min-h-[220px]">
@@ -348,7 +333,7 @@ export default function ActivitiesPage() {
                           {p.status}
                         </span>
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3 group-hover:text-accent-bright transition-colors">
+                      <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">
                         {p.name}
                       </h3>
                       <p className="text-sm md:text-base text-ink/60 leading-relaxed mb-6 flex-1">
@@ -373,12 +358,8 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent-bright mb-4">
-              Contest
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              コンテスト実績
-            </h2>
+            <p className="section-label mb-4">Contest</p>
+            <h2 className="headline">コンテスト実績</h2>
           </div>
 
           {contests.map((contest) => (

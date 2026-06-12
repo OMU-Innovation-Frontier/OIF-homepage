@@ -116,10 +116,8 @@ export default function FAQClient() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent-bright mb-6">FAQ</p>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter">
-            よくあるご質問
-          </h1>
+          <p className="section-label mb-6">FAQ</p>
+          <h1 className="display">よくあるご質問</h1>
         </div>
       </section>
 
@@ -138,13 +136,13 @@ export default function FAQClient() {
                   aria-expanded={openIndex === index}
                   className="w-full flex items-start justify-between gap-6 py-6 md:py-8 text-left transition-colors group"
                 >
-                  <span className={`text-lg md:text-xl font-bold tracking-tight transition-colors group-hover:text-accent-bright ${openIndex === index ? "text-accent-bright" : ""}`}>
+                  <span className="text-lg md:text-xl font-bold tracking-tight">
                     Q. {faq.question}
                   </span>
                   <ChevronDown
                     size={24}
                     strokeWidth={1.5}
-                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-accent-bright" : "text-ink/50"
+                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-ink" : "text-ink/50"
                       }`}
                   />
                 </button>
