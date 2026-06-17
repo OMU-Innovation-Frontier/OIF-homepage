@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply bg-white text-black antialiased;
+    @apply bg-paper text-ink antialiased;
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
@@ -25,13 +25,20 @@
     @apply font-bold tracking-tight;
   }
 
-  /* Remove default focus styles, add sharp border instead */
+  /* Focus: invisible by default, sharp ring when keyboard-navigating.
+     Adapts to dark surfaces so the ring never disappears on ink. */
   *:focus {
     outline: none;
   }
 
   *:focus-visible {
-    @apply ring-2 ring-black ring-offset-2;
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-paper;
+  }
+
+  /* On dark (ink) surfaces, use a light ring with a dark offset. */
+  .on-dark *:focus-visible,
+  *:focus-visible.on-dark {
+    @apply ring-white ring-offset-ink;
   }
 
   /* Ensure all buttons and inputs are sharp */
@@ -41,33 +48,81 @@
   select {
     border-radius: 0 !important;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
-  /* Sharp underline hover effect for links */
-  .link-underline {
-    @apply relative;
-  }
-
-  .link-underline::after {
-    content: "";
-    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-black transition-all duration-300;
-  }
-
-  .link-underline:hover::after {
-    @apply w-full;
-  }
-
-  /* Section spacing for extreme whitespace */
-  .section-spacing {
-    @apply py-24 md:py-32 lg:py-40;
-  }
-
   /* Container with generous padding */
   .container-wide {
     @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-20;
   }
 
+  /* Section vertical rhythm — one scale, three sizes */
+  .section-y {
+    @apply py-20 md:py-28;
+  }
+  .section-y-lg {
+    @apply py-24 md:py-36 lg:py-44;
+  }
+  .section-y-sm {
+    @apply py-14 md:py-20;
+  }
+
+  /* Eyebrow / section label */
+  .eyebrow {
+    @apply text-xs font-bold tracking-[0.25em] uppercase;
+  }
+
+  /* ---- Type scale (Vercel-route design system) ----
+     One fluid display size for hero statements + one lede size for supporting
+     copy. Monochrome by design — no chromatic accents. */
+  .display {
+    @apply font-black text-ink;
+    font-size: clamp(2.75rem, 9vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .statement {
+    @apply font-black tracking-tighter text-ink;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    line-height: 1.05;
+  }
+  .headline {
+    @apply font-black tracking-tighter text-ink;
+    font-size: clamp(1.875rem, 4.5vw, 3.5rem);
+    line-height: 1.05;
+  }
+  .lede {
+    @apply text-ink/70 leading-relaxed;
+    font-size: clamp(1.0625rem, 1.4vw, 1.375rem);
+  }
+
+  /* Section label — the one mono eyebrow used across every section */
+  .section-label {
+    @apply font-mono text-[11px] tracking-[0.3em] uppercase text-ink/40;
+  }
+
+  /* Sharp underline hover effect for links */
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-300 ease-smooth;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
 }
 
 @layer utilities {
@@ -76,8 +131,106 @@
     text-wrap: balance;
   }
 
+  /* dot-grid overlay disabled — kept as a no-op so existing usages stay clean
+     (clean flat white background, no texture/haze). */
+  .dot-grid {
+    background-image: none;
+  }
+
+  /* Animated monochrome gradient text (v2). Grey shimmer on light bg. */
+  .accent-gradient-text {
+    background-image: linear-gradient(
+      110deg,
+      #0b0c0e 0%,
+      #52525b 25%,
+      #18181b 50%,
+      #52525b 75%,
+      #0b0c0e 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 8s linear infinite;
+  }
+
+  @keyframes gradient-pan {
+    to {
+      background-position: -200% center;
+    }
+  }
+
+  /* Soft animated underline that draws in on hover (playful) */
+  .draw-underline {
+    background-image: linear-gradient(theme("colors.accent.bright"), theme("colors.accent.bright"));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .draw-underline,
+  .draw-underline:hover {
+    background-size: 100% 2px;
+  }
+
   /* Selection color */
   ::selection {
-    @apply bg-black text-white;
+    @apply bg-ink text-paper;
   }
+}
+
+/* Page-transition entrance (re-mounted by app/template.tsx) */
+@keyframes page-fade {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-fade 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+  }
+}
+
+/* Scroll-reveal (CSS scroll-driven; graceful + no-JS safe) */
+@keyframes reveal-rise {
+  from {
+    transform: translateY(28px);
+  }
+  to {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 20%;
+    }
+  }
+}
+
+/* Custom scrollbar for the light theme */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border: 3px solid #ffffff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+html {
+  scrollbar-color: #d1d5db #ffffff;
 }

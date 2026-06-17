@@ -1,230 +1,232 @@
 import { Metadata } from "next";
-import { Code2, Sparkles, Wrench } from "lucide-react";
-import SectionDivider from "@/components/site/SectionDivider";
+import Link from "next/link";
+import { Fragment } from "react";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Developers | OIF開発部門",
   description:
-    "OIF開発部門は、最新技術を試し、実際に開発し、形にする部門です。AIツール、LLM、Web開発、ワークフロー自動化などを通じて、使えるものを作っていきます。",
-  alternates: {
-    canonical: "https://oif-ai.com/developers/",
-  },
+    "OIF開発部門は、最新技術を試し、実際に開発し、使える形にして出す部門です。LLM・Web・AIツールを、生成AIも使いながら速く形にします。",
+  alternates: { canonical: "https://oif-ai.com/developers/" },
 };
 
-const pillars = [
-  {
-    icon: Sparkles,
-    title: "最新技術を試す",
-    body: "新しいAIツールやLLM関連の動きは、まずXなどで早く仕入れます。話題として追うだけで終わらせず、実際に触って、何が使えるのかを自分たちで確かめます。",
-  },
-  {
-    icon: Code2,
-    title: "実際に作る",
-    body: "Webアプリ、補助ツール、小さな実験プロダクトまで、気になった技術をそのまま実装へ落とし込みます。生成AIを使うことも前提にして、速く形にすることを重視します。",
-  },
-  {
-    icon: Wrench,
-    title: "使える形に整える",
-    body: "プログラミング能力だけを価値の中心には置きません。生成AI、設計、デザイン、実装、改善を組み合わせて、試作を実際に使える形へ寄せていきます。",
-  },
+const pipeline = [
+  { n: "01", en: "PICK", body: "気になる技術やテーマを選ぶ" },
+  { n: "02", en: "TEST", body: "まず小さく触って検証する" },
+  { n: "03", en: "BUILD", body: "実装して動く形にする" },
+  { n: "04", en: "SHIP", body: "使えるところまで出す" },
 ];
 
-const themes = [
-  "AIを使ったWebアプリやLLMプロダクトの試作",
-  "LLMやAPIを組み合わせたワークフロー構築",
-  "生成AIを使った開発・実装・検証の改善",
-  "UI/UXやビジュアル面を含むAI関連プロダクト設計",
+const works = [
+  "新しいLLM APIを試す",
+  "ハンズオン用デモを実装",
+  "プロンプトを調整して精度を上げる",
+  "試作プロダクトを公開",
+  "生成AIで開発を高速化",
 ];
 
-const flow = [
-  { step: "01", title: "Pick", body: "気になる技術やテーマを選ぶ" },
-  { step: "02", title: "Test", body: "まずは小さく触って検証する" },
-  { step: "03", title: "Build", body: "必要なら実装して形にする" },
-  { step: "04", title: "Refine", body: "使えるところまで整える" },
+const stack = [
+  "LLM", "Ollama", "Next.js", "Python", "Generative AI",
+  "Web", "API", "UI / UX", "Prototyping", "Automation",
+];
+
+const doing = [
+  "Kaggleなどのコンテストへの参加",
+  "機械学習モデルの実装",
+  "AIアプリ開発",
+  "ハッカソン参加・主催",
+];
+
+const connecting = [
+  "大阪公立大学発ITベンチャーでのインターン",
+  "チームでのAI開発・共同開発",
+  "Kaggleチーム戦",
+  "Discordでの日常的な情報交換",
 ];
 
 export default function DevelopersPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="py-24 md:py-32 lg:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div>
-              <p className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-blue-600/70">
-                OIF Development Division
-              </p>
-              <h1 className="text-5xl font-black leading-[0.9] tracking-tighter md:text-6xl lg:text-7xl xl:text-8xl">
-                OIF開発部門
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
+      {/* HERO */}
+      <section className="relative min-h-[calc(100svh-3.5rem)] flex items-center bg-paper">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
+          <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+            <div className="lg:col-span-8 animate-fade-up">
+              <p className="section-label mb-6">OIF DEVELOPMENT DIVISION</p>
+              <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                つくって、
+                <br />
+                <span className="text-dev-bright">出す。</span>
               </h1>
-              <p className="mt-10 max-w-2xl text-lg leading-relaxed text-black/72 md:text-xl">
-                理論を理解するだけで終わらせず、最新技術を実際に試し、
-                実装し、使える形にしていく部門です。
+              <p className="text-lg xl:text-xl text-ink/70 max-w-lg leading-relaxed mb-10">
+                理論を学ぶだけで終わらせない。最新技術を実際に触り、試し、
+                生成AIも使いながら——使えるプロダクトまで持っていく部門。
               </p>
-            </div>
-
-            <div className="border border-blue-600/20 bg-blue-50/40 p-6 md:p-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-blue-600/70">
-                Overview
-              </p>
-              <div className="mt-6 space-y-4">
-                <div className="border-t border-blue-600/20 pt-4">
-                  <p className="text-sm font-semibold text-black/55">扱うもの</p>
-                  <p className="mt-2 text-sm font-medium leading-relaxed text-black/80">
-                    LLM、AI、Web開発、デザイン、開発補助ツールなど、AI関連のもの全般
-                  </p>
-                </div>
-                <div className="border-t border-blue-600/20 pt-4">
-                  <p className="text-sm font-semibold text-black/55">やること</p>
-                  <p className="mt-2 text-sm font-medium leading-relaxed text-black/80">
-                    Xなどで最新情報を追い、試し、必要なら生成AIも使いながら小さく実装する
-                  </p>
-                </div>
-                <div className="border-t border-blue-600/20 pt-4">
-                  <p className="text-sm font-semibold text-black/55">目指す状態</p>
-                  <p className="mt-2 text-sm font-medium leading-relaxed text-black/80">
-                    面白そうで終わらず、実際に使えるアウトプットまで持っていく
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl">
-            <h2 className="text-3xl font-black tracking-tighter md:text-4xl lg:text-6xl">
-              技術を理解するだけでなく、
-              <br className="hidden md:block" />
-              <span className="text-blue-600">実際に試して、作ってみる</span>部門
-            </h2>
-            <div className="mt-14 space-y-8 text-lg font-medium leading-relaxed text-black/80 md:text-xl lg:text-2xl">
-              <p>
-                OIF開発部門は、理論を学ぶだけで終わらせず、最新技術を実際に触り、試し、プロダクトやワークフローとして形にしていくための部門です。
-              </p>
-              <p>
-                AI、LLM、Web開発、デザイン、自動化、ツール作り。AI関連のものなら広く対象にして、新しい技術が出たらまず使ってみて、自分たちの手で価値がある形へ落とし込みます。
-              </p>
-              <p className="text-black">
-                「気になる技術を追う」と「実際に作る」を、生成AIも含めた現実的な手段で進めます。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-16 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-blue-600/70">
-                What we do
-              </p>
-              <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-                開発部門でやること
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-relaxed text-black/55 md:text-base">
-              新技術の検証からプロトタイプ実装、運用を意識した改善までを一続きの流れとして扱います。
-            </p>
-          </div>
-
-          <div className="grid gap-0 border-t border-black lg:grid-cols-3">
-            {pillars.map((pillar, i) => (
-              <div
-                key={pillar.title}
-                className={`pt-12 pb-16 ${i < pillars.length - 1 ? "border-b border-black lg:border-b-0 lg:border-r" : ""} ${i === 0 ? "pr-8" : "lg:px-10"} ${i === pillars.length - 1 ? "lg:pl-10" : ""}`}
+              <Link
+                href="/join/"
+                className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200"
               >
-                <pillar.icon size={28} strokeWidth={1.5} className="mb-8 text-blue-600" />
-                <h3 className="mb-8 text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
-                  {pillar.title}
-                </h3>
-                <p className="text-base font-medium leading-relaxed text-black/70 md:text-lg lg:text-xl">
-                  {pillar.body}
-                </p>
-              </div>
-            ))}
+                作る側になる
+                <span aria-hidden>→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
+      {/* STATEMENT */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="max-w-4xl">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-12">
+              <span className="text-dev-bright">「面白そう」</span>で、
+              <br className="hidden md:block" />
+              終わらせない。
+            </h2>
+            <p className="text-lg md:text-xl lg:text-2xl text-ink/75 leading-relaxed font-medium">
+              新しい技術が出たら、まず触る。話題として追うだけでなく、
+              自分たちの手で動かして、価値のある形へ落とし込む。
+              プログラミング能力だけでなく、設計・デザイン・生成AIを組み合わせて速く出す。
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-      <section className="py-24 md:py-40 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-blue-600/70">
-                Themes
-              </p>
-              <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-                こんなテーマを扱います
-              </h2>
-            </div>
-
-            <div className="border border-black bg-white">
-              {themes.map((item, index) => (
-                <div
-                  key={item}
-                  className={`px-6 py-6 md:px-8 ${index < themes.length - 1 ? "border-b border-black/10" : ""}`}
-                >
-                  <div className="flex items-start gap-4">
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-blue-600" />
-                    <span className="text-lg font-medium leading-relaxed text-black/82">
-                      {item}
-                    </span>
+      {/* PIPELINE */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-14">
+            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">THE PIPELINE</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">アイデアが、出荷されるまで</h2>
+          </Reveal>
+          <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
+            {pipeline.map((s, i) => (
+              <Fragment key={s.n}>
+                <div className="group flex-1 border border-ink/10 bg-night p-6 md:p-7 transition-colors hover:border-dev-bright/50 hover:bg-night-3">
+                  <p className="font-mono text-4xl font-black tracking-tighter text-dev-bright/30 group-hover:text-dev-bright/60 transition-colors mb-5">
+                    {s.n}
+                  </p>
+                  <p className="font-mono text-[11px] tracking-[0.3em] text-dev-bright mb-2">{s.en}</p>
+                  <p className="text-sm text-ink/65 leading-relaxed">{s.body}</p>
+                </div>
+                {i < pipeline.length - 1 && (
+                  <div className="hidden md:flex items-center px-1" aria-hidden>
+                    <div className="h-px w-8 bg-gradient-to-r from-dev-bright/10 via-dev-bright to-dev-bright/10 bg-[length:200%_100%] animate-[gradient-pan_2.5s_linear_infinite]" />
                   </div>
+                )}
+              </Fragment>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* GIT LOG */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
+            <Reveal>
+              <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">RECENT WORK</p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">手を動かした分だけ、進む</h2>
+              <p className="text-ink/60 leading-relaxed max-w-md">
+                派手な計画より、小さなコミットの積み重ね。試して、直して、出す。その繰り返しが力になる。
+              </p>
+            </Reveal>
+            <Reveal delay={100} className="border border-ink/10 bg-night-2 text-sm">
+              {works.map((w, i) => (
+                <div
+                  key={w}
+                  className="group flex items-center gap-4 px-5 py-4 border-b border-ink/5 last:border-0 hover:bg-ink/[0.03] transition-colors"
+                >
+                  <span className="font-mono text-dev-bright shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="flex-1 text-ink/75 group-hover:text-ink transition-colors">
+                    {w}
+                  </span>
                 </div>
               ))}
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="mb-4 text-xs font-bold uppercase tracking-widest text-blue-600/70">
-            Workflow
-          </p>
-          <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-            進め方のイメージ
-          </h2>
-
-          <div className="mt-16 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {flow.map((item) => (
-              <div key={item.step} className="border border-black bg-white p-6">
-                <p className="text-4xl font-black tracking-tighter text-blue-600/20">
-                  {item.step}
-                </p>
-                <h3 className="mt-6 text-2xl font-bold tracking-tight">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-base leading-relaxed text-black/70">
-                  {item.body}
-                </p>
-              </div>
+      {/* STACK */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="mb-10">
+            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">STACK WE PLAY WITH</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">手札</h2>
+          </Reveal>
+          <Reveal delay={80} className="flex flex-wrap gap-3">
+            {stack.map((s) => (
+              <span
+                key={s}
+                className="font-mono text-sm tracking-wide text-ink/70 border border-ink/15 px-4 py-2.5 hover:border-dev-bright hover:text-dev-bright hover:-translate-y-0.5 transition-all duration-200"
+              >
+                {s}
+              </span>
             ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* DEVELOP / CONNECT */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-12">
+            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">WHAT WE DO</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">創る、そして繋がる</h2>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
+            <Reveal className="bg-night-2 p-8 md:p-10">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-dev-bright mb-2">DEVELOP</p>
+              <h3 className="text-2xl font-black tracking-tighter mb-5">創る</h3>
+              <p className="text-sm text-ink/60 leading-relaxed mb-7">
+                KaggleへのチャレンジやAIモデルの実装、アプリ開発まで。個人でもチームでも、手を動かす機会をつくります。
+              </p>
+              <ul className="space-y-3">
+                {doing.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm md:text-base">
+                    <span className="mt-2 w-1 h-1 bg-dev-bright rounded-full shrink-0" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={100} className="bg-night-2 p-8 md:p-10">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-dev-bright mb-2">CONNECT</p>
+              <h3 className="text-2xl font-black tracking-tighter mb-5">繋がる</h3>
+              <p className="text-sm text-ink/60 leading-relaxed mb-7">
+                インターンや共同開発を通じて学外とつながる。Discordでの日常的な情報交換も。
+              </p>
+              <ul className="space-y-3">
+                {connecting.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm md:text-base">
+                    <span className="mt-2 w-1 h-1 bg-dev-bright rounded-full shrink-0" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-32 md:py-48 lg:py-64 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h2 className="max-w-5xl text-4xl font-black tracking-tighter leading-[1.1] md:text-5xl lg:text-7xl">
-            <span className="text-blue-400">面白そう</span>で終わらせず、<br />
-            実際に触って、作って、<br />
-            使えるところまで持っていく
+      {/* CLOSING */}
+      <section className="relative overflow-hidden border-t border-ink/10 bg-night">
+        <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
+        <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl mb-12">
+            <span className="text-dev-bright">面白そう</span>で終わらせず、
+            <br />
+            使えるところまで持っていく。
           </h2>
-        </div>
+          <Link
+            href="/join/"
+            className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200"
+          >
+            開発に参加する
+            <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
       </section>
     </div>
   );

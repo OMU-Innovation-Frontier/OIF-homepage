@@ -10,6 +10,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Activities", href: "/activities/" },
+  { label: "Blog", href: "/blog/" },
   { label: "Join", href: "/join/" },
   { label: "FAQ", href: "/faq/" },
   { label: "News", href: "/news/" },
@@ -41,32 +42,33 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-paper border-b border-ink/10 text-ink">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center"
+          className="group flex items-center"
+          aria-label="OIF ホーム"
         >
           <Image
             src="/logo.png"
             alt="OIF Logo"
             width={120}
             height={120}
-            className="h-10 w-auto md:h-12"
+            className="h-10 w-auto md:h-12 mix-blend-multiply transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]"
             priority
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="メインナビゲーション">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="メインナビゲーション">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`text-sm font-medium tracking-wide transition-colors ${pathname === item.href
-                ? "text-black border-b border-black"
-                : "text-black/60 hover:text-black"
+              className={`font-mono text-xs tracking-widest uppercase transition-colors duration-200 ${pathname === item.href
+                ? "text-ink border-b-2 border-accent-bright pb-0.5"
+                : "text-ink/50 hover:text-ink"
                 }`}
             >
               {item.label}
@@ -77,7 +79,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 -mr-2"
+          className="lg:hidden p-2 -mr-2"
           aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
@@ -92,14 +94,14 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div id="mobile-menu" className="md:hidden fixed inset-0 top-14 bg-white z-40 border-t border-black/10">
+        <div id="mobile-menu" className="lg:hidden fixed inset-0 top-14 bg-paper text-ink z-40 border-t border-ink/10">
           <nav className="container-wide flex flex-col pt-6" aria-label="モバイルナビゲーション">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-lg font-medium tracking-wide border-b border-black/10 py-5 px-6 ${pathname === item.href ? "bg-black text-white" : ""
+                className={`font-mono text-sm tracking-widest uppercase border-b border-ink/10 py-5 px-6 transition-colors ${pathname === item.href ? "bg-accent-bright text-night" : "hover:bg-ink/5"
                   }`}
               >
                 {item.label}

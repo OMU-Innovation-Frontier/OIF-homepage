@@ -1,89 +1,88 @@
 import { Metadata } from "next";
-import { BookOpen, Brain, FlaskConical } from "lucide-react";
-import SectionDivider from "@/components/site/SectionDivider";
+import Link from "next/link";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Theory | OIF理論部門",
   description:
-    "OIF理論部門は、AIや機械学習の仕組みを数学・統計から深く理解し、理論的な基礎を固める部門です。論文読解、数学学習、ゼミ形式のディスカッションを通じて、AIの本質を探究します。",
-  alternates: {
-    canonical: "https://oif-ai.com/theory/",
-  },
+    "OIF理論部門は、AIや機械学習を「なぜ動くのか」から理解する部門です。数学・統計・アルゴリズム、論文輪読、ゼミを通じて、説明できる力を育てます。",
+  alternates: { canonical: "https://oif-ai.com/theory/" },
 };
 
-const pillars = [
-  {
-    icon: Brain,
-    title: "理論を深く理解する",
-    body: "機械学習や深層学習の仕組みを、ブラックボックスとして使うだけでなく、数学・統計の観点から根本的に理解することを目指します。",
-  },
-  {
-    icon: BookOpen,
-    title: "論文を読む",
-    body: "最新のAI研究論文を読み解き、研究の動向や手法の背景を把握します。論文読解を通じて、現場で起きていることの本質を追います。",
-  },
-  {
-    icon: FlaskConical,
-    title: "ゼミ形式で学ぶ",
-    body: "個人学習にとどまらず、発表・議論・フィードバックを繰り返すゼミスタイルで学びます。人に説明することで理解が深まります。",
-  },
+const concepts = [
+  { n: "01", ja: "線形代数", en: "LINEAR ALGEBRA", d: "ベクトルと行列で世界を表現する。" },
+  { n: "02", ja: "確率・統計", en: "PROBABILITY", d: "不確実さを数で扱う。" },
+  { n: "03", ja: "最適化", en: "OPTIMIZATION", d: "損失を最小化していく。" },
+  { n: "04", ja: "機械学習", en: "MACHINE LEARNING", d: "データから関数を学ぶ。" },
+  { n: "05", ja: "Transformer", en: "ATTENTION", d: "注意機構で文脈を捉える。" },
+  { n: "06", ja: "LLMの内部", en: "INTERNALS", d: "なぜ言葉を生成できるのか。" },
 ];
 
-const themes = [
-  "線形代数・確率統計・微積分などの数学基礎",
-  "機械学習・深層学習のアルゴリズム理解",
-  "最新AI論文の読解と輪読会",
-  "Transformer・LLMの内部構造の理解",
+const journey = [
+  { label: "なんとなく\n知っている", tone: "text-ink/60" },
+  { label: "仕組みを\n理解する", tone: "text-ink/70" },
+  { label: "説明\nできる", tone: "text-theory-bright" },
 ];
 
-const flow = [
-  { step: "01", title: "Learn", body: "数学・理論の基礎を体系的に学ぶ" },
-  { step: "02", title: "Read", body: "論文や教材を読んで理解を深める" },
-  { step: "03", title: "Present", body: "発表・議論でアウトプットする" },
-  { step: "04", title: "Connect", body: "理論と実践のつながりを見つける" },
+const reading = [
+  "Attention Is All You Need (2017)",
+  "Deep Learning — Goodfellow et al.",
+  "Pattern Recognition and Machine Learning (PRML)",
+  "ベイズ推論による機械学習",
+  "Kaggleで学ぶ大規模言語モデル入門",
+];
+
+const studyWays = [
+  { label: "資格", items: ["E資格", "G検定", "DS検定 など"] },
+  { label: "講座", items: ["東大松尾研 GCI", "DL基礎講座", "LLM講座 など"] },
+  { label: "その他", items: ["論文読み企画", "勉強会・解説会 など"] },
 ];
 
 export default function TheoryPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="py-24 md:py-32 lg:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div>
-              <p className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-red-800/60">
-                OIF Theory Division
-              </p>
-              <h1 className="text-5xl font-black leading-[0.9] tracking-tighter md:text-6xl lg:text-7xl xl:text-8xl">
-                OIF理論部門
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
+      {/* HERO */}
+      <section className="relative min-h-[calc(100svh-3.5rem)] flex items-center bg-paper">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
+          <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+            <div className="lg:col-span-6 animate-fade-up">
+              <p className="section-label mb-6">OIF THEORY DIVISION</p>
+              <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                なぜ、
+                <br />
+                <span className="text-theory-bright">動くのか。</span>
               </h1>
-              <p className="mt-10 max-w-2xl text-lg leading-relaxed text-black/72 md:text-xl">
-                AIの表面をなぞるだけでなく、数学・統計・アルゴリズムの根幹から
-                理解し、理論的な土台を築く部門です。
+              <p className="text-lg xl:text-xl text-ink/70 max-w-lg leading-relaxed mb-10">
+                AIを「ツールとして使う」だけで終わらせない。
+                数学・統計・アルゴリズムの根幹から、その仕組みを理解する部門。
               </p>
+              <Link
+                href="/join/"
+                className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200"
+              >
+                深く知る側になる
+                <span aria-hidden>→</span>
+              </Link>
             </div>
 
-            <div className="border border-black bg-white p-6 md:p-8" style={{ borderLeft: '4px solid #991b1b' }}>
-              <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-red-800/60">
-                Overview
-              </p>
-              <div className="mt-6 space-y-4">
-                <div className="border-t border-black/10 pt-4">
-                  <p className="text-sm font-semibold text-black/55">扱うもの</p>
-                  <p className="mt-2 text-sm font-medium leading-relaxed text-black/80">
-                    数学基礎（線形代数・確率統計）、機械学習理論、論文、LLMの内部構造
-                  </p>
+            {/* Formula card */}
+            <div className="lg:col-span-6 animate-fade-up [animation-delay:140ms]">
+              <div className="border border-ink/12 bg-night-2 shadow-card p-8 md:p-10 font-mono">
+                <p className="text-[11px] tracking-widest text-ink/60 mb-8">
+                  scaled dot-product attention
+                </p>
+                <div className="text-xl md:text-2xl leading-[1.8] text-ink/85">
+                  Attention(Q, K, V) ={" "}
+                  <br className="hidden md:block" />
+                  softmax(
+                  <span className="text-theory-bright">QKᵀ</span> /{" "}
+                  <span className="text-theory-bright">√dₖ</span>) V
                 </div>
-                <div className="border-t border-black/10 pt-4">
-                  <p className="text-sm font-semibold text-black/55">やること</p>
-                  <p className="mt-2 text-sm font-medium leading-relaxed text-black/80">
-                    教材・論文の読解、ゼミ形式の発表・議論、数学学習
-                  </p>
-                </div>
-                <div className="border-t border-black/10 pt-4">
-                  <p className="text-sm font-semibold text-black/55">目指す状態</p>
-                  <p className="mt-2 text-sm font-medium leading-relaxed text-black/80">
-                    AIを「なんとなく使う」から「仕組みを説明できる」へ
-                  </p>
+                <div className="mt-8 pt-6 border-t border-ink/10 text-sm text-ink/65 space-y-1.5">
+                  <p>QKᵀ → 関連度を測る</p>
+                  <p>√dₖ → 勾配を安定させる</p>
+                  <p>softmax → 割合に変える</p>
+                  <p>V → 中身を混ぜる</p>
                 </div>
               </div>
             </div>
@@ -91,142 +90,148 @@ export default function TheoryPage() {
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl">
-            <h2 className="text-3xl font-black tracking-tighter md:text-4xl lg:text-6xl">
-              使うだけでなく、
+      {/* STATEMENT */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="max-w-4xl">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-12">
+              <span className="text-theory-bright">ブラックボックス</span>のまま、
               <br className="hidden md:block" />
-              <span className="text-red-800">仕組みから理解する</span>部門
+              使わない。
             </h2>
-            <div className="mt-14 space-y-8 text-lg font-medium leading-relaxed text-black/80 md:text-xl lg:text-2xl">
-              <p>
-                OIF理論部門は、AIや機械学習を「ツールとして使う」だけで終わらせず、
-                その背後にある数学・アルゴリズム・理論的な仕組みを深く理解することを目指す部門です。
-              </p>
-              <p>
-                線形代数、確率統計、最適化理論から始まり、機械学習モデルの動作原理、
-                最新の論文まで。理論を通じてAIの本質に迫ります。
-              </p>
-              <p className="text-black">
-                「なぜそう動くのか」を説明できる力が、応用力と批判的思考の土台になります。
-              </p>
-            </div>
-          </div>
+            <p className="text-lg md:text-xl lg:text-2xl text-ink/75 leading-relaxed font-medium">
+              線形代数、確率統計、最適化から、モデルの動作原理、最新の論文まで。
+              「なぜそう動くのか」を説明できる力が、応用力と批判的思考の土台になる。
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-16 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-red-800/60">
-                What we do
-              </p>
-              <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-                理論部門でやること
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-relaxed text-black/55 md:text-base">
-              数学の基礎から最新研究まで、理論的な理解を積み重ねていきます。
-            </p>
-          </div>
-
-          <div className="grid gap-0 border-t border-black lg:grid-cols-3">
-            {pillars.map((pillar, i) => (
+      {/* CONCEPT MAP */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-12">
+            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">THE STACK OF UNDERSTANDING</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">基礎から、積み上げる</h2>
+          </Reveal>
+          <Reveal delay={100} className="border-t border-ink/10">
+            {concepts.map((c) => (
               <div
-                key={pillar.title}
-                className={`pt-12 pb-16 ${i < pillars.length - 1 ? "border-b border-black lg:border-b-0 lg:border-r" : ""} ${i === 0 ? "pr-8" : "lg:px-10"} ${i === pillars.length - 1 ? "lg:pl-10" : ""}`}
+                key={c.n}
+                className="group flex items-center gap-5 md:gap-10 py-6 md:py-7 border-b border-ink/10 hover:bg-ink/[0.02] transition-colors"
               >
-                <pillar.icon size={28} strokeWidth={1.5} className="mb-8 text-red-800" />
-                <h3 className="mb-8 text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
-                  {pillar.title}
-                </h3>
-                <p className="text-base font-medium leading-relaxed text-black/70 md:text-lg lg:text-xl">
-                  {pillar.body}
+                <span className="font-mono text-sm text-ink/52 group-hover:text-theory-bright transition-colors shrink-0 w-8">
+                  {c.n}
+                </span>
+                <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:gap-5">
+                  <h3 className="text-2xl md:text-4xl font-black tracking-tighter group-hover:text-theory-bright transition-colors">
+                    {c.ja}
+                  </h3>
+                  <span className="font-mono text-[11px] tracking-[0.3em] text-ink/55">{c.en}</span>
+                </div>
+                <p className="hidden md:block text-sm text-ink/50 text-right max-w-xs md:opacity-40 md:group-hover:opacity-100 md:translate-x-2 md:group-hover:translate-x-0 transition-all duration-300">
+                  {c.d}
                 </p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-24 md:py-40 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-red-800/60">
-                Themes
-              </p>
-              <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-                こんなテーマを扱います
-              </h2>
-            </div>
-
-            <div className="border border-black bg-white">
-              {themes.map((item, index) => (
-                <div
-                  key={item}
-                  className={`px-6 py-6 md:px-8 ${index < themes.length - 1 ? "border-b border-black/10" : ""}`}
-                >
-                  <div className="flex items-start gap-4">
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-red-800" />
-                    <span className="text-lg font-medium leading-relaxed text-black/82">
-                      {item}
-                    </span>
-                  </div>
+      {/* JOURNEY */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-14">
+            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">THE JOURNEY</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">理解の、グラデーション</h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="h-1 w-full bg-gradient-to-r from-ink/10 via-ink/30 to-theory-bright mb-10" />
+            <div className="grid grid-cols-3 gap-4">
+              {journey.map((j, i) => (
+                <div key={i} className="text-center">
+                  <span className="font-mono text-xs text-ink/52">{`0${i + 1}`}</span>
+                  <p className={`mt-4 text-xl md:text-3xl font-black tracking-tighter whitespace-pre-line leading-tight ${j.tone}`}>
+                    {j.label}
+                  </p>
                 </div>
               ))}
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* READING */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
+            <Reveal>
+              <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">READING LIST</p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">読む、議論する</h2>
+              <p className="text-ink/60 leading-relaxed max-w-md">
+                論文や教材を輪読し、発表・議論・フィードバックを繰り返す。人に説明することで、理解は一段深まる。
+              </p>
+            </Reveal>
+            <Reveal delay={100} className="border border-ink/10 bg-night font-mono text-sm">
+              {reading.map((r, i) => (
+                <div
+                  key={r}
+                  className="group flex items-baseline gap-4 px-5 py-4 border-b border-ink/5 last:border-0 hover:bg-ink/[0.03] transition-colors"
+                >
+                  <span className="text-theory-bright shrink-0">{`[${String(i + 1).padStart(2, "0")}]`}</span>
+                  <span className="text-ink/75 group-hover:text-ink transition-colors">{r}</span>
+                </div>
+              ))}
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="mb-4 text-xs font-bold uppercase tracking-widest text-red-800/60">
-            Workflow
-          </p>
-          <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-            進め方のイメージ
-          </h2>
-
-          <div className="mt-16 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {flow.map((item) => (
-              <div key={item.step} className="border border-black bg-white p-6">
-                <p className="text-4xl font-black tracking-tighter text-red-800/20">
-                  {item.step}
-                </p>
-                <h3 className="mt-6 text-2xl font-bold tracking-tight">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-base leading-relaxed text-black/70">
-                  {item.body}
-                </p>
+      {/* STUDY METHODS */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-12">
+            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">HOW WE STUDY</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">学ぶ手段は、それぞれ</h2>
+            <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
+              資格・講座・書籍・論文。そのときの興味やキャリアに合わせて、各自の方法でAIを深めています。
+            </p>
+          </Reveal>
+          <Reveal delay={100} className="grid sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+            {studyWays.map((w) => (
+              <div key={w.label} className="bg-night-2 p-6 md:p-8">
+                <p className="font-mono text-[11px] tracking-[0.3em] text-theory-bright mb-4">{w.label}</p>
+                <ul className="space-y-2.5">
+                  {w.items.map((it) => (
+                    <li key={it} className="flex items-start gap-3 text-sm md:text-base text-ink/75">
+                      <span className="mt-2 w-1 h-1 bg-theory-bright rounded-full shrink-0" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <SectionDivider />
-
-      <section className="py-32 md:py-48 lg:py-64 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h2 className="max-w-5xl text-4xl font-black tracking-tighter leading-[1.1] md:text-5xl lg:text-7xl">
-            <span className="text-red-500">なんとなく知っている</span>から、<br />
-            仕組みを理解して、<br />
-            説明できるところまで持っていく
+      {/* CLOSING */}
+      <section className="relative overflow-hidden border-t border-ink/10 bg-night">
+        <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
+        <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl mb-12">
+            <span className="text-theory-bright">なんとなく</span>から、
+            <br />
+            説明できるところまで。
           </h2>
-        </div>
+          <Link
+            href="/join/"
+            className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200"
+          >
+            理論に参加する
+            <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
       </section>
     </div>
   );
