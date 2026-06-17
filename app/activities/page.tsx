@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Code2, ExternalLink, Users } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
 import DiscordCTA from "@/components/ui/DiscordCTA";
@@ -71,66 +71,6 @@ const featuredSessions = [
   },
 ];
 
-const activitiesData = [
-  {
-    icon: BookOpen,
-    title: "Study",
-    titleJa: "学ぶ",
-    description:
-      "資格・講座・書籍・論文。そのときの興味やキャリアに合わせて、各自の方法でAIを深めています。",
-    items: [],
-  },
-  {
-    icon: Code2,
-    title: "Develop",
-    titleJa: "創る",
-    description:
-      "KaggleへのチャレンジやAIモデルの実装、アプリ開発まで。個人でもチームでも、手を動かす機会をつくります。",
-    items: [
-      "Kaggleなどのコンテスト",
-      "機械学習モデルの実装",
-      "AIアプリ開発",
-      "ハッカソン参加・主催",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Connect",
-    titleJa: "繋がる",
-    description:
-      "インターンや共同開発を通じて学外とつながる。Discordでの日常的な情報交換も。",
-    items: [
-      "大阪公立大学発ITベンチャーでのインターン",
-      "Discordでの日常的な情報交換",
-      "チームでAI開発",
-      "Kaggleチーム戦",
-    ],
-  },
-];
-
-const studyCategories = [
-  {
-    label: "資格",
-    examples: ["E資格", "G検定", "DS検定など"],
-  },
-  {
-    label: "講座",
-    examples: ["東大松尾研JGCI", "DL基礎講座", "LLM講座など"],
-  },
-  {
-    label: "書籍",
-    examples: ["ベイズ推論による機械学習", "パターン認識と機械学習(PRML)", "Kaggleではじめる大規模言語モデル入門など"],
-  },
-  {
-    label: "その他",
-    examples: ["論文読み企画", "勉強会・解説会など"],
-  },
-];
-
-const StudyIcon = activitiesData[0].icon;
-const DevelopIcon = activitiesData[1].icon;
-const ConnectIcon = activitiesData[2].icon;
-
 export default function ActivitiesPage() {
   const projects = getAllProjects();
 
@@ -142,98 +82,11 @@ export default function ActivitiesPage() {
           <p className="section-label mb-6">Activities</p>
           <h1 className="display mb-8">Activities</h1>
           <p className="lede max-w-2xl">
-            学ぶ、つくる、外に出る。勉強会・ハンズオン・プロダクト・コンテスト——
-            手を動かしてきた記録。
+            勉強会・ハンズオン・プロダクト・コンテスト——
+            OIFがこれまで手を動かしてきた記録です。
           </p>
         </div>
       </section>
-
-      {/* Activities Grid */}
-      <section>
-        <Reveal className="max-w-7xl mx-auto">
-
-          {/* Row 1: Study - full width, 2カラム */}
-          <div className="border-b border-ink/12 grid lg:grid-cols-2">
-            {/* Left: アイコン + タイトル + 説明 */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-ink/12">
-              <StudyIcon size={32} strokeWidth={1.5} className="mb-10" />
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-                  {activitiesData[0].title}
-                </h2>
-                <p className="text-sm text-ink/60 mt-1">{activitiesData[0].titleJa}</p>
-              </div>
-              <p className="text-base md:text-lg leading-relaxed text-ink/70">
-                {activitiesData[0].description}
-              </p>
-            </div>
-
-            {/* Right: カテゴリ行リスト */}
-            <div className="divide-y divide-ink/12">
-              {studyCategories.map((cat) => (
-                <div key={cat.label} className="flex items-baseline gap-4 px-6 md:px-10 lg:px-12 py-5 md:py-6">
-                  <span className="text-xs font-bold tracking-widest uppercase text-ink/60 shrink-0 w-10">
-                    {cat.label}
-                  </span>
-                  <span className="text-sm md:text-base leading-relaxed text-ink/80">
-                    {cat.examples.join("、")}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 2: Develop + Connect - 左右2カラム */}
-          <div className="grid lg:grid-cols-2">
-            {/* Develop */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-ink/12">
-              <DevelopIcon size={32} strokeWidth={1.5} className="mb-10" />
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-                  {activitiesData[1].title}
-                </h2>
-                <p className="text-sm text-ink/60 mt-1">{activitiesData[1].titleJa}</p>
-              </div>
-              <p className="text-base md:text-lg leading-relaxed text-ink/70 mb-10">
-                {activitiesData[1].description}
-              </p>
-              <ul className="space-y-3">
-                {activitiesData[1].items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm md:text-base">
-                    <span className="w-1 h-1 bg-accent rounded-full shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Connect */}
-            <div className="p-8 md:p-12 lg:p-16">
-              <ConnectIcon size={32} strokeWidth={1.5} className="mb-10" />
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-                  {activitiesData[2].title}
-                </h2>
-                <p className="text-sm text-ink/60 mt-1">{activitiesData[2].titleJa}</p>
-              </div>
-              <p className="text-base md:text-lg leading-relaxed text-ink/70 mb-10">
-                {activitiesData[2].description}
-              </p>
-              <ul className="space-y-3">
-                {activitiesData[2].items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm md:text-base">
-                    <span className="w-1 h-1 bg-accent rounded-full shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-        </Reveal>
-      </section>
-
-      <SectionDivider />
 
       {/* Featured Sessions Section */}
       <section className="py-20 md:py-28">

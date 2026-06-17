@@ -28,7 +28,7 @@ export default function PastEvents() {
                   alt={e.flyerAlt ?? e.title}
                   fill
                   sizes="12rem"
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-500 ease-smooth"
+                  className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-smooth"
                 />
               </div>
               <p className="mt-3 font-mono text-[11px] tracking-widest text-ink/55">

@@ -1,13 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Fragment } from "react";
-import { Brain, Hammer, Compass } from "lucide-react";
+import { Lightbulb, Hammer, Users } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・プログラミングサークルです。深く考え、とにかく作ってみる、外の世界に出てみる——AIに興味のある大阪公立大学の学生には最適な環境です。",
+    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・テクノロジーサークルです。AIで生活を便利にしたい人も、自分でつくってみたい人も、仕組みを知りたい人も。プログラミング未経験・文系も歓迎。「ちょっと気になる」から始められます。",
   alternates: {
     canonical: "https://oif-ai.com/about/",
   },
@@ -20,39 +19,41 @@ const acronym = [
 ];
 
 const contrasts = [
-  { no: "受け身で聞くだけの勉強会", yes: "手を動かして、つくるコミュニティ" },
+  { no: "経験者やすごい人だけの場所", yes: "未経験から始められる場所" },
+  { no: "AIを「つくる人」だけの場所", yes: "「使ってみたい」だけでも大歓迎" },
+  { no: "受け身で聞くだけの勉強会", yes: "手を動かして、ためす場所" },
   { no: "評価のために、こなす学び", yes: "やりたいことのための、学び" },
-  { no: "教室の中で、待っている", yes: "外の世界に、出ていく" },
 ];
 
 const beliefs = [
   {
     n: "01",
-    en: "THINK DEEP",
-    icon: Brain,
-    title: "深く考える",
-    body: "論文を読み、数式と向き合い、本質を掴む。AIやLLMの仕組みを表面だけでなく、根拠から理解することを大切にしている。",
+    en: "STAY CURIOUS",
+    icon: Lightbulb,
+    title: "好奇心から始める",
+    body: "「面白そう」「知りたい」——その気持ちがスタートライン。難しい前提知識はいりません。気になったところから、自由に。",
   },
   {
     n: "02",
-    en: "JUST BUILD",
+    en: "LEARN BY DOING",
     icon: Hammer,
-    title: "とにかく作ってみる",
-    body: "KaggleへのチャレンジやAIモデルの実装、アプリ開発も。試行錯誤しながらコードを書いているうちに、理解が深まっていく。",
+    title: "まず手を動かす",
+    body: "難しいコードからじゃなくていい。AIを使ってみる、小さく試してみる。手を動かすうちに、できることが増えていく。",
   },
   {
     n: "03",
-    en: "GO OUTSIDE",
-    icon: Compass,
-    title: "外の世界に出てみる",
-    body: "大学発ベンチャーでインターンをしているメンバーもいる。学校の外で経験を積むことを、自然な選択肢として持っている。",
+    en: "LEARN TOGETHER",
+    icon: Users,
+    title: "みんなで学ぶ",
+    body: "一人で抱え込まない。分からないことを気軽に聞ける仲間がいる。教わるのも、教えるのも自由。それぞれのペースで。",
   },
 ];
 
-const flow = [
-  { tag: "INPUT", title: "好奇心", body: "「AIって何だろう」から始まる" },
-  { tag: "PROCESS", title: "学ぶ · 作る · 出る", body: "理解して、実装して、現場に出る" },
-  { tag: "OUTPUT", title: "かたち", body: "プロダクト · 論文 · 実務経験" },
+const ways = [
+  { tag: "USE", title: "生活に使う", body: "AIツールをレポートや課題、毎日のちょっとした作業に取り入れて、楽をする。" },
+  { tag: "MAKE", title: "つくってみる", body: "アプリや簡単なAIを、自分の手で動かしてつくってみる。" },
+  { tag: "LEARN", title: "仕組みを知る", body: "「なぜ動くのか」を、いちから少しずつ理解していく。" },
+  { tag: "CONNECT", title: "仲間とつながる", body: "イベントや勉強会で、刺激をくれる仲間や先輩に出会う。" },
 ];
 
 const divisions = [
@@ -68,7 +69,7 @@ const divisions = [
     href: "/theory/",
     label: "THEORY",
     title: "理論部門",
-    body: "数学・統計から、AIの仕組みを根本から理解する。",
+    body: "AIの「なぜ動くのか」を、いちから一緒に理解していく。",
     labelCls: "text-theory-bright",
     hoverCls: "hover:border-theory-bright/50",
   },
@@ -87,7 +88,7 @@ export default function AboutPage() {
               <br />について
             </h1>
             <p className="font-mono text-sm md:text-base text-ink/55 mb-12">
-              私たちは、AIを<span className="text-ink/90">理解し、創り、形にする。</span>
+              AIを、<span className="text-ink/90">もっと身近に。使う人も、つくる人も。</span>
             </p>
 
             {/* acronym spec */}
@@ -119,9 +120,9 @@ export default function AboutPage() {
               <span>集まっている場所</span>
             </h2>
             <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium">
-              <p>OIFは、大阪公立大学の学生を中心にAIやテクノロジーに関心を持つ人が集まる学生コミュニティです。</p>
-              <p>仕組みを理解し、自分たちの手で実装し、社会に問いを立てる。</p>
-              <p className="text-ink">プログラミング経験の有無は問いません。</p>
+              <p>OIFは、大阪公立大学の学生を中心に、AIやテクノロジーに興味がある人が集まる学生コミュニティです。</p>
+              <p>AIで毎日をちょっと便利にしたい人も、自分でつくってみたい人も、仕組みを深く知りたい人も。「ちょっと気になる」から、自分のペースで。</p>
+              <p className="text-ink">プログラミング未経験でも、文系でも、学年が違っても歓迎します。</p>
             </div>
           </Reveal>
         </div>
@@ -191,29 +192,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===== HOW OIF WORKS (flow) ===== */}
+      {/* ===== WAYS TO GET INVOLVED ===== */}
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
-            <p className="section-label mb-4">HOW OIF WORKS</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">好奇心が、かたちになるまで</h2>
+            <p className="section-label mb-4">WHAT YOU CAN DO</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">AIとの、いろんな関わり方</h2>
+            <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
+              ぜんぶやらなくていい。一つでも、行き来しても。気になるところから始めれば大丈夫。
+            </p>
           </Reveal>
-          <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
-            {flow.map((f, i) => (
-              <Fragment key={f.tag}>
-                <div className="flex-1 border border-ink/10 bg-night p-7 md:p-8">
-                  <p className="section-label mb-5">{f.tag}</p>
-                  <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">{f.title}</h3>
-                  <p className="text-sm text-ink/55 leading-relaxed">{f.body}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {ways.map((w, i) => (
+              <Reveal key={w.tag} delay={i * 100}>
+                <div className="h-full border border-ink/10 bg-night p-7 md:p-8 transition-colors duration-300 hover:border-ink/30">
+                  <p className="section-label mb-5">{w.tag}</p>
+                  <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">{w.title}</h3>
+                  <p className="text-sm text-ink/55 leading-relaxed">{w.body}</p>
                 </div>
-                {i < flow.length - 1 && (
-                  <div className="flex items-center justify-center py-2 md:px-1" aria-hidden>
-                    <div className="h-8 w-px md:h-px md:w-8 bg-gradient-to-b md:bg-gradient-to-r from-accent-bright/10 via-accent-bright to-accent-bright/10 bg-[length:100%_200%] md:bg-[length:200%_100%] animate-[gradient-pan_2.5s_linear_infinite]" />
-                  </div>
-                )}
-              </Fragment>
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -221,8 +220,11 @@ export default function AboutPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-12">
-            <p className="section-label mb-4">TWO DIVISIONS</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">2つの軸で動く</h2>
+            <p className="section-label mb-4">TWO DIRECTIONS</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">2つの方向。でも、選ばなくていい。</h2>
+            <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
+              どちらかに所属する必要はありません。両方のぞいても、行ったり来たりしても、どちらにも入らず気になるイベントだけ来てもOK。「まだ決められない」が、いちばん多いです。
+            </p>
           </Reveal>
           <Reveal delay={100} className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
             {divisions.map((d) => (
@@ -250,14 +252,14 @@ export default function AboutPage() {
           <Reveal className="max-w-4xl">
             <p className="section-label mb-4">MEMBERS</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">
-              すでに、<span>動いている</span>
+              いろんな人が、<span>いる</span>
             </h2>
             <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium mb-10">
-              大阪公立大学発ベンチャーのAffectify・Mi&amp;Tでインターンとして実務経験を積んでいるメンバーが在籍しています。
-              勉強会に参加するだけでなく、実際の現場に出ていることも自然にできる環境です。
+              プログラミングが初めての人、文系の人、もう開発やインターンをしている人。
+              レベルも興味もバラバラなメンバーが集まっています。背伸びはいりません。あなたのペースで関われます。
             </p>
             <div className="flex flex-wrap gap-3 font-mono text-xs tracking-widest text-ink/70">
-              {["INTERNSHIP", "Affectify", "Mi&T", "REAL-WORLD EXPERIENCE"].map((c) => (
+              {["BEGINNER FRIENDLY", "ANY MAJOR", "ALL YEARS", "YOUR OWN PACE"].map((c) => (
                 <span key={c} className="border border-ink/15 px-3 py-1.5">{c}</span>
               ))}
             </div>

@@ -32,6 +32,12 @@ const reading = [
   "Kaggleで学ぶ大規模言語モデル入門",
 ];
 
+const studyWays = [
+  { label: "資格", items: ["E資格", "G検定", "DS検定 など"] },
+  { label: "講座", items: ["東大松尾研 GCI", "DL基礎講座", "LLM講座 など"] },
+  { label: "その他", items: ["論文読み企画", "勉強会・解説会 など"] },
+];
+
 export default function TheoryPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
@@ -178,6 +184,34 @@ export default function TheoryPage() {
               ))}
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* STUDY METHODS */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-12">
+            <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">HOW WE STUDY</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">学ぶ手段は、それぞれ</h2>
+            <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
+              資格・講座・書籍・論文。そのときの興味やキャリアに合わせて、各自の方法でAIを深めています。
+            </p>
+          </Reveal>
+          <Reveal delay={100} className="grid sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+            {studyWays.map((w) => (
+              <div key={w.label} className="bg-night-2 p-6 md:p-8">
+                <p className="font-mono text-[11px] tracking-[0.3em] text-theory-bright mb-4">{w.label}</p>
+                <ul className="space-y-2.5">
+                  {w.items.map((it) => (
+                    <li key={it} className="flex items-start gap-3 text-sm md:text-base text-ink/75">
+                      <span className="mt-2 w-1 h-1 bg-theory-bright rounded-full shrink-0" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </Reveal>
         </div>
       </section>
 

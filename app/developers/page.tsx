@@ -30,6 +30,20 @@ const stack = [
   "Web", "API", "UI / UX", "Prototyping", "Automation",
 ];
 
+const doing = [
+  "Kaggleなどのコンテストへの参加",
+  "機械学習モデルの実装",
+  "AIアプリ開発",
+  "ハッカソン参加・主催",
+];
+
+const connecting = [
+  "大阪公立大学発ITベンチャーでのインターン",
+  "チームでのAI開発・共同開発",
+  "Kaggleチーム戦",
+  "Discordでの日常的な情報交換",
+];
+
 export default function DevelopersPage() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
@@ -151,6 +165,48 @@ export default function DevelopersPage() {
               </span>
             ))}
           </Reveal>
+        </div>
+      </section>
+
+      {/* DEVELOP / CONNECT */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-12">
+            <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">WHAT WE DO</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">創る、そして繋がる</h2>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
+            <Reveal className="bg-night-2 p-8 md:p-10">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-dev-bright mb-2">DEVELOP</p>
+              <h3 className="text-2xl font-black tracking-tighter mb-5">創る</h3>
+              <p className="text-sm text-ink/60 leading-relaxed mb-7">
+                KaggleへのチャレンジやAIモデルの実装、アプリ開発まで。個人でもチームでも、手を動かす機会をつくります。
+              </p>
+              <ul className="space-y-3">
+                {doing.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm md:text-base">
+                    <span className="mt-2 w-1 h-1 bg-dev-bright rounded-full shrink-0" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={100} className="bg-night-2 p-8 md:p-10">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-dev-bright mb-2">CONNECT</p>
+              <h3 className="text-2xl font-black tracking-tighter mb-5">繋がる</h3>
+              <p className="text-sm text-ink/60 leading-relaxed mb-7">
+                インターンや共同開発を通じて学外とつながる。Discordでの日常的な情報交換も。
+              </p>
+              <ul className="space-y-3">
+                {connecting.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm md:text-base">
+                    <span className="mt-2 w-1 h-1 bg-dev-bright rounded-full shrink-0" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
         </div>
       </section>
 

@@ -20,51 +20,76 @@ export default function HomeClient() {
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* ============ HERO (Vercel-route: one calm statement) ============ */}
-      <section className="relative min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center bg-paper">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 w-full">
-          <p className="eyebrow text-ink/45 mb-8 animate-fade-up">
-            OMU Innovation Frontier
-          </p>
-
-          <h1 className="display animate-fade-up [animation-delay:80ms]">
-            AIを、<br className="sm:hidden" />当たり前に。
-          </h1>
-
-          <p className="mt-7 font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-ink/40 animate-fade-up [animation-delay:160ms]">
-            AI, as default.
-          </p>
-
-          <p className="lede mt-10 max-w-xl animate-fade-up [animation-delay:240ms]">
-            大阪公立大学のAI・テクノロジーコミュニティ。
-            プログラミング未経験から、手を動かして学べる。
-          </p>
-
-          {nextEvent && (
-            <a
-              href="#next-event"
-              className="group inline-flex items-center gap-3 border border-ink/15 bg-night-2 px-4 py-2.5 mt-10 animate-fade-up [animation-delay:320ms] hover:border-ink/35 transition-colors"
-            >
-              <span className="font-mono text-[11px] tracking-widest text-accent-bright">NEXT</span>
-              <span className="text-sm font-bold tracking-tight">
-                {nextEvent.dateLabel} — {nextEvent.audience}
-              </span>
-              <span className="text-ink/40 group-hover:translate-y-0.5 transition-transform" aria-hidden>↓</span>
-            </a>
-          )}
-
-          <div className="mt-8 flex flex-wrap gap-4 animate-fade-up [animation-delay:400ms]">
-            <DiscordCTA location="home_hero" />
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 px-8 py-5 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
-            >
-              OIFについて
-            </Link>
+      <section className="relative min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center bg-paper overflow-hidden">
+        {/* --- right half: Morinomiya campus, wrapped by the OIF swirl (large, faded) --- */}
+        {/* outer = positioning only (keeps it centered in the first screen) */}
+        <div
+          aria-hidden
+          className="hidden md:block absolute top-1/2 -translate-y-1/2 right-[-8%] lg:right-[-4%] aspect-square w-[40rem] lg:w-[52rem] pointer-events-none"
+        >
+          {/* inner = fade-in animation (separate node so it can't override the centering transform) */}
+          <div className="relative h-full w-full animate-fade-up [animation-delay:240ms]">
+            {/* campus photo: circular, edge feathered so there's no visible seam */}
+            <div className="absolute inset-[8%] overflow-hidden rounded-full opacity-50 [mask-image:radial-gradient(closest-side,#000_72%,transparent_94%)] [-webkit-mask-image:radial-gradient(closest-side,#000_72%,transparent_94%)]">
+              <Image
+                src="/images/morinomiya-campus.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 0px, 52rem"
+                priority
+                className="object-cover"
+              />
+            </div>
           </div>
+        </div>
 
-          <p className="mt-5 font-mono text-xs tracking-widest text-ink/50 animate-fade-up [animation-delay:480ms]">
-            経験不問・文系歓迎・入会費なし
-          </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 w-full">
+          {/* --- left: statement --- */}
+          <div className="max-w-xl">
+            <p className="eyebrow text-ink/45 mb-8 animate-fade-up">
+              OMU Innovation Frontier
+            </p>
+
+            <h1 className="display animate-fade-up [animation-delay:80ms]">
+              AIを、<br className="sm:hidden" />当たり前に。
+            </h1>
+
+            <p className="mt-7 font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-ink/40 animate-fade-up [animation-delay:160ms]">
+              AI, as default.
+            </p>
+
+            <p className="lede mt-10 max-w-xl animate-fade-up [animation-delay:240ms]">
+              大阪公立大学のAI・テクノロジーコミュニティ。
+              プログラミング未経験から、手を動かして学べる。
+            </p>
+
+            {nextEvent && (
+              <a
+                href="#next-event"
+                className="group inline-flex items-center gap-3 border border-ink/15 bg-night-2 px-4 py-2.5 mt-10 animate-fade-up [animation-delay:320ms] hover:border-ink/35 transition-colors"
+              >
+                <span className="font-mono text-[11px] tracking-widest text-accent-bright">NEXT</span>
+                <span className="text-sm font-bold tracking-tight">
+                  {nextEvent.dateLabel} — {nextEvent.audience}
+                </span>
+                <span className="text-ink/40 group-hover:translate-y-0.5 transition-transform" aria-hidden>↓</span>
+              </a>
+            )}
+
+            <div className="mt-8 flex flex-wrap gap-4 animate-fade-up [animation-delay:400ms]">
+              <DiscordCTA location="home_hero" />
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 px-8 py-5 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
+              >
+                OIFについて
+              </Link>
+            </div>
+
+            <p className="mt-5 font-mono text-xs tracking-widest text-ink/50 animate-fade-up [animation-delay:480ms]">
+              経験不問・文系歓迎・入会費なし
+            </p>
+          </div>
         </div>
       </section>
 
@@ -112,11 +137,11 @@ export default function HomeClient() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <p className="section-label mb-3">CHOOSE YOUR PATH</p>
-              <h2 className="headline">進む道を、選ぶ</h2>
+              <p className="section-label mb-3">TWO DIRECTIONS</p>
+              <h2 className="headline">つくる と、理解する。</h2>
             </div>
             <p className="font-mono text-xs text-ink/40 md:pb-2">
-              2 divisions, 1 community
+              どちらかに入らなくてOK・掛け持ち自由
             </p>
           </Reveal>
 
@@ -154,7 +179,7 @@ export default function HomeClient() {
                   alt={p.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, 33vw"
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-smooth"
+                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-smooth"
                 />
               </Link>
             ))}
@@ -256,24 +281,6 @@ export default function HomeClient() {
             </div>
           </div>
 
-          {/* staircase: L0 -> L3 (kills "what happens after I join") */}
-          <Reveal className="mt-12">
-            <p className="font-mono text-xs tracking-widest text-ink/45 mb-4">入った後の道のり</p>
-            <ol className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
-              {[
-                ["L0", "のぞく", "Discordで雰囲気を見る"],
-                ["L1", "来てみる", "イベントに単発参加"],
-                ["L2", "続ける", "勉強会・プロジェクト班"],
-                ["L3", "つくる", "プロダクト / 研究を駆動"],
-              ].map(([lv, t, d]) => (
-                <li key={lv} className="bg-night p-5">
-                  <span className="font-mono text-xs text-accent-bright">{lv}</span>
-                  <p className="mt-2 font-bold tracking-tight">{t}</p>
-                  <p className="mt-1 text-xs text-ink/55 leading-relaxed">{d}</p>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
         </div>
       </section>
     </div>
