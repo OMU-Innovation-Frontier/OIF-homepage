@@ -9,38 +9,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm near-black "ink" replaces pure black globally for a softer,
-        // more premium feel. `black` is intentionally remapped so the entire
-        // site (text / borders / dark sections / buttons) warms up at once.
-        // `ink` is the semantic alias to prefer in new code.
+        // Light monochrome foundation (main-aligned). The whole site is
+        // black-on-white with no chromatic accents. `ink` is the semantic
+        // alias for the near-black text/element color; `black` stays warm.
         black: "#0B0C0E",
-        ink: "#0B0C0E",
         white: "#ffffff",
 
-        // Warm neutral foundation
-        paper: "#FAFAF8", // base page background
-        muted: "#F2F0EA", // subtle section blocks (replaces cool gray-50)
-        line: "#E7E4DD", // hairline borders (warm, low-emphasis)
+        // Light foundation: `paper` is the white page base, `ink` the
+        // near-black text/element color, `muted` a subtle light surface.
+        ink: "#0B0C0E", // primary text / elements (near-black)
+        paper: "#FFFFFF", // base page background (white)
+        muted: "#F4F5F7", // subtle section blocks (raised light surface)
+        line: "#E5E7EB", // hairline borders on light
 
-        // Brand signature accent (used for primary actions & highlights)
+        // Brand accent — unified to monochrome (no color). Kept as a token so
+        // the ~180 existing usages recolor in one place. `bright` is the
+        // emphasis variant readable on light surfaces (mid-dark grey).
         accent: {
-          DEFAULT: "#4F46E5", // indigo-600
-          bright: "#A5B4FC", // for dark backgrounds
-          tint: "#EEF0FF",
+          DEFAULT: "#0B0C0E",
+          bright: "#3F3F46",
+          tint: "#F4F5F7",
         },
 
-        // Division accents — single source of truth per division
+        // Division accents — intentionally unified (no per-division color).
         dev: {
-          DEFAULT: "#2563EB", // blue-600
-          dark: "#1E3A8A", // blue-900
-          bright: "#60A5FA", // for dark backgrounds
-          tint: "#EEF3FF",
+          DEFAULT: "#0B0C0E",
+          dark: "#000000",
+          bright: "#3F3F46",
+          tint: "#F4F5F7",
         },
         theory: {
-          DEFAULT: "#C0271C",
-          dark: "#991B1B", // red-800
-          bright: "#F87171", // for dark backgrounds
-          tint: "#FCF1F0",
+          DEFAULT: "#0B0C0E",
+          dark: "#000000",
+          bright: "#3F3F46",
+          tint: "#F4F5F7",
+        },
+
+        // "night" surfaces flipped to light so `bg-night-*` reads on white.
+        night: {
+          DEFAULT: "#FFFFFF",
+          2: "#F4F5F7",
+          3: "#ECEDEF",
         },
       },
       fontFamily: {
@@ -53,6 +62,14 @@ const config: Config = {
           "Segoe UI",
           "Roboto",
           "sans-serif",
+        ],
+        mono: [
+          "var(--font-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace",
         ],
       },
       // Sharp corners are part of the brand identity — keep radius at 0.
@@ -91,13 +108,34 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "grid-pan": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "40px 40px" },
+        },
+        "drift": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(4%, -3%) scale(1.08)" },
+        },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        blink: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "grid-pan": "grid-pan 6s linear infinite",
+        "drift-slow": "drift 18s ease-in-out infinite",
+        "drift-slower": "drift 26s ease-in-out infinite",
+        marquee: "marquee 64s linear infinite",
+        blink: "blink 1.2s step-end infinite",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 
 export default config;

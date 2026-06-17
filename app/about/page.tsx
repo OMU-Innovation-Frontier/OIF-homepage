@@ -1,197 +1,291 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import SectionDivider from "@/components/site/SectionDivider";
+import { Lightbulb, Hammer, Users } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・プログラミングサークルです。深く考え、とにかく作ってみる、外の世界に出てみる——AIに興味のある大阪公立大学の学生には最適な環境です。",
+    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・テクノロジーサークルです。AIで生活を便利にしたい人も、自分でつくってみたい人も、仕組みを知りたい人も。プログラミング未経験・文系も歓迎。「ちょっと気になる」から始められます。",
   alternates: {
     canonical: "https://oif-ai.com/about/",
   },
 };
 
+const acronym = [
+  { l: "O", w: "OMU", s: "大阪公立大学" },
+  { l: "I", w: "Innovation", s: "革新する" },
+  { l: "F", w: "Frontier", s: "最前線へ" },
+];
+
+const contrasts = [
+  { no: "経験者やすごい人だけの場所", yes: "未経験から始められる場所" },
+  { no: "AIを「つくる人」だけの場所", yes: "「使ってみたい」だけでも大歓迎" },
+  { no: "受け身で聞くだけの勉強会", yes: "手を動かして、ためす場所" },
+  { no: "評価のために、こなす学び", yes: "やりたいことのための、学び" },
+];
+
 const beliefs = [
   {
-    number: "01",
-    title: "深く考える",
-    body: "論文を読み、数式と向き合い、本質を掴む。AIやLLMの仕組みを表面だけでなく、根拠から理解することを大切にしている。",
+    n: "01",
+    en: "STAY CURIOUS",
+    icon: Lightbulb,
+    title: "好奇心から始める",
+    body: "「面白そう」「知りたい」——その気持ちがスタートライン。難しい前提知識はいりません。気になったところから、自由に。",
   },
   {
-    number: "02",
-    title: "とにかく作ってみる",
-    body: "KaggleへのチャレンジやAIモデルの実装、アプリ開発も。試行錯誤しながらコードを書いているうちに、理解が深まっていく。",
+    n: "02",
+    en: "LEARN BY DOING",
+    icon: Hammer,
+    title: "まず手を動かす",
+    body: "難しいコードからじゃなくていい。AIを使ってみる、小さく試してみる。手を動かすうちに、できることが増えていく。",
   },
   {
-    number: "03",
-    title: "外の世界に出てみる",
-    body: "大学発ベンチャーでインターンをしているメンバーもいる。学校の外で経験を積むことを、自然な選択肢として持っているいる。",
+    n: "03",
+    en: "LEARN TOGETHER",
+    icon: Users,
+    title: "みんなで学ぶ",
+    body: "一人で抱え込まない。分からないことを気軽に聞ける仲間がいる。教わるのも、教えるのも自由。それぞれのペースで。",
+  },
+];
+
+const ways = [
+  { tag: "USE", title: "生活に使う", body: "AIツールをレポートや課題、毎日のちょっとした作業に取り入れて、楽をする。" },
+  { tag: "MAKE", title: "つくってみる", body: "アプリや簡単なAIを、自分の手で動かしてつくってみる。" },
+  { tag: "LEARN", title: "仕組みを知る", body: "「なぜ動くのか」を、いちから少しずつ理解していく。" },
+  { tag: "CONNECT", title: "仲間とつながる", body: "イベントや勉強会で、刺激をくれる仲間や先輩に出会う。" },
+];
+
+const divisions = [
+  {
+    href: "/developers/",
+    label: "DEVELOPMENT",
+    title: "開発部門",
+    body: "最新技術を試し、実装し、使える形にする。",
+    labelCls: "text-dev-bright",
+    hoverCls: "hover:border-dev-bright/50",
+  },
+  {
+    href: "/theory/",
+    label: "THEORY",
+    title: "理論部門",
+    body: "AIの「なぜ動くのか」を、いちから一緒に理解していく。",
+    labelCls: "text-theory-bright",
+    hoverCls: "hover:border-theory-bright/50",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="py-24 md:py-32 lg:py-48">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
-            About the Community
-          </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9]">
-            OIF について
-          </h1>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Section 1 */}
-      <section className="py-24 md:py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl">
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tighter mb-16 leading-tight">
-              AIに興味がある学生が、<br className="hidden md:block" />集まっている場所
-            </h2>
-            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-black/80 font-medium">
-              <p>
-                OIFは、大阪公立大学の学生を中心にAIやテクノロジーに関心を持つ人が集まる学生コミュニティです。
-              </p>
-              <p>
-                仕組みを理解し、自分たちの手で実装し、社会に問いを立てる。
-              </p>
-              <p className="text-black">
-                プログラミング経験の有無は問いません。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Section: 部門紹介 */}
-      <section className="section-y-lg bg-muted">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
-              Departments
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
+      {/* ===== HERO ===== */}
+      <section className="relative min-h-[80svh] flex items-center bg-paper">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
+          <div className="animate-fade-up">
+            <p className="section-label mb-8">ABOUT</p>
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-10">
+              OIF
+              <br />について
+            </h1>
+            <p className="font-mono text-sm md:text-base text-ink/55 mb-12">
+              AIを、<span className="text-ink/90">もっと身近に。使う人も、つくる人も。</span>
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-8">
-              OIFには2つの部門があります
-            </h2>
-            <p className="text-lg md:text-xl leading-relaxed text-black/75 font-medium">
-              理論を深く掘る部門と、実際に作って試す部門の2つを軸に活動しています。
-              興味に応じて片方に寄ってもいいし、両方を行き来しながら学ぶこともできます。
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-0 border border-black bg-white">
-            <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-dev mb-6">
-                Development
-              </p>
-              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                開発部門
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-black/65 mb-8 flex-1">
-                最新のAI技術やLLM、Webアプリ、デザインなどを実際に触って、試作し、形にしていく部門です。
-              </p>
-              <Link
-                href="/developers"
-                className="inline-flex items-center gap-2 self-start bg-dev text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-ink transition-colors duration-200"
-              >
-                開発部門を見る →
-              </Link>
-            </div>
-
-            <div className="p-8 md:p-10 flex flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-theory mb-6">
-                Theory
-              </p>
-              <h3 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                理論部門
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-black/65 mb-8 flex-1">
-                数学、統計、機械学習理論、論文読解を通じて、AIの仕組みを根本から理解していく部門です。
-              </p>
-              <Link
-                href="/theory"
-                className="inline-flex items-center gap-2 self-start bg-theory text-white px-6 py-3 text-sm font-medium tracking-widest uppercase hover:bg-ink transition-colors duration-200"
-              >
-                理論部門を見る →
-              </Link>
+            {/* acronym spec */}
+            <div className="flex flex-col sm:flex-row gap-px bg-ink/10 border border-ink/10 max-w-2xl">
+              {acronym.map((a) => (
+                <div
+                  key={a.l}
+                  className="group flex-1 bg-night-2 px-6 py-5 hover:bg-night-3 transition-colors"
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-3xl font-black tracking-tighter text-accent-bright">{a.l}</span>
+                    <span className="font-mono text-sm tracking-wide text-ink/80">{a.w}</span>
+                  </div>
+                  <p className="mt-2 text-xs text-ink/60">{a.s}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
+      {/* ===== MANIFESTO ===== */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="max-w-4xl">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-14">
+              AIに興味がある学生が、
+              <br className="hidden md:block" />
+              <span>集まっている場所</span>
+            </h2>
+            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium">
+              <p>OIFは、大阪公立大学の学生を中心に、AIやテクノロジーに興味がある人が集まる学生コミュニティです。</p>
+              <p>AIで毎日をちょっと便利にしたい人も、自分でつくってみたい人も、仕組みを深く知りたい人も。「ちょっと気になる」から、自分のペースで。</p>
+              <p className="text-ink">プログラミング未経験でも、文系でも、学年が違っても歓迎します。</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-      {/* Section 2: 3つの信条 */}
-      <section>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-40">
-          <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
-            How we learn
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-20">
-            大事にしていること
-          </h2>
-
-          <div className="grid lg:grid-cols-3 border-t border-black">
-            {beliefs.map((belief, i) => (
+      {/* ===== WE ARE / WE ARE NOT ===== */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-12 md:mb-16">
+            <p className="section-label mb-4">WE ARE / WE ARE NOT</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">こういう場所。</h2>
+          </Reveal>
+          <Reveal delay={100} className="border-t border-ink/10">
+            {contrasts.map((c, i) => (
               <div
                 key={i}
-                className={`pt-12 pb-16 pr-8 ${i < beliefs.length - 1
-                    ? "border-b lg:border-b-0 lg:border-r border-black"
-                    : ""
-                  } ${i > 0 ? "lg:pl-12" : ""}`}
+                className="grid md:grid-cols-2 gap-3 md:gap-12 py-7 border-b border-ink/10 items-center"
               >
-                <span className="block text-5xl md:text-6xl font-black text-black/5 tracking-tighter mb-8">
-                  {belief.number}
-                </span>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-8">
-                  {belief.title}
-                </h3>
-                <p className="text-base md:text-lg lg:text-xl leading-relaxed text-black/70 font-medium">
-                  {belief.body}
+                <p className="flex items-center gap-3 text-base md:text-lg text-ink/55">
+                  <span className="font-mono text-ink/25">✗</span>
+                  <span className="line-through decoration-ink/20">{c.no}</span>
+                </p>
+                <p className="flex items-center gap-3 text-lg md:text-2xl font-bold tracking-tight">
+                  <span className="font-mono text-accent-bright">✓</span>
+                  {c.yes}
                 </p>
               </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== BELIEFS ===== */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-14 md:mb-20">
+            <p className="section-label mb-4">HOW WE LEARN</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">大事にしている3つのこと</h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {beliefs.map((b, i) => {
+              const Icon = b.icon;
+              return (
+                <Reveal key={b.n} delay={i * 120}>
+                  <div className="h-full bg-night-2 border border-ink/10 p-8 md:p-10 transition-colors duration-300 hover:border-ink/30">
+                    <div className="flex items-start justify-between mb-10">
+                      <span className="text-6xl md:text-7xl font-black tracking-tighter text-ink/[0.08]">
+                        {b.n}
+                      </span>
+                      <Icon size={28} strokeWidth={1.5} className="text-ink/70 mt-2" />
+                    </div>
+                    <p className="section-label mb-3">
+                      {b.en}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-5">
+                      {b.title}
+                    </h3>
+                    <p className="text-sm md:text-base leading-relaxed text-ink/60">
+                      {b.body}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== WAYS TO GET INVOLVED ===== */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="mb-14">
+            <p className="section-label mb-4">WHAT YOU CAN DO</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">AIとの、いろんな関わり方</h2>
+            <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
+              ぜんぶやらなくていい。一つでも、行き来しても。気になるところから始めれば大丈夫。
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {ways.map((w, i) => (
+              <Reveal key={w.tag} delay={i * 100}>
+                <div className="h-full border border-ink/10 bg-night p-7 md:p-8 transition-colors duration-300 hover:border-ink/30">
+                  <p className="section-label mb-5">{w.tag}</p>
+                  <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">{w.title}</h3>
+                  <p className="text-sm text-ink/55 leading-relaxed">{w.body}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* Section 3: メンバー */}
-      <section className="section-y-lg bg-muted">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
-              Members
+      {/* ===== DIVISIONS ===== */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="mb-12">
+            <p className="section-label mb-4">TWO DIRECTIONS</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">2つの方向。でも、選ばなくていい。</h2>
+            <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
+              どちらかに所属する必要はありません。両方のぞいても、行ったり来たりしても、どちらにも入らず気になるイベントだけ来てもOK。「まだ決められない」が、いちばん多いです。
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-12">
-              すでに動いているメンバーもいる
-            </h2>
-            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-black/80 font-medium">
-              大阪公立大学発ベンチャーのAffectify・Mi&amp;Tでインターンとして実務経験を積んでいるメンバーが在籍しています。勉強会に参加するだけでなく、実際の現場に出ていることも自然にできる環境です。
-            </p>
-          </div>
+          </Reveal>
+          <Reveal delay={100} className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
+            {divisions.map((d) => (
+              <Link
+                key={d.href}
+                href={d.href}
+                className={`group bg-night-2 p-8 md:p-12 transition-colors duration-300 hover:bg-night-3 border-y-2 border-transparent ${d.hoverCls}`}
+              >
+                <p className={`font-mono text-[11px] tracking-[0.3em] mb-6 ${d.labelCls}`}>{d.label}</p>
+                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-ink mb-4">{d.title}</h3>
+                <p className="text-ink/60 mb-8">{d.body}</p>
+                <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-ink">
+                  見る
+                  <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+                </span>
+              </Link>
+            ))}
+          </Reveal>
         </div>
       </section>
 
-      <SectionDivider />
+      {/* ===== MEMBERS ===== */}
+      <section className="border-t border-ink/10 bg-night-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="max-w-4xl">
+            <p className="section-label mb-4">MEMBERS</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">
+              いろんな人が、<span>いる</span>
+            </h2>
+            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium mb-10">
+              プログラミングが初めての人、文系の人、もう開発やインターンをしている人。
+              レベルも興味もバラバラなメンバーが集まっています。背伸びはいりません。あなたのペースで関われます。
+            </p>
+            <div className="flex flex-wrap gap-3 font-mono text-xs tracking-widest text-ink/70">
+              {["BEGINNER FRIENDLY", "ANY MAJOR", "ALL YEARS", "YOUR OWN PACE"].map((c) => (
+                <span key={c} className="border border-ink/15 px-3 py-1.5">{c}</span>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-      {/* Section 4: 黒背景メッセージ */}
-      <section className="on-dark py-32 md:py-48 lg:py-64 bg-ink text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl">
-            求められる学びじゃなく、<br />
-            自分たちがやりたいことを、<br />
+      {/* ===== CLOSING ===== */}
+      <section className="relative overflow-hidden border-t border-ink/10 bg-night">
+        <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
+        <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48 lg:py-64">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.12] max-w-5xl">
+            求められる学びじゃなく、
+            <br />
+            自分たちが<span>やりたいこと</span>を、
+            <br />
             自分たちのペースで
           </h2>
-        </div>
+          <Link
+            href="/join/"
+            className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200"
+          >
+            参加する
+            <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
       </section>
     </div>
   );

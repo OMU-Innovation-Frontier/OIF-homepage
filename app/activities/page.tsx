@@ -1,7 +1,11 @@
 import { Metadata } from "next";
-import { BookOpen, Code2, ExternalLink, Users } from "lucide-react";
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import SectionDivider from "@/components/site/SectionDivider";
+import DiscordCTA from "@/components/ui/DiscordCTA";
+import Reveal from "@/components/ui/Reveal";
+import { getAllProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Activities | OIF 大阪公立大学のAIサークルの活動",
@@ -10,40 +14,6 @@ export const metadata: Metadata = {
     canonical: "https://oif-ai.com/activities/",
   },
 };
-
-const products = [
-  {
-    name: "NOEMA",
-    badge: "Member Product",
-    tagline: "Pythonから深層学習まで、コードを動かしながら学ぶAI学習サービス",
-    description:
-      "Pythonの基礎から機械学習、深層学習など、AI技術についてコードを実行しながら学べるサービス。松尾研講座の予習・復習としても、読み物としてもご使用いただけます。",
-    href: "https://noema-learn.uk/",
-    image: `/images/noema-screenshot.png`,
-    layout: "hero" as const,
-  },
-  {
-    name: "samurAI",
-    badge: undefined as string | undefined,
-    tagline: "ノーコードで学ぶ機械学習",
-    description:
-      "コードを書かずに機械学習の本質を体験できる学習アプリ。データの前処理からモデル構築、評価までの一連の流れをゲーム感覚で学べます。",
-    href: undefined as string | undefined,
-    image: undefined as string | undefined,
-    layout: "gallery" as const,
-    features: [
-      "ノーコードで機械学習のワークフローを体験",
-      "データの可視化・前処理・特徴量エンジニアリング",
-      "モデルの学習と評価を直感的に理解",
-      "ゲーム性を重視した学習設計",
-    ],
-    images: [
-      { src: `/images/samurai-screenshot.png`, caption: "MLワークフロー" },
-      { src: `/images/samurai-conquest.png`, caption: "天下統一モード" },
-      { src: `/images/samurai-algorithm.png`, caption: "アルゴリズム学習" },
-    ],
-  },
-];
 
 const contests = [
   {
@@ -69,190 +39,68 @@ const featuredSessions = [
       "https://drive.google.com/file/d/1E6FYe200ioRtAAPW8TDyS8e2XkS2g-qu/view?usp=sharing",
     image: `/images/llm-handson.png`,
     imageAlt: "ローカルLLMハンズオンの様子（参加メンバーの集合写真）",
+    imageWidth: 481,
+    imageHeight: 399,
+  },
+  {
+    date: "2026/3/18",
+    title: "Vibe Codingワークショップ",
+    category: "Workshop",
+    description:
+      "「環境構築不要。Vibe Codingで学ぶ次世代エンジニアリング」をテーマに、大阪公立大学スマートエネルギー棟でハイブリッド開催（計8名参加）。最新のAI開発手法を解説したのち、約50分でひとり一人が自分のアイデアをもとにオリジナルのアプリやホームページを制作しました。",
+    materialLabel: "活動レポートを見る",
+    materialHref:
+      "https://www.omu.ac.jp/i-academy/info/activity/entry-105828.html",
+    image: `/images/vibe-coding-workshop.png`,
+    imageAlt: "Vibe Codingワークショップの様子（スマートエネルギー棟での開催）",
+    imageWidth: 723,
+    imageHeight: 484,
+  },
+  {
+    date: "2025/12/25",
+    title: "第1回ワークショップ",
+    category: "Workshop",
+    description:
+      "記念すべき第1回のワークショップを開催。参加者一人ひとりがAIを駆使して、アプリの発案から実装、発表用スライドの作成までを行い、完成したアプリを発表しました。AIツール（Google Antigravity・Gemini）を実際に使い、その実用性と可能性を確かめ合いました。",
+    materialLabel: undefined as string | undefined,
+    materialHref: undefined as string | undefined,
+    image: `/images/first-workshop.png`,
+    imageAlt: "第1回ワークショップの様子（成果アプリの発表）",
+    imageWidth: 894,
+    imageHeight: 751,
   },
 ];
-
-const activitiesData = [
-  {
-    icon: BookOpen,
-    title: "Study",
-    titleJa: "学ぶ",
-    description:
-      "資格・講座・書籍・論文。そのときの興味やキャリアに合わせて、各自の方法でAIを深めています。",
-    items: [],
-  },
-  {
-    icon: Code2,
-    title: "Develop",
-    titleJa: "創る",
-    description:
-      "KaggleへのチャレンジやAIモデルの実装、アプリ開発まで。個人でもチームでも、手を動かす機会をつくります。",
-    items: [
-      "Kaggleなどのコンテスト",
-      "機械学習モデルの実装",
-      "AIアプリ開発",
-      "ハッカソン参加・主催",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Connect",
-    titleJa: "繋がる",
-    description:
-      "インターンや共同開発を通じて学外とつながる。Discordでの日常的な情報交換も。",
-    items: [
-      "大阪公立大学発ITベンチャーでのインターン",
-      "Discordでの日常的な情報交換",
-      "チームでAI開発",
-      "Kaggleチーム戦",
-    ],
-  },
-];
-
-const studyCategories = [
-  {
-    label: "資格",
-    examples: ["E資格", "G検定", "DS検定など"],
-  },
-  {
-    label: "講座",
-    examples: ["東大松尾研JGCI", "DL基礎講座", "LLM講座など"],
-  },
-  {
-    label: "書籍",
-    examples: ["ベイズ推論による機械学習", "パターン認識と機械学習(PRML)", "Kaggleではじめる大規模言語モデル入門など"],
-  },
-  {
-    label: "その他",
-    examples: ["論文読み企画", "勉強会・解説会など"],
-  },
-];
-
-const StudyIcon = activitiesData[0].icon;
-const DevelopIcon = activitiesData[1].icon;
-const ConnectIcon = activitiesData[2].icon;
 
 export default function ActivitiesPage() {
+  const projects = getAllProjects();
+
   return (
-    <div className="min-h-screen">
-      {/* Title Section */}
-      <section className="py-24 md:py-32 lg:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">
-            What we do
+    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
+      {/* HERO */}
+      <section className="relative min-h-[60svh] flex items-center border-b border-ink/10 bg-paper">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full animate-fade-up">
+          <p className="section-label mb-6">Activities</p>
+          <h1 className="display mb-8">Activities</h1>
+          <p className="lede max-w-2xl">
+            勉強会・ハンズオン・プロダクト・コンテスト——
+            OIFがこれまで手を動かしてきた記録です。
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter">
-            Activities
-          </h1>
         </div>
       </section>
-
-      <SectionDivider />
-
-      {/* Activities Grid */}
-      <section>
-        <div className="max-w-7xl mx-auto">
-
-          {/* Row 1: Study - full width, 2カラム */}
-          <div className="border-b border-black grid lg:grid-cols-2">
-            {/* Left: アイコン + タイトル + 説明 */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black">
-              <StudyIcon size={32} strokeWidth={1.5} className="mb-10" />
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-                  {activitiesData[0].title}
-                </h2>
-                <p className="text-sm text-black/60 mt-1">{activitiesData[0].titleJa}</p>
-              </div>
-              <p className="text-base md:text-lg leading-relaxed text-black/70">
-                {activitiesData[0].description}
-              </p>
-            </div>
-
-            {/* Right: カテゴリ行リスト */}
-            <div className="divide-y divide-black">
-              {studyCategories.map((cat) => (
-                <div key={cat.label} className="flex items-baseline gap-4 px-6 md:px-10 lg:px-12 py-5 md:py-6">
-                  <span className="text-xs font-bold tracking-widest uppercase text-black/60 shrink-0 w-10">
-                    {cat.label}
-                  </span>
-                  <span className="text-sm md:text-base leading-relaxed text-black/80">
-                    {cat.examples.join("、")}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 2: Develop + Connect - 左右2カラム */}
-          <div className="grid lg:grid-cols-2">
-            {/* Develop */}
-            <div className="p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black">
-              <DevelopIcon size={32} strokeWidth={1.5} className="mb-10" />
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-                  {activitiesData[1].title}
-                </h2>
-                <p className="text-sm text-black/60 mt-1">{activitiesData[1].titleJa}</p>
-              </div>
-              <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
-                {activitiesData[1].description}
-              </p>
-              <ul className="space-y-3">
-                {activitiesData[1].items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm md:text-base">
-                    <span className="w-1 h-1 bg-accent rounded-full shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Connect */}
-            <div className="p-8 md:p-12 lg:p-16">
-              <ConnectIcon size={32} strokeWidth={1.5} className="mb-10" />
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-                  {activitiesData[2].title}
-                </h2>
-                <p className="text-sm text-black/60 mt-1">{activitiesData[2].titleJa}</p>
-              </div>
-              <p className="text-base md:text-lg leading-relaxed text-black/70 mb-10">
-                {activitiesData[2].description}
-              </p>
-              <ul className="space-y-3">
-                {activitiesData[2].items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm md:text-base">
-                    <span className="w-1 h-1 bg-accent rounded-full shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <SectionDivider />
 
       {/* Featured Sessions Section */}
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
-              Sessions
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              勉強会・ハンズオン
-            </h2>
-          </div>
+          <Reveal className="mb-16">
+            <p className="section-label mb-4">Sessions</p>
+            <h2 className="headline">勉強会・ハンズオン</h2>
+          </Reveal>
 
-          <div className="border border-black">
+          <div className="border border-ink/12">
             {featuredSessions.map((session) => (
               <div key={`${session.date}-${session.title}`} className="grid md:grid-cols-[220px_1fr]">
-                <div className="border-b md:border-b-0 md:border-r border-black p-8 md:p-10">
-                  <p className="text-xs font-medium tracking-widest uppercase text-black/60 mb-3">
+                <div className="border-b md:border-b-0 md:border-r border-ink/12 p-8 md:p-10">
+                  <p className="text-xs font-medium tracking-widest uppercase text-ink/60 mb-3">
                     {session.category}
                   </p>
                   <p className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -265,27 +113,29 @@ export default function ActivitiesPage() {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
                       {session.title}
                     </h3>
-                    <p className="text-base leading-relaxed text-black/75 mb-6 max-w-2xl">
+                    <p className="text-base leading-relaxed text-ink/75 mb-6 max-w-2xl">
                       {session.description}
                     </p>
-                    <a
-                      href={session.materialHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-black/60 transition-colors duration-200 self-start"
-                    >
-                      {session.materialLabel}
-                      <ExternalLink size={16} strokeWidth={1.75} />
-                    </a>
+                    {session.materialHref && (
+                      <a
+                        href={session.materialHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-ink/60 transition-colors duration-200 self-start"
+                      >
+                        {session.materialLabel}
+                        <ExternalLink size={16} strokeWidth={1.75} />
+                      </a>
+                    )}
                   </div>
 
                   {session.image && (
-                    <div className="border-t lg:border-t-0 lg:border-l border-black bg-black/[0.03] flex items-center justify-center p-4 md:p-6">
+                    <div className="border-t lg:border-t-0 lg:border-l border-ink/12 bg-ink/[0.05] flex items-center justify-center p-4 md:p-6">
                       <Image
                         src={session.image}
                         alt={session.imageAlt ?? session.title}
-                        width={481}
-                        height={399}
+                        width={session.imageWidth ?? 481}
+                        height={session.imageHeight ?? 399}
                         className="w-full h-auto max-w-md object-contain"
                       />
                     </div>
@@ -303,105 +153,52 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
-              Products
+            <p className="section-label mb-4">Products</p>
+            <h2 className="headline">メンバー開発プロダクト</h2>
+            <p className="mt-4 text-base text-ink/60 max-w-2xl leading-relaxed">
+              「面白そう」で終わらせず、実際に動くものへ。課題から成果まで、メンバーが開発したプロダクトの事例を紹介します。
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              メンバー開発プロダクト
-            </h2>
           </div>
 
-          {products.map((product) => (
-            <div
-              key={product.name}
-              className="border border-black"
-            >
-              {product.layout === "hero" ? (
-                <div className="grid md:grid-cols-2">
-                  <div className="border-b md:border-b-0 md:border-r border-black bg-[#141e2e] flex items-center justify-center min-h-[280px] md:min-h-[360px] p-4 md:p-6">
-                    <Image
-                      src={product.image!}
-                      alt={product.name}
-                      width={800}
-                      height={500}
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                  <div className="p-8 md:p-12 flex flex-col justify-center">
-                    <div className="mb-6">
-                      {product.badge && (
-                        <span className="inline-block text-xs font-medium tracking-widest uppercase bg-accent text-white px-3 py-1 mb-4">
-                          {product.badge}
-                        </span>
-                      )}
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-medium text-black/60">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <p className="text-base leading-relaxed mb-8">
-                      {product.description}
-                    </p>
-                    {product.href && (
-                      <a
-                        href={product.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block bg-accent text-white px-6 py-3 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-ink hover:text-white transition-colors duration-200 self-start"
-                      >
-                        サービスを見る →
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <div className="p-8 md:p-12 border-b border-black">
-                    <div className="mb-6">
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-medium text-black/60">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <p className="text-base leading-relaxed mb-8 max-w-2xl">
-                      {product.description}
-                    </p>
-                    <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl">
-                      {product.features?.map((feature, i) => (
-                        <li key={i} className="text-sm flex items-start gap-3">
-                          <span className="w-1 h-1 bg-accent mt-2 shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={`grid ${!product.images || product.images.length <= 1 ? "" : product.images.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
-                    {product.images?.map((image, i) => (
-                      <div
-                        key={i}
-                        className={`bg-black/5 p-4 md:p-6 ${product.images && i < product.images.length - 1 ? "border-b md:border-b-0 md:border-r border-black" : ""}`}
-                      >
+          <div className="grid gap-4 md:grid-cols-2">
+            {projects.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100}>
+                  <Link
+                    href={`/projects/${p.slug}/`}
+                    className="group flex flex-col h-full border border-ink/10 bg-night-2 hover:bg-night-3 hover:border-ink/30 transition-colors"
+                  >
+                    {p.image && (
+                      <div className="bg-[#141e2e] border-b border-ink/10 p-6 flex items-center justify-center min-h-[220px]">
                         <Image
-                          src={image.src}
-                          alt={`${product.name} - ${image.caption}`}
-                          width={600}
+                          src={p.image}
+                          alt={p.name}
+                          width={640}
                           height={400}
-                          className="w-full h-auto border border-black/10 mb-3"
+                          className="w-full h-auto object-contain max-h-56"
                         />
-                        <p className="text-xs font-medium tracking-wide text-black/60 text-center">
-                          {image.caption}
-                        </p>
                       </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
+                    )}
+                    <div className="p-8 md:p-10 flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-mono text-[11px] tracking-widest text-accent-bright">
+                          {p.status}
+                        </span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">
+                        {p.name}
+                      </h3>
+                      <p className="text-sm md:text-base text-ink/60 leading-relaxed mb-6 flex-1">
+                        {p.tagline}
+                      </p>
+                      <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
+                        事例を見る
+                        <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+                      </span>
+                    </div>
+                  </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -411,21 +208,17 @@ export default function ActivitiesPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-16">
-            <p className="text-xs font-bold tracking-widest uppercase text-accent mb-4">
-              Contest
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              コンテスト実績
-            </h2>
+            <p className="section-label mb-4">Contest</p>
+            <h2 className="headline">コンテスト実績</h2>
           </div>
 
           {contests.map((contest) => (
             <div
               key={contest.name}
-              className="border border-black"
+              className="border border-ink/12"
             >
               <div className="grid md:grid-cols-2">
-                <div className="border-b md:border-b-0 md:border-r border-black">
+                <div className="border-b md:border-b-0 md:border-r border-ink/12">
                   <Image
                     src={contest.image}
                     alt={contest.name}
@@ -443,7 +236,7 @@ export default function ActivitiesPage() {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
                       {contest.name}
                     </h3>
-                    <p className="text-sm font-medium text-black/60">
+                    <p className="text-sm font-medium text-ink/60">
                       {contest.fullName} / {contest.organizer}
                     </p>
                   </div>
@@ -467,14 +260,9 @@ export default function ActivitiesPage() {
             どんな活動にも気軽に参加できます。<br />
             まずはDiscordに参加してみて。
           </p>
-          <a
-            href="https://discord.gg/Brg6GxJnBW"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-accent text-white px-10 py-5 text-sm font-medium tracking-widest uppercase border border-accent hover:bg-ink hover:text-white transition-colors duration-200"
-          >
-            Discordに参加
-          </a>
+          <div className="flex justify-center">
+            <DiscordCTA location="activities_cta" />
+          </div>
         </div>
       </section>
     </div>

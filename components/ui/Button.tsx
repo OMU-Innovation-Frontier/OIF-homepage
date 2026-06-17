@@ -8,13 +8,15 @@ const base =
   "inline-flex items-center justify-center gap-2 font-medium tracking-widest uppercase border transition-colors duration-200 ease-smooth";
 
 const variants: Record<Variant, string> = {
-  // Brand accent fill, darkens to ink on hover
-  primary: "bg-accent text-white border-accent hover:bg-ink hover:border-ink",
-  // Outline on light surfaces, inverts to ink on hover
-  secondary: "bg-transparent text-ink border-ink hover:bg-ink hover:text-white",
-  // For use on dark (ink) sections
+  // Solid black fill, white text (light-theme primary)
+  primary:
+    "bg-ink text-paper border-ink hover:bg-ink/85 hover:border-ink/85",
+  // Ghost outline on light surfaces
+  secondary:
+    "bg-transparent text-ink border-ink/25 hover:bg-ink/5 hover:border-ink/50",
+  // Solid black button for emphasis
   onDark:
-    "bg-white text-ink border-white hover:bg-accent hover:text-white hover:border-accent",
+    "bg-ink text-paper border-ink hover:bg-ink/85 hover:border-ink/85",
 };
 
 const sizes: Record<Size, string> = {

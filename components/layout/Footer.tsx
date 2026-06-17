@@ -11,46 +11,38 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Activities", href: "/activities/" },
+  { label: "Blog", href: "/blog/" },
   { label: "Join", href: "/join/" },
   { label: "FAQ", href: "/faq/" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black bg-white">
+    <footer className="border-t border-ink/10 bg-paper text-ink">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
-
-          {/* Brand & Description */}
+          {/* Brand */}
           <div className="md:col-span-5">
-            <Link href="/" className="inline-block mb-10">
-              <Image
-                src="/logo.png"
-                alt="OIF Logo"
-                width={120}
-                height={120}
-                className="h-16 w-auto"
-              />
+            <Link href="/" className="inline-block mb-8" aria-label="OIF ホーム">
+              <Image src="/logo.png" alt="OIF Logo" width={120} height={120} className="h-14 w-auto mix-blend-multiply" />
             </Link>
             <p className="text-xl font-bold tracking-tighter leading-tight mb-4">
               OMU Innovation Frontier
             </p>
-            <p className="text-sm text-black/60 font-medium leading-relaxed max-w-xs">
-              大阪公立大学の学生による<br /> AI・テクノロジー探究コミュニティ
+            <p className="font-mono text-xs leading-relaxed text-ink/60 max-w-xs">
+              大阪公立大学の学生による<br />AI・テクノロジー探究コミュニティ
             </p>
           </div>
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-8">
-              Navigation
-            </p>
+            <p className="section-label mb-8">navigation</p>
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm font-bold tracking-tight text-ink/80 hover:text-accent transition-colors duration-200"
+                    className="text-sm font-bold tracking-tight text-ink/75 hover:text-ink transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -61,9 +53,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div className="md:col-span-4">
-            <p className="text-xs font-bold tracking-widest uppercase text-black/60 mb-8">
-              Connect
-            </p>
+            <p className="section-label mb-8">connect</p>
             <div className="flex flex-col gap-4">
               {socialLinks.map((link) => (
                 <a
@@ -71,7 +61,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-ink/10 pb-2 hover:border-accent hover:text-accent transition-colors duration-300"
+                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-ink/10 pb-2 hover:border-ink hover:text-ink transition-colors duration-300"
                 >
                   {link.label}
                   <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-smooth">→</span>
@@ -81,12 +71,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-24 pt-10 border-t border-black/10 flex flex-col md:flex-row justify-between gap-6 items-center">
-          <p className="text-[10px] md:text-xs text-black/60 font-bold tracking-widest uppercase">
+        <div className="mt-16 pt-8 border-t border-ink/10 flex flex-col md:flex-row justify-between gap-6 items-center">
+          <p className="font-mono text-[10px] md:text-xs text-ink/65 tracking-widest uppercase">
             © 2026 OMU Innovation Frontier. All rights reserved.
           </p>
-          <p className="text-[10px] md:text-xs text-black/55 font-bold uppercase tracking-widest">
+          <p className="font-mono text-[10px] md:text-xs text-ink/60 uppercase tracking-widest">
             Crafting the Future with AI
           </p>
         </div>

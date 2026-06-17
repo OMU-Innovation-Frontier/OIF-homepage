@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import SectionDivider from "@/components/site/SectionDivider";
+import DiscordCTA from "@/components/ui/DiscordCTA";
 
 interface FAQItem {
   question: string;
@@ -115,10 +116,8 @@ export default function FAQClient() {
       {/* Title Section */}
       <section className="py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-accent mb-6">FAQ</p>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter">
-            よくあるご質問
-          </h1>
+          <p className="section-label mb-6">FAQ</p>
+          <h1 className="display">よくあるご質問</h1>
         </div>
       </section>
 
@@ -127,9 +126,9 @@ export default function FAQClient() {
       {/* FAQ Accordion */}
       <section className="py-12 md:py-24">
         <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="border-t border-ink">
+          <div className="border-t border-ink/12">
             {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-ink">
+              <div key={index} className="border-b border-ink/12">
                 <button
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
@@ -137,13 +136,13 @@ export default function FAQClient() {
                   aria-expanded={openIndex === index}
                   className="w-full flex items-start justify-between gap-6 py-6 md:py-8 text-left transition-colors group"
                 >
-                  <span className={`text-lg md:text-xl font-bold tracking-tight transition-colors group-hover:text-accent ${openIndex === index ? "text-accent" : ""}`}>
+                  <span className="text-lg md:text-xl font-bold tracking-tight">
                     Q. {faq.question}
                   </span>
                   <ChevronDown
                     size={24}
                     strokeWidth={1.5}
-                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-accent" : "text-ink/50"
+                    className={`shrink-0 mt-1 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-ink" : "text-ink/50"
                       }`}
                   />
                 </button>
@@ -165,22 +164,17 @@ export default function FAQClient() {
       <SectionDivider />
 
       {/* Contact Section */}
-      <section className="on-dark py-20 md:py-32 bg-ink text-white">
+      <section className="py-20 md:py-32 bg-night-2 text-ink">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
             その他のご質問
           </h2>
-          <p className="text-base md:text-lg mb-10 max-w-lg mx-auto font-medium text-white/80">
+          <p className="text-base md:text-lg mb-10 max-w-lg mx-auto font-medium text-ink/80">
             上記以外のご質問は、Discordでお気軽にお問い合わせください。
           </p>
-          <a
-            href="https://discord.gg/Brg6GxJnBW"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-ink px-12 py-5 text-sm font-bold tracking-widest uppercase border border-white hover:bg-accent hover:text-white hover:border-accent transition-colors duration-200"
-          >
-            Join our Discord
-          </a>
+          <div className="flex justify-center">
+            <DiscordCTA location="faq_contact" label="Join our Discord" />
+          </div>
         </div>
       </section>
     </div>
