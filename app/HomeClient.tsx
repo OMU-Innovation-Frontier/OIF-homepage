@@ -51,7 +51,7 @@ export default function HomeClient() {
             </p>
 
             <h1 className="display animate-fade-up [animation-delay:80ms]">
-              AIを、<br className="sm:hidden" />当たり前に。
+              <span className="whitespace-nowrap">AIを、</span><wbr /><span className="whitespace-nowrap">当たり前に。</span>
             </h1>
 
             <p className="mt-7 font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-ink/40 animate-fade-up [animation-delay:160ms]">
