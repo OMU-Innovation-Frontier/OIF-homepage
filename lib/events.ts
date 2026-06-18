@@ -46,6 +46,20 @@ export const events: OIFEvent[] = [
     flyerAlt: "コードで学ぶ！DeepLearning イベントのチラシ",
   },
   {
+    slug: "local-llm-handson-2026-05",
+    title: "ローカルLLM ハンズオン",
+    subtitle:
+      "自分のPCで動くローカルLLMを、GUI体験からCLI・curl・Pythonでのアプリ組み込みまで一通り触ってみる第一歩。",
+    date: "2026-05-22",
+    dateLabel: "2026.05.22 (金)",
+    timeLabel: "17:00 – 18:30",
+    place: "UR森ノ宮ビル「ほとりで」",
+    audience: "興味ある人みんな歓迎",
+    highlights: ["ネット不要・自分のPCで完結", "Pythonから使える", "プライバシーも安心"],
+    flyer: "/images/events/local-llm-handson.png",
+    flyerAlt: "ローカルLLM ハンズオン イベントのチラシ",
+  },
+  {
     slug: "study-friends-2026-05",
     title: "勉強仲間を作ろう。",
     subtitle:
