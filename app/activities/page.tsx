@@ -29,6 +29,18 @@ const contests = [
 
 const featuredSessions = [
   {
+    date: "2026/6/19",
+    title: "コードで学ぶ！DeepLearning",
+    category: "Hands-on",
+    description:
+      "「ブラックボックスだったAIの仕組みを、コードを動かしながら理解する」をテーマにハンズオンを開催。お手本コードを動かして深層学習の中身を追ったのち、最後は一人ひとりが自分だけのAIを作り、精度を競うコンペ形式で締めくくりました。",
+    materialLabel: "公開資料（Colab）",
+    materialHref:
+      "https://colab.research.google.com/drive/1UfNWw9uG94879sYiCuuj8bqXsWyGTSir?usp=sharing",
+    image: undefined as string | undefined,
+    imageAlt: undefined as string | undefined,
+  },
+  {
     date: "2026/5/22",
     title: "ローカルLLMハンズオン",
     category: "Hands-on",
