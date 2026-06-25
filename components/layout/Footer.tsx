@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { SOCIAL } from "@/lib/links";
 
 const socialLinks = [
-  { label: "Discord", href: "https://discord.gg/Brg6GxJnBW" },
-  { label: "X", href: "https://x.com/OIF_OMU" },
-  { label: "Instagram", href: "https://www.instagram.com/oif.ai.omu/" },
+  { label: "Discord", href: SOCIAL.discord },
+  { label: "X", href: SOCIAL.x },
+  { label: "Instagram", href: SOCIAL.instagram },
 ];
 
 const navLinks = [

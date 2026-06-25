@@ -6,7 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・テクノロジーサークルです。AIで生活を便利にしたい人も、自分でつくってみたい人も、仕組みを知りたい人も。プログラミング未経験・文系も歓迎。「ちょっと気になる」から始められます。",
+    "OIF（OMU Innovation Frontier）は大阪公立大学のAI・テクノロジーサークルです。初心者でも、AIを少し学ぶだけで即戦力に。プログラミング未経験・文系も歓迎。「ちょっと気になる」から始めて、使える・つくれるようになる場所。",
   alternates: {
     canonical: "https://oif-ai.com/about/",
   },
@@ -21,7 +21,7 @@ const acronym = [
 const contrasts = [
   { no: "経験者やすごい人だけの場所", yes: "未経験から始められる場所" },
   { no: "AIを「つくる人」だけの場所", yes: "「使ってみたい」だけでも大歓迎" },
-  { no: "受け身で聞くだけの勉強会", yes: "手を動かして、ためす場所" },
+  { no: "知って終わる勉強会", yes: "少し学んで、使えるようになる場所" },
   { no: "評価のために、こなす学び", yes: "やりたいことのための、学び" },
 ];
 
@@ -38,7 +38,7 @@ const beliefs = [
     en: "LEARN BY DOING",
     icon: Hammer,
     title: "まず手を動かす",
-    body: "難しいコードからじゃなくていい。AIを使ってみる、小さく試してみる。手を動かすうちに、できることが増えていく。",
+    body: "難しいコードからじゃなくていい。AIを使ってみる、小さく試してみる。手を動かすうちに、気づけば「使える側」になっている。",
   },
   {
     n: "03",
@@ -115,13 +115,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-14">
-              AIに興味がある学生が、
+              初心者が、
               <br className="hidden md:block" />
-              <span>集まっている場所</span>
+              <span>即戦力になる場所</span>
             </h2>
             <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium">
               <p>OIFは、大阪公立大学の学生を中心に、AIやテクノロジーに興味がある人が集まる学生コミュニティです。</p>
-              <p>AIで毎日をちょっと便利にしたい人も、自分でつくってみたい人も、仕組みを深く知りたい人も。「ちょっと気になる」から、自分のペースで。</p>
+              <p>むずかしい前提知識はいりません。AIを少し学ぶだけで、できることが一気に増える。「ちょっと気になる」から始めて、気づけば「使える側」へ。</p>
               <p className="text-ink">プログラミング未経験でも、文系でも、学年が違っても歓迎します。</p>
             </div>
           </Reveal>
@@ -278,6 +278,9 @@ export default function AboutPage() {
             <br />
             自分たちのペースで
           </h2>
+          <p className="mt-8 text-lg md:text-xl text-ink/65 leading-relaxed max-w-2xl">
+            少し学べば、すぐ動ける。その第一歩を、ここから。
+          </p>
           <Link
             href="/join/"
             className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200"

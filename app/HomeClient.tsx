@@ -7,6 +7,7 @@ import DivisionSplit from "@/components/site/DivisionSplit";
 import NextEvent from "@/components/site/NextEvent";
 import PastEvents from "@/components/site/PastEvents";
 import DiscordCTA from "@/components/ui/DiscordCTA";
+import InstagramCTA from "@/components/ui/InstagramCTA";
 import Reveal from "@/components/ui/Reveal";
 
 const ticker = [
@@ -51,16 +52,17 @@ export default function HomeClient() {
             </p>
 
             <h1 className="display animate-fade-up [animation-delay:80ms]">
-              <span className="whitespace-nowrap">AIを、</span><wbr /><span className="whitespace-nowrap">当たり前に。</span>
+              <span className="whitespace-nowrap">初心者から、</span><wbr /><span className="whitespace-nowrap">即戦力へ。</span>
             </h1>
 
             <p className="mt-7 font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-ink/40 animate-fade-up [animation-delay:160ms]">
-              AI, as default.
+              Beginner to capable, fast.
             </p>
 
             <p className="lede mt-10 max-w-xl animate-fade-up [animation-delay:240ms]">
               大阪公立大学のAI・テクノロジーコミュニティ。
-              プログラミング未経験から、手を動かして学べる。
+              プログラミング未経験でも、AIを少し学ぶだけで、
+              できることが一気に広がる。
             </p>
 
             {nextEvent && (
@@ -86,9 +88,12 @@ export default function HomeClient() {
               </Link>
             </div>
 
-            <p className="mt-5 font-mono text-xs tracking-widest text-ink/50 animate-fade-up [animation-delay:480ms]">
-              経験不問・文系歓迎・入会費なし
-            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 animate-fade-up [animation-delay:480ms]">
+              <p className="font-mono text-xs tracking-widest text-ink/50">
+                経験不問・文系歓迎・入会費なし
+              </p>
+              <InstagramCTA location="home_hero_instagram" size="sm" label="活動を見る @oif.ai.omu" />
+            </div>
           </div>
         </div>
       </section>
@@ -116,11 +121,11 @@ export default function HomeClient() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
             <h2 className="statement">
-              仕組みを理解し、
+              AIを少し学ぶだけで、
               <br className="hidden md:block" />
-              自分たちの手で実装し、
+              できることが、一気に増える。
               <br className="hidden md:block" />
-              社会に問いを立てる。
+              それを、ここで。
             </h2>
             <Link
               href="/about/"
@@ -136,12 +141,16 @@ export default function HomeClient() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
+            <div className="max-w-xl">
               <p className="section-label mb-3">TWO DIRECTIONS</p>
               <h2 className="headline">つくる と、理解する。</h2>
+              <p className="mt-4 text-ink/60 leading-relaxed">
+                もっと深くやりたくなった人のための、興味別の部門。
+                最初から選ぶ必要はないし、入らなくてもOK。
+              </p>
             </div>
             <p className="font-mono text-xs text-ink/40 md:pb-2">
-              どちらかに入らなくてOK・掛け持ち自由
+              任意・掛け持ち自由
             </p>
           </Reveal>
 
@@ -197,6 +206,12 @@ export default function HomeClient() {
               <Link href="/news/" className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors">
                 view all →
               </Link>
+              <div className="mt-8 pt-6 border-t border-ink/10">
+                <p className="text-sm text-ink/60 leading-relaxed mb-4">
+                  日々の活動は Instagram で発信中。
+                </p>
+                <InstagramCTA location="home_log_instagram" size="sm" />
+              </div>
             </div>
             <div className="flex-1 border-t border-ink/10">
               {newsItems.map((item, i) => (
