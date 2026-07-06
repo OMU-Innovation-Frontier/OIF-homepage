@@ -15,19 +15,20 @@ export default function PastEvents() {
     <section className="border-b border-ink/10 bg-night">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-12 md:py-16">
         <p className="section-label mb-6">PAST EVENTS</p>
-        <div className="flex flex-wrap gap-6">
+        {/* モバイルは2列グリッドで右側の余白を作らない。sm以上は従来どおり固定幅で折り返す */}
+        <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-6">
           {past.map((e) => (
             <Link
               key={e.slug}
               href="/activities/"
-              className="group w-40 sm:w-48"
+              className="group sm:w-48"
             >
               <div className="relative aspect-[3/4] border border-ink/10 overflow-hidden bg-night-2">
                 <Image
                   src={e.flyer as string}
                   alt={e.flyerAlt ?? e.title}
                   fill
-                  sizes="12rem"
+                  sizes="(max-width: 640px) 50vw, 12rem"
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-smooth"
                 />
               </div>
