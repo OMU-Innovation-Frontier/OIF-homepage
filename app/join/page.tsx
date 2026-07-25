@@ -1,17 +1,41 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { MessageSquare, Compass, Rocket } from "lucide-react";
+import { MessageSquare, Compass, Rocket, Palette, Code2, Users } from "lucide-react";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Join | OIF 大阪公立大学のAIサークルに参加",
   description:
-    "OIF（OMU Innovation Frontier）への加入はDiscordから。大阪公立大学のAI・プログラミングサークルで、AIや機械学習に興味のある学生を募集中。初心者歓迎、プログラミング経験不問。",
+    "OIF（OMU Innovation Frontier）への加入はDiscordから。大阪公立大学のAI・プログラミングサークルで、AIや機械学習に興味のある学生を募集中。初心者歓迎、プログラミング経験不問。デザイン・教材づくり・イベント運営など、つくる側の役割も募集中。",
   alternates: {
     canonical: "https://oif-ai.com/join/",
   },
 };
+
+const roles = [
+  {
+    icon: Palette,
+    title: "デザイン",
+    body: "SNS・ホームページ・イベントのスライドなど、OIFの「見た目」と発信をつくる。",
+    note: "「デザインだけやりたい」も大歓迎",
+    wanted: true,
+  },
+  {
+    icon: Code2,
+    title: "技術",
+    body: "勉強会・ハンズオンの教材づくりや、コミュニティ発のサービス開発。",
+    note: "つくりながら学ぶスタイルでOK",
+    wanted: false,
+  },
+  {
+    icon: Users,
+    title: "運営",
+    body: "イベントの企画・他団体や企業との連携・プロジェクトの進行管理。",
+    note: "非エンジニアも主戦力",
+    wanted: true,
+  },
+];
 
 const steps = [
   {
@@ -55,7 +79,7 @@ export default function JoinPage() {
       <section className="relative bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
           <p className="section-label mb-6">JOIN THE COMMUNITY</p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-8">
+          <h1 className="display mb-8">
             Discordから、<br />はじめよう
           </h1>
           <p className="text-lg md:text-xl text-ink/70 max-w-2xl mb-12 leading-relaxed">
@@ -72,7 +96,7 @@ export default function JoinPage() {
             </Link>
           </div>
           <p className="mt-6 font-mono text-xs text-ink/60">
-            無料 · 経験不問 · 初心者歓迎
+            無料 · 経験不問 · 見るだけOK
           </p>
         </div>
       </section>
@@ -81,7 +105,7 @@ export default function JoinPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <p className="section-label mb-3">HOW IT WORKS</p>
-          <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-14">
+          <h2 className="headline mb-14">
             参加までの3ステップ
           </h2>
           <div className="grid md:grid-cols-3 gap-4">
@@ -104,13 +128,62 @@ export default function JoinPage() {
         </div>
       </section>
 
+      {/* Roles: get involved */}
+      <section id="roles" className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="max-w-2xl mb-12 md:mb-16">
+            <p className="section-label mb-3">GET INVOLVED</p>
+            <h2 className="headline mb-5">
+              つくる側にも、まわれる。
+            </h2>
+            <p className="text-base text-ink/60 leading-relaxed">
+              OIFへの参加はDiscordに入るだけ。
+              ほとんどのメンバーは役割を持たず、見るだけ・イベントだけで参加しています。
+              そのうえで「OIFをつくる側」をやってみたい人には、3つの役割があります。
+              ひとつだけでも、兼任でも、途中からでも。
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+            {roles.map((r, i) => {
+              const Icon = r.icon;
+              return (
+                <Reveal key={r.title} delay={i * 100} className="bg-night-2 p-8 md:p-10">
+                  <div className="flex items-center justify-between mb-8">
+                    <Icon size={26} strokeWidth={1.5} className="text-ink/70" aria-hidden />
+                    {r.wanted && (
+                      <span className="font-mono text-[11px] tracking-widest text-accent-bright">
+                        いま特に募集中
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{r.title}</h3>
+                  <p className="text-sm md:text-base leading-relaxed text-ink/60">{r.body}</p>
+                  <p className="mt-5 font-mono text-xs text-ink/45">{r.note}</p>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+            <p className="text-sm text-ink/55 leading-relaxed max-w-xl">
+              目安は週2〜3時間から。スキルは入ってから身につければ大丈夫です。
+              興味があれば、Discordで「デザインやりたい」「イベント企画やりたい」とひとこと送ってください。
+            </p>
+            <div className="shrink-0">
+              <DiscordCTA location="join_roles" size="md" label="Discordで声をかける" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Interest: recommended for */}
       <section className="border-t border-ink/10 bg-night-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
             <div>
               <p className="section-label mb-3">IS THIS YOU?</p>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tighter leading-tight mb-6">
+              <h2 className="headline mb-6">
                 こんな人に<br />おすすめ
               </h2>
               <p className="text-base text-ink/55 leading-relaxed mb-8 max-w-md">
@@ -136,7 +209,7 @@ export default function JoinPage() {
           <div className="flex items-end justify-between gap-6 mb-12">
             <div>
               <p className="section-label mb-3">QUICK ANSWERS</p>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tighter">不安な点は？</h2>
+              <h2 className="headline">不安な点は？</h2>
             </div>
             <Link
               href="/faq/"
@@ -167,7 +240,7 @@ export default function JoinPage() {
         <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
           <p className="section-label mb-8">JOIN</p>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.05] mb-10">
+          <h2 className="statement mb-10">
             一歩、<span>外の世界</span>を<br />覗いてみませんか。
           </h2>
           <p className="text-base md:text-lg text-ink/60 max-w-xl mx-auto mb-12">

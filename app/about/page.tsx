@@ -1,6 +1,8 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
+import DiscordCTA from "@/components/ui/DiscordCTA";
 
 export const metadata: Metadata = {
   title: "About | OIF 大阪公立大学のAIサークル",
@@ -11,15 +13,9 @@ export const metadata: Metadata = {
   },
 };
 
-const acronym = [
-  { l: "O", w: "OMU", s: "大阪公立大学" },
-  { l: "I", w: "Innovation", s: "革新する" },
-  { l: "F", w: "Frontier", s: "最前線へ" },
-];
-
 const facts = [
   { k: "SINCE", v: "2025.12", s: "第1回ワークショップから活動中" },
-  { k: "LT TALKS", v: "週1", s: "中百舌鳥キャンパスでLT会を毎週開催" },
+  { k: "LT TALKS", v: "定期", s: "メンバーの挑戦を持ち寄るLT会を定期開催" },
   { k: "EVENTS", v: "月1", s: "ハンズオン・交流会を森ノ宮「ほとりで」で開催" },
 ];
 
@@ -37,22 +33,18 @@ const ways = [
   { tag: "CONNECT", title: "仲間とつながる", body: "イベントや勉強会で、刺激をくれる仲間や先輩に出会う。" },
 ];
 
-const divisions = [
+const themes = [
   {
     href: "/developers/",
-    label: "DEVELOPMENT",
-    title: "開発部門",
-    body: "最新技術を試し、実装し、使える形にする。",
-    labelCls: "text-dev-bright",
-    hoverCls: "hover:border-dev-bright/50",
+    label: "THEME 01 — BUILD",
+    title: "つくる",
+    body: "最新技術を試し、実装し、使える形にして出す。",
   },
   {
     href: "/theory/",
-    label: "THEORY",
-    title: "理論部門",
-    body: "AIの「なぜ動くのか」を、いちから一緒に理解していく。",
-    labelCls: "text-theory-bright",
-    hoverCls: "hover:border-theory-bright/50",
+    label: "THEME 02 — UNDERSTAND",
+    title: "理解する",
+    body: "AIの「なぜ動くのか」を、いちから少しずつ理解していく。",
   },
 ];
 
@@ -64,67 +56,59 @@ export default function AboutPage() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 w-full">
           <div className="animate-fade-up">
             <p className="section-label mb-8">ABOUT</p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-10">
-              OIF
-              <br />について
+            <h1 className="display mb-8">
+              OIFについて
             </h1>
-            <p className="font-mono text-sm md:text-base text-ink/55 mb-12">
-              AIを、<span className="text-ink/90">もっと身近に。使う人も、つくる人も。</span>
+            <p className="text-lg md:text-xl text-ink/60 max-w-2xl leading-relaxed">
+              AIを、もっと身近に。使う人も、つくる人も。
             </p>
-
-            {/* acronym spec */}
-            <div className="flex flex-col sm:flex-row gap-px bg-ink/10 border border-ink/10 max-w-2xl">
-              {acronym.map((a) => (
-                <div
-                  key={a.l}
-                  className="group flex-1 bg-night-2 px-6 py-5 hover:bg-night-3 transition-colors"
-                >
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-3xl font-black tracking-tighter text-accent-bright">{a.l}</span>
-                    <span className="font-mono text-sm tracking-wide text-ink/80">{a.w}</span>
-                  </div>
-                  <p className="mt-2 text-xs text-ink/60">{a.s}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== MANIFESTO ===== */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
-          <Reveal className="max-w-4xl">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-14">
+      {/* ===== MANIFESTO + FACTS — one continuous dark photo band ===== */}
+      <section className="relative overflow-hidden bg-ink border-t border-white/10">
+        <div aria-hidden className="absolute inset-0">
+          <Image
+            src="/images/morinomiya-campus.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover parallax-bg opacity-80"
+          />
+          <div className="absolute inset-0 bg-black/75" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-white/50 mb-4">
+              MANIFESTO
+            </p>
+            <h2 className="statement text-white mb-10">
               初心者が、
               <br className="hidden md:block" />
-              <span>即戦力になる場所</span>
+              即戦力になる場所
             </h2>
-            <div className="space-y-8 text-lg md:text-xl lg:text-2xl leading-relaxed text-ink/75 font-medium">
+            <div className="space-y-6 text-base md:text-lg leading-relaxed text-white/75">
               <p>OIFは、大阪公立大学の学生を中心に、AIやテクノロジーに興味がある人が集まる学生コミュニティです。</p>
               <p>むずかしい前提知識はいりません。AIを少し学ぶだけで、できることが一気に増える。「ちょっと気になる」から始めて、気づけば「使える側」へ。</p>
-              <p className="text-ink">
+              <p className="text-white font-medium">
                 プログラミングが初めての人、文系の人、もう開発やインターンをしている人。レベルも興味もバラバラなメンバーが、それぞれのペースで関わっています。
               </p>
             </div>
-            <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs tracking-widest text-ink/70">
+            <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs tracking-widest text-white/75">
               {["BEGINNER FRIENDLY", "ANY MAJOR", "ALL YEARS", "YOUR OWN PACE"].map((c) => (
-                <span key={c} className="border border-ink/15 px-3 py-1.5">{c}</span>
+                <span key={c} className="border border-white/25 px-3 py-1.5">{c}</span>
               ))}
             </div>
           </Reveal>
-        </div>
-      </section>
 
-      {/* ===== FACTS ===== */}
-      <section className="border-t border-ink/10 bg-night-2">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-sm">
-          <Reveal className="grid sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+          <Reveal delay={120} className="mt-16 md:mt-24 grid sm:grid-cols-3 gap-px bg-white/15 border border-white/15">
             {facts.map((f) => (
-              <div key={f.k} className="bg-night px-6 py-6 md:px-8 md:py-7">
-                <p className="section-label mb-3">{f.k}</p>
-                <p className="text-3xl md:text-4xl font-black tracking-tighter">{f.v}</p>
-                <p className="mt-2 text-sm text-ink/60 leading-relaxed">{f.s}</p>
+              <div key={f.k} className="bg-black/40 backdrop-blur-[2px] px-6 py-7 md:px-8 md:py-9">
+                <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-white/50 mb-3">{f.k}</p>
+                <p className="text-4xl md:text-5xl font-black tracking-tighter text-white">{f.v}</p>
+                <p className="mt-3 text-sm text-white/65 leading-relaxed">{f.s}</p>
               </div>
             ))}
           </Reveal>
@@ -132,11 +116,11 @@ export default function AboutPage() {
       </section>
 
       {/* ===== WE ARE / WE ARE NOT ===== */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+      <section className="bg-paper">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-12 md:mb-16">
             <p className="section-label mb-4">WE ARE / WE ARE NOT</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">こういう場所。</h2>
+            <h2 className="headline">こういう場所。</h2>
           </Reveal>
           <Reveal delay={100} className="border-t border-ink/10">
             {contrasts.map((c, i) => (
@@ -149,7 +133,7 @@ export default function AboutPage() {
                   <span className="line-through decoration-ink/20">{c.no}</span>
                 </p>
                 <p className="flex items-center gap-3 text-lg md:text-2xl font-bold tracking-tight">
-                  <span className="font-mono text-accent-bright">✓</span>
+                  <span className="font-mono">✓</span>
                   {c.yes}
                 </p>
               </div>
@@ -158,12 +142,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===== WAYS TO GET INVOLVED + DIVISIONS ===== */}
+      {/* ===== WAYS TO GET INVOLVED + THEMES ===== */}
       <section className="border-t border-ink/10 bg-night-2">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-14">
             <p className="section-label mb-4">WHAT YOU CAN DO</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">AIとの、いろんな関わり方</h2>
+            <h2 className="headline">AIとの、いろんな関わり方</h2>
             <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
               ぜんぶやらなくていい。一つでも、行き来しても。気になるところから始めれば大丈夫。
             </p>
@@ -171,7 +155,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {ways.map((w, i) => (
               <Reveal key={w.tag} delay={i * 100}>
-                <div className="h-full border border-ink/10 bg-night p-7 md:p-8 transition-colors duration-300 hover:border-ink/30">
+                <div className="h-full border border-ink/10 bg-paper p-7 md:p-8 transition-colors duration-300 hover:border-ink/40">
                   <p className="section-label mb-5">{w.tag}</p>
                   <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">{w.title}</h3>
                   <p className="text-sm text-ink/55 leading-relaxed">{w.body}</p>
@@ -180,20 +164,20 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* divisions: もっと深くやりたくなった人向けの出口 */}
+          {/* themes: 部門ではなく、活動を貫く2つのテーマ */}
           <Reveal delay={200} className="mt-16 md:mt-20">
-            <p className="section-label mb-4">TWO DIRECTIONS</p>
+            <p className="section-label mb-4">TWO THEMES</p>
             <p className="text-ink/60 leading-relaxed max-w-xl mb-8">
-              もっと深くやりたくなったら、興味別の2部門へ。両方のぞいても、どちらにも入らなくてもOK。
+              部門はありません。かわりに、どの活動にも「つくる」と「理解する」の2つのテーマが流れています。気になるほうから、のぞいてみてください。
             </p>
             <div className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
-              {divisions.map((d) => (
+              {themes.map((d) => (
                 <Link
                   key={d.href}
                   href={d.href}
-                  className={`group bg-night p-7 md:p-9 transition-colors duration-300 hover:bg-night-3 border-y-2 border-transparent ${d.hoverCls}`}
+                  className="group bg-paper p-7 md:p-9 transition-colors duration-300 hover:bg-night-3"
                 >
-                  <p className={`font-mono text-[11px] tracking-[0.3em] mb-5 ${d.labelCls}`}>{d.label}</p>
+                  <p className="font-mono text-[11px] tracking-[0.3em] text-ink/45 mb-5">{d.label}</p>
                   <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-ink mb-3">{d.title}</h3>
                   <p className="text-ink/60 mb-6">{d.body}</p>
                   <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-ink">
@@ -207,27 +191,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===== CLOSING ===== */}
-      <section className="relative overflow-hidden border-t border-ink/10 bg-night">
-        <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
-        <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-40">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.12] max-w-5xl">
+      {/* ===== CLOSING — dark photo band ===== */}
+      <section className="relative overflow-hidden bg-ink">
+        <div aria-hidden className="absolute inset-0">
+          <Image
+            src="/images/lt/lt1-03.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover parallax-bg opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+        </div>
+        <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40">
+          <h2 className="statement text-white max-w-5xl">
             求められる学びじゃなく、
             <br />
-            自分たちが<span>やりたいこと</span>を、
+            自分たちがやりたいことを、
             <br />
             自分たちのペースで
           </h2>
-          <p className="mt-8 text-lg md:text-xl text-ink/65 leading-relaxed max-w-2xl">
+          <p className="mt-8 text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl">
             少し学べば、すぐ動ける。その第一歩を、ここから。
           </p>
-          <Link
-            href="/join/"
-            className="mt-14 inline-flex items-center gap-2 bg-accent text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-accent hover:bg-accent-bright hover:text-night hover:border-accent-bright transition-colors duration-200"
-          >
-            参加する
-            <span aria-hidden>→</span>
-          </Link>
+          <div className="mt-12 flex flex-wrap items-center gap-5">
+            <DiscordCTA location="about_closing" variant="light" />
+            <Link
+              href="/join/"
+              className="inline-flex items-center gap-2 px-8 py-5 text-sm font-bold tracking-widest uppercase border border-white/40 text-white hover:bg-white hover:text-ink transition-colors duration-200"
+            >
+              参加方法を見る
+            </Link>
+          </div>
         </Reveal>
       </section>
     </div>

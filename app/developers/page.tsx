@@ -4,9 +4,9 @@ import { Fragment } from "react";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Developers | OIF開発部門",
+  title: "つくる | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF開発部門は、最新技術を試し、実際に開発し、使える形にして出す部門です。LLM・Web・AIツールを、生成AIも使いながら速く形にします。",
+    "OIFの活動を貫くテーマ「つくる」。最新技術を試し、実際に開発し、使える形にして出す。LLM・Web・AIツールを、生成AIも使いながら速く形にします。",
   alternates: { canonical: "https://oif-ai.com/developers/" },
 };
 
@@ -52,18 +52,19 @@ export default function DevelopersPage() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
             <div className="lg:col-span-8 animate-fade-up">
-              <p className="section-label mb-6">OIF DEVELOPMENT DIVISION</p>
-              <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+              <p className="section-label mb-6">THEME 01 — BUILD</p>
+              <h1 className="display mb-8">
                 つくって、
                 <br />
-                <span className="text-dev-bright">出す。</span>
+                出す。
               </h1>
-              <p className="text-lg xl:text-xl text-ink/70 max-w-lg leading-relaxed mb-10">
+              <p className="lede max-w-lg mb-10">
                 理論を学ぶだけで終わらせない。最新技術を実際に触り、試し、
-                生成AIも使いながら——使えるプロダクトまで持っていく部門。
+                生成AIも使いながら——使える形まで持っていく。
+                OIFのすべての活動に流れるテーマのひとつ。
               </p>
               <Link
-                href="/join/"
+                href="/join/#roles"
                 className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200"
               >
                 作る側になる
@@ -78,8 +79,8 @@ export default function DevelopersPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-12">
-              <span className="text-dev-bright">「面白そう」</span>で、
+            <h2 className="statement mb-12">
+              「面白そう」で、
               <br className="hidden md:block" />
               終わらせない。
             </h2>
@@ -97,7 +98,7 @@ export default function DevelopersPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
             <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">THE PIPELINE</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">アイデアが、出荷されるまで</h2>
+            <h2 className="headline">アイデアが、出荷されるまで</h2>
           </Reveal>
           <Reveal delay={120} className="flex flex-col md:flex-row md:items-stretch">
             {pipeline.map((s, i) => (
@@ -126,7 +127,7 @@ export default function DevelopersPage() {
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
             <Reveal>
               <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">RECENT WORK</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">手を動かした分だけ、進む</h2>
+              <h2 className="headline mb-6">手を動かした分だけ、進む</h2>
               <p className="text-ink/60 leading-relaxed max-w-md">
                 派手な計画より、小さなコミットの積み重ね。試して、直して、出す。その繰り返しが力になる。
               </p>
@@ -153,7 +154,7 @@ export default function DevelopersPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10">
             <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">STACK WE PLAY WITH</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">手札</h2>
+            <h2 className="headline">手札</h2>
           </Reveal>
           <Reveal delay={80} className="flex flex-wrap gap-3">
             {stack.map((s) => (
@@ -173,7 +174,7 @@ export default function DevelopersPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12">
             <p className="font-mono text-xs tracking-[0.3em] text-dev-bright mb-4">WHAT WE DO</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">創る、そして繋がる</h2>
+            <h2 className="headline">創る、そして繋がる</h2>
           </Reveal>
           <div className="grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
             <Reveal className="bg-night-2 p-8 md:p-10">
@@ -214,16 +215,16 @@ export default function DevelopersPage() {
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl mb-12">
-            <span className="text-dev-bright">面白そう</span>で終わらせず、
+          <h2 className="statement max-w-5xl mb-12">
+            面白そうで終わらせず、
             <br />
             使えるところまで持っていく。
           </h2>
           <Link
-            href="/join/"
+            href="/join/#roles"
             className="inline-flex items-center gap-2 bg-dev text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-dev hover:bg-dev-bright hover:text-night hover:border-dev-bright transition-colors duration-200"
           >
-            開発に参加する
+            つくる側にまわる
             <span aria-hidden>→</span>
           </Link>
         </Reveal>

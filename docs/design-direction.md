@@ -1,6 +1,6 @@
 # OIF サイト デザイン方向性
 
-> 最終更新: 2026-06-12 / 作業ブランチ: `explore/frontier-os`
+> 最終更新: 2026-07-25（本人決定: グレー廃止・ディープブルーのアクセント導入）
 
 ## North Star — Vercel (vercel.com)
 
@@ -17,16 +17,21 @@ OIF サイトが目指すのは **Vercel 型の「開発者ブランドのミニ
 
 ---
 
-## コア原則（Vercel 路線）
+## コア原則（Vercel 路線・2026-07-25 改訂v3）
 
-- **完全モノクロ維持**：黒 `#0B0C0E` / 白 `#FFFFFF` / グレー階調のみ。色アクセントは足さない。
+- **完全白黒**（本人決定 2026-07-25。青アクセントは同日試作→撤回）: 黒 `#0B0C0E` / 白 `#FFFFFF` のみ。
+  浮かせる面は近白（`night-2 #F7F7F8` 等）、テキスト階層の `ink/60` 等の透過は可。色アクセントは足さない。
+- **写真で語る（v3の主変更）**: 文字だけの帯を避け、**実写（活動写真）をフルブリードの背景に使う**。
+  - 型: `overflow-hidden` セクション + `fill` 画像に `.parallax-bg`（CSS scroll-driven、JS不要・非対応ブラウザは静止画）+ 黒グラデオーバーレイ（`from-black/85〜/40`）+ 白文字。
+  - ダーク面のCTAは白反転（`DiscordCTA variant="light"` / 白枠ボタン）。
+  - 明→暗→明のリズムでページを組む（連続するダーク帯は避ける）。
 - **角はゼロ**：`border-radius: 0`（既存のブランド identity を踏襲）。
 - **境界線で構造を作る**：`border-ink/10` のヘアラインでセクションを仕切る（面の塗り分けより線で語る）。
 - **余白で語る**：1画面に詰め込まず、要素を減らして一つひとつを大きく。
-- **動きは引き算**：派手な parallax / グラデ文字 / 装飾アニメは使わない。fade-up と scroll-reveal 程度に留める。
+- **動きは節度**: fade-up / scroll-reveal / `.parallax-bg` の3種のみ。グラデ文字・発光・JSパララックスは使わない。
 
 ### 既存トークン（`tailwind.config.ts` / `globals.css`）を土台にする
-- 色: `ink` `paper` `muted` `line` `accent`（= ink、bright = `#3F3F46`）
+- 色: `ink` `paper` `muted` `line` `accent`（DEFAULT=黒 / bright `#3F3F46`＝文字強調のみ / tint 近白。dev/theory も同値）
 - 書体: Inter（`--font-inter`） + JetBrains Mono（`--font-mono`、ラベル/数値に限定使用）
 - 間隔: `container-wide` / `section-y(-lg/-sm)` / `eyebrow` / `link-underline`
 - イージング: `ease-smooth` = `cubic-bezier(0.22, 1, 0.36, 1)`
@@ -59,8 +64,8 @@ Vercel を軸に、足りない部分を各サイトの強みで補う。
 - hover/focus は控えめに、ただし全要素で統一
 
 **Don't**
-- 色アクセントを足す（モノクロ厳守）
-- グラデ文字・常時アニメ・発光シャドウ・parallax
+- 色アクセントを足す（白黒厳守）・グレーの面で塗る
+- グラデ文字・常時アニメ・発光シャドウ・JSパララックス（`.parallax-bg` のCSS版のみ可）
 - 1セクションに見出しサイズを混在させる
 - mono を本文に使う（可読性が落ちる）
 

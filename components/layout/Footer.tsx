@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Activities", href: "/activities/" },
+  { label: "LT", href: "/lt/" },
   { label: "Blog", href: "/blog/" },
   { label: "Join", href: "/join/" },
   { label: "FAQ", href: "/faq/" },
@@ -77,7 +78,7 @@ export default function Footer() {
             © 2026 OMU Innovation Frontier. All rights reserved.
           </p>
           <p className="font-mono text-[10px] md:text-xs text-ink/60 uppercase tracking-widest">
-            Crafting the Future with AI
+            Beginner to capable, fast.
           </p>
         </div>
       </div>
