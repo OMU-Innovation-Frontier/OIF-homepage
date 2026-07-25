@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { newsItems } from "@/lib/news";
 import { getNextEvent } from "@/lib/events";
 import { ltEvents } from "@/lib/lt-events";
+import { members } from "@/lib/members";
 import NextEvent from "@/components/site/NextEvent";
 import OrgStructure from "@/components/site/OrgStructure";
 import PastEvents from "@/components/site/PastEvents";
@@ -262,6 +263,65 @@ export default function HomeClient() {
 
           <Reveal delay={120}>
             <OrgStructure />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ MEMBERS (運営・制作の顔ぶれ) ============ */}
+      <section className="border-t border-ink/10 bg-night">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div className="max-w-xl">
+              <p className="section-label mb-3">MEMBERS</p>
+              <h2 className="headline">つくっている人たち</h2>
+              <p className="mt-4 text-ink/60 leading-relaxed">
+                OIFを動かしている運営・制作のメンバー。
+                もちろん、役割を持たない参加が基本のコミュニティです。
+              </p>
+            </div>
+            <Link
+              href="/join/#roles"
+              className="font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors md:pb-2 link-underline"
+            >
+              仲間になる →
+            </Link>
+          </Reveal>
+
+          <Reveal delay={120} className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
+            {members.map((m) => (
+              <div key={m.name} className="group bg-night-2 flex flex-col">
+                {/* photo — 未設定時はイニシャルのタイル */}
+                <div className="relative aspect-square overflow-hidden bg-night-3">
+                  {m.photo ? (
+                    <Image
+                      src={m.photo}
+                      alt={`${m.name}の写真`}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-smooth"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-mono text-5xl md:text-6xl font-black tracking-tighter text-ink/15 group-hover:text-ink/30 transition-colors">
+                        {m.initials}
+                      </span>
+                    </div>
+                  )}
+                  <span className="absolute top-0 left-0 bg-ink text-white font-mono text-[10px] tracking-[0.25em] px-2.5 py-1">
+                    {m.role}
+                  </span>
+                </div>
+
+                <div className="p-5 md:p-6 flex flex-col flex-1">
+                  <h3 className="text-lg md:text-xl font-black tracking-tighter mb-2">
+                    {m.name}
+                  </h3>
+                  <p className="text-xs md:text-sm text-ink/60 leading-relaxed">
+                    {m.intro}
+                  </p>
+                </div>
+              </div>
+            ))}
           </Reveal>
         </div>
       </section>
