@@ -22,6 +22,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # リポジトリの Pages 設定を "GitHub Actions" 方式に揃える。
+      # enablement: true により、設定が legacy（ブランチ配信）のままでも
+      # このステップが build_type を workflow に切り替える。
+      # これが無いと、設定と実際の配信元がずれたまま気づけない。
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
