@@ -1,26 +1,22 @@
 # CLAUDE.md — Project: OIF-homepage
 
-> このフォルダは独立 git repo（`OMU-Innovation-Frontier/OIF-homepage`）。
-> 親 second-brain では gitignore 済み。変更はこのrepo自身のリモートへ push する。
-> このファイルは Claude Code が作業時に読む文脈。OIF運営全体の文脈は親の [[oif]] にある。
+> **このプロジェクトの開発規約の正本は [`AGENTS.md`](./AGENTS.md) です。**
+> Claude Code で作業する場合も、そちらのルールに従ってください。
+> 二重管理を避けるため、ルールの追加・変更は `AGENTS.md` 側にのみ書きます。
 
-## Context
-- OMU Innovation Frontier の公式ウェブサイト。公開URL: https://oif-ai.com
-- **OIFの方向性の正本は Notion。方針・コピー・ポジショニングを変える前に必ず確認する → `docs/notion.md`**
-- Next.js App Router を**静的サイトジェネレータ**として使用（`next.config.js` の `output: "export"`）。
-  バックエンド・DB・APIルート・実行時フェッチなし。静的ホスティング（Vercel）が対象。
-- クライアント側JSは最小（Header のモバイルメニュー、FAQ アコーディオン、HomeClient 程度）。
+@AGENTS.md
 
-## Stack
-- Next.js 15 / React 19 / TypeScript / Tailwind CSS / MDX（next-mdx-remote, gray-matter）
-- 構成: `app/`(ルート・メタ・sitemap/robots) `components/`(共有UI・SEO) `content/`(MDX) `public/`(静的資産) `docs/`
-- 詳細: `docs/architecture.md`
+## Claude Code 固有のメモ
 
-## Conventions
-- 対外発信の文面（コピー・告知・SEOメタ）は公開前に本人確認。
-- 組織repoのため、メンバー個人情報・非公開情報はコミットしない。
-- 公開・デプロイ等の操作は本人承認後。
+- このフォルダは独立 git repo（`OMU-Innovation-Frontier/OIF-homepage`）。
+  親 second-brain では gitignore 済み。変更はこのrepo自身のリモートへ push する。
+- OIF運営全体の文脈は親リポジトリの [[oif]] にある。サイト単体の文脈は `AGENTS.md`。
+- 2026-08 以降、チームの標準ツールは **Codex**（[`docs/codex-guide.md`](./docs/codex-guide.md)）。
+  Claude Code は田口個人の作業でのみ使用する。
 
 ## Open Questions
-- コンテンツ更新フロー（誰が・どの粒度で content/ を編集するか）
+
+- コンテンツ更新フロー（誰が・どの粒度で `lib/` と `content/` を編集するか）
 - 別ブランチ `explore/frontier-os` 系との関係整理
+- `.vercel/` が別プロジェクト（`research-os-app`）を指したまま残っている。
+  実際の公開経路は GitHub Actions → GitHub Pages。整理が必要
