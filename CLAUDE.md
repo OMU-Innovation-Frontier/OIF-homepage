@@ -21,8 +21,10 @@
   `feat/homepage-improvements` は main に取り込み済みで削除可（PR #4/#5 はクローズ済み）。
   `feat/add-activities-session` `mani_workspace` は作業者に要確認
 - **GitHub Pages の Source が legacy（`gh-pages` ブランチ）のまま。**
-  実配信は Actions のビルド成果物。PR #7（`deploy.yml` に `actions/configure-pages`
-  を追加）が main に入れば自動で `workflow` に切り替わる。その後 `gh-pages` を削除する
+  実配信は Actions のビルド成果物なのでサイトは正常。PR #7 で `configure-pages` を
+  追加したが設定は切り替わらなかった（`enablement` は無効時の有効化のみ）。
+  **手作業が必要**: Settings → Pages → Source を「GitHub Actions」に変更 →
+  確認 → `git push origin --delete gh-pages`。org オーナー権限が要る
 - ホスティングが2系統ある点に注意: **本番 = GitHub Pages / PRプレビュー = Vercel**
   （プロジェクト `oif-homepage`、GitHub連携でPRごとに自動デプロイ）。
   ローカルの `.vercel/` は別プロジェクト `research-os-app` への誤リンクで削除済み（2026-08-06）。
