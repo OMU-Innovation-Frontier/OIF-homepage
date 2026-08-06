@@ -17,6 +17,10 @@
 ## Open Questions
 
 - コンテンツ更新フロー（誰が・どの粒度で `lib/` と `content/` を編集するか）
-- 別ブランチ `explore/frontier-os` 系との関係整理
-- `.vercel/` が別プロジェクト（`research-os-app`）を指したまま残っている。
-  実際の公開経路は GitHub Actions → GitHub Pages。整理が必要
+- 古い remote ブランチ（`explore/frontier-os` `feat/design-system-refresh`
+  `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace`）の整理
+- **GitHub Pages の Source が legacy（`gh-pages` ブランチ）のまま。**
+  実配信は Actions のビルド成果物。Settings → Pages → Source を「GitHub Actions」に
+  変更してから `gh-pages` を削除する。オーナー権限が必要（詳細は `docs/architecture.md`）
+- Vercel ダッシュボードに `research-os-app` プロジェクトが残っていないか要確認
+  （ローカルの `.vercel/` リンクは 2026-08-06 に削除済み）

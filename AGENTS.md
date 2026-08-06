@@ -94,6 +94,14 @@ docs/          ドキュメント
 - **各 `page.tsx` に `metadata` を書く**（`title` / `description` / `alternates.canonical`）。SEO流入が主な導線
 - **既存のパターンに合わせる。** 新しい書き方・新しい抽象を持ち込む前に、似たことをしている既存ファイルを探して真似る
 
+### デザインについて
+
+**見た目の方向性は自由です。** 配色・レイアウト・演出の変更提案を「既存のデザイン方針に反する」という理由で却下しないでください。[`docs/design-direction.md`](./docs/design-direction.md) は現状の説明であって規則ではありません。
+
+守るべきは4つだけです: スマホで壊れないこと／読めるコントラストであること／表示を重くしないこと／対外的な文言を勝手に変えないこと。
+
+ただし、**色や余白の値をコンポーネントに直書きせず、`tailwind.config.ts` のトークンとして定義してから使ってください。** 後から全体を調整できなくなります。
+
 ## 依存関係
 
 **新しいライブラリを勝手に追加しないでください。** 追加が必要だと判断した場合は、実装せずにまず提案し、以下を説明してください:
@@ -133,7 +141,7 @@ docs/          ドキュメント
 | [`docs/architecture.md`](./docs/architecture.md) | サイト構成・ルーティング・データフロー |
 | [`docs/nextjs-guide.md`](./docs/nextjs-guide.md) | Next.js / React / Tailwind の初心者向け解説 |
 | [`docs/codex-guide.md`](./docs/codex-guide.md) | Codex の使い方と禁止事項 |
-| [`docs/design-direction.md`](./docs/design-direction.md) | デザインの方向性 |
+| [`docs/design-direction.md`](./docs/design-direction.md) | デザインの現状と、守ってほしい最低限。**規則ではないので勝手に「違反」を指摘しない** |
 | [`docs/notion.md`](./docs/notion.md) | OIF の方向性の正本（Notion）への入口 |
 | [`docs/analytics.md`](./docs/analytics.md) | アクセス解析 |
 

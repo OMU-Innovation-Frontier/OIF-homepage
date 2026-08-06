@@ -11,6 +11,8 @@ OIF公式サイト（https://oif-ai.com）の開発にはじめて参加する�
 3. [`docs/codex-guide.md`](./docs/codex-guide.md) — AIエージェント（Codex）を使った開発の進め方
 4. [`docs/architecture.md`](./docs/architecture.md) — サイト全体の設計。慣れてきたら
 
+**デザインをやりたくて来た人**は [`docs/design-direction.md`](./docs/design-direction.md) を先に見てください。短いです。デザインは基本自由で、守ってほしいことが4つ書いてあるだけです。
+
 ---
 
 ## 0. このサイトが何でできているか（30秒版）
@@ -269,8 +271,11 @@ npm run build
 | ★ | お知らせを追加する | `lib/news.ts` |
 | ★★ | ブログ記事を書く | `content/blog/新しい名前.mdx` |
 | ★★ | プロジェクト紹介を1件足す | `lib/projects.ts` |
+| ★★ | 写真を差し替える・追加する | `public/images/` + 参照元のコンポーネント |
 | ★★★ | 既存セクションの見た目を調整する | `components/site/` 配下 |
 | ★★★ | 新しいページを作る | `app/新しい名前/page.tsx` |
+
+デザイン寄りのタスクは [`docs/design-direction.md`](./docs/design-direction.md) の「デザインから入る人へ」に、必要な知識の目安を書いています。
 
 ---
 

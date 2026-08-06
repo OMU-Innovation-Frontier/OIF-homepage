@@ -171,8 +171,32 @@ OIF公式サイトの構成。実装に入る前に読むと迷いが減りま�
 
 ## 6. 既知の課題
 
-- `.vercel/` が別プロジェクト（`research-os-app`）を指したまま残っている。実際の公開経路は GitHub Actions → GitHub Pages。整理が必要
-- `origin/gh-pages` ブランチが残っているが、現在の deploy は artifact 方式で、このブランチを使っていない
+### GitHub Pages の設定が実態とずれている（2026-08-06 調査）
+
+**現在配信されているのは Actions のビルド成果物です**（`last-modified` が main への最終 push 時刻と一致、`/blog/` が配信されている＝`gh-pages` ブランチには存在しないページ）。
+
+しかし Pages の設定 API は今も legacy モードのまま、配信元として `gh-pages` ブランチを指しています。
+
+```
+build_type: "legacy"
+source: { branch: "gh-pages", path: "/" }
+最後の legacy ビルド: 2026-03-16
+```
+
+`gh-pages` ブランチの中身は2026年3月時点の古いビルドで、実際には使われていません。ただし**設定が参照している以上、先にブランチを消すのは危険**です。
+
+正しい順序:
+
+1. リポジトリ Settings → Pages → Build and deployment → Source を **「GitHub Actions」** に変更（org のオーナー権限が必要）
+2. その後 `git push origin --delete gh-pages`
+
+カスタムドメインは `public/CNAME` がビルドで `out/CNAME` に出るので、ブランチを消しても失われません。
+
+### その他
+
 - テスト・リンタが未整備。品質の担保がビルドと目視のみ
 - `app/sitemap.ts` の静的ルートが手書きで、ページ追加時に更新漏れが起きうる
 - コンテンツ更新のフロー（誰がどの粒度で `lib/` を編集するか）が未定
+- 古いブランチが remote に残っている（`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace`）。作業者に確認のうえ整理する
+
+> `.vercel/`（別プロジェクト `research-os-app` へのリンク）は 2026-08-06 に削除済み。このリポジトリは Vercel を使っていません。
