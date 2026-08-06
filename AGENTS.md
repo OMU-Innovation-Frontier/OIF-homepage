@@ -38,7 +38,8 @@ OMU Innovation Frontier（OIF、大阪公立大学のAIサークル）の公式�
 | コンテンツ | MDX（`next-mdx-remote` + `gray-matter`） |
 | アイコン | `lucide-react` |
 | Node | 20以上（CIは20を使用） |
-| 公開 | `main` への push → GitHub Actions（`.github/workflows/deploy.yml`）→ GitHub Pages |
+| 本番公開 | `main` への push → GitHub Actions（`.github/workflows/deploy.yml`）→ GitHub Pages |
+| プレビュー | PRごとに Vercel が自動デプロイ（プロジェクト `oif-homepage`）。**本番とはホスティングが別** |
 
 ## コマンド
 

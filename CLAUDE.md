@@ -17,10 +17,13 @@
 ## Open Questions
 
 - コンテンツ更新フロー（誰が・どの粒度で `lib/` と `content/` を編集するか）
-- 古い remote ブランチ（`explore/frontier-os` `feat/design-system-refresh`
-  `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace`）の整理
+- 古い remote ブランチの整理。`explore/frontier-os` `feat/design-system-refresh`
+  `feat/homepage-improvements` は main に取り込み済みで削除可（PR #4/#5 はクローズ済み）。
+  `feat/add-activities-session` `mani_workspace` は作業者に要確認
 - **GitHub Pages の Source が legacy（`gh-pages` ブランチ）のまま。**
-  実配信は Actions のビルド成果物。Settings → Pages → Source を「GitHub Actions」に
-  変更してから `gh-pages` を削除する。オーナー権限が必要（詳細は `docs/architecture.md`）
-- Vercel ダッシュボードに `research-os-app` プロジェクトが残っていないか要確認
-  （ローカルの `.vercel/` リンクは 2026-08-06 に削除済み）
+  実配信は Actions のビルド成果物。PR #7（`deploy.yml` に `actions/configure-pages`
+  を追加）が main に入れば自動で `workflow` に切り替わる。その後 `gh-pages` を削除する
+- ホスティングが2系統ある点に注意: **本番 = GitHub Pages / PRプレビュー = Vercel**
+  （プロジェクト `oif-homepage`、GitHub連携でPRごとに自動デプロイ）。
+  ローカルの `.vercel/` は別プロジェクト `research-os-app` への誤リンクで削除済み（2026-08-06）。
+  プレビューとは無関係なので混同しないこと

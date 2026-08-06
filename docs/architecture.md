@@ -57,6 +57,18 @@ OIF公式サイトの構成。実装に入る前に読むと迷いが減りま�
 - **CIは `npm run build` を走らせるだけ**です。テストもリンタもありません。ローカルでビルドが通らない変更は、CIでも必ず落ちます
 - 反映まで数分。失敗は GitHub の Actions タブで確認できます
 
+### プレビュー環境（Vercel）
+
+**本番とは別に、PRごとのプレビューが Vercel から自動で出ます。**
+
+PRを作ると Vercel の bot がコメントで一時URLを貼ってくれます。そこを開けば、**マージ前に自分の変更を実際の環境で確認できます。** ローカル環境を持たない人（デザイン担当など）にレビューを頼むときにも、このURLを共有すれば済みます。
+
+- Vercel プロジェクト: `oif-homepage`（team: `omuinnovationfrontier-6238s-projects`）
+- GitHub連携によりPRごとに自動デプロイ。設定ファイルはリポジトリ内に無く、Vercel 側の GitHub インテグレーションで動いています
+- **本番 `oif-ai.com` は Vercel ではなく GitHub Pages です。** プレビューと本番でホスティングが別、という点に注意
+
+> ローカルの `.vercel/` ディレクトリは**このプレビューとは無関係**です。過去に誤って別プロジェクト（`research-os-app`）へリンクされたもので、2026-08-06 に削除しました。`.vercel/` は `.gitignore` 済みなので、各自の手元で `vercel` コマンドを実行しないかぎり生成されません。
+
 ---
 
 ## 3. レイヤー構成
@@ -197,6 +209,6 @@ source: { branch: "gh-pages", path: "/" }
 - テスト・リンタが未整備。品質の担保がビルドと目視のみ
 - `app/sitemap.ts` の静的ルートが手書きで、ページ追加時に更新漏れが起きうる
 - コンテンツ更新のフロー（誰がどの粒度で `lib/` を編集するか）が未定
-- 古いブランチが remote に残っている（`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace`）。作業者に確認のうえ整理する
+- 古いブランチが remote に残っている。うち `explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` の3本は**すべて `main` に取り込み済み**（`git merge-base --is-ancestor` で確認、2026-08-06）なので削除して問題ない。関連していた PR #4 / #5 はクローズ済み。`feat/add-activities-session` `mani_workspace` は未確認なので作業者に確認する
 
-> `.vercel/`（別プロジェクト `research-os-app` へのリンク）は 2026-08-06 に削除済み。このリポジトリは Vercel を使っていません。
+> ローカルの `.vercel/` は別プロジェクト（`research-os-app`）を指す誤ったリンクだったため 2026-08-06 に削除済み。ただし**このリポジトリ自体は Vercel と連携しています**（下記のプレビュー環境）。混同しないこと。
