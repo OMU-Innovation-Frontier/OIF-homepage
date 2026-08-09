@@ -1,26 +1,30 @@
-# CLAUDE.md — Project: OIF-homepage
+# CLAUDE.md — OIF公式サイト
 
-> このフォルダは独立 git repo（`OMU-Innovation-Frontier/OIF-homepage`）。
-> 親 second-brain では gitignore 済み。変更はこのrepo自身のリモートへ push する。
-> このファイルは Claude Code が作業時に読む文脈。OIF運営全体の文脈は親の [[oif]] にある。
+> **このプロジェクトの開発規約の正本は [`AGENTS.md`](./AGENTS.md) です。**
+> Claude Code で作業する場合も、そちらのルールに従ってください。
+> 二重管理を避けるため、ルールの追加・変更は `AGENTS.md` 側にのみ書きます。
 
-## Context
-- OMU Innovation Frontier の公式ウェブサイト。公開URL: https://oif-ai.com
-- **OIFの方向性の正本は Notion。方針・コピー・ポジショニングを変える前に必ず確認する → `docs/notion.md`**
-- Next.js App Router を**静的サイトジェネレータ**として使用（`next.config.js` の `output: "export"`）。
-  バックエンド・DB・APIルート・実行時フェッチなし。静的ホスティング（Vercel）が対象。
-- クライアント側JSは最小（Header のモバイルメニュー、FAQ アコーディオン、HomeClient 程度）。
+@AGENTS.md
 
-## Stack
-- Next.js 15 / React 19 / TypeScript / Tailwind CSS / MDX（next-mdx-remote, gray-matter）
-- 構成: `app/`(ルート・メタ・sitemap/robots) `components/`(共有UI・SEO) `content/`(MDX) `public/`(静的資産) `docs/`
-- 詳細: `docs/architecture.md`
+## Claude Code 固有のメモ
 
-## Conventions
-- 対外発信の文面（コピー・告知・SEOメタ）は公開前に本人確認。
-- 組織repoのため、メンバー個人情報・非公開情報はコミットしない。
-- 公開・デプロイ等の操作は本人承認後。
+- サイト単体の開発文脈は [`AGENTS.md`](./AGENTS.md)、OIFの方向性の正本は
+  [`docs/notion.md`](./docs/notion.md) 経由の Notion。
+- AIツールは任意。Codexを使う場合は [`docs/codex-guide.md`](./docs/codex-guide.md) を参照する。
+  人間向けの参加手順は [`ONBOARDING.md`](./ONBOARDING.md) が正本。
 
-## Open Questions
-- コンテンツ更新フロー（誰が・どの粒度で content/ を編集するか）
-- 別ブランチ `explore/frontier-os` 系との関係整理
+## 未解決事項
+
+- コンテンツ更新フロー（誰が・どの粒度で `lib/` と `content/` を編集するか）
+- 古いリモートブランチの整理。`explore/frontier-os` `feat/design-system-refresh`
+  `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace` は履歴上`main`に取り込み済み。
+  `feat/site-refresh-2026-07` は未マージなので、作業者へ確認せず削除しない
+- **GitHub Pagesの公開元が旧方式（`gh-pages`ブランチ）のまま。**
+  実配信は Actions のビルド成果物なのでサイトは正常。PR #7 で `configure-pages` を
+  追加したが設定は切り替わらなかった（`enablement` は無効時の有効化のみ）。
+-  **手作業が必要**: GitHubの「Settings」→「Pages」→「Source」で「GitHub Actions」に変更 →
+  確認 → `git push origin --delete gh-pages`。org オーナー権限が要る
+- ホスティングが2系統ある点に注意: **本番 = GitHub Pages / PRプレビュー = Vercel**
+  （プロジェクト `oif-homepage`、GitHub連携でPRごとに自動デプロイ）。
+  ローカルの `.vercel/` は別プロジェクト `research-os-app` への誤リンクで削除済み（2026-08-06）。
+  プレビューとは無関係なので混同しないこと
