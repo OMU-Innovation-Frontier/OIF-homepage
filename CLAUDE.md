@@ -8,9 +8,8 @@
 
 ## Claude Code 固有のメモ
 
-- このフォルダは独立したGitリポジトリ（`OMU-Innovation-Frontier/OIF-homepage`）。
-  親の知識管理リポジトリではGitの追跡対象外に設定済み。変更はこのリポジトリ自身のリモートへプッシュする。
-- OIF運営全体の文脈は親リポジトリの [[oif]] にある。サイト単体の文脈は `AGENTS.md`。
+- サイト単体の開発文脈は [`AGENTS.md`](./AGENTS.md)、OIFの方向性の正本は
+  [`docs/notion.md`](./docs/notion.md) 経由の Notion。
 - AIツールは任意。Codexを使う場合は [`docs/codex-guide.md`](./docs/codex-guide.md) を参照する。
   人間向けの参加手順は [`ONBOARDING.md`](./ONBOARDING.md) が正本。
 
