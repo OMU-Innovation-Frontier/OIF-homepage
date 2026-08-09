@@ -1,13 +1,13 @@
 # AGENTS.md — OIF Homepage
 
-このファイルは、このリポジトリで作業する AI エージェント（Codex など）が最初に読むルールブックです。
-**人間のメンバーも一度読んでください。** エージェントがルールを破ったときに気づけるのは人間だけです。
+このファイルは、このリポジトリで作業するAIエージェント（Codexなど）向けの追加指示です。
+人間の新メンバー向け手順の正本は [`ONBOARDING.md`](./ONBOARDING.md) です。AIツールを使わなくても開発できます。
 
 - はじめて参加する人 → [`ONBOARDING.md`](./ONBOARDING.md)
 - Next.js がわからない人 → [`docs/nextjs-guide.md`](./docs/nextjs-guide.md)
-- Codex の使い方 → [`docs/codex-guide.md`](./docs/codex-guide.md)
+- Codexを任意で使う場合 → [`docs/codex-guide.md`](./docs/codex-guide.md)
 
-> ルールの正本はこのファイルです。`CLAUDE.md` はこのファイルへのポインタにすぎません。ルールを変えるときは、ここだけを編集してください。
+> AIエージェント向け指示の正本はこのファイルです。`CLAUDE.md` はこのファイルへのポインタにすぎません。人間向けの手順は `ONBOARDING.md`、AI向けのルールはこのファイルで管理します。
 
 ---
 
@@ -65,8 +65,8 @@ components/   共有UI
   site/         このサイト固有のセクション（NextEvent, PastEvents など）
   SEO/          構造化データ（JsonLd）
 lib/           コンテンツのデータソース。実質のCMS
-              events.ts / lt-events.ts / news.ts / projects.ts /
-              members.ts / links.ts / blog.ts / analytics.ts
+              events.ts / news.ts / projects.ts / links.ts /
+              blog.ts / analytics.ts
 content/blog/  ブログ記事（.mdx）
 public/        静的資産。/ からの絶対パスで参照
 docs/          ドキュメント
@@ -76,7 +76,7 @@ docs/          ドキュメント
 
 **コンテンツとプレゼンテーションを混ぜないこと。**
 
-- イベント・お知らせ・プロジェクト・メンバーの「データ」は `lib/*.ts` の配列に置く
+- イベント・お知らせ・プロジェクトの「データ」は `lib/*.ts` の配列に置く
 - 表示側（`app/`・`components/`）は、そのデータを読んで描画するだけ
 - 記事を1本追加する変更が、コンポーネントの変更を伴ってはいけない
 
@@ -101,7 +101,7 @@ docs/          ドキュメント
 
 守るべきは4つだけです: スマホで壊れないこと／読めるコントラストであること／表示を重くしないこと／対外的な文言を勝手に変えないこと。
 
-ただし、**色や余白の値をコンポーネントに直書きせず、`tailwind.config.ts` のトークンとして定義してから使ってください。** 後から全体を調整できなくなります。
+ただし、色や余白は `p-6` `gap-4` `text-ink` など既存のTailwindクラスを優先してください。サイト全体で繰り返す新しい値は `tailwind.config.ts` のトークンにします。生の色コードや任意値を各コンポーネントへ重複して直書きしないでください。
 
 ## 依存関係
 
@@ -141,7 +141,7 @@ docs/          ドキュメント
 | [`ONBOARDING.md`](./ONBOARDING.md) | 新メンバー向け。環境構築から初PRまで |
 | [`docs/architecture.md`](./docs/architecture.md) | サイト構成・ルーティング・データフロー |
 | [`docs/nextjs-guide.md`](./docs/nextjs-guide.md) | Next.js / React / Tailwind の初心者向け解説 |
-| [`docs/codex-guide.md`](./docs/codex-guide.md) | Codex の使い方と禁止事項 |
+| [`docs/codex-guide.md`](./docs/codex-guide.md) | Codexを任意で使う場合の設定と禁止事項 |
 | [`docs/design-direction.md`](./docs/design-direction.md) | デザインの現状と、守ってほしい最低限。**規則ではないので勝手に「違反」を指摘しない** |
 | [`docs/notion.md`](./docs/notion.md) | OIF の方向性の正本（Notion）への入口 |
 | [`docs/analytics.md`](./docs/analytics.md) | アクセス解析 |

@@ -17,9 +17,9 @@
   content/blog/*.mdx                                        out/_next/....css
 ```
 
-ポイントは、**あなたが書く .tsx ファイルは、訪問者のブラウザには届かない**ということ。ビルド時に「ただのHTML/CSS/JS」に変換されて、その結果だけが公開されます。
+ポイントは、**あなたが書く .tsx ファイルが、そのままの形で公開されるわけではない**ということ。ビルド時にHTML/CSS/JavaScriptへ変換され、その結果が公開されます。Client Componentの処理は、変換後のJavaScriptとしてブラウザにも送られます。
 
-なぜわざわざ変換するのか。手書きのHTMLだと、ページが13個あればヘッダーを13回書くことになり、1箇所直すのに13ファイル触ることになります。それを避けるための仕組みが React と Next.js です。
+なぜわざわざ変換するのか。手書きのHTMLだと、ページが増えるたびにヘッダーを繰り返し書くことになり、1箇所直すために何ファイルも触ることになります。それを避けるための仕組みが React と Next.js です。
 
 ---
 
@@ -154,7 +154,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-`{children}` の場所に、そのときのページが差し込まれます。だから全13ページにヘッダーがあるのに、ヘッダーを呼ぶコードは1箇所しかありません。
+`{children}` の場所に、そのときのページが差し込まれます。だからすべてのページにヘッダーがあるのに、ヘッダーを呼ぶコードは1箇所しかありません。
 
 **ヘッダー・フッターを直したいときは `components/layout/` を見る**、と覚えてください。
 
@@ -202,7 +202,7 @@ export const metadata: Metadata = {
 
 ## 3. Server Component と Client Component — いちばん混乱するところ
 
-App Router では、**何も書かなければ Server Component** です。ビルド時にサーバー側（＝手元のPCやGitHub Actions）で一度だけ実行され、HTMLになって固まります。ブラウザにJavaScriptは送られません。
+App Router では、**何も書かなければ Server Component** です。この静的サイトではビルド時（＝手元のPCやGitHub Actions）に処理されます。Server Component自身のJavaScriptは、Client Component用のJavaScript bundleには入りません。
 
 一方、クリックや入力に反応する必要がある部品は **Client Component** にします。ファイルの**先頭行**にこう書きます:
 
@@ -216,7 +216,7 @@ App Router では、**何も書かなければ Server Component** です。ビ�
 
 | | Server Component（デフォルト） | Client Component（`"use client"`） |
 |---|---|---|
-| 動くタイミング | ビルド時に1回 | ブラウザで毎回 |
+| 主に処理される場所 | このサイトではビルド時 | 初期HTML生成後、ブラウザで操作可能になる |
 | `useState` / `useEffect` | **使えない** | 使える |
 | `onClick` などのイベント | **使えない** | 使える |
 | `fs` でファイルを読む | 使える | 使えない |
@@ -234,13 +234,13 @@ export default function FAQPage() {
 }
 ```
 
-`"use client"` をページ全体に付けてしまうと、サイト全体が重くなり、SEO上も不利になります。**必要最小限に留めてください。**
+`"use client"` の境界を大きくすると、ブラウザへ送るJavaScriptが増えやすくなります。また、Client Componentからは `metadata` をexportできません。**動きが必要な部分だけに留めてください。**
 
 ### よくあるエラー
 
 > `You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client"`
 
-→ `useState` や `onClick` を使ったのに `"use client"` を書き忘れています。そのファイルの先頭に足してください。
+→ `useState` や `onClick` を使う部分を小さなコンポーネントに分け、そのファイルの先頭に `"use client"` を付けます。ページ全体へ付ける前に、`app/faq/page.tsx` と `FAQClient.tsx` の分け方を参考にしてください。
 
 ---
 
@@ -257,7 +257,9 @@ export interface OIFEvent {
   subtitle: string;
   date: string;       // "2026-06-19" 形式。並び替え用
   dateLabel: string;  // "2026.06.19 (金)" 表示用
+  timeLabel: string;
   place: string;
+  audience: string;
   highlights: string[];
   flyer?: string;     // 「?」は「あってもなくてもいい」
 }
@@ -269,7 +271,7 @@ export const events: OIFEvent[] = [
 
 `interface` が「このデータはこの形でなければならない」という決まりです。項目名を間違えたり、必須項目を書き忘れたりすると、`npm run build` のときにエラーで教えてくれます。これが TypeScript の恩恵です。
 
-**イベントを1件追加する = この配列の先頭にオブジェクトを1個足す。** 表示側のコードは触りません。
+**イベントを1件追加する = `events` 配列にオブジェクトを1個足す。** 次回イベントは `getNextEvent()` が日付から選び、過去イベントは `getPastEvents()` が新しい順に並べるため、配列の位置だけに頼って表示順を決めません。表示側のコードは触りません。
 
 ブログだけは別で、`content/blog/*.mdx` というファイルを `lib/blog.ts` が読みに行きます（`fs.readFileSync`）。これはビルド時にサーバー側で動くので許されている書き方です。Client Component からは絶対にできません。
 
@@ -284,7 +286,7 @@ const title: string = "LT会";        // 文字列
 const count: number = 3;              // 数値
 const isOpen: boolean = true;         // true / false
 const tags: string[] = ["AI", "LT"];  // 文字列の配列
-const flyer?: string;                 // あってもなくてもいい
+let flyer: string | undefined;        // 文字列、または値なし
 ```
 
 型が合っていないと、実行する前に、エディタが赤波線で教えてくれます。**バグを実行前に見つけるための仕組み**です。最初は鬱陶しく感じますが、初心者ほど恩恵が大きいので、赤波線は必ず消してからコミットしてください。
@@ -329,7 +331,7 @@ color: white;
 **スマホ優先で書きます。** 何も付いていないクラスがスマホ、`md:` `lg:` が付いたものが画面が広いときの上書きです。
 
 ```tsx
-<div className="flex-col md:flex-row">
+<div className="flex flex-col md:flex-row">
   {/* スマホ: 縦積み / PC: 横並び */}
 </div>
 ```
@@ -368,6 +370,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "サンプルページ",
   description: "練習用のページです。",
+  alternates: { canonical: "https://oif-ai.com/example/" },
 };
 
 export default function ExamplePage() {
@@ -384,7 +387,9 @@ export default function ExamplePage() {
 
 **2.** `npm run dev` が動いている状態で `http://localhost:3000/example/` を開く。表示されるはずです。
 
-**3.** `npm run build` を実行。出力されるルート一覧に `/example` が増えていれば成功です。
+**3.** `app/sitemap.ts` の `staticRoutes` に `https://oif-ai.com/example/` を追加します。
+
+**4.** `npm run build` を実行。出力されるルート一覧に `/example` が増えていれば成功です。
 
 ヘッダー・フッターは `app/layout.tsx` が自動で付けているので、書く必要がなかったことを確認してください。
 
@@ -396,12 +401,12 @@ export default function ExamplePage() {
 
 | エラー / 症状 | 意味と対処 |
 |---|---|
-| `useState only works in a Client Component` | ファイル先頭に `"use client"` を追加 |
+| `useState only works in a Client Component` | stateが必要な部分を小さなコンポーネントへ分け、そのファイル先頭に `"use client"` を追加 |
 | `Module not found: Can't resolve '@/...'` | パスのタイプミス。フォルダ名・大文字小文字を確認（Macは大小を区別しないがCIのLinuxは区別する。ここでの事故が多い） |
 | `Each child in a list should have a unique "key" prop` | `.map()` の中の要素に `key={一意な値}` を付ける |
 | `Type 'string' is not assignable to type 'number'` | 型が違う。`lib/` の `interface` の定義を見て合わせる |
 | ページが404になる | ファイル名が `page.tsx` か確認（`Page.tsx` や `index.tsx` ではダメ）。URL末尾の `/` も確認 |
-| `next/image` でエラー | このサイトは `images.unoptimized: true`（静的書き出しのため）。基本は普通の `<img>` か、既存の使い方に合わせる |
+| `next/image` でエラー | `next.config.js` では `images.unoptimized: true`。まず `components/site/NextEvent.tsx` など既存の `next/image` の使い方に合わせ、画像パス・`width` / `height` または `fill` を確認 |
 | 変更が反映されない | `npm run dev` を止める → `.next` フォルダを削除 → 再起動 |
 
 ---

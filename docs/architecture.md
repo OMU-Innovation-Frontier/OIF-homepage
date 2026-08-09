@@ -93,7 +93,6 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 | `app/page.tsx` + `app/HomeClient.tsx` | トップページ |
 | `app/about/` | 団体紹介 |
 | `app/activities/` | 活動一覧 |
-| `app/lt/` | LT会 |
 | `app/projects/[slug]/` | プロジェクト個別ページ（動的） |
 | `app/blog/` `app/blog/[slug]/` | ブログ一覧・記事（動的） |
 | `app/news/` | お知らせ |
@@ -129,14 +128,12 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 
 | ファイル | 内容 | 使う側 |
 |---|---|---|
-| `events.ts` | イベント（`OIFEvent`） | `NextEvent`（配列の先頭＝次回）、`PastEvents` |
-| `lt-events.ts` | LT会 | `app/lt/` |
+| `events.ts` | イベント（`OIFEvent`） | `NextEvent`（今日以降で最も近い回）、`PastEvents`（終了済みを新しい順） |
 | `news.ts` | お知らせ | `app/news/` |
 | `projects.ts` | プロジェクト | `app/projects/[slug]/`、`sitemap.ts` |
-| `members.ts` | メンバー紹介 | トップ |
 | `links.ts` | 外部リンク（Discord招待・X・Instagram・GitHub）の単一ソース | 各所のCTA |
 | `blog.ts` | `content/blog/*.mdx` を読み込む | `app/blog/`、`sitemap.ts` |
-| `analytics.ts` | アクセス解析 | `components/site/Analytics` |
+| `analytics.ts` | アクセス解析 | `components/site/Analytics.tsx` |
 
 **各ファイルは `interface` で形を定義しています。** 追加するときはその定義に従ってください。項目を書き忘れると `npm run build` が型エラーで止まります（そういう設計です）。
 
@@ -156,12 +153,16 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 
 ## 4. Server / Client の境界
 
-デフォルトは Server Component。`"use client"` は必要最小限にします。現在 Client なのは:
+デフォルトは Server Component。`"use client"` は必要最小限にします。現在、ファイル先頭に `"use client"` がある主なものは:
 
 - `components/layout/Header.tsx` — モバイルメニューの開閉
 - `app/faq/FAQClient.tsx` — アコーディオンの開閉
-- `app/HomeClient.tsx` — トップの描画
-- `components/ui/` `components/site/` のアニメーション・背景演出系
+- `app/template.tsx` — ページ遷移時の再マウント
+- `components/site/DivisionSplit.tsx` — 表示切り替え
+- `components/site/CursorGlow.tsx` `NeuralBackground.tsx` `ScrollProgress.tsx` — ブラウザ上の演出
+- `components/ui/DiscordCTA.tsx` `InstagramCTA.tsx` `Magnetic.tsx` `Parallax.tsx` `Tilt.tsx` `Typewriter.tsx` — 操作・計測・演出
+
+`app/HomeClient.tsx` は名前に `Client` とありますが、現在は `"use client"` を持たないServer Componentです。ファイル名だけで判定せず、先頭の宣言と実際に使うAPIを確認してください。
 
 パターンとして、**ページの `page.tsx` は Server のまま `metadata` を持ち、動きのある部分だけを別ファイルの Client Component に切り出す**、という形をとっています（`app/faq/page.tsx` → `FAQClient.tsx` が典型）。新しいページでもこれに倣ってください。
 
@@ -215,6 +216,6 @@ source: { branch: "gh-pages", path: "/" }
 - テスト・リンタが未整備。品質の担保がビルドと目視のみ
 - `app/sitemap.ts` の静的ルートが手書きで、ページ追加時に更新漏れが起きうる
 - コンテンツ更新のフロー（誰がどの粒度で `lib/` を編集するか）が未定
-- 古いブランチが remote に残っている。うち `explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` の3本は**すべて `main` に取り込み済み**（`git merge-base --is-ancestor` で確認、2026-08-06）なので削除して問題ない。関連していた PR #4 / #5 はクローズ済み。`feat/add-activities-session` `mani_workspace` は未確認なので作業者に確認する
+- 古いブランチがremoteに残っている。`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace` は、いずれも履歴上 `main` に取り込み済み。`feat/site-refresh-2026-07` は未マージなので、作業者へ確認せず削除しない
 
 > ローカルの `.vercel/` は別プロジェクト（`research-os-app`）を指す誤ったリンクだったため 2026-08-06 に削除済み。ただし**このリポジトリ自体は Vercel と連携しています**（下記のプレビュー環境）。混同しないこと。

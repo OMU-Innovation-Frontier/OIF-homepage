@@ -12,9 +12,9 @@ Site URL: https://oif-ai.com
 |---|---|
 | [`ONBOARDING.md`](./ONBOARDING.md) | 環境構築 → 最初のPRまで。**まずここ** |
 | [`docs/nextjs-guide.md`](./docs/nextjs-guide.md) | Next.js / React / TypeScript / Tailwind の初心者向け解説 |
-| [`docs/codex-guide.md`](./docs/codex-guide.md) | Codex（AIエージェント）を使った開発の進め方 |
+| [`docs/codex-guide.md`](./docs/codex-guide.md) | Codexを任意で使う場合のガイド。利用しなくても開発可能 |
 | [`docs/architecture.md`](./docs/architecture.md) | サイトの構成・データフロー・公開の仕組み |
-| [`AGENTS.md`](./AGENTS.md) | 開発規約の正本。人もエージェントもこれに従う |
+| [`AGENTS.md`](./AGENTS.md) | AIエージェント向けの追加指示 |
 
 ## What this repo is
 
@@ -55,7 +55,7 @@ None of these introduce a backend.
 ```text
 app/          Route pages, layout, metadata, sitemap, robots
 components/   Shared UI and SEO components
-lib/          Content data (events, news, projects, members, links) — the de facto CMS
+lib/          Content data (events, news, projects, links) — the de facto CMS
 content/      Blog posts in MDX
 public/       Static images and icons
 docs/         Project documentation

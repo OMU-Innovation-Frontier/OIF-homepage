@@ -4,12 +4,15 @@ OIF公式サイト（https://oif-ai.com）の開発にはじめて参加する�
 
 **前提知識はゼロで大丈夫です。** プログラミング経験がなくても、この順番どおりに進めれば「環境構築 → 変更 → プルリクエスト（PR）を出す」までたどり着けます。1〜2時間を見ておいてください。
 
+**AIツールは必要ありません。** このガイドの手順は、VS Code・Git・ブラウザだけで最後まで進められます。
+
 読む順番:
 
 1. このファイルを上から順に（環境構築と最初のPRまで）
-2. [`docs/nextjs-guide.md`](./docs/nextjs-guide.md) — Next.js / React が何なのかを、このリポジトリの実物で解説
-3. [`docs/codex-guide.md`](./docs/codex-guide.md) — AIエージェント（Codex）を使った開発の進め方
-4. [`docs/architecture.md`](./docs/architecture.md) — サイト全体の設計。慣れてきたら
+2. 必要になった箇所だけ [`docs/nextjs-guide.md`](./docs/nextjs-guide.md) — Next.js / React を、このリポジトリの実物で解説
+3. 慣れてきたら [`docs/architecture.md`](./docs/architecture.md) — サイト全体の設計
+
+Codexを使いたい人向けの任意ガイドは [`docs/codex-guide.md`](./docs/codex-guide.md) です。使わなくても開発手順やレビュー条件は変わりません。
 
 **デザインをやりたくて来た人**は [`docs/design-direction.md`](./docs/design-direction.md) を先に見てください。短いです。デザインは基本自由で、守ってほしいことが4つ書いてあるだけです。
 
@@ -33,6 +36,8 @@ OIF公式サイト（https://oif-ai.com）の開発にはじめて参加する�
 |---|---|---|
 | GitHub | コードの置き場・PR | 作成後、Discordで田口に伝えてください。組織 `OMU-Innovation-Frontier` に招待します |
 | Discord | 相談・レビュー依頼 | 開発の会話はDiscordで完結させます |
+
+GitHubアカウントを作ったら、**リポジトリへ変更を送る前に組織への招待を受け、参加を完了**してください。招待メールのリンクを開いただけでなく、GitHub上で組織に参加済みになっていることを確認します。
 
 ### ツール
 
@@ -70,23 +75,30 @@ git config --global user.email "GitHubに登録したメールアドレス"
 
 - https://code.visualstudio.com/
 - 入れておくと便利な拡張機能:
-  - **ESLint**（書き方のミスを指摘してくれる）
   - **Tailwind CSS IntelliSense**（クラス名を補完してくれる。このサイトはTailwindで見た目を作っています）
-  - **Prettier**（コードの整形）
+
+このリポジトリにはESLintやPrettierのプロジェクト設定がまだありません。VS Codeの「ファイル全体をフォーマット」をむやみに実行すると、関係ない行まで大量に変わることがあります。保存後は必ず `git diff` を確認してください。
+
+**4. GitHubへのログイン（GitHub Desktop推奨）**
+
+GitHubは通常のパスワードを `git push` の認証には使えません。はじめての人は [GitHub Desktop](https://desktop.github.com/) をインストールし、GitHubアカウントでサインインしておくのが簡単です。
+
+ターミナルでの認証に慣れている人は、GitHub CLIの `gh auth login` を使っても構いません。どちらか一方で認証できれば十分です。
 
 ---
 
 ## 2. リポジトリを手元に持ってくる
 
-作業用のフォルダを決めて、そこで以下を実行します（`~/dev` は好きな場所でOK）。
+作業用のフォルダを決めて、そこで以下を実行します（`~/dev` は好きな場所でOK）。GitHub Desktopを使う場合は「File → Clone Repository → URL」で同じURLを指定し、clone後に「Repository → Open in Terminal」を選べば、以降は同じ手順です。
 
 ```bash
+mkdir -p ~/dev
 cd ~/dev
 git clone https://github.com/OMU-Innovation-Frontier/OIF-homepage.git
 cd OIF-homepage
 ```
 
-> Windows の PowerShell では `cd ~/dev` の代わりに `cd $HOME\dev` と書きます。フォルダが無ければ先に `mkdir $HOME\dev` してください。
+> Windows の PowerShell では、最初に `mkdir $HOME\dev`、次に `cd $HOME\dev` と実行します。「すでに存在します」と表示された場合は、そのまま `cd` へ進んで構いません。
 
 次に、必要なライブラリを取ってきます（初回は数分かかります）:
 
@@ -95,6 +107,8 @@ npm ci
 ```
 
 > `npm install` ではなく **`npm ci`** を使ってください。`package-lock.json` に書かれたバージョンをそのまま入れるので、人によって環境が違う、という事故が起きません。
+
+> `npm ci` の最後に脆弱性や更新候補の警告が出ることがあります。`added ... packages` と表示され、コマンドがエラーで終了していなければ環境構築は完了です。初心者が独断で `npm audit fix` を実行すると依存バージョンが変わるため、警告はDiscordで共有してください。
 
 ### 開発サーバーを起動する
 
@@ -129,12 +143,11 @@ OIF-homepage/
 │
 ├─ lib/            ← 「データ」を置く場所。ここが実質のCMS
 │  ├─ events.ts          イベント（トップの「次回」「これまで」）
-│  ├─ lt-events.ts       LT会
 │  ├─ news.ts            お知らせ
 │  ├─ projects.ts        プロジェクト紹介
-│  ├─ members.ts         メンバー紹介
 │  ├─ links.ts           Discord招待などの外部リンク
-│  └─ blog.ts            content/blog/ の記事を読み込む処理
+│  ├─ blog.ts            content/blog/ の記事を読み込む処理
+│  └─ analytics.ts       アクセス解析の設定
 │
 ├─ content/blog/   ← ブログ記事（.mdx ファイル）
 ├─ public/         ← 画像・アイコン。ここに置いたものは /画像名 でアクセスできる
@@ -153,7 +166,7 @@ OIF-homepage/
 
 ## 4. 最初の変更をやってみる（練習）
 
-「お知らせを1件追加する」を例にします。実際に手を動かしてください。
+「お知らせを1件追加する」を例にします。担当する内容が決まっていない場合は、練習用の架空データをpushせず、先にDiscordで作業内容を確認してください。
 
 ### 4-1. ブランチを作る
 
@@ -161,8 +174,8 @@ OIF-homepage/
 
 ```bash
 git switch main
-git pull                                  # 最新の状態に更新
-git switch -c feat/add-news-<自分の名前>    # 例: feat/add-news-tanaka
+git pull --ff-only                        # 最新の状態に更新
+git switch -c feat/add-news-tanaka        # tanaka は自分の名前やGitHub IDに置き換える
 ```
 
 ブランチ名の付け方:
@@ -184,7 +197,9 @@ git switch -c feat/add-news-<自分の名前>    # 例: feat/add-news-tanaka
 
 ```bash
 git status          # 何を変更したか確認
+git diff            # 変更内容を自分の目で読む
 git add lib/news.ts # 変更をステージに載せる
+git diff --cached   # コミットに入る内容をもう一度読む
 git commit -m "feat(news): 9月のLT会告知を追加"
 ```
 
@@ -202,10 +217,14 @@ git commit -m "feat(news): 9月のLT会告知を追加"
 ### 4-4. GitHubに送る（プッシュ）
 
 ```bash
-git push -u origin feat/add-news-<自分の名前>
+git push -u origin feat/add-news-tanaka
 ```
 
-初回は GitHub のログインを求められます。ブラウザが開くので、そこで認証してください。
+`tanaka` は、4-1で実際に作ったブランチ名に合わせてください。
+
+初回はGitHubの認証を求められる場合があります。ブラウザが開けばその画面で認証します。ユーザー名とパスワードだけを求められて失敗する場合は、1章のGitHub DesktopまたはGitHub CLIで先にサインインしてください。それでも拒否される場合は、組織への招待が完了しているか確認します。
+
+**GitHub Desktopだけで送る場合:** 左側の「Changes」で差分を1ファイルずつ読み、意図したファイルだけにチェックを付けます。Summaryへコミットメッセージを入力して「Commit to ...」、続けて「Publish branch」または「Push origin」を押します。ターミナルの `git add`・`git commit`・`git push` と同じ操作です。
 
 ### 4-5. PR（プルリクエスト）を出す
 
@@ -246,7 +265,7 @@ npm run build
 
 これが**エラーなく終わること**。ここで落ちる変更は、マージしても公開されません（Actions が同じビルドを走らせるため）。TypeScript の型エラーもここで出ます。
 
-そして **ブラウザで実際に見る**。スマホ幅も確認してください（ブラウザの開発者ツール `F12` → 端末アイコンで幅を変えられます）。訪問者の多くはスマホです。
+そして **ブラウザで実際に見る**。スマホ幅も確認してください。ChromeやEdgeの開発者ツール（Windowsは `F12`、Macは `Command + Option + I`）を開き、端末アイコンで幅を375pxにします。訪問者の多くはスマホです。
 
 > このリポジトリには自動テストがありません。「ビルドが通る」＋「目で見て確認した」が品質の担保のすべてです。だからこそ、確認をサボらないでください。
 
@@ -264,11 +283,11 @@ npm run build
 
 ---
 
-## 7. AIエージェント（Codex）を使った開発について
+## 7. AIエージェント（Codex）は任意です
 
-このプロジェクトでは **Codex** を使って開発します。設定と使い方は [`docs/codex-guide.md`](./docs/codex-guide.md) にまとめてあります。
+このプロジェクトは、**Codexを使わなくても開発できます。** ここまでの手順だけで、編集・確認・コミット・PR作成まで完了します。
 
-リポジトリのルールは [`AGENTS.md`](./AGENTS.md) に書いてあり、Codex はこれを自動で読みます。**あなた自身も一度読んでください。** AIに任せる部分があっても、PRの責任を持つのは人間です。
+Codexを任意の補助ツールとして使いたい場合だけ、[`docs/codex-guide.md`](./docs/codex-guide.md) を読んでください。AIエージェント向けの追加指示は [`AGENTS.md`](./AGENTS.md) にあります。AIを使った場合も、出す前の確認内容とPRの責任は変わりません。
 
 ---
 
@@ -300,12 +319,13 @@ npm run build
 | 症状 | 原因と対処 |
 |---|---|
 | `npm ci` が失敗する | Node.js のバージョンが古い。`node -v` で20以上か確認 |
+| `npm ci` で脆弱性の警告が出る | インストール成功後の警告なら、独断で `npm audit fix` を実行せずDiscordで共有 |
 | `command not found: npm` | Node.js が入っていない、またはターミナルを再起動していない |
 | `Port 3000 is already in use` | すでに `npm run dev` が別のターミナルで動いている。そちらを `Ctrl+C` で止める |
 | 画面が真っ白 / エラー画面 | ターミナルとブラウザのコンソール（`F12`）両方にメッセージが出ている。読む |
 | `Module not found` | import のパスが間違っている。このリポジトリでは `@/components/...` のように `@/` がプロジェクトのルートを指します |
 | 変更したのに画面が変わらない | `npm run dev` を止めて、`.next` フォルダを消して再起動 |
-| `git push` が拒否される | 権限がない（組織への招待がまだ）か、`main` に直接プッシュしようとしている |
+| `git push` が拒否される | 組織への招待が未完了、GitHub認証が未設定、または `main` に直接pushしようとしている。1章のGitHubログインも確認 |
 
 それでもダメなら Discord の開発チャンネルで聞いてください。**質問するときは以下を貼ると即答できます:**
 
