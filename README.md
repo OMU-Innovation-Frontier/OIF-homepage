@@ -1,10 +1,10 @@
-# OIF Homepage
+# OIF公式サイト
 
-Official website for OMU Innovation Frontier.
+OMU Innovation Frontier（OIF）の公式ウェブサイトです。
 
-Site URL: https://oif-ai.com
+公開URL: https://oif-ai.com
 
-## はじめての人へ / New contributors
+## はじめて参加する人へ
 
 開発に参加する人は **[`ONBOARDING.md`](./ONBOARDING.md)** から読んでください。環境構築から最初のPRを出すまでを、前提知識ゼロの状態から順に案内しています。
 
@@ -16,82 +16,82 @@ Site URL: https://oif-ai.com
 | [`docs/architecture.md`](./docs/architecture.md) | サイトの構成・データフロー・公開の仕組み |
 | [`AGENTS.md`](./AGENTS.md) | AIエージェント向けの追加指示 |
 
-## What this repo is
+## このリポジトリについて
 
-This project is a static website built with Next.js App Router and exported as plain HTML/CSS/JS.
+このプロジェクトはNext.jsのApp Routerで構築し、通常のHTML・CSS・JavaScriptとして書き出す静的ウェブサイトです。
 
-- No backend server
-- No database
-- No API routes
-- No runtime content fetching
-- Deployment target is static hosting
+- バックエンドサーバーはありません
+- データベースはありません
+- APIルートはありません
+- 実行時のコンテンツ取得は行いません
+- 静的ファイルを配信する環境へ公開します
 
-The relevant setting is [`output: "export"`](./next.config.js), which makes `next build` generate a static site.
+この動作は[`output: "export"`](./next.config.js)で指定しています。`next build`を実行すると、静的サイトが生成されます。
 
-## Why Next.js is still used
+## 静的サイトでもNext.jsを使う理由
 
-Next.js is being used here as a static site generator with:
+このリポジトリでは、Next.jsを次の機能を備えた静的サイトジェネレーターとして使っています。
 
-- File-based routing
-- Metadata management for SEO
-- Shared layout/header/footer
-- Optimized static asset handling
-- Simple React components for a small amount of client-side interactivity
+- ファイル構成に基づくルーティング
+- SEO向けメタデータの管理
+- レイアウト・ヘッダー・フッターの共通化
+- 静的資産の扱いやすい管理
+- 少量の画面操作を実現する単純なReactコンポーネント
 
-This means the site is static in deployment, even though the codebase uses React and Next.js during authoring/build time.
+開発時とビルド時にはReactとNext.jsを使いますが、公開されるサイトは静的ファイルだけで動作します。
 
-## Client-side interactivity
+## ブラウザ上の画面操作
 
-Most pages are static. A few components use client-side React for small UI behavior:
+ほとんどのページは静的です。一部のコンポーネントだけが、小さな画面操作のためにブラウザ上でReactを使います。
 
-- [`components/layout/Header.tsx`](./components/layout/Header.tsx): mobile menu state
-- [`app/faq/FAQClient.tsx`](./app/faq/FAQClient.tsx): accordion open/close state
-- [`app/HomeClient.tsx`](./app/HomeClient.tsx): homepage rendering component
+- [`components/layout/Header.tsx`](./components/layout/Header.tsx): モバイルメニューの開閉状態
+- [`app/faq/FAQClient.tsx`](./app/faq/FAQClient.tsx): アコーディオンの開閉状態
+- [`app/HomeClient.tsx`](./app/HomeClient.tsx): トップページを描画するコンポーネント
 
-None of these introduce a backend.
+これらはいずれもバックエンドを必要としません。
 
-## Project structure
+## プロジェクト構成
 
 ```text
-app/          Route pages, layout, metadata, sitemap, robots
-components/   Shared UI and SEO components
-lib/          Content data (events, news, projects, links) — the de facto CMS
-content/      Blog posts in MDX
-public/       Static images and icons
-docs/         Project documentation
+app/          ページ、レイアウト、メタデータ、サイトマップ、robots.txt
+components/   共通の画面部品とSEO用コンポーネント
+lib/          コンテンツデータ（イベント、お知らせ、プロジェクト、リンク）。実質的なCMS
+content/      MDX形式のブログ記事
+public/       静的な画像とアイコン
+docs/         プロジェクト文書
 ```
 
-Content lives in `lib/*.ts` and `content/blog/*.mdx`. Adding an event or a post should not require touching `app/` or `components/`.
+コンテンツは`lib/*.ts`と`content/blog/*.mdx`で管理します。イベントや記事を追加するだけなら、`app/`や`components/`を変更する必要はありません。
 
-More detail: [`docs/architecture.md`](./docs/architecture.md)
+詳しい構成: [`docs/architecture.md`](./docs/architecture.md)
 
-## Development
+## 開発
 
 ```bash
 npm ci
 npm run dev
 ```
 
-## Production build
+## 本番用ビルド
 
 ```bash
 npm run build
 ```
 
-The build outputs a static export suitable for static hosting.
+ビルドすると、静的ファイル配信に適した成果物が`out/`へ出力されます。
 
-There is intentionally no `npm start` script because production uses exported static files, not a Node server.
+本番環境ではNode.jsサーバーではなく書き出した静的ファイルを使うため、`npm start`スクリプトは意図的に用意していません。
 
-There are no test or lint scripts. A passing `npm run build` plus manual verification in the browser is the entire quality gate — treat both as mandatory before opening a PR.
+テストやリンタのスクリプトはありません。PRを出す前に、`npm run build`の成功とブラウザでの目視確認を必ず行ってください。この2つが現在の品質確認手順です。
 
-## Deployment
+## 公開
 
-Pushing to `main` triggers [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml), which runs `npm ci` and `npm run build` on Node 20 and publishes `out/` to GitHub Pages. There is no manual deploy step.
+`main`へプッシュすると、[`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)が起動します。Node.js 20で`npm ci`と`npm run build`を実行し、`out/`をGitHub Pagesへ公開します。手作業での公開操作はありません。
 
-Never commit directly to `main`. Work on a branch and open a PR.
+`main`へ直接コミットしないでください。作業用ブランチで変更し、PRを作成します。
 
-## Maintenance notes
+## 保守上の注意
 
-- Prefer keeping the site static unless there is a clear product need for dynamic behavior.
-- If a new dependency is added, document why.
-- Avoid one-off helper scripts in the repo root unless they are reusable and documented.
+- 動的な機能が明確に必要でない限り、静的サイトとして保ってください
+- 依存パッケージを追加した場合は、その理由を文書に残してください
+- 再利用できて説明も用意されている場合を除き、リポジトリ直下に使い捨ての補助スクリプトを置かないでください

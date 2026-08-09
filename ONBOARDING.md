@@ -1,4 +1,4 @@
-# OIF Homepage — オンボーディング
+# OIF公式サイト — 参加案内
 
 OIF公式サイト（https://oif-ai.com）の開発にはじめて参加する人向けのガイドです。
 
@@ -231,7 +231,7 @@ git push -u origin feat/add-news-tanaka
 1. https://github.com/OMU-Innovation-Frontier/OIF-homepage を開く
 2. 黄色い「Compare & pull request」ボタンが出ているのでクリック
 3. テンプレートが出るので埋める（何を・なぜ・どう確認したか）
-4. 「Create pull request」
+4. 「Create pull request」（プルリクエストを作成）を押す
 5. **Discordでレビュー依頼を投げる**（PRを作っただけでは気づかれません）
 
 ### プレビューURLが自動で出ます

@@ -17,7 +17,7 @@
   content/blog/*.mdx                                        out/_next/....css
 ```
 
-ポイントは、**あなたが書く .tsx ファイルが、そのままの形で公開されるわけではない**ということ。ビルド時にHTML/CSS/JavaScriptへ変換され、その結果が公開されます。Client Componentの処理は、変換後のJavaScriptとしてブラウザにも送られます。
+ポイントは、**あなたが書く`.tsx`ファイルが、そのままの形で公開されるわけではない**ということ。ビルド時にHTML・CSS・JavaScriptへ変換され、その結果が公開されます。クライアントコンポーネントの処理は、変換後のJavaScriptとしてブラウザにも送られます。
 
 なぜわざわざ変換するのか。手書きのHTMLだと、ページが増えるたびにヘッダーを繰り返し書くことになり、1箇所直すために何ファイルも触ることになります。それを避けるための仕組みが React と Next.js です。
 
@@ -53,9 +53,9 @@ import Eyebrow from "@/components/ui/Eyebrow";
 
 **部品を1回直せば、使っている全箇所が直ります。** これが React を使う最大の理由です。
 
-### props — 部品に値を渡す
+### プロパティ（props）— 部品に値を渡す
 
-同じ見た目で中身だけ違うものを作りたい。そのとき使うのが **props**（プロパティ）です。関数の引数だと思ってください。
+同じ見た目で中身だけ違うものを作りたい。そのとき使うのが**プロパティ（props）**です。関数の引数だと思ってください。
 
 ```tsx
 function EventCard({ title, date }) {
@@ -73,9 +73,9 @@ function EventCard({ title, date }) {
 
 JSX の中で `{ }` で囲むと、その中はJavaScriptとして評価されます。`{title}` は「title という変数の中身を表示しろ」の意味です。
 
-### state — 画面が変化する仕組み
+### 状態（state）— 画面が変化する仕組み
 
-props は「渡されたら変わらない値」ですが、ユーザーの操作で変わる値もあります。それが **state** です。
+プロパティは「渡されたら変わらない値」ですが、ユーザーの操作で変わる値もあります。それが**状態（state）**です。
 
 実物が `app/faq/FAQClient.tsx` にあります。FAQのアコーディオン（クリックで開閉する）です。
 
@@ -182,9 +182,9 @@ export function generateStaticParams() {
 
 記事のmdxを1本足せば、ビルド時に自動でこのリストに増えます。
 
-### metadata — SEOの設定
+### メタデータ（metadata）— SEOの設定
 
-各 `page.tsx` で `metadata` を export すると、そのページの `<title>` や検索結果の説明文になります。
+各`page.tsx`で`metadata`を書き出すと、そのページの`<title>`や検索結果の説明文になります。
 
 ```tsx
 export const metadata: Metadata = {
@@ -196,15 +196,15 @@ export const metadata: Metadata = {
 
 `title` は `app/layout.tsx` の `template: "%s | OIF - OMU Innovation Frontier"` と合成されて、`FAQ | OIF - OMU Innovation Frontier` になります。
 
-**新しいページを作るときは metadata を必ず書いてください。** サイトへの流入は検索経由が主です。ただし文言は対外的な表現なので、田口の確認を通してください。
+**新しいページを作るときはメタデータを必ず書いてください。** コード上では`metadata`という名前を使います。サイトへの流入は検索経由が主です。ただし文言は対外的な表現なので、田口の確認を通してください。
 
 ---
 
-## 3. Server Component と Client Component — いちばん混乱するところ
+## 3. サーバーコンポーネントとクライアントコンポーネント — いちばん混乱するところ
 
-App Router では、**何も書かなければ Server Component** です。この静的サイトではビルド時（＝手元のPCやGitHub Actions）に処理されます。Server Component自身のJavaScriptは、Client Component用のJavaScript bundleには入りません。
+App Routerでは、**何も書かなければサーバーコンポーネント**です。この静的サイトではビルド時（＝手元のパソコンやGitHub Actions）に処理されます。サーバーコンポーネント自身のJavaScriptは、クライアントコンポーネント用のJavaScript一式には入りません。
 
-一方、クリックや入力に反応する必要がある部品は **Client Component** にします。ファイルの**先頭行**にこう書きます:
+一方、クリックや入力に反応する必要がある部品は**クライアントコンポーネント**にします。ファイルの**先頭行**にこう書きます。
 
 ```tsx
 "use client";
@@ -214,7 +214,7 @@ App Router では、**何も書かなければ Server Component** です。こ�
 
 ### 使い分け
 
-| | Server Component（デフォルト） | Client Component（`"use client"`） |
+| | サーバーコンポーネント（デフォルト） | クライアントコンポーネント（`"use client"`） |
 |---|---|---|
 | 主に処理される場所 | このサイトではビルド時 | 初期HTML生成後、ブラウザで操作可能になる |
 | `useState` / `useEffect` | **使えない** | 使える |
@@ -222,19 +222,19 @@ App Router では、**何も書かなければ Server Component** です。こ�
 | `fs` でファイルを読む | 使える | 使えない |
 | ブラウザに送るJS | ゼロ | 送られる（重くなる） |
 
-**原則: 迷ったら Server Component。動きが必要な部分だけを小さく切り出して Client Component にする。**
+**原則: 迷ったらサーバーコンポーネント。動きが必要な部分だけを小さく切り出してクライアントコンポーネントにする。**
 
-このリポジトリが実際そうなっています。`app/faq/page.tsx` は Server Component で metadata だけを持ち、開閉の動きがある部分だけを `FAQClient.tsx` に分離しています。
+このリポジトリが実際そうなっています。`app/faq/page.tsx`はサーバーコンポーネントとしてメタデータだけを持ち、開閉の動きがある部分だけを`FAQClient.tsx`に分離しています。
 
 ```tsx
-// app/faq/page.tsx — Server（"use client" なし）
+// app/faq/page.tsx — サーバー側（"use client" なし）
 export const metadata = { title: "FAQ", ... };
 export default function FAQPage() {
-  return <FAQClient />;   // 動く部分だけ Client に委譲
+  return <FAQClient />;   // 動く部分だけクライアント側に委譲
 }
 ```
 
-`"use client"` の境界を大きくすると、ブラウザへ送るJavaScriptが増えやすくなります。また、Client Componentからは `metadata` をexportできません。**動きが必要な部分だけに留めてください。**
+`"use client"`の境界を大きくすると、ブラウザへ送るJavaScriptが増えやすくなります。また、クライアントコンポーネントからは`metadata`を書き出せません。**動きが必要な部分だけに留めてください。**
 
 ### よくあるエラー
 
@@ -273,7 +273,7 @@ export const events: OIFEvent[] = [
 
 **イベントを1件追加する = `events` 配列にオブジェクトを1個足す。** 次回イベントは `getNextEvent()` が日付から選び、過去イベントは `getPastEvents()` が新しい順に並べるため、配列の位置だけに頼って表示順を決めません。表示側のコードは触りません。
 
-ブログだけは別で、`content/blog/*.mdx` というファイルを `lib/blog.ts` が読みに行きます（`fs.readFileSync`）。これはビルド時にサーバー側で動くので許されている書き方です。Client Component からは絶対にできません。
+ブログだけは別で、`content/blog/*.mdx`というファイルを`lib/blog.ts`が読みに行きます（`fs.readFileSync`）。これはビルド時にサーバー側で動くので許されている書き方です。クライアントコンポーネントからは絶対にできません。
 
 ---
 
@@ -340,7 +340,7 @@ color: white;
 
 ---
 
-## 7. import のパス — `@/` は何か
+## 7. 読み込み（import）のパス — `@/`は何か
 
 ```tsx
 import Header from "@/components/layout/Header";
@@ -351,10 +351,10 @@ import { events } from "@/lib/events";
 
 **このリポジトリでは常に `@/` を使ってください。**
 
-`import X from` と `import { X } from` の違い:
+`import X from`と`import { X } from`の違いは次のとおりです。
 
-- `export default` されたものは `import X from "..."`（名前は自由に付けられる）
-- `export const X` されたものは `import { X } from "..."`（名前は一致させる）
+- `export default`で書き出されたものは`import X from "..."`（読み込む側の名前は自由に付けられる）
+- `export const X`で書き出されたものは`import { X } from "..."`（名前は一致させる）
 
 ---
 
@@ -401,7 +401,7 @@ export default function ExamplePage() {
 
 | エラー / 症状 | 意味と対処 |
 |---|---|
-| `useState only works in a Client Component` | stateが必要な部分を小さなコンポーネントへ分け、そのファイル先頭に `"use client"` を追加 |
+| `useState only works in a Client Component` | 状態が必要な部分を小さなコンポーネントへ分け、そのファイル先頭に`"use client"`を追加 |
 | `Module not found: Can't resolve '@/...'` | パスのタイプミス。フォルダ名・大文字小文字を確認（Macは大小を区別しないがCIのLinuxは区別する。ここでの事故が多い） |
 | `Each child in a list should have a unique "key" prop` | `.map()` の中の要素に `key={一意な値}` を付ける |
 | `Type 'string' is not assignable to type 'number'` | 型が違う。`lib/` の `interface` の定義を見て合わせる |

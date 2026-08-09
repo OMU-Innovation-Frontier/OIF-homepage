@@ -1,4 +1,4 @@
-# Architecture
+# サイトの設計と構成
 
 OIF公式サイトの構成。実装に入る前に読むと迷いが減ります。
 
@@ -75,14 +75,14 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 
 ```
    app/            ルーティングとページ
-     ↓ import
+     ↓ 読み込み
    components/     見た目の部品
-     ↓ import
+     ↓ 読み込み
    lib/            データ（実質のCMS）
    content/        記事本文（.mdx）
 ```
 
-依存の向きは常に上から下です。`lib/` が `components/` を import することはありません。
+依存の向きは常に上から下です。`lib/`が`components/`を読み込むことはありません。
 
 ### app/ — ルーティング
 
@@ -115,12 +115,12 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 
 | ディレクトリ | 役割 | 例 |
 |---|---|---|
-| `layout/` | サイト全体の骨格 | `Header`（モバイルメニューのstateを持つClient Component）、`Footer` |
+| `layout/` | サイト全体の骨格 | `Header`（モバイルメニューの状態を持つクライアントコンポーネント）、`Footer` |
 | `ui/` | 汎用の小さい部品 | `Button` `Eyebrow` `Reveal` `Tilt` `Parallax` `Magnetic` `Typewriter` `DiscordCTA` `InstagramCTA` |
 | `site/` | このサイト固有のセクション | `NextEvent` `PastEvents` `SectionDivider` `DivisionSplit` `HeroBackground` `NeuralBackground` `CursorGlow` `ScrollProgress` `Analytics` |
 | `SEO/` | 構造化データ | `JsonLd`（検索エンジンに団体情報を伝える） |
 
-`ui/` のアニメーション系（`Reveal` `Tilt` `Parallax` `Magnetic`）と背景演出（`HeroBackground` `NeuralBackground` `CursorGlow`）は Client Component です。**これらは見た目の演出であり、内容を持ちません。** 増やす前に、本当に必要かを考えてください。JSが増えるとスマホで重くなります。
+`ui/`のアニメーション系（`Reveal` `Tilt` `Parallax` `Magnetic`）と背景演出（`HeroBackground` `NeuralBackground` `CursorGlow`）はクライアントコンポーネントです。**これらは見た目の演出であり、内容を持ちません。** 増やす前に、本当に必要かを考えてください。JavaScriptが増えるとスマホで重くなります。
 
 ### lib/ — コンテンツの単一ソース
 
@@ -145,15 +145,15 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 
 `lib/blog.ts` が `fs.readFileSync` で読み、`gray-matter` で先頭のフロントマター（`title` `date` `excerpt` `tags` など）と本文を分離します。読了時間は本文の文字数から自動計算されます（日本語500字/分）。
 
-**この読み込みはビルド時にサーバー側で走ります。** Client Component から `fs` は使えません。
+**この読み込みはビルド時にサーバー側で走ります。** クライアントコンポーネントから`fs`は使えません。
 
 記事を1本足せば、`app/blog/[slug]/page.tsx` の `generateStaticParams` が拾って、ビルド時に静的ページとsitemapエントリが自動生成されます。表示側のコードを触る必要はありません。
 
 ---
 
-## 4. Server / Client の境界
+## 4. サーバーコンポーネントとクライアントコンポーネントの境界
 
-デフォルトは Server Component。`"use client"` は必要最小限にします。現在、ファイル先頭に `"use client"` がある主なものは:
+デフォルトはサーバーコンポーネントです。`"use client"`は必要最小限にします。現在、ファイル先頭に`"use client"`がある主なものは次のとおりです。
 
 - `components/layout/Header.tsx` — モバイルメニューの開閉
 - `app/faq/FAQClient.tsx` — アコーディオンの開閉
@@ -162,9 +162,9 @@ PRを作ると Vercel の bot がコメントで一時URLを貼ってくれま�
 - `components/site/CursorGlow.tsx` `NeuralBackground.tsx` `ScrollProgress.tsx` — ブラウザ上の演出
 - `components/ui/DiscordCTA.tsx` `InstagramCTA.tsx` `Magnetic.tsx` `Parallax.tsx` `Tilt.tsx` `Typewriter.tsx` — 操作・計測・演出
 
-`app/HomeClient.tsx` は名前に `Client` とありますが、現在は `"use client"` を持たないServer Componentです。ファイル名だけで判定せず、先頭の宣言と実際に使うAPIを確認してください。
+`app/HomeClient.tsx`は名前に`Client`とありますが、現在は`"use client"`を持たないサーバーコンポーネントです。ファイル名だけで判定せず、先頭の宣言と実際に使うAPIを確認してください。
 
-パターンとして、**ページの `page.tsx` は Server のまま `metadata` を持ち、動きのある部分だけを別ファイルの Client Component に切り出す**、という形をとっています（`app/faq/page.tsx` → `FAQClient.tsx` が典型）。新しいページでもこれに倣ってください。
+パターンとして、**ページの`page.tsx`はサーバーコンポーネントのまま`metadata`を持ち、動きのある部分だけを別ファイルのクライアントコンポーネントに切り出す**、という形をとっています（`app/faq/page.tsx` → `FAQClient.tsx`が典型）。新しいページでもこれに倣ってください。
 
 ---
 
@@ -200,7 +200,7 @@ source: { branch: "gh-pages", path: "/" }
 
 正しい順序:
 
-1. リポジトリ Settings → Pages → Build and deployment → Source を **「GitHub Actions」** に変更（org のオーナー権限が必要）
+1. リポジトリの「Settings」→「Pages」→「Build and deployment」→「Source」を**「GitHub Actions」**に変更（組織のオーナー権限が必要）
 2. その後 `git push origin --delete gh-pages`
 
 カスタムドメインは `public/CNAME` がビルドで `out/CNAME` に出るので、ブランチを消しても失われません。
@@ -216,6 +216,6 @@ source: { branch: "gh-pages", path: "/" }
 - テスト・リンタが未整備。品質の担保がビルドと目視のみ
 - `app/sitemap.ts` の静的ルートが手書きで、ページ追加時に更新漏れが起きうる
 - コンテンツ更新のフロー（誰がどの粒度で `lib/` を編集するか）が未定
-- 古いブランチがremoteに残っている。`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace` は、いずれも履歴上 `main` に取り込み済み。`feat/site-refresh-2026-07` は未マージなので、作業者へ確認せず削除しない
+- 古いブランチがリモートに残っている。`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace`は、いずれも履歴上`main`に取り込み済み。`feat/site-refresh-2026-07`は未マージなので、作業者へ確認せず削除しない
 
 > ローカルの `.vercel/` は別プロジェクト（`research-os-app`）を指す誤ったリンクだったため 2026-08-06 に削除済み。ただし**このリポジトリ自体は Vercel と連携しています**（下記のプレビュー環境）。混同しないこと。
