@@ -93,4 +93,4 @@ Vercel を軸に、足りない部分を各サイトの強みで補う。
 - ヒーロー: **「AIを、当たり前に。」/ AI, as default.**（Vercel路線で実装）
 - `lib/events.ts` ＋ `components/site/NextEvent.tsx`：次回イベント「コードで学ぶ！DeepLearning（6/19）」を表示。`flyer` フィールドでチラシ画像も表示可（画像は `public/images/events/` に要設置）。
 - ホーム末尾を「はじめの一歩（Discord / イベントの2ドア＋L0→L3の階段）」に刷新。
-- ブランチ `explore/frontier-os`・未コミット。構成は維持し完成度（上記5レバー）を上げる方針。
+- 当時の作業ブランチ `explore/frontier-os` は内容が `main` に取り込まれ、2026-08-11 に削除済み。構成は維持し完成度（上記5レバー）を上げる方針。
