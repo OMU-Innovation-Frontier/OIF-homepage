@@ -22,6 +22,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Pages 設定の初期化（GitHub 公式テンプレート準拠）。
+      #
+      # 注意: enablement は「Pages が無効なら有効化する」だけで、
+      # すでに legacy（ブランチ配信）で有効になっている設定を workflow 方式へ
+      # 切り替えることはできない。2026-08-06 に実際に試して確認済み。
+      #
+      # このリポジトリの設定は現在も legacy（配信元 = gh-pages）のままで、
+      # 切り替えには Settings → Pages → Source の手作業（オーナー権限）が必要。
+      # 実際に配信されているのは下の deploy ジョブが上げる成果物。
+      # 詳細は docs/architecture.md「既知の課題」を参照。
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
