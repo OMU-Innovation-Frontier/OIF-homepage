@@ -107,7 +107,7 @@ Codexを起動する前に、ターミナルでブランチを作ります。以
 
 ```bash
 cd ~/dev/OIF-homepage
-git switch main
+git switch develop
 git pull --ff-only
 git switch -c feat/add-news-tanaka
 codex
@@ -177,7 +177,7 @@ PC表示は変えない前提で修正案を出して。まだ編集しないで
 ## 8. 最後に必ず守ること
 
 - **AIの差分を読まずにコミットしない**
-- **`main` に直接コミット・pushしない**
+- **`main` / `develop` に直接コミット・pushしない。** 作業ブランチは `develop` から切り、PRの base も `develop`
 - **`git push --force` を使わない**
 - デプロイ設定、依存パッケージ、対外文言を勝手に変更させない
 - `.env`、APIキー、個人情報をCodexへ渡さない

@@ -39,7 +39,9 @@ OIF公式サイトの構成。実装に入る前に読むと迷いが減りま�
 ────────────           ─────────────────────      ──────────────────
  npm run dev
      ↓
- ブランチで作業  ──push──→  PR → レビュー → main
+ ブランチで作業  ──push──→  PR → レビュー → develop
+                                    ↓
+                          （リリース: develop → main）
                                     ↓
                           .github/workflows/deploy.yml
                           （actions/setup-node@20
@@ -52,7 +54,10 @@ OIF公式サイトの構成。実装に入る前に読むと迷いが減りま�
                              https://oif-ai.com
 ```
 
-- トリガーは **`main` への push** のみ（手動実行 `workflow_dispatch` も可）
+- 開発の基準は **`develop`**（デフォルトブランチ）。作業ブランチは develop から切り、develop へ PR を出す。
+  `develop` → `main` の「リリース」は、更新のSNS告知に合わせて代表がまとめて実施する
+- トリガーは **`main` への push** のみ（手動実行 `workflow_dispatch` も可）。
+  **`develop` へのマージでは公開されない**
 - CI は Node 20 を使用。ローカルもそれ以上を推奨
 - **CIは `npm run build` を走らせるだけ**です。テストもリンタもありません。ローカルでビルドが通らない変更は、CIでも必ず落ちます
 - 反映まで数分。失敗は GitHub の Actions タブで確認できます
@@ -216,6 +221,7 @@ source: { branch: "gh-pages", path: "/" }
 - テスト・リンタが未整備。品質の担保がビルドと目視のみ
 - `app/sitemap.ts` の静的ルートが手書きで、ページ追加時に更新漏れが起きうる
 - コンテンツ更新のフロー（誰がどの粒度で `lib/` を編集するか）が未定
-- 古いブランチがリモートに残っている。`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace`は、いずれも履歴上`main`に取り込み済み。`feat/site-refresh-2026-07`は未マージなので、作業者へ確認せず削除しない
+- 古いリモートブランチは整理済み（2026-08-11）。`explore/frontier-os` `feat/design-system-refresh` `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace` を削除。`feat/site-refresh-2026-07` は `develop` に改名し、開発の基準ブランチとして存続
+- `develop` に**ダミーデータが残っている**（`lib/members.ts` のメンバー紹介）。実データへの差し替えがリリースの前提条件
 
 > ローカルの `.vercel/` は別プロジェクト（`research-os-app`）を指す誤ったリンクだったため 2026-08-06 に削除済み。ただし**このリポジトリ自体は Vercel と連携しています**（下記のプレビュー環境）。混同しないこと。

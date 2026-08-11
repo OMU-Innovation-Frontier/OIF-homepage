@@ -37,7 +37,10 @@
 - コンテンツ更新フロー（誰が・どの粒度で `lib/` と `content/` を編集するか）
 - 古いリモートブランチは整理済み（2026-08-11）。`explore/frontier-os` `feat/design-system-refresh`
   `feat/homepage-improvements` `feat/add-activities-session` `mani_workspace` を削除。
-  `feat/site-refresh-2026-07` は **`develop` に改名して存続**（未マージ。作業者へ確認せず削除しない）。
+- **ブランチ運用（2026-08-11 決定）**: `develop` がデフォルト＝開発の基準、`main` は本番。
+  作業ブランチは develop から切り develop へ PR。`develop` → `main` の「リリース」は代表がまとめて実施
+  （記事追加は将来CMSへ移す前提／更新のたびにSNS告知するため、変更をまとめて出す運用）。
+  **リリース前提条件: `lib/members.ts` のダミーデータを実データへ差し替えること**（現在トップに表示される）。
 - ホスティングが2系統ある点に注意: **本番 = GitHub Pages / PRプレビュー = Vercel**
   （プロジェクト `oif-homepage`、GitHub連携でPRごとに自動デプロイ）。
   ローカルの `.vercel/` は別プロジェクト `research-os-app` への誤リンクで削除済み（2026-08-06）。
