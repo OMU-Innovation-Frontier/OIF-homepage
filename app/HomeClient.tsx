@@ -3,8 +3,9 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { newsItems } from "@/lib/news";
 import { getNextEvent } from "@/lib/events";
-import DivisionSplit from "@/components/site/DivisionSplit";
+import { ltEvents } from "@/lib/lt-events";
 import NextEvent from "@/components/site/NextEvent";
+import OrgStructure from "@/components/site/OrgStructure";
 import PastEvents from "@/components/site/PastEvents";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import InstagramCTA from "@/components/ui/InstagramCTA";
@@ -15,8 +16,37 @@ const ticker = [
   "TRANSFORMER", "PROTOTYPING", "KAGGLE", "GENERATIVE AI", "RESEARCH",
 ];
 
+// ふだんの活動＝この3つ。部門ではなく、全員でひとつのコミュニティ。
+const activities = [
+  {
+    index: "01",
+    label: "LT TALKS",
+    title: "LT会",
+    body: "いま挑戦していることを持ち寄って発表する、OIFの生命線。テーマは自由——AIでも、それ以外でも。",
+    href: "/lt/",
+    cta: "記録を見る",
+  },
+  {
+    index: "02",
+    label: "EVENTS",
+    title: "イベント",
+    body: "月1ペースの初心者向けハンズオンや交流会。単発完結だから、1回だけの参加でも大丈夫。",
+    href: "/activities/",
+    cta: "これまでの開催",
+  },
+  {
+    index: "03",
+    label: "MAKE",
+    title: "教材・サービスづくり",
+    body: "ハンズオンの教材や、コミュニティ発のサービスを自分たちの手でつくる。デザイン・運営も立派な戦力。",
+    href: "/join/#roles",
+    cta: "つくる側にまわる",
+  },
+];
+
 export default function HomeClient() {
   const nextEvent = getNextEvent();
+  const latestLT = ltEvents[0];
 
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
@@ -116,11 +146,24 @@ export default function HomeClient() {
         </div>
       </div>
 
-      {/* ============ MISSION ============ */}
-      <section className="bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
+      {/* ============ MISSION (photo band, scroll parallax) ============ */}
+      <section className="relative overflow-hidden bg-ink">
+        <div aria-hidden className="absolute inset-0">
+          <Image
+            src="/images/lt/lt1-02.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover parallax-bg opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
-            <h2 className="statement">
+            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-white/50 mb-8">
+              MISSION
+            </p>
+            <h2 className="statement text-white">
               AIを少し学ぶだけで、
               <br className="hidden md:block" />
               できることが、一気に増える。
@@ -129,7 +172,7 @@ export default function HomeClient() {
             </h2>
             <Link
               href="/about/"
-              className="mt-10 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors link-underline"
+              className="mt-10 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-white/60 hover:text-white transition-colors link-underline"
             >
               OIFについて →
             </Link>
@@ -137,33 +180,96 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ============ DEPARTMENTS (interactive split) ============ */}
+      {/* ============ ACTIVITIES (what we actually do) ============ */}
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div className="max-w-xl">
-              <p className="section-label mb-3">TWO DIRECTIONS</p>
-              <h2 className="headline">つくる と、理解する。</h2>
+              <p className="section-label mb-3">WHAT WE DO</p>
+              <h2 className="headline">ふだんの活動は、この3つ。</h2>
               <p className="mt-4 text-ink/60 leading-relaxed">
-                もっと深くやりたくなった人のための、興味別の部門。
-                最初から選ぶ必要はないし、入らなくてもOK。
+                部門はなく、全員でひとつのコミュニティ。
+                興味のある活動にだけ、顔を出せばOK。
               </p>
             </div>
             <p className="font-mono text-xs text-ink/40 md:pb-2">
-              任意・掛け持ち自由
+              参加自由・掛け持ち歓迎
             </p>
           </Reveal>
 
-          <Reveal delay={120}>
-            <DivisionSplit />
+          <Reveal delay={120} className="grid md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+            {activities.map((a) => (
+              <Link
+                key={a.index}
+                href={a.href}
+                className="group relative bg-night-2 p-8 md:p-10 flex flex-col min-h-[18rem] hover:bg-night-3 transition-colors duration-300"
+              >
+                <span
+                  aria-hidden
+                  className="absolute -top-4 right-5 text-[6rem] font-black leading-none tracking-tighter text-ink/[0.04] group-hover:text-ink/[0.06] transition-colors"
+                >
+                  {a.index}
+                </span>
+                <p className="relative font-mono text-[11px] tracking-[0.35em] text-ink/45 mb-5">
+                  {a.label}
+                </p>
+                <h3 className="relative text-2xl md:text-3xl font-black tracking-tighter mb-3">
+                  {a.title}
+                </h3>
+                <p className="relative text-sm md:text-base text-ink/60 leading-relaxed mb-8">
+                  {a.body}
+                </p>
+                <span className="relative mt-auto inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 md:opacity-60 group-hover:opacity-100 transition-opacity">
+                  {a.cta}
+                  <span className="transition-transform duration-200 group-hover:translate-x-2" aria-hidden>→</span>
+                </span>
+              </Link>
+            ))}
+          </Reveal>
+
+          {/* themes: つくる/理解する は部門ではなくタグ */}
+          <Reveal delay={200} className="mt-8 flex flex-col md:flex-row md:items-center gap-3 md:gap-8 border border-ink/10 bg-night px-6 py-5 md:px-8">
+            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-ink/40 shrink-0">
+              2 THEMES
+            </p>
+            <p className="text-sm text-ink/60 leading-relaxed">
+              どの活動にも、2つのテーマが流れている——
+              <Link href="/developers/" className="font-bold text-ink/80 hover:text-ink transition-colors link-underline">つくる</Link>
+              （手を動かして形にする）と、
+              <Link href="/theory/" className="font-bold text-ink/80 hover:text-ink transition-colors link-underline">理解する</Link>
+              （なぜ動くのかから考える）。
+            </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ============ SNAPSHOTS (real activity photos) ============ */}
+      {/* ============ STRUCTURE (org shape + recruiting) ============ */}
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
           <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div className="max-w-xl">
+              <p className="section-label mb-3">STRUCTURE</p>
+              <h2 className="headline">組織のかたち</h2>
+              <p className="mt-4 text-ink/60 leading-relaxed">
+                外側にいるほど身軽で、内側に入るほどOIFをつくる側になる。
+                どこにいてもメンバーで、行き来はいつでも自由。
+              </p>
+            </div>
+            <p className="font-mono text-xs text-ink/40 md:pb-2">
+              役割なしが基本・立候補はいつでも
+            </p>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <OrgStructure />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ SNAPSHOTS (layered photo collage) ============ */}
+      <section className="border-t border-ink/10 bg-night overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+          <Reveal className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <p className="section-label mb-3">SNAPSHOTS</p>
               <h2 className="headline">活動の風景</h2>
@@ -176,25 +282,120 @@ export default function HomeClient() {
             </Link>
           </Reveal>
 
-          <Reveal delay={120} className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+          {/* overlapping collage — photos layer over each other, never a flat grid */}
+          <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[2/1]">
             {[
-              { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子" },
-              { src: "/images/vibe-coding-workshop.png", alt: "Vibe Codingワークショップの様子" },
-              { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの様子" },
+              {
+                src: "/images/first-workshop.png",
+                alt: "第1回ワークショップの様子",
+                cls: "left-0 top-[6%] w-[58%] z-10",
+                delay: 0,
+              },
+              {
+                src: "/images/vibe-coding-workshop.png",
+                alt: "Vibe Codingワークショップの様子",
+                cls: "right-0 top-0 w-[46%] z-20",
+                delay: 120,
+              },
+              {
+                src: "/images/llm-handson.png",
+                alt: "ローカルLLMハンズオンの様子",
+                cls: "left-[32%] bottom-0 w-[44%] z-30",
+                delay: 240,
+              },
             ].map((p) => (
-              <Link key={p.src} href="/activities/" className="group relative block aspect-[4/3] overflow-hidden bg-night-2">
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-smooth"
-                />
-              </Link>
+              <Reveal key={p.src} delay={p.delay} className={`absolute ${p.cls}`}>
+                <Link
+                  href="/activities/"
+                  className="group block border-[5px] md:border-8 border-paper bg-paper shadow-card hover:shadow-card-hover transition-shadow duration-300"
+                >
+                  <span className="relative block w-full aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={p.src}
+                      alt={p.alt}
+                      fill
+                      sizes="(max-width: 640px) 60vw, 40vw"
+                      className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-smooth"
+                    />
+                  </span>
+                </Link>
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
+
+      {/* ============ LT会 (light band + layered photo) ============ */}
+      {latestLT && (
+        <section className="border-t border-ink/10 bg-night overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              <Reveal className="lg:col-span-7">
+                <p className="section-label mb-3">LT会</p>
+                <h2 className="headline">{latestLT.title}</h2>
+                <p className="mt-4 text-ink/60 leading-relaxed max-w-2xl">
+                  {latestLT.summary}
+                </p>
+
+                <ul className="mt-8 max-w-xl border-t border-ink/10">
+                  {latestLT.talks.map((t, i) => (
+                    <li
+                      key={t.title}
+                      className="flex items-baseline gap-4 py-3.5 border-b border-ink/10"
+                    >
+                      <span className="font-mono text-[11px] tracking-widest text-ink/40 shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-sm md:text-base font-bold tracking-tight">
+                        {t.title}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/lt/"
+                  className="mt-8 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors link-underline"
+                >
+                  すべての記録を見る →
+                </Link>
+              </Reveal>
+
+              {/* layered photo pair (kept from the collage language) */}
+              <Reveal delay={140} className="lg:col-span-5">
+                <div className="relative pb-10 pr-4">
+                  <Link
+                    href="/lt/"
+                    className="group relative block w-[88%] aspect-[4/3] overflow-hidden border border-ink/10 shadow-card"
+                  >
+                    <Image
+                      src={latestLT.photos[0].src}
+                      alt={latestLT.photos[0].alt}
+                      fill
+                      sizes="(max-width: 1024px) 88vw, 36vw"
+                      className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-smooth"
+                    />
+                  </Link>
+                  <Link
+                    href="/lt/"
+                    className="group absolute bottom-0 right-0 w-[52%] block border-[6px] border-paper bg-paper shadow-card-hover z-10"
+                  >
+                    <span className="relative block w-full aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={latestLT.photos[2].src}
+                        alt={latestLT.photos[2].alt}
+                        fill
+                        sizes="(max-width: 1024px) 52vw, 20vw"
+                        className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-smooth"
+                      />
+                    </span>
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ============ LATEST UPDATES ============ */}
       <section className="bg-night">

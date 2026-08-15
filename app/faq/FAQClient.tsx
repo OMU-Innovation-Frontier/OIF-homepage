@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import SectionDivider from "@/components/site/SectionDivider";
 import DiscordCTA from "@/components/ui/DiscordCTA";
@@ -29,9 +30,21 @@ const faqs: FAQItem[] = [
         はい、もちろん大丈夫です。<br />
         OIFのDiscordには誰でも無料で参加できます。<br /><br />
         参加後は自分のペースで関わり方を選べます：<br />
-        ・<strong>メンバー</strong>…情報の受け取りや相談など、気軽に参加するスタイル<br />
-        ・<strong>コアメンバー</strong>…勉強会やプロジェクト開発に積極的に参加するスタイル<br /><br />
+        ・ニュースやイベント案内を受け取って、気になるときだけ参加する<br />
+        ・勉強会やプロジェクト、イベント運営や制作にも関わる<br /><br />
         まずは眺めるだけでも歓迎です。
+      </>
+    )
+  },
+  {
+    question: "運営や制作を手伝うには？",
+    answer: (
+      <>
+        OIF の活動は、手を挙げた学生がつくっています。<br />
+        興味に合わせて<strong>デザイン</strong>（SNS・ホームページ）・<strong>技術</strong>（教材づくり・サービス開発）・<strong>運営</strong>（イベント企画・外部連携）の3つの役割があり、ひとつだけでも兼任でもOKです。<br /><br />
+        目安は週2〜3時間から。スキルは入ってから身につければ大丈夫です。<br />
+        やってみたい人は、Discordで「デザインやりたい」などひとこと送ってください。<br /><br />
+        詳しくは <Link href="/join/#roles" className="underline underline-offset-4 hover:text-ink">参加ページの「つくる側にも、まわれる。」</Link> をご覧ください。
       </>
     )
   },

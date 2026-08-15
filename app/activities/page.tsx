@@ -100,6 +100,24 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
+      {/* LT会 — compact link-out */}
+      <section className="border-b border-ink/10">
+        <Link
+          href="/lt/"
+          className="group flex items-center justify-between gap-4 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-8 md:py-10 hover:bg-ink/[0.03] transition-colors"
+        >
+          <div>
+            <p className="section-label mb-2">LT会</p>
+            <p className="text-lg md:text-xl font-bold tracking-tight">
+              メンバーの挑戦を共有するライトニングトーク会
+            </p>
+          </div>
+          <span className="font-mono text-xs tracking-widest text-ink/50 group-hover:text-ink transition-colors shrink-0">
+            見る →
+          </span>
+        </Link>
+      </section>
+
       {/* Featured Sessions Section */}
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">

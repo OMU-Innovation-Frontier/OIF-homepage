@@ -16,14 +16,22 @@ interface DiscordCTAProps {
   location: string;
   label?: string;
   size?: Size;
+  /** "dark" = black button for light surfaces (default). "light" = white button for dark photo bands. */
+  variant?: "dark" | "light";
   className?: string;
 }
+
+const variants = {
+  dark: "bg-ink text-paper border-ink hover:bg-ink/85 hover:border-ink/85",
+  light: "bg-white text-ink border-white hover:bg-white/85 hover:border-white/85",
+};
 
 /** Primary conversion button for the join funnel. Tracks clicks by location. */
 export default function DiscordCTA({
   location,
   label = "Discordに参加",
   size = "lg",
+  variant = "dark",
   className = "",
 }: DiscordCTAProps) {
   return (
@@ -34,7 +42,7 @@ export default function DiscordCTA({
       data-cta="discord"
       data-cta-location={location}
       onClick={() => trackEvent("discord_join_click", { location })}
-      className={`group inline-flex items-center gap-3 bg-ink text-paper font-bold tracking-widest uppercase border border-ink hover:bg-ink/85 hover:border-ink/85 transition-colors duration-200 ${sizes[size]} ${className}`}
+      className={`group inline-flex items-center gap-3 font-bold tracking-widest uppercase border transition-colors duration-200 ${variants[variant]} ${sizes[size]} ${className}`}
     >
       {label}
       <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />

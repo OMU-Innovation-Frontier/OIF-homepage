@@ -3,9 +3,9 @@ import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Theory | OIF理論部門",
+  title: "理解する | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF理論部門は、AIや機械学習を「なぜ動くのか」から理解する部門です。数学・統計・アルゴリズム、論文輪読、ゼミを通じて、説明できる力を育てます。",
+    "OIFの活動を貫くテーマ「理解する」。AIや機械学習を「なぜ動くのか」から理解する。数学・統計・アルゴリズム、論文輪読、勉強会を通じて、説明できる力を育てます。",
   alternates: { canonical: "https://oif-ai.com/theory/" },
 };
 
@@ -46,15 +46,16 @@ export default function TheoryPage() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
           <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
             <div className="lg:col-span-6 animate-fade-up">
-              <p className="section-label mb-6">OIF THEORY DIVISION</p>
-              <h1 className="text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+              <p className="section-label mb-6">THEME 02 — UNDERSTAND</p>
+              <h1 className="display mb-8">
                 なぜ、
                 <br />
-                <span className="text-theory-bright">動くのか。</span>
+                動くのか。
               </h1>
-              <p className="text-lg xl:text-xl text-ink/70 max-w-lg leading-relaxed mb-10">
+              <p className="lede max-w-lg mb-10">
                 AIを「ツールとして使う」だけで終わらせない。
-                数学・統計・アルゴリズムの根幹から、その仕組みを理解する部門。
+                数学・統計・アルゴリズムの根幹から、その仕組みを理解していく。
+                OIFのすべての活動に流れるテーマのひとつ。
               </p>
               <Link
                 href="/join/"
@@ -94,8 +95,8 @@ export default function TheoryPage() {
       <section className="border-t border-ink/10 bg-night">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="max-w-4xl">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-12">
-              <span className="text-theory-bright">ブラックボックス</span>のまま、
+            <h2 className="statement mb-12">
+              ブラックボックスのまま、
               <br className="hidden md:block" />
               使わない。
             </h2>
@@ -112,7 +113,7 @@ export default function TheoryPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12">
             <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">THE STACK OF UNDERSTANDING</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">基礎から、積み上げる</h2>
+            <h2 className="headline">基礎から、積み上げる</h2>
           </Reveal>
           <Reveal delay={100} className="border-t border-ink/10">
             {concepts.map((c) => (
@@ -143,7 +144,7 @@ export default function TheoryPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-14">
             <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">THE JOURNEY</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">理解の、グラデーション</h2>
+            <h2 className="headline">理解の、グラデーション</h2>
           </Reveal>
           <Reveal delay={100}>
             <div className="h-1 w-full bg-gradient-to-r from-ink/10 via-ink/30 to-theory-bright mb-10" />
@@ -167,7 +168,7 @@ export default function TheoryPage() {
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
             <Reveal>
               <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">READING LIST</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">読む、議論する</h2>
+              <h2 className="headline mb-6">読む、議論する</h2>
               <p className="text-ink/60 leading-relaxed max-w-md">
                 論文や教材を輪読し、発表・議論・フィードバックを繰り返す。人に説明することで、理解は一段深まる。
               </p>
@@ -192,7 +193,7 @@ export default function TheoryPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
           <Reveal className="mb-12">
             <p className="font-mono text-xs tracking-[0.3em] text-theory-bright mb-4">HOW WE STUDY</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter">学ぶ手段は、それぞれ</h2>
+            <h2 className="headline">学ぶ手段は、それぞれ</h2>
             <p className="mt-5 text-ink/60 leading-relaxed max-w-xl">
               資格・講座・書籍・論文。そのときの興味やキャリアに合わせて、各自の方法でAIを深めています。
             </p>
@@ -219,8 +220,8 @@ export default function TheoryPage() {
       <section className="relative overflow-hidden border-t border-ink/10 bg-night">
         <div aria-hidden className="absolute inset-0 dot-grid opacity-40" />
         <Reveal className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-48">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] max-w-5xl mb-12">
-            <span className="text-theory-bright">なんとなく</span>から、
+          <h2 className="statement max-w-5xl mb-12">
+            なんとなくから、
             <br />
             説明できるところまで。
           </h2>
@@ -228,7 +229,7 @@ export default function TheoryPage() {
             href="/join/"
             className="inline-flex items-center gap-2 bg-theory text-white px-8 py-4 text-sm font-bold tracking-widest uppercase border border-theory hover:bg-theory-bright hover:text-night hover:border-theory-bright transition-colors duration-200"
           >
-            理論に参加する
+            一緒に理解する側へ
             <span aria-hidden>→</span>
           </Link>
         </Reveal>

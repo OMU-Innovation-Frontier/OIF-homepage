@@ -9,47 +9,44 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Light monochrome foundation (main-aligned). The whole site is
-        // black-on-white with no chromatic accents. `ink` is the semantic
-        // alias for the near-black text/element color; `black` stays warm.
+        // Foundation: strict black & white. No chromatic accent (blue was
+        // trialed and withdrawn 2026-07-25). Depth comes from photography,
+        // hairlines and near-white raised surfaces — not color.
         black: "#0B0C0E",
         white: "#ffffff",
 
-        // Light foundation: `paper` is the white page base, `ink` the
-        // near-black text/element color, `muted` a subtle light surface.
         ink: "#0B0C0E", // primary text / elements (near-black)
         paper: "#FFFFFF", // base page background (white)
-        muted: "#F4F5F7", // subtle section blocks (raised light surface)
-        line: "#E5E7EB", // hairline borders on light
+        muted: "#F7F7F8", // subtle section blocks (barely-off white)
+        line: "#E7E8EA", // hairline borders on light
 
-        // Brand accent — unified to monochrome (no color). Kept as a token so
-        // the ~180 existing usages recolor in one place. `bright` is the
-        // emphasis variant readable on light surfaces (mid-dark grey).
+        // Accent tokens kept for the ~180 existing usages. DEFAULT = solid
+        // fills (black). `bright` = text emphasis (dark grey, typography-level).
         accent: {
           DEFAULT: "#0B0C0E",
           bright: "#3F3F46",
-          tint: "#F4F5F7",
+          tint: "#F7F7F8",
         },
 
-        // Division accents — intentionally unified (no per-division color).
+        // Theme accents (つくる/理解する) — intentionally unified with accent.
         dev: {
           DEFAULT: "#0B0C0E",
           dark: "#000000",
           bright: "#3F3F46",
-          tint: "#F4F5F7",
+          tint: "#F7F7F8",
         },
         theory: {
           DEFAULT: "#0B0C0E",
           dark: "#000000",
           bright: "#3F3F46",
-          tint: "#F4F5F7",
+          tint: "#F7F7F8",
         },
 
-        // "night" surfaces flipped to light so `bg-night-*` reads on white.
+        // "night" surfaces are light raised surfaces (barely-off white).
         night: {
           DEFAULT: "#FFFFFF",
-          2: "#F4F5F7",
-          3: "#ECEDEF",
+          2: "#F7F7F8",
+          3: "#EFEFF1",
         },
       },
       fontFamily: {

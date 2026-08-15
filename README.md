@@ -86,9 +86,11 @@ npm run build
 
 ## 公開
 
+ブランチは2本立てです。開発の基準は**`develop`**（デフォルトブランチ）、公開中の本番が**`main`**です。作業ブランチは`develop`から切り、`develop`へPRを出します。`develop`から`main`への「リリース」は、サイト更新のSNS告知に合わせて代表がまとめて行います。
+
 `main`へプッシュすると、[`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)が起動します。Node.js 20で`npm ci`と`npm run build`を実行し、`out/`をGitHub Pagesへ公開します。手作業での公開操作はありません。
 
-`main`へ直接コミットしないでください。作業用ブランチで変更し、PRを作成します。
+`main`にも`develop`にも直接コミットしないでください。また、`main`をbaseにしたPRを作らないでください。
 
 ## 保守上の注意
 

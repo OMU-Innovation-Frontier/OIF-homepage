@@ -10,6 +10,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Activities", href: "/activities/" },
+  { label: "LT", href: "/lt/" },
   { label: "Blog", href: "/blog/" },
   { label: "Join", href: "/join/" },
   { label: "FAQ", href: "/faq/" },
@@ -51,11 +52,11 @@ export default function Header() {
           aria-label="OIF ホーム"
         >
           <Image
-            src="/logo.png"
+            src="/logo-square.png"
             alt="OIF Logo"
             width={120}
             height={120}
-            className="h-10 w-auto md:h-12 mix-blend-multiply transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]"
+            className="h-9 w-auto md:h-10 mix-blend-multiply transition-transform duration-[800ms] ease-smooth group-hover:rotate-[360deg]"
             priority
           />
         </Link>
