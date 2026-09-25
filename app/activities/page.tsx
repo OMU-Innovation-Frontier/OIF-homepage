@@ -6,6 +6,7 @@ import SectionDivider from "@/components/site/SectionDivider";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
 import { getAllProjects } from "@/lib/projects";
+import { ltEvents } from "@/lib/lt-events";
 
 export const metadata: Metadata = {
   title: "Activities | OIF 大阪公立大学のAIサークルの活動",
@@ -14,6 +15,27 @@ export const metadata: Metadata = {
     canonical: "https://oif-ai.com/activities/",
   },
 };
+
+// 毎週続けている活動。単発のイベント記録（featuredSessions）とは別に、
+// 「入ったら普段なにをするのか」に先に答えるためのセクション。
+// ⚠️ 対外文言のため、公開前に代表（田口）の確認を通すこと。
+const routines = [
+  {
+    n: "01",
+    title: "Noemaで学ぶ",
+    body: "OIFが運営する技術メディア「Noema」の記事を読み進めて、AIの仕組みの土台をそろえます。ひとりで教材を探すところから始めなくていいようにするためです。",
+  },
+  {
+    n: "02",
+    title: "定期進捗MTG",
+    body: "週に1回集まって、いま自分が何をしているかを短く共有します。詰まっているところは、その場で相談して持ち帰ります。",
+  },
+  {
+    n: "03",
+    title: "作業会",
+    body: "同じ場所に集まって、それぞれの作業を進めます。手が止まったときに聞ける人がいる、という状態をつくるための時間です。",
+  },
+];
 
 const contests = [
   {
@@ -85,38 +107,134 @@ const featuredSessions = [
 
 export default function ActivitiesPage() {
   const projects = getAllProjects();
+  const latestLT = ltEvents[0];
 
   return (
     <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
       {/* HERO */}
       <section className="relative min-h-[60svh] flex items-center border-b border-ink/10 bg-paper">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full animate-fade-up">
-          <p className="section-label mb-6">Activities</p>
-          <h1 className="display mb-8">Activities</h1>
+          <p className="section-label mb-6">ACTIVITIES</p>
+          <h1 className="display mb-8">活動</h1>
           <p className="lede max-w-2xl">
-            勉強会・ハンズオン・プロダクト・コンテスト——
-            OIFがこれまで手を動かしてきた記録です。
+            毎週続けていることと、これまで手を動かしてきた記録。
+            その両方を置いています。
           </p>
         </div>
       </section>
 
-      {/* LT会 — compact link-out */}
-      <section className="border-b border-ink/10">
-        <Link
-          href="/lt/"
-          className="group flex items-center justify-between gap-4 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-8 md:py-10 hover:bg-ink/[0.03] transition-colors"
-        >
-          <div>
-            <p className="section-label mb-2">LT会</p>
-            <p className="text-lg md:text-xl font-bold tracking-tight">
-              メンバーの挑戦を共有するライトニングトーク会
+      {/* ROUTINE — 毎週やっていること（継続の活動を、記録より先に見せる） */}
+      <section className="bg-muted border-b border-line">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+          <Reveal className="mb-16">
+            <p className="section-label mb-4">ROUTINE</p>
+            <h2 className="headline mb-6">毎週やっていること</h2>
+            <p className="text-ink/60 leading-relaxed max-w-2xl">
+              イベントのときだけ集まる団体ではありません。普段はこの3つを回しています。
             </p>
+          </Reveal>
+
+          <div className="grid gap-px bg-line md:grid-cols-3 border border-line">
+            {routines.map((r, i) => (
+              <Reveal key={r.n} delay={i * 80}>
+                <div className="bg-paper h-full p-8 md:p-10">
+                  <p className="font-mono text-[11px] tracking-[0.3em] text-ink/30 mb-6">
+                    {r.n}
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4">
+                    {r.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-ink/60 leading-relaxed">
+                    {r.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
-          <span className="font-mono text-xs tracking-widest text-ink/50 group-hover:text-ink transition-colors shrink-0">
-            見る →
-          </span>
-        </Link>
+        </div>
       </section>
+
+      {/* LT会 — Activities 内の一セクションとして実体を置く（/lt/ は過去回の一覧） */}
+      {latestLT && (
+        <section className="py-20 md:py-28 border-b border-ink/10">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+            <Reveal className="mb-16">
+              <p className="section-label mb-4">LIGHTNING TALKS</p>
+              <h2 className="headline mb-6">LT会</h2>
+              <p className="text-ink/60 leading-relaxed max-w-2xl">
+                メンバーそれぞれが、いま挑戦していることを持ち寄って話す会です。定期的に開催しています。
+              </p>
+            </Reveal>
+
+            <div className="border border-ink/12">
+              <div className="p-8 md:p-10 border-b border-ink/12">
+                <p className="font-mono text-xs tracking-widest text-ink/50 mb-2">
+                  {latestLT.dateLabel} ・ {latestLT.place}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-4">
+                  {latestLT.title}
+                </h3>
+                <p className="text-base leading-relaxed text-ink/75 max-w-3xl">
+                  {latestLT.summary}
+                </p>
+              </div>
+
+              {latestLT.photos.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 border-b border-ink/12">
+                  {latestLT.photos.map((p) => (
+                    <div key={p.src} className="relative aspect-[4/3] overflow-hidden bg-night-2">
+                      <Image
+                        src={p.src}
+                        alt={p.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="p-8 md:p-10">
+                <p className="text-xs font-medium tracking-widest uppercase text-ink/60 mb-4">
+                  発表一覧
+                </p>
+                <ul>
+                  {latestLT.talks.map((talk) => (
+                    <li
+                      key={talk.title}
+                      className="flex items-center justify-between gap-4 py-3 border-b border-ink/10 last:border-b-0"
+                    >
+                      <span className="text-base font-bold tracking-tight">{talk.title}</span>
+                      {talk.slideUrl && (
+                        <a
+                          href={talk.slideUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-ink/60 transition-colors duration-200 shrink-0"
+                        >
+                          スライド
+                          <ExternalLink size={16} strokeWidth={1.75} />
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {ltEvents.length > 1 && (
+              <Link
+                href="/lt/"
+                className="group inline-flex items-center gap-2 mt-8 text-sm font-bold tracking-widest uppercase"
+              >
+                これまでのLT会をすべて見る
+                <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Featured Sessions Section */}
       <section className="py-20 md:py-28">
