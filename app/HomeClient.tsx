@@ -17,30 +17,31 @@ const ticker = [
 ];
 
 // ふだんの活動＝この3つ。部門ではなく、全員でひとつのコミュニティ。
+// Activities ページの ROUTINE セクションと内容を揃えている（食い違わせないこと）。
 const activities = [
   {
     index: "01",
+    label: "LEARN",
+    title: "Noemaで学ぶ",
+    body: "OIFが運営する技術メディア「Noema」の記事で、AIの仕組みの土台をそろえる。ひとりで教材を探すところから始めなくていい。",
+    href: "/activities/",
+    cta: "活動を見る",
+  },
+  {
+    index: "02",
+    label: "MEET",
+    title: "定期進捗MTG・作業会",
+    body: "週に1回集まって、いま何をしているかを短く共有する。そのまま同じ場所で、それぞれの作業を進める。",
+    href: "/join/",
+    cta: "参加する",
+  },
+  {
+    index: "03",
     label: "LT TALKS",
     title: "LT会",
     body: "いま挑戦していることを持ち寄って発表する、OIFの生命線。テーマは自由——AIでも、それ以外でも。",
     href: "/lt/",
     cta: "記録を見る",
-  },
-  {
-    index: "02",
-    label: "EVENTS",
-    title: "イベント",
-    body: "月1ペースの初心者向けハンズオンや交流会。単発完結だから、1回だけの参加でも大丈夫。",
-    href: "/activities/",
-    cta: "これまでの開催",
-  },
-  {
-    index: "03",
-    label: "MAKE",
-    title: "教材・サービスづくり",
-    body: "ハンズオンの教材や、コミュニティ発のサービスを自分たちの手でつくる。デザイン・運営も立派な戦力。",
-    href: "/join/#roles",
-    cta: "つくる側にまわる",
   },
 ];
 
