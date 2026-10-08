@@ -41,7 +41,7 @@ export const projects: Project[] = [
     name: "Noema",
     tagline: "AIでできることと、その仕組みを、具体例から解説する技術メディア",
     status: "公開中",
-    href: "https://noema-learn.mani1261790.workers.dev/",
+    href: "https://noema-learn.uk/",
     image: "/images/noema-screenshot.png",
     summary:
       "コーディングエージェントやニューラルネットワークなど、AIでできることとその仕組みを、初めての人にもわかる具体例から解説する技術メディア。記事はテーマごとのシリーズにまとまっていて、順番にたどりながら学べる。",
