@@ -3,20 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  /* Global reset for sharp, minimalist design */
-  *,
-  *::before,
-  *::after {
-    border-radius: 0 !important;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-paper text-ink antialiased;
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-inter), var(--font-noto), system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -39,14 +32,6 @@
   .on-dark *:focus-visible,
   *:focus-visible.on-dark {
     @apply ring-white ring-offset-ink;
-  }
-
-  /* Ensure all buttons and inputs are sharp */
-  button,
-  input,
-  textarea,
-  select {
-    border-radius: 0 !important;
   }
 
   @media (prefers-reduced-motion: reduce) {

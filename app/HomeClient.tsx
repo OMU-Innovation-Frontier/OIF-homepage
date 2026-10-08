@@ -1,323 +1,218 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { ArrowRight, RotateCcw } from "lucide-react";
 import { newsItems } from "@/lib/news";
 import { getNextEvent } from "@/lib/events";
-import { ltEvents } from "@/lib/lt-events";
-import NextEvent from "@/components/site/NextEvent";
-import OrgStructure from "@/components/site/OrgStructure";
-import PastEvents from "@/components/site/PastEvents";
+import { projects } from "@/lib/projects";
 import DiscordCTA from "@/components/ui/DiscordCTA";
-import InstagramCTA from "@/components/ui/InstagramCTA";
 import Reveal from "@/components/ui/Reveal";
 
-const ticker = [
-  "LLM", "MACHINE LEARNING", "DEEP LEARNING", "WEB DEV", "PAPERS",
-  "TRANSFORMER", "PROTOTYPING", "KAGGLE", "GENERATIVE AI", "RESEARCH",
+// 活動の流れ。文言の根拠は docs/redesign-2026-10.md（代表確認済み）
+const flow = [
+  {
+    step: "01",
+    name: "入る",
+    title: "まずは Discord から",
+    body: "会費は無料で、プログラミングの経験もいりません。Discord に入るか、イベントに1回来てみるところから始められます。",
+    href: "/join/",
+  },
+  {
+    step: "02",
+    name: "学ぶ",
+    title: "Noema と OIF学習",
+    body: "技術メディア Noema では、AI で何ができるかと、それがなぜ動くのかを具体例で説明しています。勉強・制作のメンバーは、全員が学習プログラム「OIF学習」で同じ土台をつくります。",
+    href: "/activities/#learn",
+  },
+  {
+    step: "03",
+    name: "つくる",
+    title: "実際に動くものをつくる",
+    body: "記事を読んで分かることと、自分でつくれることは別です。週1回の定例会で進み具合を共有しながら、動くものをつくるところまで取り組みます。",
+    href: "/activities/#build",
+  },
+  {
+    step: "04",
+    name: "発表する",
+    title: "つくったものを人前に出す",
+    body: "LT会では、完成していなくても発表できます。ハンズオンや学外のコンテストにも出ています。",
+    href: "/activities/#present",
+  },
+  {
+    step: "05",
+    name: "教える側になる",
+    title: "次に入った人に渡す",
+    body: "発表したものは、記事・教材・スライドとして残ります。教わった人が、次は教える側に回ります。",
+    href: "/about/",
+  },
 ];
 
-// ふだんの活動＝この3つ。部門ではなく、全員でひとつのコミュニティ。
-// Activities ページの ROUTINE セクションと内容を揃えている（食い違わせないこと）。
-const activities = [
-  {
-    index: "01",
-    label: "LEARN",
-    title: "Noemaで学ぶ",
-    body: "OIFが運営する技術メディア「Noema」の記事で、AIの仕組みの土台をそろえる。ひとりで教材を探すところから始めなくていい。",
-    href: "/activities/",
-    cta: "活動を見る",
-  },
-  {
-    index: "02",
-    label: "MEET",
-    title: "定期進捗MTG・作業会",
-    body: "週に1回集まって、いま何をしているかを短く共有する。そのまま同じ場所で、それぞれの作業を進める。",
-    href: "/join/",
-    cta: "参加する",
-  },
-  {
-    index: "03",
-    label: "LT TALKS",
-    title: "LT会",
-    body: "いま挑戦していることを持ち寄って発表する、OIFの生命線。テーマは自由——AIでも、それ以外でも。",
-    href: "/lt/",
-    cta: "記録を見る",
-  },
+const startSteps = [
+  "Discord に参加する",
+  "気になるイベントに1回来てみる",
+  "Noema の記事を1本読んでみる",
+  "勉強・制作に加わりたくなったら、運営に声をかける",
+];
+
+const snapshots = [
+  { src: "/images/lt/lt1-02.jpg", alt: "LT会で発表するメンバー" },
+  { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの様子" },
+  { src: "/images/vibe-coding-workshop.png", alt: "Vibe Codingワークショップの様子" },
 ];
 
 export default function HomeClient() {
   const nextEvent = getNextEvent();
-  const latestLT = ltEvents[0];
 
   return (
-    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
-      {/* ============ HERO (Vercel-route: one calm statement) ============ */}
-      <section className="relative min-h-[calc(100svh-3.5rem)] md:min-h-[calc(100svh-4rem)] flex items-center bg-paper overflow-hidden">
-        {/* --- right half: Morinomiya campus, wrapped by the OIF swirl (large, faded) --- */}
-        {/* outer = positioning only (keeps it centered in the first screen) */}
+    <div className="bg-canvas text-ink">
+      {/* ============ 最初の画面 ============ */}
+      <section className="relative overflow-hidden">
         <div
           aria-hidden
-          className="hidden md:block absolute top-1/2 -translate-y-1/2 right-[-8%] lg:right-[-4%] aspect-square w-[40rem] lg:w-[52rem] pointer-events-none"
+          className="hidden md:block absolute top-1/2 -translate-y-1/2 -right-40 lg:-right-24 h-[44rem] w-[44rem] opacity-[0.06] mix-blend-multiply pointer-events-none"
         >
-          {/* inner = fade-in animation (separate node so it can't override the centering transform) */}
-          <div className="relative h-full w-full animate-fade-up [animation-delay:240ms]">
-            {/* campus photo: circular, edge feathered so there's no visible seam */}
-            <div className="absolute inset-[8%] overflow-hidden rounded-full opacity-50 [mask-image:radial-gradient(closest-side,#000_72%,transparent_94%)] [-webkit-mask-image:radial-gradient(closest-side,#000_72%,transparent_94%)]">
-              <Image
-                src="/images/morinomiya-campus.jpg"
-                alt=""
-                fill
-                sizes="(max-width: 768px) 0px, 52rem"
-                priority
-                className="object-cover"
-              />
-            </div>
-          </div>
+          <Image src="/logo-square.png" alt="" fill sizes="44rem" className="object-contain" priority />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32 w-full">
-          {/* --- left: statement --- */}
-          <div className="max-w-xl">
-            <p className="eyebrow text-ink/45 mb-8 animate-fade-up">
-              OMU Innovation Frontier
-            </p>
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-16 pb-20 md:pt-28 md:pb-32">
+          <p className="text-sm font-bold text-brand animate-fade-up">大阪公立大学の AI コミュニティ</p>
 
-            <h1 className="display animate-fade-up [animation-delay:80ms]">
-              <span className="whitespace-nowrap">初心者から、</span><wbr /><span className="whitespace-nowrap">即戦力へ。</span>
-            </h1>
+          <h1 className="mt-5 font-black leading-[1.1] text-[clamp(2.75rem,8vw,6rem)] animate-fade-up [animation-delay:80ms]">
+            <span className="whitespace-nowrap">初心者から、</span>
+            <wbr />
+            <span className="whitespace-nowrap">即戦力へ。</span>
+          </h1>
 
-            <p className="mt-7 font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-ink/40 animate-fade-up [animation-delay:160ms]">
-              Beginner to capable, fast.
-            </p>
+          <p className="mt-8 max-w-2xl text-base md:text-lg leading-loose text-ink/75 animate-fade-up [animation-delay:160ms]">
+            大阪公立大学の学生がつくっている AI のコミュニティです。プログラミングの経験がなくても、正しい順番で学んで手を動かせば、人の役に立つものをつくれるようになります。
+          </p>
 
-            <p className="lede mt-10 max-w-xl animate-fade-up [animation-delay:240ms]">
-              大阪公立大学のAI・テクノロジーコミュニティ。
-              プログラミング未経験でも、AIを少し学ぶだけで、
-              できることが一気に広がる。
-            </p>
-
-            {nextEvent && (
-              <a
-                href="#next-event"
-                className="group inline-flex items-center gap-3 border border-ink/15 bg-night-2 px-4 py-2.5 mt-10 animate-fade-up [animation-delay:320ms] hover:border-ink/35 transition-colors"
-              >
-                <span className="font-mono text-[11px] tracking-widest text-accent-bright">NEXT</span>
-                <span className="text-sm font-bold tracking-tight">
-                  {nextEvent.dateLabel} — {nextEvent.audience}
-                </span>
-                <span className="text-ink/40 group-hover:translate-y-0.5 transition-transform" aria-hidden>↓</span>
-              </a>
-            )}
-
-            <div className="mt-8 flex flex-wrap gap-4 animate-fade-up [animation-delay:400ms]">
-              <DiscordCTA location="home_hero" />
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-8 py-5 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
-              >
-                OIFについて
-              </Link>
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 animate-fade-up [animation-delay:480ms]">
-              <p className="font-mono text-xs tracking-widest text-ink/50">
-                経験不問・文系歓迎・入会費なし
-              </p>
-              <InstagramCTA location="home_hero_instagram" size="sm" label="活動を見る @oif.ai.omu" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ NEXT EVENT (low-barrier on-ramp) ============ */}
-      <NextEvent />
-
-      {/* ============ PAST EVENTS (social proof) ============ */}
-      <PastEvents />
-
-      {/* ============ TICKER (decorative) ============ */}
-      <div aria-hidden className="border-y border-ink/10 overflow-hidden py-4 bg-paper">
-        <div className="flex w-max animate-marquee gap-10 font-mono text-xs tracking-[0.25em] uppercase text-ink/35">
-          {[...ticker, ...ticker].map((t, i) => (
-            <span key={i} className="flex items-center gap-10">
-              {t}
-              <span className="h-1 w-1 bg-ink/20" />
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ============ MISSION (photo band, scroll parallax) ============ */}
-      <section className="relative overflow-hidden bg-ink">
-        <div aria-hidden className="absolute inset-0">
-          <Image
-            src="/images/lt/lt1-02.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover parallax-bg opacity-90"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
-          <Reveal className="max-w-4xl">
-            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-white/50 mb-8">
-              MISSION
-            </p>
-            <h2 className="statement text-white">
-              AIを少し学ぶだけで、
-              <br className="hidden md:block" />
-              できることが、一気に増える。
-              <br className="hidden md:block" />
-              それを、ここで。
-            </h2>
-            <Link
-              href="/about/"
-              className="mt-10 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-white/60 hover:text-white transition-colors link-underline"
-            >
-              OIFについて →
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ ACTIVITIES (what we actually do) ============ */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div className="max-w-xl">
-              <p className="section-label mb-3">WHAT WE DO</p>
-              <h2 className="headline">ふだんの活動は、この3つ。</h2>
-              <p className="mt-4 text-ink/60 leading-relaxed">
-                部門はなく、全員でひとつのコミュニティ。
-                興味のある活動にだけ、顔を出せばOK。
-              </p>
-            </div>
-            <p className="font-mono text-xs text-ink/40 md:pb-2">
-              参加自由・掛け持ち歓迎
-            </p>
-          </Reveal>
-
-          <Reveal delay={120} className="grid md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
-            {activities.map((a) => (
-              <Link
-                key={a.index}
-                href={a.href}
-                className="group relative bg-night-2 p-8 md:p-10 flex flex-col min-h-[18rem] hover:bg-night-3 transition-colors duration-300"
-              >
-                <span
-                  aria-hidden
-                  className="absolute -top-4 right-5 text-[6rem] font-black leading-none tracking-tighter text-ink/[0.04] group-hover:text-ink/[0.06] transition-colors"
-                >
-                  {a.index}
-                </span>
-                <p className="relative font-mono text-[11px] tracking-[0.35em] text-ink/45 mb-5">
-                  {a.label}
-                </p>
-                <h3 className="relative text-2xl md:text-3xl font-black tracking-tighter mb-3">
-                  {a.title}
-                </h3>
-                <p className="relative text-sm md:text-base text-ink/60 leading-relaxed mb-8">
-                  {a.body}
-                </p>
-                <span className="relative mt-auto inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 md:opacity-60 group-hover:opacity-100 transition-opacity">
-                  {a.cta}
-                  <span className="transition-transform duration-200 group-hover:translate-x-2" aria-hidden>→</span>
-                </span>
-              </Link>
+          <ul className="mt-6 flex flex-wrap gap-2 animate-fade-up [animation-delay:200ms]">
+            {["会費無料", "経験不問", "文系も1年生も歓迎"].map((t) => (
+              <li key={t} className="rounded-full border border-ink/15 bg-white px-3 py-1 text-xs font-bold text-ink/70">
+                {t}
+              </li>
             ))}
-          </Reveal>
+          </ul>
 
-          {/* themes: つくる/理解する は部門ではなくタグ */}
-          <Reveal delay={200} className="mt-8 flex flex-col md:flex-row md:items-center gap-3 md:gap-8 border border-ink/10 bg-night px-6 py-5 md:px-8">
-            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-ink/40 shrink-0">
-              2 THEMES
-            </p>
-            <p className="text-sm text-ink/60 leading-relaxed">
-              どの活動にも、2つのテーマが流れている——
-              <Link href="/developers/" className="font-bold text-ink/80 hover:text-ink transition-colors link-underline">つくる</Link>
-              （手を動かして形にする）と、
-              <Link href="/theory/" className="font-bold text-ink/80 hover:text-ink transition-colors link-underline">理解する</Link>
-              （なぜ動くのかから考える）。
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ STRUCTURE (org shape + recruiting) ============ */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <Reveal className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div className="max-w-xl">
-              <p className="section-label mb-3">STRUCTURE</p>
-              <h2 className="headline">組織のかたち</h2>
-              <p className="mt-4 text-ink/60 leading-relaxed">
-                外側にいるほど身軽で、内側に入るほどOIFをつくる側になる。
-                どこにいてもメンバーで、行き来はいつでも自由。
-              </p>
-            </div>
-            <p className="font-mono text-xs text-ink/40 md:pb-2">
-              役割なしが基本・立候補はいつでも
-            </p>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <OrgStructure />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ SNAPSHOTS (layered photo collage) ============ */}
-      <section className="border-t border-ink/10 bg-night overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <Reveal className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <p className="section-label mb-3">SNAPSHOTS</p>
-              <h2 className="headline">活動の風景</h2>
-            </div>
+          {nextEvent && (
             <Link
               href="/activities/"
-              className="font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors md:pb-2 link-underline"
+              className="mt-8 inline-flex items-center gap-3 rounded-full bg-brand-soft px-4 py-2 text-sm animate-fade-up [animation-delay:240ms]"
             >
-              view all →
+              <span className="font-bold text-brand">次のイベント</span>
+              <span className="font-bold">
+                {nextEvent.dateLabel} {nextEvent.audience}
+              </span>
+            </Link>
+          )}
+
+          <div className="mt-10 flex flex-wrap gap-3 animate-fade-up [animation-delay:280ms]">
+            <DiscordCTA location="home_hero" variant="brand" size="md" label="Discord に参加する" />
+            <Link
+              href="/about/"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-white px-6 py-3 text-sm font-bold hover:border-ink/40 transition-colors duration-200"
+            >
+              OIF について
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ 理念 ============ */}
+      <section className="bg-white border-y border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <p className="text-sm font-bold text-brand">理念</p>
+            <h2 className="mt-4 text-3xl md:text-4xl font-black leading-snug">
+              AI を少し学ぶだけで、できることが一気に増える。
+            </h2>
+          </Reveal>
+          <Reveal delay={100} className="lg:col-span-6 lg:col-start-7 lg:pt-10">
+            <p className="text-base md:text-lg leading-loose text-ink/75">
+              ここでいう即戦力は、最初から優秀な人のことではありません。初心者が、実際に使われるものをつくれるところまで進むための場所です。エリートを選ぶ団体ではないので、参加の条件は少なくしています。
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ 活動の流れ ============ */}
+      <section id="flow">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+          <Reveal className="max-w-2xl">
+            <p className="text-sm font-bold text-brand">活動の流れ</p>
+            <h2 className="mt-4 text-3xl md:text-4xl font-black leading-snug">
+              OIF の活動は、この順番で回っています。
+            </h2>
+          </Reveal>
+
+          <ol className="relative mt-14 grid gap-5 lg:grid-cols-5 lg:gap-4">
+            <span aria-hidden className="hidden lg:block absolute left-[10%] right-[10%] top-6 h-px bg-brand/30" />
+            <span aria-hidden className="lg:hidden absolute left-6 top-6 bottom-6 w-px bg-brand/30" />
+            {flow.map((f, i) => (
+              <li key={f.step} className="reveal relative flex gap-5 lg:flex-col lg:gap-0" style={{ animationDelay: `${i * 60}ms` }}>
+                  <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white lg:mx-auto">
+                    {f.step}
+                  </span>
+                  <Link
+                    href={f.href}
+                    className="group flex flex-1 flex-col rounded-2xl border border-ink/10 bg-white p-6 lg:mt-6 hover:border-brand/40 hover:shadow-card transition-all duration-200"
+                  >
+                    <p className="text-sm font-bold text-brand">{f.name}</p>
+                    <h3 className="mt-2 text-lg font-black leading-snug">{f.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{f.body}</p>
+                    <span className="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-bold text-ink/60 group-hover:text-brand transition-colors">
+                      詳しく見る
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                    </span>
+                  </Link>
+                </li>
+            ))}
+          </ol>
+
+          <Reveal className="mt-8 flex items-start gap-3 rounded-2xl bg-brand-soft p-5 md:items-center">
+            <RotateCcw className="h-5 w-5 shrink-0 text-brand" aria-hidden />
+            <p className="text-sm md:text-base leading-relaxed">
+              05 から 01 に戻ります。教わった人が次に入った人に教えるので、メンバーが卒業しても、学ぶための材料は団体に残ります。
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ メンバーがつくったもの ============ */}
+      <section className="bg-white border-y border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+          <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm font-bold text-brand">つくったもの</p>
+              <h2 className="mt-4 text-3xl md:text-4xl font-black leading-snug">メンバーがつくったもの</h2>
+            </div>
+            <Link href="/activities/#build" className="text-sm font-bold text-ink/60 hover:text-brand transition-colors">
+              活動ページで見る →
             </Link>
           </Reveal>
 
-          {/* overlapping collage — photos layer over each other, never a flat grid */}
-          <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[2/1]">
-            {[
-              {
-                src: "/images/first-workshop.png",
-                alt: "第1回ワークショップの様子",
-                cls: "left-0 top-[6%] w-[58%] z-10",
-                delay: 0,
-              },
-              {
-                src: "/images/vibe-coding-workshop.png",
-                alt: "Vibe Codingワークショップの様子",
-                cls: "right-0 top-0 w-[46%] z-20",
-                delay: 120,
-              },
-              {
-                src: "/images/llm-handson.png",
-                alt: "ローカルLLMハンズオンの様子",
-                cls: "left-[32%] bottom-0 w-[44%] z-30",
-                delay: 240,
-              },
-            ].map((p) => (
-              <Reveal key={p.src} delay={p.delay} className={`absolute ${p.cls}`}>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {projects.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 80}>
                 <Link
-                  href="/activities/"
-                  className="group block border-[5px] md:border-8 border-paper bg-paper shadow-card hover:shadow-card-hover transition-shadow duration-300"
+                  href={`/projects/${p.slug}/`}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-canvas hover:shadow-card transition-shadow duration-200"
                 >
-                  <span className="relative block w-full aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={p.src}
-                      alt={p.alt}
-                      fill
-                      sizes="(max-width: 640px) 60vw, 40vw"
-                      className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-smooth"
-                    />
+                  {p.image && (
+                    <span className="relative block aspect-[16/10] overflow-hidden border-b border-ink/10 bg-white">
+                      <Image
+                        src={p.image}
+                        alt={`${p.name} の画面`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-500 ease-smooth"
+                      />
+                    </span>
+                  )}
+                  <span className="flex flex-1 flex-col p-6">
+                    <span className="text-xs font-bold text-ink/50">{p.status}</span>
+                    <span className="mt-1 text-xl font-black">{p.name}</span>
+                    <span className="mt-2 text-sm leading-relaxed text-ink/70">{p.tagline}</span>
                   </span>
                 </Link>
               </Reveal>
@@ -326,178 +221,63 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ============ LT会 (light band + layered photo) ============ */}
-      {latestLT && (
-        <section className="border-t border-ink/10 bg-night overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              <Reveal className="lg:col-span-7">
-                <p className="section-label mb-3">LT会</p>
-                <h2 className="headline">{latestLT.title}</h2>
-                <p className="mt-4 text-ink/60 leading-relaxed max-w-2xl">
-                  {latestLT.summary}
-                </p>
-
-                <ul className="mt-8 max-w-xl border-t border-ink/10">
-                  {latestLT.talks.map((t, i) => (
-                    <li
-                      key={t.title}
-                      className="flex items-baseline gap-4 py-3.5 border-b border-ink/10"
-                    >
-                      <span className="font-mono text-[11px] tracking-widest text-ink/40 shrink-0">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-sm md:text-base font-bold tracking-tight">
-                        {t.title}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/lt/"
-                  className="mt-8 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors link-underline"
+      {/* ============ 最近の活動 ============ */}
+      <section>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-7">
+            <p className="text-sm font-bold text-brand">最近の活動</p>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {snapshots.map((s, i) => (
+                <span
+                  key={s.src}
+                  className={`relative block overflow-hidden rounded-2xl ${i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-[4/3]"}`}
                 >
-                  すべての記録を見る →
-                </Link>
-              </Reveal>
-
-              {/* layered photo pair (kept from the collage language) */}
-              <Reveal delay={140} className="lg:col-span-5">
-                <div className="relative pb-10 pr-4">
-                  <Link
-                    href="/lt/"
-                    className="group relative block w-[88%] aspect-[4/3] overflow-hidden border border-ink/10 shadow-card"
-                  >
-                    <Image
-                      src={latestLT.photos[0].src}
-                      alt={latestLT.photos[0].alt}
-                      fill
-                      sizes="(max-width: 1024px) 88vw, 36vw"
-                      className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-smooth"
-                    />
-                  </Link>
-                  <Link
-                    href="/lt/"
-                    className="group absolute bottom-0 right-0 w-[52%] block border-[6px] border-paper bg-paper shadow-card-hover z-10"
-                  >
-                    <span className="relative block w-full aspect-[4/3] overflow-hidden">
-                      <Image
-                        src={latestLT.photos[2].src}
-                        alt={latestLT.photos[2].alt}
-                        fill
-                        sizes="(max-width: 1024px) 52vw, 20vw"
-                        className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-smooth"
-                      />
-                    </span>
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============ LATEST UPDATES ============ */}
-      <section className="bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-20">
-            <div className="shrink-0">
-              <p className="section-label mb-3">LOG</p>
-              <h2 className="text-2xl md:text-3xl font-black tracking-tighter">Latest Updates</h2>
-              <Link href="/news/" className="mt-5 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/50 hover:text-ink transition-colors">
-                view all →
-              </Link>
-              <div className="mt-8 pt-6 border-t border-ink/10">
-                <p className="text-sm text-ink/60 leading-relaxed mb-4">
-                  日々の活動は Instagram で発信中。
-                </p>
-                <InstagramCTA location="home_log_instagram" size="sm" />
-              </div>
-            </div>
-            <div className="flex-1 border-t border-ink/10">
-              {newsItems.map((item, i) => (
-                <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 py-6 border-b border-ink/10">
-                  <time className="font-mono text-xs tracking-widest text-ink/50 w-28 shrink-0">
-                    {item.date || "——.——.——"}
-                  </time>
-                  <span className="text-base md:text-lg font-bold tracking-tight">
-                    {item.title}
-                  </span>
-                </div>
+                  <Image src={s.src} alt={s.alt} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+                </span>
               ))}
             </div>
-          </div>
+          </Reveal>
+
+          <Reveal delay={100} className="lg:col-span-5">
+            <h2 className="text-2xl font-black">お知らせ</h2>
+            <ul className="mt-6 border-t border-ink/10">
+              {newsItems.slice(0, 3).map((item) => (
+                <li key={`${item.date}-${item.title}`} className="border-b border-ink/10 py-5">
+                  <time className="text-xs font-bold text-ink/50">{item.date}</time>
+                  <p className="mt-1 font-bold leading-relaxed">{item.title}</p>
+                </li>
+              ))}
+            </ul>
+            <Link href="/news/" className="mt-6 inline-block text-sm font-bold text-ink/60 hover:text-brand transition-colors">
+              お知らせをすべて見る →
+            </Link>
+          </Reveal>
         </div>
       </section>
 
-      {/* ============ FIRST STEP — 2 doors + staircase (low-barrier on-ramp) ============ */}
-      <section id="start" className="relative overflow-hidden border-t border-ink/10 bg-night">
-        {/* brand motif: the OIF swirl, oversized and barely-there */}
-        <div aria-hidden className="absolute -right-32 top-1/3 -translate-y-1/2 h-[34rem] w-[34rem] opacity-[0.04] mix-blend-multiply animate-[spin_140s_linear_infinite] pointer-events-none">
-          <Image src="/logo-square.png" alt="" fill className="object-contain" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y-lg">
-          <Reveal className="max-w-2xl">
-            <p className="section-label mb-4">START HERE</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-tight">
-              まずは、のぞくところから。
-            </h2>
-            <p className="mt-5 lede">
-              「すごい人の集まり」に見えるかもしれません。でも入口はこの2つだけ。どちらも、今日からで大丈夫。
+      {/* ============ はじめ方 ============ */}
+      <section className="bg-ink text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <h2 className="text-3xl md:text-4xl font-black leading-snug">はじめ方</h2>
+            <p className="mt-5 leading-relaxed text-white/70">
+              会費は無料です。他大学の学生も参加できますが、キャンパスで直接会って活動することが多いので、大阪公立大学の学生をおすすめしています。
             </p>
+            <div className="mt-8">
+              <DiscordCTA location="home_start" variant="brand" size="md" label="Discord に参加する" />
+            </div>
           </Reveal>
 
-          {/* two doors */}
-          <div className="mt-12 grid md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
-            {/* Door 01 — Discord */}
-            <div className="bg-night p-8 md:p-10 flex flex-col">
-              <p className="font-mono text-[11px] tracking-widest text-ink/45 mb-4">DOOR 01 · いつでも</p>
-              <h3 className="text-2xl font-black tracking-tighter">Discordに入る</h3>
-              <p className="mt-3 text-ink/65 leading-relaxed">
-                まずは雰囲気を見るだけでOK。0コミットで、質問も雑談も自由。
-              </p>
-              <ul className="mt-6 space-y-2 text-sm">
-                {["1クリックで参加", "退会はいつでも自由", "通知だけ受け取るのもOK"].map((t) => (
-                  <li key={t} className="flex items-center gap-2 text-ink/75">
-                    <Check className="w-4 h-4 text-ink/55 shrink-0" aria-hidden />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-8">
-                <DiscordCTA location="home_door_discord" size="md" label="Discordに参加" />
-              </div>
-            </div>
-
-            {/* Door 02 — Event */}
-            <div className="bg-night p-8 md:p-10 flex flex-col">
-              <p className="font-mono text-[11px] tracking-widest text-ink/45 mb-4">DOOR 02 · 月1ペース</p>
-              <h3 className="text-2xl font-black tracking-tighter">イベントに来る</h3>
-              <p className="mt-3 text-ink/65 leading-relaxed">
-                単発のハンズオンや交流会に1回だけ。申し込み不要・出入り自由のゆるい回もあります。
-              </p>
-              <ul className="mt-6 space-y-2 text-sm">
-                {["未経験OK", "1人参加歓迎", "友達づくり歓迎"].map((t) => (
-                  <li key={t} className="flex items-center gap-2 text-ink/75">
-                    <Check className="w-4 h-4 text-ink/55 shrink-0" aria-hidden />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-8">
-                <a
-                  href="#next-event"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
-                >
-                  次回のイベントを見る
-                  <span aria-hidden>↑</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
+          <ol className="lg:col-span-6 lg:col-start-7 space-y-3">
+            {startSteps.map((s, i) => (
+              <li key={s} className="reveal flex items-center gap-4 rounded-2xl bg-white/[0.06] p-5" style={{ animationDelay: `${i * 60}ms` }}>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 text-sm font-bold">
+                    {i + 1}
+                  </span>
+                  <span className="font-bold leading-relaxed">{s}</span>
+                </li>
+            ))}
+          </ol>
         </div>
       </section>
     </div>

@@ -42,6 +42,14 @@ const config: Config = {
           tint: "#F7F7F8",
         },
 
+        // 2026-10 刷新: あたたかい白の土台と、操作できる場所だけに使う1色
+        canvas: "#FAF9F6",
+        brand: {
+          DEFAULT: "#C2410C",
+          dark: "#9A3412",
+          soft: "#FFF4ED",
+        },
+
         // "night" surfaces are light raised surfaces (barely-off white).
         night: {
           DEFAULT: "#FFFFFF",
@@ -53,6 +61,8 @@ const config: Config = {
         sans: [
           "var(--font-inter)",
           "Inter",
+          "var(--font-noto)",
+          "Noto Sans JP",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -68,18 +78,6 @@ const config: Config = {
           "Consolas",
           "monospace",
         ],
-      },
-      // Sharp corners are part of the brand identity — keep radius at 0.
-      borderRadius: {
-        none: "0",
-        sm: "0",
-        DEFAULT: "0",
-        md: "0",
-        lg: "0",
-        xl: "0",
-        "2xl": "0",
-        "3xl": "0",
-        full: "0",
       },
       boxShadow: {
         // Subtle elevation that adds depth without softening the corners.
