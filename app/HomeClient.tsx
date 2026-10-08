@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, RotateCcw } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { newsItems } from "@/lib/news";
-import { getNextEvent } from "@/lib/events";
 import { projects } from "@/lib/projects";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
@@ -13,7 +12,7 @@ const flow = [
     step: "01",
     name: "入る",
     title: "まずは Discord から",
-    body: "会費は無料で、プログラミングの経験もいりません。Discord に入るか、イベントに1回来てみるところから始められます。",
+    body: "会費は無料で、プログラミングの経験もいりません。まずは Discord に入って、雰囲気を見るところから始められます。",
     href: "/join/",
   },
   {
@@ -34,21 +33,13 @@ const flow = [
     step: "04",
     name: "発表する",
     title: "つくったものを人前に出す",
-    body: "LT会では、完成していなくても発表できます。ハンズオンや学外のコンテストにも出ています。",
+    body: "つくったものは定例会で発表します。完成していなくてもかまいません。学外のコンテストにも出ています。",
     href: "/activities/#present",
-  },
-  {
-    step: "05",
-    name: "教える側になる",
-    title: "次に入った人に渡す",
-    body: "発表したものは、記事・教材・スライドとして残ります。教わった人が、次は教える側に回ります。",
-    href: "/about/",
   },
 ];
 
 const startSteps = [
   "Discord に参加する",
-  "気になるイベントに1回来てみる",
   "Noema の記事を1本読んでみる",
   "勉強・制作に加わりたくなったら、運営に声をかける",
 ];
@@ -60,8 +51,6 @@ const snapshots = [
 ];
 
 export default function HomeClient() {
-  const nextEvent = getNextEvent();
-
   return (
     <div className="bg-canvas text-ink">
       {/* ============ 最初の画面 ============ */}
@@ -94,17 +83,6 @@ export default function HomeClient() {
             ))}
           </ul>
 
-          {nextEvent && (
-            <Link
-              href="/activities/"
-              className="mt-8 inline-flex items-center gap-3 rounded-full bg-brand-soft px-4 py-2 text-sm animate-fade-up [animation-delay:240ms]"
-            >
-              <span className="font-bold text-brand">次のイベント</span>
-              <span className="font-bold">
-                {nextEvent.dateLabel} {nextEvent.audience}
-              </span>
-            </Link>
-          )}
 
           <div className="mt-10 flex flex-wrap gap-3 animate-fade-up [animation-delay:280ms]">
             <DiscordCTA location="home_hero" variant="brand" size="md" label="Discord に参加する" />
@@ -141,12 +119,12 @@ export default function HomeClient() {
           <Reveal className="max-w-2xl">
             <p className="text-sm font-bold text-brand">活動の流れ</p>
             <h2 className="mt-4 text-3xl md:text-4xl font-black leading-snug">
-              OIF の活動は、この順番で回っています。
+              OIF での活動は、この順番で進みます。
             </h2>
           </Reveal>
 
-          <ol className="relative mt-14 grid gap-5 lg:grid-cols-5 lg:gap-4">
-            <span aria-hidden className="hidden lg:block absolute left-[10%] right-[10%] top-6 h-px bg-brand/30" />
+          <ol className="relative mt-14 grid gap-5 lg:grid-cols-4 lg:gap-5">
+            <span aria-hidden className="hidden lg:block absolute left-[12.5%] right-[12.5%] top-6 h-px bg-brand/30" />
             <span aria-hidden className="lg:hidden absolute left-6 top-6 bottom-6 w-px bg-brand/30" />
             {flow.map((f, i) => (
               <li key={f.step} className="reveal relative flex gap-5 lg:flex-col lg:gap-0" style={{ animationDelay: `${i * 60}ms` }}>
@@ -169,12 +147,6 @@ export default function HomeClient() {
             ))}
           </ol>
 
-          <Reveal className="mt-8 flex items-start gap-3 rounded-2xl bg-brand-soft p-5 md:items-center">
-            <RotateCcw className="h-5 w-5 shrink-0 text-brand" aria-hidden />
-            <p className="text-sm md:text-base leading-relaxed">
-              05 から 01 に戻ります。教わった人が次に入った人に教えるので、メンバーが卒業しても、学ぶための材料は団体に残ります。
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -225,7 +197,7 @@ export default function HomeClient() {
       <section>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <p className="text-sm font-bold text-brand">最近の活動</p>
+            <p className="text-sm font-bold text-brand">これまでの活動</p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               {snapshots.map((s, i) => (
                 <span

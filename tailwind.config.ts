@@ -42,12 +42,12 @@ const config: Config = {
           tint: "#F7F7F8",
         },
 
-        // 2026-10 刷新: あたたかい白の土台と、操作できる場所だけに使う1色
-        canvas: "#FAF9F6",
+        // 2026-10 刷新: 白黒を維持。brand はボタンなど操作できる場所に使う黒
+        canvas: "#FFFFFF",
         brand: {
-          DEFAULT: "#C2410C",
-          dark: "#9A3412",
-          soft: "#FFF4ED",
+          DEFAULT: "#0B0C0E",
+          dark: "#3F3F46",
+          soft: "#F4F4F5",
         },
 
         // "night" surfaces are light raised surfaces (barely-off white).
