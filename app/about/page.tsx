@@ -32,11 +32,11 @@ export default function AboutPage() {
       <section className="border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <SectionHeading label="OIF をつくった理由" title="「AI をやってみたい。でも、何から始めればいいか分からない。」" />
+            <SectionHeading title="OIF をつくった理由" />
           </Reveal>
           <Reveal delay={100} className="lg:col-span-6 lg:col-start-7">
             <p className="text-base md:text-lg leading-loose text-ink/75">
-              大学で AI に興味を持つ学生は増えていますが、独学には壁があります。聞ける人もいないまま、次のようなところで止まってしまいます。
+              「AI をやってみたい。でも、何から始めればいいか分からないし、聞ける人もいない。」大学で AI に興味を持つ学生は増えていますが、ひとりで学ぶと、次のようなところで止まってしまいがちです。
             </p>
             <ul className="mt-6 space-y-3">
               {walls.map((w) => (
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-base md:text-lg font-bold leading-loose">OIF は、この壁を越えるための場所です。</p>
+            <p className="mt-6 text-base md:text-lg leading-loose text-ink/75">OIF は、こうしたところで止まらずに学び続けられるようにするためにつくりました。</p>
           </Reveal>
         </div>
       </section>
@@ -70,7 +70,7 @@ export default function AboutPage() {
       <section className="border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Reveal>
-            <SectionHeading label="こんな人を歓迎します" title="参加の条件は、少なくしています。" />
+            <SectionHeading title="参加の条件" />
           </Reveal>
           <ul className="mt-10 grid gap-4 md:grid-cols-3">
             {welcomeConditions.map((c, i) => (
@@ -89,8 +89,8 @@ export default function AboutPage() {
       <section className="bg-white border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Reveal>
-            <SectionHeading label="組織のかたち" title="OIF は3つの層でできています。">
-              <p>上下関係ではありません。内側に行くほど、関わる量と責任が増えるというだけです。</p>
+            <SectionHeading title="組織のかたち">
+              <p>OIF は3つの層でできています。上下関係はなく、内側に行くほど関わる量と責任が増えます。</p>
             </SectionHeading>
           </Reveal>
           <Reveal delay={100} className="mt-12">
@@ -102,7 +102,7 @@ export default function AboutPage() {
       <section>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <SectionHeading label="目指していること" title="「この大学で AI をやるなら、まず OIF」" />
+            <SectionHeading title="目指していること" />
           </Reveal>
           <Reveal delay={100} className="lg:col-span-6 lg:col-start-7">
             <p className="text-base md:text-lg leading-loose text-ink/75">
@@ -110,10 +110,10 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/activities/"
+                href="/#flow"
                 className="inline-flex items-center rounded-full bg-ink px-6 py-3 text-sm font-bold text-white hover:bg-ink/85 transition-colors"
               >
-                活動を見る
+                活動の流れを見る
               </Link>
               <Link
                 href="/join/"

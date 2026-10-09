@@ -4,5 +4,5 @@ import MovedPage from "@/components/site/MovedPage";
 export const metadata: Metadata = { robots: { index: false } };
 
 export default function Page() {
-  return <MovedPage to="/activities/#archive" label="これまでの記録" />;
+  return <MovedPage to="/#archive" label="これまでに開いたイベント" />;
 }

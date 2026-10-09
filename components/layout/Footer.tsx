@@ -11,7 +11,7 @@ const socialLinks = [
 const navLinks = [
   { label: "トップ", href: "/" },
   { label: "OIFについて", href: "/about/" },
-  { label: "活動", href: "/activities/" },
+  { label: "活動の流れ", href: "/#flow" },
   { label: "ブログ", href: "/blog/" },
   { label: "お知らせ", href: "/news/" },
   { label: "参加する", href: "/join/" },

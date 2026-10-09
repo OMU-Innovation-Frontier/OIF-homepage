@@ -1,4 +1,4 @@
-// これまでに開いたハンズオン・ワークショップと、学外での発表。
+// これまでに開いたハンズオン・ワークショップ。
 // イベントは今後開く予定がない（2026-10-08）ため、記録としてだけ載せる。
 
 export interface PastSession {
@@ -46,23 +46,5 @@ export const pastSessions: PastSession[] = [
     description: "AI を使って、アプリの発案から実装、発表用のスライドづくりまでを行い、完成したアプリを発表しました。",
     image: "/images/first-workshop.png",
     imageAlt: "第1回ワークショップでの発表",
-  },
-];
-
-export interface Contest {
-  name: string;
-  detail: string;
-  result: string;
-  description: string;
-  image: string;
-}
-
-export const contests: Contest[] = [
-  {
-    name: "O-BUCs",
-    detail: "第4回学生ビジネスプランコンテスト（大阪信用金庫 主催）",
-    result: "ファイナル進出",
-    description: "コードを書かずに機械学習を学べるサービス「samurAI」を発表しました。",
-    image: "/images/obucs-contest.png",
   },
 ];

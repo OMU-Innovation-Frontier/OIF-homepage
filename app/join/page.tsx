@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import SectionHeading from "@/components/site/SectionHeading";
 import JoinSteps from "@/components/site/JoinSteps";
+import RoleChoices from "@/components/site/RoleChoices";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
 import { faqs, welcomeConditions } from "@/lib/join";
@@ -21,21 +22,22 @@ export default function JoinPage() {
     <div className="bg-canvas text-ink">
       <PageHeader
         title="参加する"
-        lead="会費は無料です。プログラミングの経験はいりません。文系の学生も、1年生も歓迎します。入り口は Discord です。"
+        lead="OIF への参加は Discord から行います。会費は無料で、プログラミングの経験もいりません。文系の学生も1年生も参加できます。"
       />
 
       <section className="border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <SectionHeading label="はじめ方" title="Discord に入ってから、の流れ">
-              <p>Discord に入ったあと、選択肢から答えるだけで準備ができます。</p>
+            <SectionHeading title="参加の流れ">
+              <p>Discord に入ったあと、所属とやりたいことを選択肢から選びます。選んだ内容に合わせてロールが付きます。</p>
             </SectionHeading>
             <div className="mt-8">
               <DiscordCTA location="join_steps" variant="brand" size="md" label="Discord に参加する" />
             </div>
           </Reveal>
-          <div className="lg:col-span-6 lg:col-start-7">
+          <div className="lg:col-span-6 lg:col-start-7 space-y-6">
             <JoinSteps />
+            <RoleChoices />
           </div>
         </div>
       </section>
@@ -43,7 +45,7 @@ export default function JoinPage() {
       <section className="bg-white border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
           <Reveal>
-            <SectionHeading label="こんな人を歓迎します" title="参加の条件は、少なくしています。" />
+            <SectionHeading title="参加の条件" />
           </Reveal>
           <ul className="mt-10 grid gap-4 md:grid-cols-3">
             {welcomeConditions.map((c, i) => (
@@ -62,7 +64,7 @@ export default function JoinPage() {
       <section id="faq" className="scroll-mt-20 border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
-            <SectionHeading label="よくある質問" title="気になることがあれば" />
+            <SectionHeading title="よくある質問" />
           </Reveal>
           <div className="lg:col-span-8 space-y-3">
             {faqs.map((f) => (
@@ -83,7 +85,7 @@ export default function JoinPage() {
 
       <section className="bg-ink text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-24 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-2xl md:text-3xl font-black leading-snug">ほかに聞きたいことは、Discord で。</p>
+          <p className="text-xl md:text-2xl font-black leading-snug">ほかに質問があれば、Discord で運営に連絡してください。</p>
           <DiscordCTA location="join_bottom" variant="brandOnDark" size="md" label="Discord に参加する" />
         </div>
       </section>
