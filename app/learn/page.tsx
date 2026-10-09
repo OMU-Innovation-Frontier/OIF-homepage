@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import SectionHeading from "@/components/site/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
@@ -17,10 +17,23 @@ export const metadata: Metadata = {
   },
 };
 
-const relation = [
-  { name: "Noema", body: "記事を読んで、AI でできることと仕組みを知る" },
-  { name: "OIF学習", body: "記事をもとにした順番で学び、課題に取り組む" },
-  { name: "定例会", body: "つくったものを発表する" },
+const compare = [
+  {
+    name: "Noema",
+    rows: [
+      ["だれが使うか", "だれでも読めます"],
+      ["形", "記事を読む技術メディア"],
+      ["進め方", "読みたい記事やシリーズから読めます"],
+    ],
+  },
+  {
+    name: "OIF学習",
+    rows: [
+      ["だれが使うか", "勉強・制作のメンバー"],
+      ["形", "学ぶ順番と課題をまとめた学習プログラム"],
+      ["進め方", "基礎編から始めて、興味に合わせたコースに進みます"],
+    ],
+  },
 ];
 
 export default function LearnPage() {
@@ -31,29 +44,29 @@ export default function LearnPage() {
         lead="OIF では、技術メディア「Noema」と、学習プログラム「OIF学習」の2つを使って学びます。Noema はだれでも読めます。OIF学習は、勉強・制作のメンバーが使います。"
       />
 
-      {/* 2つの関係 */}
+      {/* 2つの違い */}
       <section className="border-b border-ink/10 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
           <Reveal>
-            <SectionHeading title="2つの関係">
-              <p>OIF学習は、Noema の記事をもとに、学ぶ順番とやることをまとめたものです。</p>
+            <SectionHeading title="2つの違い">
+              <p>Noema と OIF学習に、使う順番はありません。どちらから始めても、並行して使ってもかまいません。</p>
             </SectionHeading>
           </Reveal>
-          <ol className="mt-8 grid gap-3 md:grid-cols-3 md:gap-4">
-            {relation.map((r, i) => (
-              <li key={r.name} className="relative rounded-2xl border border-ink/10 bg-canvas p-5">
-                <span className="text-xs font-bold text-ink/50">{i + 1}</span>
-                <p className="mt-1 text-lg font-black">{r.name}</p>
-                <p className="mt-1 text-sm leading-relaxed text-ink/70">{r.body}</p>
-                {i < relation.length - 1 && (
-                  <ArrowRight
-                    className="absolute -right-3.5 top-1/2 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-white text-ink/50 md:block"
-                    aria-hidden
-                  />
-                )}
-              </li>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {compare.map((c) => (
+              <div key={c.name} className="rounded-2xl border border-ink/10 bg-canvas p-5 md:p-6">
+                <p className="text-xl font-black">{c.name}</p>
+                <dl className="mt-4 divide-y divide-ink/10 border-t border-ink/10">
+                  {c.rows.map(([k, v]) => (
+                    <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 py-3 text-sm">
+                      <dt className="font-bold text-ink/55">{k}</dt>
+                      <dd className="leading-relaxed">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 

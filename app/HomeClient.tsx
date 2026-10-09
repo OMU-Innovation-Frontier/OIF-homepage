@@ -176,7 +176,7 @@ export default function HomeClient() {
 
         <StepBlock
           title="OIF学習の進め方"
-          lead="勉強・制作のメンバー向けの学習プログラムです。Noema の記事をもとに、学ぶ順番とやることをまとめています。"
+          lead="勉強・制作のメンバー向けの学習プログラムです。学ぶ順番とやることをまとめています。"
         >
           <ol className="grid gap-3 md:grid-cols-3">
             {learnStages.map((st, n) => (
