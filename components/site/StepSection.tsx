@@ -15,7 +15,7 @@ export default function StepSection({ step, tone = "canvas", children }: StepSec
       aria-labelledby={`${step.id}-title`}
       className={`scroll-mt-16 border-t border-ink/10 ${tone === "white" ? "bg-white" : "bg-canvas"}`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-28 grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
             <div className="flex items-center gap-3">
@@ -24,13 +24,13 @@ export default function StepSection({ step, tone = "canvas", children }: StepSec
               </span>
               <span className="text-base font-bold">{step.name}</span>
             </div>
-            <h2 id={`${step.id}-title`} className="mt-6 text-3xl md:text-4xl font-black leading-snug">
+            <h2 id={`${step.id}-title`} className="mt-5 text-[1.75rem] md:text-4xl font-black leading-snug">
               {step.title}
             </h2>
             <p className="mt-5 text-base leading-loose text-ink/70">{step.body}</p>
           </div>
         </div>
-        <div className="lg:col-span-8 space-y-14">{children}</div>
+        <div className="lg:col-span-8 space-y-12 md:space-y-14">{children}</div>
       </div>
     </section>
   );

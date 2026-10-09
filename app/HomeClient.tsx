@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { flowSteps } from "@/lib/flow";
 import { discordAbout } from "@/lib/join";
-import { learnBasics, learnCourses, learnStages } from "@/lib/oif-learn";
+import { learnNote, learnStages } from "@/lib/oif-learn";
 import { projects } from "@/lib/projects";
 import { achievements } from "@/lib/achievements";
 import { pastSessions } from "@/lib/archive";
@@ -84,7 +84,7 @@ export default function HomeClient() {
 
       {/* ============ 活動の流れ（概要） ============ */}
       <section id="flow" className="scroll-mt-16 border-t border-ink/10 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-24">
           <div className="reveal max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-black leading-snug">活動の流れ</h2>
             <p className="mt-4 text-base md:text-lg leading-relaxed text-ink/70">
@@ -92,12 +92,12 @@ export default function HomeClient() {
             </p>
           </div>
 
-          <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-8 grid gap-3 md:mt-12 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
             {flowSteps.map((f) => (
               <li key={f.id} className="reveal">
                 <a
                   href={`#${f.id}`}
-                  className="group flex h-full flex-col rounded-2xl border border-ink/10 bg-canvas p-6 hover:border-ink/30 hover:bg-white hover:shadow-card transition-all duration-200"
+                  className="group flex h-full flex-col rounded-2xl border border-ink/10 bg-canvas p-5 md:p-6 hover:border-ink/30 hover:bg-white hover:shadow-card transition-all duration-200"
                 >
                   <span className="flex items-center gap-3">
                     <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-xs font-bold text-white">
@@ -105,9 +105,9 @@ export default function HomeClient() {
                     </span>
                     <span className="text-sm font-bold">{f.name}</span>
                   </span>
-                  <span className="mt-5 text-lg font-black leading-snug">{f.title}</span>
-                  <span className="mt-3 text-sm leading-relaxed text-ink/70">{f.body}</span>
-                  <span className="mt-auto pt-6 inline-flex items-center gap-1 text-sm font-bold text-ink/55 group-hover:text-ink transition-colors">
+                  <span className="mt-4 text-lg font-black leading-snug md:mt-5">{f.title}</span>
+                  <span className="mt-3 hidden text-sm leading-relaxed text-ink/70 md:block">{f.body}</span>
+                  <span className="mt-auto pt-4 md:pt-6 inline-flex items-center gap-1 text-sm font-bold text-ink/55 group-hover:text-ink transition-colors">
                     詳しく見る
                     <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
                   </span>
@@ -138,8 +138,8 @@ export default function HomeClient() {
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
           <DiscordCTA location="home_step_join" variant="brand" size="md" label="Discord に参加する" />
-          <Link href="/join/" className="text-sm font-bold underline underline-offset-4">
-            参加の条件とよくある質問
+          <Link href="/join/#discord-account" className="text-sm font-bold underline underline-offset-4">
+            Discord のアカウントの作り方
           </Link>
         </div>
       </StepSection>
@@ -179,42 +179,21 @@ export default function HomeClient() {
           lead="勉強・制作のメンバー向けの学習プログラムです。Noema の記事をもとに、学ぶ順番とやることをまとめています。"
         >
           <ol className="grid gap-3 md:grid-cols-3">
-            {learnStages.map((s, i) => (
-              <li key={s.name} className="rounded-2xl bg-ink p-5 text-white">
-                <span className="text-xs font-bold text-white/55">STEP {i + 1}</span>
-                <span className="mt-2 block text-lg font-black">{s.name}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-white/75">{s.body}</span>
+            {learnStages.map((st, n) => (
+              <li key={st.name} className="rounded-2xl border border-ink/10 bg-canvas p-5">
+                <span className="text-xs font-bold text-ink/50">STEP {n + 1}</span>
+                <span className="mt-2 block text-lg font-black">{st.name}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-ink/70">{st.body}</span>
               </li>
             ))}
           </ol>
 
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-ink/10 bg-canvas p-5">
-              <p className="text-sm font-bold text-ink/55">基礎編の内容</p>
-              <ol className="mt-3 space-y-2">
-                {learnBasics.map((b, i) => (
-                  <li key={b} className="flex gap-3 text-sm leading-relaxed">
-                    <span className="w-4 shrink-0 font-bold text-ink/40">{i + 1}</span>
-                    {b}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="rounded-2xl border border-ink/10 bg-canvas p-5">
-              <p className="text-sm font-bold text-ink/55">選べるコース</p>
-              <ul className="mt-3 divide-y divide-ink/10">
-                {learnCourses.map((c) => (
-                  <li key={c.name} className="py-3 first:pt-0 last:pb-0">
-                    <p className="text-sm font-bold">{c.name}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-ink/65">{c.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <p className="mt-4 rounded-2xl border border-dashed border-ink/20 px-5 py-4 text-sm leading-relaxed text-ink/70">
+            {learnNote}
+          </p>
 
           <p className="mt-4 text-sm leading-relaxed text-ink/65">
-            OIF学習は、Discord で勉強・制作のロールが付くと使えるようになります。進めるにはパソコンが必要です。期限はありません。基礎編を終えたら、コースの途中でも OIF のプロジェクトに参加できます。
+            OIF学習は、Discord で勉強・制作のロールが付くと使えるようになります。進めるにはパソコンが必要です。期限はありません。
           </p>
         </StepBlock>
       </StepSection>
@@ -268,7 +247,7 @@ export default function HomeClient() {
           <ul className="grid gap-4 sm:grid-cols-2">
             {achievements.map((a) => (
               <li key={a.title} className="rounded-2xl border border-ink/10 bg-canvas p-5">
-                <span className="inline-block rounded-full bg-ink px-3 py-1 text-xs font-bold text-white">{a.category}</span>
+                <span className="inline-block rounded-full border border-ink/25 px-3 py-0.5 text-xs font-bold">{a.category}</span>
                 <p className="mt-3 font-bold leading-relaxed">{a.title}</p>
                 <p className="mt-1 text-sm leading-relaxed text-ink/70">{a.detail}</p>
               </li>
@@ -322,13 +301,19 @@ export default function HomeClient() {
       </section>
 
       {/* ============ 参加 ============ */}
-      <section className="bg-ink text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-24 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-black leading-snug">OIF に参加する</h2>
-            <p className="mt-3 leading-relaxed text-white/70">Discord に入って、所属とやりたいことを選んでください。会費はかかりません。</p>
+      <section className="border-t border-ink/10 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-20">
+          <div className="flex flex-col gap-6 rounded-3xl border border-ink/10 bg-canvas p-6 md:flex-row md:items-center md:justify-between md:p-10">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-black leading-snug">OIF に参加する</h2>
+              <p className="mt-3 leading-relaxed text-ink/70">
+                Discord に入って、所属とやりたいことを選んでください。会費はかかりません。Discord を使ったことがない人は、
+                <Link href="/join/#discord-account" className="font-bold underline underline-offset-4">アカウントの作り方</Link>
+                を見てください。
+              </p>
+            </div>
+            <DiscordCTA location="home_bottom" variant="brand" size="md" label="Discord に参加する" className="shrink-0 self-start md:self-auto" />
           </div>
-          <DiscordCTA location="home_bottom" variant="brandOnDark" size="md" label="Discord に参加する" className="shrink-0 self-start md:self-auto" />
         </div>
       </section>
     </div>

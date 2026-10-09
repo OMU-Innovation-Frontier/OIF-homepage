@@ -136,12 +136,12 @@ export default async function ProjectPage({
         </Block>
       </div>
 
-      <section className="mt-10 bg-ink text-white">
-        <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-xl font-black leading-snug">OIF では、メンバーがこうしたものをつくっています。</p>
+      <section className="max-w-5xl mx-auto px-6 md:px-12 pb-16">
+        <div className="flex flex-col gap-6 rounded-3xl border border-ink/10 bg-white p-6 md:flex-row md:items-center md:justify-between md:p-10">
+          <p className="text-lg font-bold leading-relaxed">OIF では、メンバーがこうしたものをつくっています。</p>
           <Link
             href="/join/"
-            className="inline-flex shrink-0 items-center self-start rounded-full bg-white px-6 py-3 text-sm font-bold text-ink hover:bg-white/85 transition-colors md:self-auto"
+            className="inline-flex shrink-0 items-center self-start rounded-full bg-ink px-6 py-3 text-sm font-bold text-white hover:bg-ink/85 transition-colors md:self-auto"
           >
             参加の流れを見る
           </Link>

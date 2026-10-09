@@ -6,6 +6,31 @@ export const discordAbout = [
   "アカウントはメールアドレスだけで作れます。スマートフォンでもパソコンでも使えます。",
 ];
 
+export interface SignupStep {
+  title: string;
+  body: string;
+}
+
+// Discord のアカウントを持っていない人向け。画面の文言は Discord 側の変更で変わることがあるので、細かく書きすぎない。
+export const discordSignup: SignupStep[] = [
+  {
+    title: "招待リンクを開く",
+    body: "このサイトの「Discord に参加する」ボタンを押すと、OIF の Discord への招待画面が開きます。",
+  },
+  {
+    title: "アカウントを登録する",
+    body: "メールアドレス、表示名、ユーザー名、パスワード、生年月日を入れて登録します。表示名は、ほかの人に見える名前です。",
+  },
+  {
+    title: "メールアドレスを認証する",
+    body: "登録したメールアドレスに Discord からメールが届きます。メールの中のボタンを押して認証してください。",
+  },
+  {
+    title: "アプリを入れる（スマートフォンの場合）",
+    body: "スマートフォンでは、App Store または Google Play から Discord のアプリを入れてログインします。パソコンはブラウザのままでも使えます。",
+  },
+];
+
 export interface JoinStep {
   title: string;
   body: string;
@@ -39,7 +64,7 @@ export interface RoleGroup {
 export const roleGroups: RoleGroup[] = [
   {
     name: "所属",
-    options: ["大阪公立大学", "学外"],
+    options: ["OMU", "学外"],
     note: "どちらか1つを選びます。",
   },
   {
