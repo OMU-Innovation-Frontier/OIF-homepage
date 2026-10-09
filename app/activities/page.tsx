@@ -1,152 +1,214 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
 import Image from "next/image";
-import SectionDivider from "@/components/site/SectionDivider";
+import { ArrowUpRight } from "lucide-react";
+import PageHeader from "@/components/site/PageHeader";
+import SectionHeading from "@/components/site/SectionHeading";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
 import { getAllProjects } from "@/lib/projects";
 import { ltEvents } from "@/lib/lt-events";
+import { learnBasics, learnCourses } from "@/lib/oif-learn";
+import { contests, pastSessions } from "@/lib/archive";
 
 export const metadata: Metadata = {
-  title: "Activities | OIF 大阪公立大学のAIサークルの活動",
-  description: "OIF（OMU Innovation Frontier）の活動内容。大阪公立大学のAIサークルとして、AI勉強会・機械学習・深層学習の実装・プログラミングコンテストへの参加など、多様な活動を行っています。",
+  title: "活動 | OIF 大阪公立大学のAIサークル",
+  description:
+    "OIF（OMU Innovation Frontier）の活動。週1回の定例会、技術メディア Noema と学習プログラム「OIF学習」での学習、メンバーによるプロダクト開発、定例会や学外コンテストでの発表。",
   alternates: {
     canonical: "https://oif-ai.com/activities/",
   },
 };
 
-// 毎週続けている活動。単発のイベント記録（featuredSessions）とは別に、
-// 「入ったら普段なにをするのか」に先に答えるためのセクション。
-// ⚠️ 対外文言のため、公開前に代表（田口）の確認を通すこと。
-const routines = [
-  {
-    n: "01",
-    title: "Noemaで学ぶ",
-    body: "OIFが運営する技術メディア「Noema」の記事を読み進めて、AIの仕組みの土台をそろえます。ひとりで教材を探すところから始めなくていいようにするためです。",
-  },
-  {
-    n: "02",
-    title: "定期進捗MTG",
-    body: "週に1回集まって、いま自分が何をしているかを短く共有します。詰まっているところは、その場で相談して持ち帰ります。",
-  },
-  {
-    n: "03",
-    title: "作業会",
-    body: "同じ場所に集まって、それぞれの作業を進めます。手が止まったときに聞ける人がいる、という状態をつくるための時間です。",
-  },
-];
-
-const contests = [
-  {
-    name: "O-BUCs（オブックス）",
-    fullName: "第4回学生ビジネスプランコンテスト",
-    organizer: "大阪信用金庫",
-    result: "ファイナル進出",
-    description:
-      "大阪信用金庫主催の学生ビジネスプランコンテストにて、samurAIを発表しファイナルに進出。機械学習をノーコードで学べるプラットフォームとして評価されました。",
-    image: `/images/obucs-contest.png`,
-  },
-];
-
-const featuredSessions = [
-  {
-    date: "2026/6/19",
-    title: "コードで学ぶ！DeepLearning",
-    category: "Hands-on",
-    description:
-      "「ブラックボックスだったAIの仕組みを、コードを動かしながら理解する」をテーマにハンズオンを開催。お手本コードを動かして深層学習の中身を追ったのち、最後は一人ひとりが自分だけのAIを作り、精度を競うコンペ形式で締めくくりました。",
-    materialLabel: "公開資料（Colab）",
-    materialHref:
-      "https://colab.research.google.com/drive/1UfNWw9uG94879sYiCuuj8bqXsWyGTSir?usp=sharing",
-    image: undefined as string | undefined,
-    imageAlt: undefined as string | undefined,
-  },
-  {
-    date: "2026/5/22",
-    title: "ローカルLLMハンズオン",
-    category: "Hands-on",
-    description:
-      "ローカル環境でLLMを動かすための導入ハンズオンを実施。セットアップの流れを追いながら、実際に手元でモデルを動かして試しました。",
-    materialLabel: "公開資料（PDF）",
-    materialHref:
-      "https://drive.google.com/file/d/1E6FYe200ioRtAAPW8TDyS8e2XkS2g-qu/view?usp=sharing",
-    image: `/images/llm-handson.png`,
-    imageAlt: "ローカルLLMハンズオンの様子（参加メンバーの集合写真）",
-    imageWidth: 481,
-    imageHeight: 399,
-  },
-  {
-    date: "2026/3/18",
-    title: "Vibe Codingワークショップ",
-    category: "Workshop",
-    description:
-      "「環境構築不要。Vibe Codingで学ぶ次世代エンジニアリング」をテーマに、大阪公立大学スマートエネルギー棟でハイブリッド開催（計8名参加）。最新のAI開発手法を解説したのち、約50分でひとり一人が自分のアイデアをもとにオリジナルのアプリやホームページを制作しました。",
-    materialLabel: "活動レポートを見る",
-    materialHref:
-      "https://www.omu.ac.jp/i-academy/info/activity/entry-105828.html",
-    image: `/images/vibe-coding-workshop.png`,
-    imageAlt: "Vibe Codingワークショップの様子（スマートエネルギー棟での開催）",
-    imageWidth: 723,
-    imageHeight: 484,
-  },
-  {
-    date: "2025/12/25",
-    title: "第1回ワークショップ",
-    category: "Workshop",
-    description:
-      "記念すべき第1回のワークショップを開催。参加者一人ひとりがAIを駆使して、アプリの発案から実装、発表用スライドの作成までを行い、完成したアプリを発表しました。AIツール（Google Antigravity・Gemini）を実際に使い、その実用性と可能性を確かめ合いました。",
-    materialLabel: undefined as string | undefined,
-    materialHref: undefined as string | undefined,
-    image: `/images/first-workshop.png`,
-    imageAlt: "第1回ワークショップの様子（成果アプリの発表）",
-    imageWidth: 894,
-    imageHeight: 751,
-  },
+const sectionNav = [
+  { href: "#weekly", label: "毎週の活動" },
+  { href: "#learn", label: "学ぶ" },
+  { href: "#build", label: "つくる" },
+  { href: "#present", label: "発表する" },
+  { href: "#archive", label: "これまでの記録" },
 ];
 
 export default function ActivitiesPage() {
   const projects = getAllProjects();
-  const latestLT = ltEvents[0];
 
   return (
-    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
-      {/* HERO */}
-      <section className="relative min-h-[60svh] flex items-center border-b border-ink/10 bg-paper">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 w-full animate-fade-up">
-          <p className="section-label mb-6">ACTIVITIES</p>
-          <h1 className="display mb-8">活動</h1>
-          <p className="lede max-w-2xl">
-            毎週続けていることと、これまで手を動かしてきた記録。
-            その両方を置いています。
-          </p>
+    <div className="bg-canvas text-ink">
+      <PageHeader
+        title="活動"
+        lead="OIF での活動は、入る → 学ぶ → つくる → 発表する の順番で進みます。このページでは、それぞれで実際に何をしているかを紹介します。"
+      />
+
+      <nav aria-label="このページの目次" className="border-b border-ink/10 bg-white">
+        <ul className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex gap-2 overflow-x-auto py-4">
+          {sectionNav.map((n) => (
+            <li key={n.href} className="shrink-0">
+              <a
+                href={n.href}
+                className="inline-block rounded-full border border-ink/15 px-4 py-2 text-sm font-bold text-ink/70 hover:border-ink/40 hover:text-ink transition-colors"
+              >
+                {n.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* 毎週の活動 */}
+      <section id="weekly" className="scroll-mt-20 border-b border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading label="毎週の活動" title="週に1回、定例会を開いています。" />
+          </Reveal>
+          <Reveal delay={100} className="lg:col-span-6 lg:col-start-7 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-ink/10 bg-white p-6">
+              <h3 className="text-lg font-black">進み具合を報告し合う回</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink/70">
+                いま何をしているか、どこで詰まっているかを短く共有します。詰まっているところは、その場で相談します。
+              </p>
+            </div>
+            <div className="rounded-2xl border border-ink/10 bg-white p-6">
+              <h3 className="text-lg font-black">集まって作業する回</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink/70">
+                同じ場所でそれぞれの作業を進めます。手が止まったときに聞ける人がいる状態をつくるための時間です。
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ROUTINE — 毎週やっていること（継続の活動を、記録より先に見せる） */}
-      <section className="bg-muted border-b border-line">
+      {/* 学ぶ */}
+      <section id="learn" className="scroll-mt-20 bg-white border-b border-ink/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
-          <Reveal className="mb-16">
-            <p className="section-label mb-4">ROUTINE</p>
-            <h2 className="headline mb-6">毎週やっていること</h2>
-            <p className="text-ink/60 leading-relaxed max-w-2xl">
-              イベントのときだけ集まる団体ではありません。普段はこの3つを回しています。
-            </p>
+          <Reveal>
+            <SectionHeading label="学ぶ" title="Noema と OIF学習">
+              <p>
+                だれでも読める技術メディア「Noema」と、勉強・制作のメンバー向けの学習プログラム「OIF学習」の2つで学びます。
+              </p>
+            </SectionHeading>
           </Reveal>
 
-          <div className="grid gap-px bg-line md:grid-cols-3 border border-line">
-            {routines.map((r, i) => (
-              <Reveal key={r.n} delay={i * 80}>
-                <div className="bg-paper h-full p-8 md:p-10">
-                  <p className="font-mono text-[11px] tracking-[0.3em] text-ink/30 mb-6">
-                    {r.n}
-                  </p>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4">
-                    {r.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-ink/60 leading-relaxed">
-                    {r.body}
-                  </p>
+          <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start">
+            <Reveal className="flex flex-col rounded-3xl border border-ink/10 bg-canvas p-6 md:p-8">
+              <p className="text-sm font-bold text-ink/50">だれでも読める</p>
+              <h3 className="mt-2 text-2xl font-black">Noema</h3>
+              <p className="mt-4 leading-relaxed text-ink/75">
+                OIF で先輩が後輩に教えてきたことを、記事として残している技術メディアです。「AI で何ができるか」と「それがなぜ動くのか」を、具体例を使って説明しています。まず動かしてみて、そのあと仕組みを理解する、という順番で読めます。
+              </p>
+              <a
+                href="https://noema-learn.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto pt-8 inline-flex items-center gap-1 self-start text-sm font-bold underline underline-offset-4"
+              >
+                Noema を読む
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </a>
+            </Reveal>
+
+            <Reveal delay={100} className="rounded-3xl bg-ink p-6 md:p-8 text-white">
+              <p className="text-sm font-bold text-white/60">勉強・制作のメンバー向け</p>
+              <h3 className="mt-2 text-2xl font-black">OIF学習</h3>
+              <p className="mt-4 leading-relaxed text-white/80">
+                AI と一緒に自分で小さなものをつくり、仕組みを自分の言葉で説明できるところまで進むための学習プログラムです。Noema の記事をもとに、学ぶ順番とやることをまとめています。勉強・制作のメンバーは、全員がまず基礎編を進めます。
+              </p>
+
+              <h4 className="mt-8 text-sm font-bold text-white/60">基礎編（全員）</h4>
+              <ol className="mt-3 space-y-2">
+                {learnBasics.map((b, i) => (
+                  <li key={b} className="flex gap-3 text-sm leading-relaxed">
+                    <span className="w-5 shrink-0 font-bold text-white/50">{i + 1}</span>
+                    {b}
+                  </li>
+                ))}
+              </ol>
+
+              <h4 className="mt-8 text-sm font-bold text-white/60">コース（基礎編のあとに選ぶ。いくつでも同時に進められます）</h4>
+              <ul className="mt-3 space-y-3">
+                {learnCourses.map((c) => (
+                  <li key={c.name} className="rounded-2xl bg-white/[0.07] p-4">
+                    <p className="font-bold">{c.name}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-white/70">{c.body}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm leading-relaxed text-white/70">
+                各コースの最後に修了課題があり、定例会で発表します。基礎編を終えたら、コースの途中でも OIF のプロジェクトに参加できます。
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal className="mt-6 rounded-2xl border border-ink/10 bg-canvas p-5 md:p-6 text-sm md:text-base leading-relaxed">
+            OIF学習は、Discord で勉強・制作のロールが付くと使えるようになります。
+            <Link href="/join/" className="ml-1 font-bold underline underline-offset-4">
+              参加の流れを見る
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* つくる */}
+      <section id="build" className="scroll-mt-20 border-b border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+          <Reveal>
+            <SectionHeading label="つくる" title="実際に動くものをつくる">
+              <p>記事を読んで分かることと、自分でつくれることは別です。OIF では、実際に動くものをつくるところまで取り組みます。メンバーがつくったものの例です。</p>
+            </SectionHeading>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {projects.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 80}>
+                <Link
+                  href={`/projects/${p.slug}/`}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white hover:shadow-card transition-shadow duration-200"
+                >
+                  {p.image && (
+                    <span className="relative block aspect-[16/10] overflow-hidden border-b border-ink/10">
+                      <Image
+                        src={p.image}
+                        alt={`${p.name} の画面`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-500 ease-smooth"
+                      />
+                    </span>
+                  )}
+                  <span className="flex flex-1 flex-col p-6">
+                    <span className="text-xs font-bold text-ink/50">{p.status}</span>
+                    <span className="mt-1 text-xl font-black">{p.name}</span>
+                    <span className="mt-2 text-sm leading-relaxed text-ink/70">{p.tagline}</span>
+                    <span className="mt-auto pt-5 text-sm font-bold text-ink/60 group-hover:text-ink">詳しく見る →</span>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 発表する */}
+      <section id="present" className="scroll-mt-20 bg-white border-b border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28 grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading label="発表する" title="つくったものを人前に出す">
+              <p>
+                つくったものは、団体の中だけで終わらせずに発表します。定例会では、完成していなくても発表できます。「途中までつくった」「やってみたら動かなかった」も発表になります。OIF学習の修了課題も、定例会で発表します。
+              </p>
+            </SectionHeading>
+          </Reveal>
+
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="text-sm font-bold text-ink/50">学外での発表</p>
+            {contests.map((c) => (
+              <Reveal key={c.name} className="mt-4 overflow-hidden rounded-2xl border border-ink/10 bg-canvas">
+                <span className="relative block aspect-[16/9]">
+                  <Image src={c.image} alt={`${c.name} での発表`} fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+                </span>
+                <div className="p-6">
+                  <span className="inline-block rounded-full bg-ink px-3 py-1 text-xs font-bold text-white">{c.result}</span>
+                  <h3 className="mt-3 text-xl font-black">{c.name}</h3>
+                  <p className="mt-1 text-sm text-ink/60">{c.detail}</p>
+                  <p className="mt-3 text-sm md:text-base leading-relaxed text-ink/75">{c.description}</p>
                 </div>
               </Reveal>
             ))}
@@ -154,263 +216,87 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
-      {/* LT会 — Activities 内の一セクションとして実体を置く（/lt/ は過去回の一覧） */}
-      {latestLT && (
-        <section className="py-20 md:py-28 border-b border-ink/10">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-            <Reveal className="mb-16">
-              <p className="section-label mb-4">LIGHTNING TALKS</p>
-              <h2 className="headline mb-6">LT会</h2>
-              <p className="text-ink/60 leading-relaxed max-w-2xl">
-                メンバーそれぞれが、いま挑戦していることを持ち寄って話す会です。定期的に開催しています。
-              </p>
-            </Reveal>
+      {/* これまでの記録 */}
+      <section id="archive" className="scroll-mt-20 border-b border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
+          <Reveal>
+            <SectionHeading label="これまでの記録" title="これまでに開いたイベント">
+              <p>過去に開いたハンズオン・ワークショップと LT会の記録です。資料は公開しているものだけ載せています。</p>
+            </SectionHeading>
+          </Reveal>
 
-            <div className="border border-ink/12">
-              <div className="p-8 md:p-10 border-b border-ink/12">
-                <p className="font-mono text-xs tracking-widest text-ink/50 mb-2">
-                  {latestLT.dateLabel} ・ {latestLT.place}
-                </p>
-                <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-4">
-                  {latestLT.title}
-                </h3>
-                <p className="text-base leading-relaxed text-ink/75 max-w-3xl">
-                  {latestLT.summary}
-                </p>
-              </div>
-
-              {latestLT.photos.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 border-b border-ink/12">
-                  {latestLT.photos.map((p) => (
-                    <div key={p.src} className="relative aspect-[4/3] overflow-hidden bg-night-2">
-                      <Image
-                        src={p.src}
-                        alt={p.alt}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className="p-8 md:p-10">
-                <p className="text-xs font-medium tracking-widest uppercase text-ink/60 mb-4">
-                  発表一覧
-                </p>
-                <ul>
-                  {latestLT.talks.map((talk) => (
-                    <li
-                      key={talk.title}
-                      className="flex items-center justify-between gap-4 py-3 border-b border-ink/10 last:border-b-0"
+          <ul className="mt-12 grid gap-4 md:grid-cols-2">
+            {pastSessions.map((s, i) => (
+              <li
+                key={`${s.date}-${s.title}`}
+                className="reveal flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white sm:flex-row"
+                style={{ animationDelay: `${(i % 2) * 60}ms` }}
+              >
+                {s.image && (
+                  <span className="relative block aspect-[4/3] sm:aspect-auto sm:w-40 shrink-0 border-b sm:border-b-0 sm:border-r border-ink/10">
+                    <Image src={s.image} alt={s.imageAlt ?? s.title} fill sizes="(max-width: 640px) 100vw, 10rem" className="object-cover" />
+                  </span>
+                )}
+                <div className="flex flex-1 flex-col p-5">
+                  <time className="text-xs font-bold text-ink/50">{s.date}</time>
+                  <h3 className="mt-1 font-black">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{s.description}</p>
+                  {s.materialHref && (
+                    <a
+                      href={s.materialHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 self-start text-sm font-bold underline underline-offset-4"
                     >
-                      <span className="text-base font-bold tracking-tight">{talk.title}</span>
-                      {talk.slideUrl && (
+                      {s.materialLabel}
+                      <ArrowUpRight className="h-4 w-4" aria-hidden />
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {ltEvents.map((lt) => (
+            <Reveal key={lt.slug} className="mt-4 overflow-hidden rounded-2xl border border-ink/10 bg-white">
+              <div className="grid grid-cols-3 gap-px bg-ink/10">
+                {lt.photos.map((p) => (
+                  <span key={p.src} className="relative block aspect-[4/3]">
+                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 768px) 33vw, 25vw" className="object-cover" />
+                  </span>
+                ))}
+              </div>
+              <div className="p-5 md:p-6">
+                <time className="text-xs font-bold text-ink/50">{lt.dateLabel}</time>
+                <h3 className="mt-1 font-black">{lt.title}</h3>
+                <ul className="mt-3 divide-y divide-ink/10 border-t border-ink/10">
+                  {lt.talks.map((t) => (
+                    <li key={t.title} className="flex items-center justify-between gap-4 py-3 text-sm">
+                      <span className="font-bold">{t.title}</span>
+                      {t.slideUrl && (
                         <a
-                          href={talk.slideUrl}
+                          href={t.slideUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-ink/60 transition-colors duration-200 shrink-0"
+                          className="inline-flex shrink-0 items-center gap-1 font-bold underline underline-offset-4"
                         >
                           スライド
-                          <ExternalLink size={16} strokeWidth={1.75} />
+                          <ArrowUpRight className="h-4 w-4" aria-hidden />
                         </a>
                       )}
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
-
-            {ltEvents.length > 1 && (
-              <Link
-                href="/lt/"
-                className="group inline-flex items-center gap-2 mt-8 text-sm font-bold tracking-widest uppercase"
-              >
-                これまでのLT会をすべて見る
-                <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
-              </Link>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* Featured Sessions Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <Reveal className="mb-16">
-            <p className="section-label mb-4">Sessions</p>
-            <h2 className="headline">勉強会・ハンズオン</h2>
-          </Reveal>
-
-          <div className="border border-ink/12">
-            {featuredSessions.map((session) => (
-              <div key={`${session.date}-${session.title}`} className="grid md:grid-cols-[220px_1fr]">
-                <div className="border-b md:border-b-0 md:border-r border-ink/12 p-8 md:p-10">
-                  <p className="text-xs font-medium tracking-widest uppercase text-ink/60 mb-3">
-                    {session.category}
-                  </p>
-                  <p className="text-2xl md:text-3xl font-bold tracking-tight">
-                    {session.date}
-                  </p>
-                </div>
-
-                <div className="grid lg:grid-cols-[1fr_minmax(0,360px)]">
-                  <div className="p-8 md:p-10 flex flex-col justify-center">
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-                      {session.title}
-                    </h3>
-                    <p className="text-base leading-relaxed text-ink/75 mb-6 max-w-2xl">
-                      {session.description}
-                    </p>
-                    {session.materialHref && (
-                      <a
-                        href={session.materialHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium tracking-wide underline underline-offset-4 hover:text-ink/60 transition-colors duration-200 self-start"
-                      >
-                        {session.materialLabel}
-                        <ExternalLink size={16} strokeWidth={1.75} />
-                      </a>
-                    )}
-                  </div>
-
-                  {session.image && (
-                    <div className="border-t lg:border-t-0 lg:border-l border-ink/12 bg-ink/[0.05] flex items-center justify-center p-4 md:p-6">
-                      <Image
-                        src={session.image}
-                        alt={session.imageAlt ?? session.title}
-                        width={session.imageWidth ?? 481}
-                        height={session.imageHeight ?? 399}
-                        className="w-full h-auto max-w-md object-contain"
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Products Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-16">
-            <p className="section-label mb-4">Products</p>
-            <h2 className="headline">メンバー開発プロダクト</h2>
-            <p className="mt-4 text-base text-ink/60 max-w-2xl leading-relaxed">
-              「面白そう」で終わらせず、実際に動くものへ。課題から成果まで、メンバーが開発したプロダクトの事例を紹介します。
-            </p>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {projects.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 100}>
-                  <Link
-                    href={`/projects/${p.slug}/`}
-                    className="group flex flex-col h-full border border-ink/10 bg-night-2 hover:bg-night-3 hover:border-ink/30 transition-colors"
-                  >
-                    {p.image && (
-                      <div className="bg-[#141e2e] border-b border-ink/10 p-6 flex items-center justify-center min-h-[220px]">
-                        <Image
-                          src={p.image}
-                          alt={p.name}
-                          width={640}
-                          height={400}
-                          className="w-full h-auto object-contain max-h-56"
-                        />
-                      </div>
-                    )}
-                    <div className="p-8 md:p-10 flex flex-col flex-1">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-mono text-[11px] tracking-widest text-accent-bright">
-                          {p.status}
-                        </span>
-                      </div>
-                      <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">
-                        {p.name}
-                      </h3>
-                      <p className="text-sm md:text-base text-ink/60 leading-relaxed mb-6 flex-1">
-                        {p.tagline}
-                      </p>
-                      <span className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase">
-                        事例を見る
-                        <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
-                      </span>
-                    </div>
-                  </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Contest Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-16">
-            <p className="section-label mb-4">Contest</p>
-            <h2 className="headline">コンテスト実績</h2>
-          </div>
-
-          {contests.map((contest) => (
-            <div
-              key={contest.name}
-              className="border border-ink/12"
-            >
-              <div className="grid md:grid-cols-2">
-                <div className="border-b md:border-b-0 md:border-r border-ink/12">
-                  <Image
-                    src={contest.image}
-                    alt={contest.name}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <div className="mb-6">
-                    <span className="inline-block text-xs font-medium tracking-widest uppercase bg-accent text-white px-3 py-1 mb-4">
-                      {contest.result}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                      {contest.name}
-                    </h3>
-                    <p className="text-sm font-medium text-ink/60">
-                      {contest.fullName} / {contest.organizer}
-                    </p>
-                  </div>
-
-                  <p className="text-base leading-relaxed">
-                    {contest.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* CTA Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
-          <p className="text-base md:text-lg mb-10 max-w-xl mx-auto">
-            どんな活動にも気軽に参加できます。<br />
-            まずはDiscordに参加してみて。
-          </p>
-          <div className="flex justify-center">
-            <DiscordCTA location="activities_cta" />
-          </div>
+      <section className="bg-ink text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-24 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <p className="text-2xl md:text-3xl font-black leading-snug">まずは Discord から。</p>
+          <DiscordCTA location="activities_bottom" variant="brandOnDark" size="md" label="Discord に参加する" />
         </div>
       </section>
     </div>

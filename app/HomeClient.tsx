@@ -5,6 +5,7 @@ import { newsItems } from "@/lib/news";
 import { projects } from "@/lib/projects";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
+import JoinSteps from "@/components/site/JoinSteps";
 
 // 活動の流れ。文言の根拠は docs/redesign-2026-10.md（代表確認済み）
 const flow = [
@@ -12,7 +13,7 @@ const flow = [
     step: "01",
     name: "入る",
     title: "まずは Discord から",
-    body: "会費は無料で、プログラミングの経験もいりません。まずは Discord に入って、雰囲気を見るところから始められます。",
+    body: "会費は無料で、プログラミングの経験もいりません。Discord に入って、所属とやりたいことを選ぶところから始まります。",
     href: "/join/",
   },
   {
@@ -36,12 +37,6 @@ const flow = [
     body: "つくったものは定例会で発表します。完成していなくてもかまいません。学外のコンテストにも出ています。",
     href: "/activities/#present",
   },
-];
-
-const startSteps = [
-  "Discord に参加する",
-  "Noema の記事を1本読んでみる",
-  "勉強・制作に加わりたくなったら、運営に声をかける",
 ];
 
 const snapshots = [
@@ -233,23 +228,16 @@ export default function HomeClient() {
           <Reveal className="lg:col-span-5">
             <h2 className="text-3xl md:text-4xl font-black leading-snug">はじめ方</h2>
             <p className="mt-5 leading-relaxed text-white/70">
-              会費は無料です。他大学の学生も参加できますが、キャンパスで直接会って活動することが多いので、大阪公立大学の学生をおすすめしています。
+              Discord に入って、選択肢から答えるだけで準備ができます。会費は無料です。学外の人も参加できますが、キャンパスで直接会って活動することが多いので、大阪公立大学の学生をおすすめしています。
             </p>
             <div className="mt-8">
-              <DiscordCTA location="home_start" variant="brand" size="md" label="Discord に参加する" />
+              <DiscordCTA location="home_start" variant="brandOnDark" size="md" label="Discord に参加する" />
             </div>
           </Reveal>
 
-          <ol className="lg:col-span-6 lg:col-start-7 space-y-3">
-            {startSteps.map((s, i) => (
-              <li key={s} className="reveal flex items-center gap-4 rounded-2xl bg-white/[0.06] p-5" style={{ animationDelay: `${i * 60}ms` }}>
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 text-sm font-bold">
-                    {i + 1}
-                  </span>
-                  <span className="font-bold leading-relaxed">{s}</span>
-                </li>
-            ))}
-          </ol>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <JoinSteps tone="dark" />
+          </div>
         </div>
       </section>
     </div>
