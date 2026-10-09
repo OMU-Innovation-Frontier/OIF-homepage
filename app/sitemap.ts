@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: new Date() },
     { url: `${base}/about/`, lastModified: new Date() },
+    { url: `${base}/learn/`, lastModified: new Date() },
     { url: `${base}/blog/`, lastModified: new Date() },
     { url: `${base}/join/`, lastModified: new Date() },
     { url: `${base}/news/`, lastModified: new Date() },

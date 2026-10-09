@@ -195,6 +195,9 @@ export default function HomeClient() {
           <p className="mt-4 text-sm leading-relaxed text-ink/65">
             OIF学習は、Discord で勉強・制作のロールが付くと使えるようになります。進めるにはパソコンが必要です。期限はありません。
           </p>
+          <Link href="/learn/" className="mt-6 inline-flex items-center gap-1 text-sm font-bold underline underline-offset-4">
+            Noema と OIF学習について詳しく見る
+          </Link>
         </StepBlock>
       </StepSection>
 

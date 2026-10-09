@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "トップ", href: "/" },
   { label: "OIFについて", href: "/about/" },
-  { label: "ブログ", href: "/blog/" },
+  { label: "Noema・OIF学習", href: "/learn/" },
   { label: "お知らせ", href: "/news/" },
 ];
 
