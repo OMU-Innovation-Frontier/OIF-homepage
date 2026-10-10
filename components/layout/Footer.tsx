@@ -9,42 +9,34 @@ const socialLinks = [
 ];
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about/" },
-  { label: "Activities", href: "/activities/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Join", href: "/join/" },
-  { label: "FAQ", href: "/faq/" },
+  { label: "トップ", href: "/" },
+  { label: "OIFについて", href: "/about/" },
+  { label: "Noema・OIF学習", href: "/learn/" },
+  { label: "お知らせ", href: "/news/" },
+  { label: "参加について", href: "/join/" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-paper text-ink">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
-          {/* Brand */}
+    <footer className="border-t border-ink/10 bg-canvas text-ink">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-5">
-            <Link href="/" className="inline-block mb-8" aria-label="OIF ホーム">
-              <Image src="/logo.png" alt="OIF Logo" width={120} height={120} className="h-14 w-auto mix-blend-multiply" />
+            <Link href="/" className="inline-block mb-6" aria-label="OIF トップ">
+              <Image src="/logo.png" alt="OIF" width={120} height={120} className="h-14 w-auto mix-blend-multiply" />
             </Link>
-            <p className="text-xl font-bold tracking-tighter leading-tight mb-4">
-              OMU Innovation Frontier
-            </p>
-            <p className="font-mono text-xs leading-relaxed text-ink/60 max-w-xs">
-              大阪公立大学の学生による<br />AI・テクノロジー探究コミュニティ
+            <p className="text-lg font-bold mb-2">OMU Innovation Frontier</p>
+            <p className="text-sm leading-relaxed text-ink/65 max-w-xs">
+              大阪公立大学の学生がつくっている AI のコミュニティです。
             </p>
           </div>
 
-          {/* Navigation */}
           <div className="md:col-span-3">
-            <p className="section-label mb-8">navigation</p>
-            <ul className="space-y-4">
+            <p className="text-xs font-bold text-ink/50 mb-5">サイト</p>
+            <ul className="space-y-3">
               {navLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm font-bold tracking-tight text-ink/75 hover:text-ink transition-colors duration-200"
-                  >
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-ink/75 hover:text-ink transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -52,34 +44,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
           <div className="md:col-span-4">
-            <p className="section-label mb-8">connect</p>
-            <div className="flex flex-col gap-4">
+            <p className="text-xs font-bold text-ink/50 mb-5">SNS</p>
+            <ul className="space-y-3">
               {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-tight flex items-center justify-between group border-b border-ink/10 pb-2 hover:border-ink hover:text-ink transition-colors duration-300"
-                >
-                  {link.label}
-                  <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-smooth">→</span>
-                </a>
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-ink/75 hover:text-ink transition-colors duration-200"
+                  >
+                    {link.label}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-ink/10 flex flex-col md:flex-row justify-between gap-6 items-center">
-          <p className="font-mono text-[10px] md:text-xs text-ink/65 tracking-widest uppercase">
-            © 2026 OMU Innovation Frontier. All rights reserved.
-          </p>
-          <p className="font-mono text-[10px] md:text-xs text-ink/60 uppercase tracking-widest">
-            Beginner to capable, fast.
-          </p>
-        </div>
+        <p className="mt-14 pt-8 border-t border-ink/10 text-xs text-ink/55">
+          © 2026 OMU Innovation Frontier
+        </p>
       </div>
     </footer>
   );

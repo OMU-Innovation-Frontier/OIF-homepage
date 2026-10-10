@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -19,6 +19,14 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-mono",
+});
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  display: "swap",
+  preload: false,
+  variable: "--font-noto",
 });
 
 export const metadata: Metadata = {
@@ -103,7 +111,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="ja" className={`${inter.variable} ${jetbrainsMono.variable} ${notoSansJP.variable}`}>
       <body className="flex flex-col min-h-screen">
         <JsonLd />
         <ScrollProgress />

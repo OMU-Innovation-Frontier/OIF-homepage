@@ -3,20 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  /* Global reset for sharp, minimalist design */
-  *,
-  *::before,
-  *::after {
-    border-radius: 0 !important;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-paper text-ink antialiased;
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-inter), var(--font-noto), system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -39,14 +32,6 @@
   .on-dark *:focus-visible,
   *:focus-visible.on-dark {
     @apply ring-white ring-offset-ink;
-  }
-
-  /* Ensure all buttons and inputs are sharp */
-  button,
-  input,
-  textarea,
-  select {
-    border-radius: 0 !important;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -227,4 +212,31 @@
 }
 html {
   scrollbar-color: #d4d4d8 #ffffff;
+}
+
+/* トップの写真の入れ替え（5枚・1枚5秒・切り替え1秒）。components/site/HeroSlideshow.tsx */
+@keyframes hero-fade {
+  0% {
+    opacity: 0;
+  }
+  4%,
+  20% {
+    opacity: 1;
+  }
+  24%,
+  100% {
+    opacity: 0;
+  }
+}
+.hero-slide {
+  opacity: 0;
+  animation: hero-fade 25s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none !important;
+  }
+  .hero-slide:first-child {
+    opacity: 1;
+  }
 }
