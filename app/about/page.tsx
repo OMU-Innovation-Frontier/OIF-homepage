@@ -108,7 +108,7 @@ export default function AboutPage() {
               href="/join/"
               className="inline-flex items-center rounded-full border border-ink/20 bg-white px-6 py-3 text-sm font-bold hover:border-ink/40 transition-colors"
             >
-              参加する
+              参加について
             </Link>
           </div>
         </section>

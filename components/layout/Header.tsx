@@ -13,7 +13,7 @@ const navItems = [
   { label: "お知らせ", href: "/news/" },
 ];
 
-const joinItem = { label: "参加する", href: "/join/" };
+const joinItem = { label: "参加について", href: "/join/" };
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

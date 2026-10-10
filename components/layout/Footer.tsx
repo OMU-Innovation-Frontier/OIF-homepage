@@ -13,7 +13,7 @@ const navLinks = [
   { label: "OIFについて", href: "/about/" },
   { label: "Noema・OIF学習", href: "/learn/" },
   { label: "お知らせ", href: "/news/" },
-  { label: "参加する", href: "/join/" },
+  { label: "参加について", href: "/join/" },
 ];
 
 export default function Footer() {

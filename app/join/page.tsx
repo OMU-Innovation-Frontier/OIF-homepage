@@ -9,7 +9,7 @@ import Reveal from "@/components/ui/Reveal";
 import { discordAbout, discordSignup, faqs, welcomeConditions } from "@/lib/join";
 
 export const metadata: Metadata = {
-  title: "参加する | OIF 大阪公立大学のAIサークル",
+  title: "参加について | OIF 大阪公立大学のAIサークル",
   description:
     "OIF（OMU Innovation Frontier）への参加は Discord から。Discord のアカウントの作り方、参加の流れ、よくある質問。会費無料・プログラミング経験不問・文系も1年生も歓迎。",
   alternates: {
@@ -21,7 +21,7 @@ export default function JoinPage() {
   return (
     <div className="bg-canvas text-ink">
       <PageHeader
-        title="参加する"
+        title="参加について"
         lead="OIF への参加は Discord から行います。会費は無料で、プログラミングの経験もいりません。文系の学生も1年生も参加できます。"
       />
 

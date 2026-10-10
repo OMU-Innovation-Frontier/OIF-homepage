@@ -13,6 +13,7 @@ import DiscordCTA from "@/components/ui/DiscordCTA";
 import JoinSteps from "@/components/site/JoinSteps";
 import RoleChoices from "@/components/site/RoleChoices";
 import StepSection, { StepBlock } from "@/components/site/StepSection";
+import PhotoStack from "@/components/site/PhotoStack";
 
 const [stepJoin, stepLearn, stepBuild, stepPresent] = flowSteps;
 
@@ -31,6 +32,14 @@ const pastEvents = [
   ...pastSessions.map((s) => ({ date: s.date, title: s.title, href: s.materialHref, label: s.materialLabel })),
   ...ltEvents.map((lt) => ({ date: lt.date.replaceAll("-", "."), title: lt.title, href: undefined, label: undefined })),
 ].sort((a, b) => b.date.localeCompare(a.date));
+
+const eventPhotos = [
+  { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子" },
+  { src: "/images/lt/lt1-03.jpg", alt: "LT会での発表の様子" },
+  { src: "/images/vibe-coding-workshop.png", alt: "Vibe Codingワークショップの様子" },
+  { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの参加者" },
+  { src: "/images/lt/lt1-01.jpg", alt: "LT会での発表の様子" },
+];
 
 export default function HomeClient() {
   return (
@@ -67,7 +76,7 @@ export default function HomeClient() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 animate-fade-up [animation-delay:200ms]">
+          <div className="hidden lg:block lg:col-span-6 animate-fade-up [animation-delay:200ms]">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-ink/10">
               <Image
                 src="/images/lt/lt1-02.jpg"
@@ -279,6 +288,9 @@ export default function HomeClient() {
                 </li>
               ))}
             </ul>
+            <div className="mt-10">
+              <PhotoStack photos={eventPhotos} />
+            </div>
           </StepBlock>
         </div>
       </StepSection>
@@ -308,7 +320,7 @@ export default function HomeClient() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-20">
           <div className="flex flex-col gap-6 rounded-3xl border border-ink/10 bg-canvas p-6 md:flex-row md:items-center md:justify-between md:p-10">
             <div>
-              <h2 className="text-2xl md:text-3xl font-black leading-snug">OIF に参加する</h2>
+              <h2 className="text-2xl md:text-3xl font-black leading-snug">参加について</h2>
               <p className="mt-3 leading-relaxed text-ink/70">
                 Discord に入って、所属とやりたいことを選んでください。会費はかかりません。Discord を使ったことがない人は、
                 <Link href="/join/#discord-account" className="font-bold underline underline-offset-4">アカウントの作り方</Link>
