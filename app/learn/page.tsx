@@ -95,7 +95,7 @@ export default function LearnPage() {
           <div className="lg:col-span-7 space-y-10">
             <Reveal className="overflow-hidden rounded-2xl border border-ink/10 bg-white">
               <Image
-                src="/images/noema-screenshot.png"
+                src="/images/noema-screenshot.webp"
                 alt="Noema のシリーズ一覧の画面"
                 width={1905}
                 height={887}

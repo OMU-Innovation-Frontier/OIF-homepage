@@ -35,19 +35,19 @@ const pastEvents = [
 ].sort((a, b) => b.date.localeCompare(a.date));
 
 const heroSlides = [
-  { src: "/images/lt/lt1-02.jpg", alt: "発表するメンバー" },
-  { src: "/images/vibe-coding-workshop.png", alt: "ワークショップで作業するメンバー" },
-  { src: "/images/lt/lt1-03.jpg", alt: "発表するメンバー" },
-  { src: "/images/first-workshop.png", alt: "つくったアプリを発表するメンバー" },
-  { src: "/images/lt/lt1-01.jpg", alt: "発表を聞くメンバー" },
+  { src: "/images/lt/lt1-02.webp", alt: "発表するメンバー" },
+  { src: "/images/vibe-coding-workshop.webp", alt: "ワークショップで作業するメンバー" },
+  { src: "/images/lt/lt1-03.webp", alt: "発表するメンバー" },
+  { src: "/images/first-workshop.webp", alt: "つくったアプリを発表するメンバー" },
+  { src: "/images/lt/lt1-01.webp", alt: "発表を聞くメンバー" },
 ];
 
 const eventPhotos = [
-  { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子" },
-  { src: "/images/lt/lt1-03.jpg", alt: "LT会での発表の様子" },
-  { src: "/images/vibe-coding-workshop.png", alt: "Vibe Codingワークショップの様子" },
-  { src: "/images/llm-handson.png", alt: "ローカルLLMハンズオンの参加者" },
-  { src: "/images/lt/lt1-01.jpg", alt: "LT会での発表の様子" },
+  { src: "/images/first-workshop.webp", alt: "第1回ワークショップの様子" },
+  { src: "/images/lt/lt1-03.webp", alt: "LT会での発表の様子" },
+  { src: "/images/vibe-coding-workshop.webp", alt: "Vibe Codingワークショップの様子" },
+  { src: "/images/llm-handson.webp", alt: "ローカルLLMハンズオンの参加者" },
+  { src: "/images/lt/lt1-01.webp", alt: "LT会での発表の様子" },
 ];
 
 export default function HomeClient() {
@@ -164,7 +164,7 @@ export default function HomeClient() {
           >
             <span className="relative block aspect-[16/10] sm:col-span-2 sm:aspect-auto border-b sm:border-b-0 sm:border-r border-ink/10 bg-white">
               <Image
-                src="/images/noema-screenshot.png"
+                src="/images/noema-screenshot.webp"
                 alt="Noema のシリーズ一覧の画面"
                 fill
                 sizes="(max-width: 640px) 100vw, 20rem"

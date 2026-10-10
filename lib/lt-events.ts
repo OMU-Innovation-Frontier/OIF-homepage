@@ -33,9 +33,9 @@ export const ltEvents: LTEvent[] = [
     summary:
       "中百舌鳥キャンパスのスマートエネルギー棟にて「第1回 LT（ライトニングトーク）会」を開催しました。メンバーそれぞれが今挑戦していることの共有や、OIFという組織を今後どう盛り上げていくかなど、非常に実りあるディスカッションの場となりました。",
     photos: [
-      { src: "/images/lt/lt1-01.jpg", alt: "第1回LT会の発表の様子（Siri AI）" },
-      { src: "/images/lt/lt1-02.jpg", alt: "第1回LT会の発表の様子（形式ニューロン）" },
-      { src: "/images/lt/lt1-03.jpg", alt: "第1回LT会の発表の様子（OIFの現状と、これから）" },
+      { src: "/images/lt/lt1-01.webp", alt: "第1回LT会の発表の様子（Siri AI）" },
+      { src: "/images/lt/lt1-02.webp", alt: "第1回LT会の発表の様子（形式ニューロン）" },
+      { src: "/images/lt/lt1-03.webp", alt: "第1回LT会の発表の様子（OIFの現状と、これから）" },
     ],
     talks: [
       {
