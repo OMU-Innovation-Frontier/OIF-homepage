@@ -22,7 +22,7 @@ export const projects: Project[] = [
     tagline: "クラウド同期・手書き・AI支援を統合したスマート学習プラットフォーム",
     status: "公開中",
     href: "https://strategic-study-tracker.vercel.app/",
-    image: "/images/study-materials.png",
+    image: "/images/study-materials.webp",
     summary:
       "教材（PDF、講義動画、Webドキュメント等）を一元管理し、進捗や手書きアノテーションをクラウドでリアルタイムに同期。さらにGemini APIを搭載したAI Copilotにより、翻訳・学術的なQ&Aまでをシームレスに行える次世代の学習管理プラットフォーム。",
     challenge:
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     tagline: "AIでできることと、その仕組みを、具体例から解説する技術メディア",
     status: "公開中",
     href: "https://noema-learn.uk/",
-    image: "/images/noema-screenshot.png",
+    image: "/images/noema-screenshot.webp",
     summary:
       "コーディングエージェントやニューラルネットワークなど、AIでできることとその仕組みを、初めての人にもわかる具体例から解説する技術メディア。記事はテーマごとのシリーズにまとまっていて、順番にたどりながら学べる。",
     challenge:
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     name: "samurAI",
     tagline: "ノーコードで学ぶ機械学習",
     status: "開発・運用中",
-    image: "/images/samurai-screenshot.png",
+    image: "/images/samurai-screenshot.webp",
     summary:
       "コードを書かずに機械学習の本質を体験できる学習アプリ。データの前処理からモデル構築・評価までをゲーム感覚で学べる。",
     challenge:

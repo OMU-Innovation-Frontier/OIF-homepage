@@ -1,253 +1,130 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import { MessageSquare, Compass, Rocket, Palette, Code2, Users } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import PageHeader from "@/components/site/PageHeader";
+import SectionHeading from "@/components/site/SectionHeading";
+import JoinSteps from "@/components/site/JoinSteps";
+import RoleChoices from "@/components/site/RoleChoices";
 import DiscordCTA from "@/components/ui/DiscordCTA";
 import Reveal from "@/components/ui/Reveal";
+import { discordAbout, discordSignup, faqs, welcomeConditions } from "@/lib/join";
 
 export const metadata: Metadata = {
-  title: "Join | OIF 大阪公立大学のAIサークルに参加",
+  title: "参加について | OIF 大阪公立大学のAIサークル",
   description:
-    "OIF（OMU Innovation Frontier）への加入はDiscordから。大阪公立大学のAI・プログラミングサークルで、AIや機械学習に興味のある学生を募集中。初心者歓迎、プログラミング経験不問。デザイン・教材づくり・イベント運営など、つくる側の役割も募集中。",
+    "OIF（OMU Innovation Frontier）への参加は Discord から。Discord のアカウントの作り方、参加の流れ、よくある質問。会費無料・プログラミング経験不問・文系も1年生も歓迎。",
   alternates: {
     canonical: "https://oif-ai.com/join/",
   },
 };
 
-const roles = [
-  {
-    icon: Palette,
-    title: "デザイン",
-    body: "SNS・ホームページ・イベントのスライドなど、OIFの「見た目」と発信をつくる。",
-    note: "「デザインだけやりたい」も大歓迎",
-    wanted: true,
-  },
-  {
-    icon: Code2,
-    title: "技術",
-    body: "勉強会・ハンズオンの教材づくりや、コミュニティ発のサービス開発。",
-    note: "つくりながら学ぶスタイルでOK",
-    wanted: false,
-  },
-  {
-    icon: Users,
-    title: "運営",
-    body: "イベントの企画・他団体や企業との連携・プロジェクトの進行管理。",
-    note: "非エンジニアも主戦力",
-    wanted: true,
-  },
-];
-
-const steps = [
-  {
-    icon: MessageSquare,
-    n: "01",
-    title: "Discordに参加",
-    body: "メールアドレスだけで無料登録。スマホからもPCからも、1分で入れます。",
-  },
-  {
-    icon: Compass,
-    n: "02",
-    title: "チャンネルを覗く",
-    body: "AIニュース、勉強会の案内、開発の様子。気になるチャンネルを眺めるだけでOK。",
-  },
-  {
-    icon: Rocket,
-    n: "03",
-    title: "興味のあることに参加",
-    body: "ハンズオン、輪読会、プロジェクト。自分のペースで関わり方を選べます。",
-  },
-];
-
-const recommendedFor = [
-  "AIに興味がある",
-  "プログラミングを始めてみたい",
-  "AIツールを触ってみたい",
-  "技術系のコミュニティに参加したい",
-  "一緒にプロジェクトを作る仲間がほしい",
-];
-
-const faqHighlights = [
-  { q: "参加は無料ですか？", a: "はい、完全無料です。Discordに入るだけで費用は一切かかりません。" },
-  { q: "大阪公立大学の学生じゃないと無理？", a: "他大学の学生も歓迎です。AIに興味があれば学校・学部・専攻は問いません。" },
-  { q: "プログラミング初心者でも大丈夫？", a: "もちろんです。経験不問。まず眺めるだけの参加スタイルもあります。" },
-];
-
 export default function JoinPage() {
   return (
-    <div className="bg-paper text-ink -mt-14 md:-mt-16 pt-14 md:pt-16">
-      {/* Hero */}
-      <section className="relative bg-paper">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
-          <p className="section-label mb-6">JOIN THE COMMUNITY</p>
-          <h1 className="display mb-8">
-            Discordから、<br />はじめよう
-          </h1>
-          <p className="text-lg md:text-xl text-ink/70 max-w-2xl mb-12 leading-relaxed">
-            OIFのコミュニケーションはすべて Discord 上で。
-            ニュース共有も、勉強会も、プロジェクトも、まずは覗いてみることから始まります。
-          </p>
-          <div className="flex flex-wrap items-center gap-5">
-            <DiscordCTA location="join_hero" />
-            <Link
-              href="/activities/"
-              className="inline-flex items-center gap-2 px-8 py-5 text-sm font-bold tracking-widest uppercase border border-ink/20 text-ink hover:bg-ink/5 hover:border-ink/40 transition-colors duration-200"
-            >
-              活動を見る
-            </Link>
-          </div>
-          <p className="mt-6 font-mono text-xs text-ink/60">
-            無料 · 経験不問 · 見るだけOK
-          </p>
-        </div>
-      </section>
+    <div className="bg-canvas text-ink">
+      <PageHeader
+        title="参加について"
+        lead="OIF への参加は Discord から行います。会費は無料で、プログラミングの経験もいりません。文系の学生も1年生も参加できます。"
+      />
 
-      {/* 3 Steps */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <p className="section-label mb-3">HOW IT WORKS</p>
-          <h2 className="headline mb-14">
-            参加までの3ステップ
-          </h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {steps.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <Reveal key={s.n} delay={i * 100}>
-                <div className="h-full border border-ink/10 bg-night-2 p-8 md:p-10 hover:border-ink/30 transition-colors">
-                  <div className="flex items-center justify-between mb-8">
-                    <Icon size={26} strokeWidth={1.5} className="text-ink/70" />
-                    <span className="font-mono text-sm text-ink/52">{s.n}</span>
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{s.title}</h3>
-                  <p className="text-sm md:text-base leading-relaxed text-ink/60">{s.body}</p>
-                </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Roles: get involved */}
-      <section id="roles" className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <Reveal className="max-w-2xl mb-12 md:mb-16">
-            <p className="section-label mb-3">GET INVOLVED</p>
-            <h2 className="headline mb-5">
-              つくる側にも、まわれる。
-            </h2>
-            <p className="text-base text-ink/60 leading-relaxed">
-              OIFへの参加はDiscordに入るだけ。
-              ほとんどのメンバーは役割を持たず、見るだけ・イベントだけで参加しています。
-              そのうえで「OIFをつくる側」をやってみたい人には、3つの役割があります。
-              ひとつだけでも、兼任でも、途中からでも。
-            </p>
+      <section className="border-b border-ink/10 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20 grid gap-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading title="Discord について" />
           </Reveal>
-
-          <div className="grid md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
-            {roles.map((r, i) => {
-              const Icon = r.icon;
-              return (
-                <Reveal key={r.title} delay={i * 100} className="bg-night-2 p-8 md:p-10">
-                  <div className="flex items-center justify-between mb-8">
-                    <Icon size={26} strokeWidth={1.5} className="text-ink/70" aria-hidden />
-                    {r.wanted && (
-                      <span className="font-mono text-[11px] tracking-widest text-accent-bright">
-                        いま特に募集中
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3">{r.title}</h3>
-                  <p className="text-sm md:text-base leading-relaxed text-ink/60">{r.body}</p>
-                  <p className="mt-5 font-mono text-xs text-ink/45">{r.note}</p>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          <div className="mt-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-            <p className="text-sm text-ink/55 leading-relaxed max-w-xl">
-              目安は週2〜3時間から。スキルは入ってから身につければ大丈夫です。
-              興味があれば、Discordで「デザインやりたい」「イベント企画やりたい」とひとこと送ってください。
-            </p>
-            <div className="shrink-0">
-              <DiscordCTA location="join_roles" size="md" label="Discordで声をかける" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interest: recommended for */}
-      <section className="border-t border-ink/10 bg-night-2">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
-            <div>
-              <p className="section-label mb-3">IS THIS YOU?</p>
-              <h2 className="headline mb-6">
-                こんな人に<br />おすすめ
-              </h2>
-              <p className="text-base text-ink/55 leading-relaxed mb-8 max-w-md">
-                ひとつでも当てはまれば、きっと楽しめます。完璧な準備は要りません。
-              </p>
-              <DiscordCTA location="join_interest" size="md" label="いま参加する" />
-            </div>
-            <ul className="space-y-5">
-              {recommendedFor.map((item) => (
-                <li key={item} className="flex items-center gap-5 border-b border-ink/10 pb-5">
-                  <span className="font-mono text-accent-bright text-sm shrink-0">✓</span>
-                  <span className="text-lg md:text-xl font-bold tracking-tight">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ highlights */}
-      <section className="border-t border-ink/10 bg-night">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 section-y">
-          <div className="flex items-end justify-between gap-6 mb-12">
-            <div>
-              <p className="section-label mb-3">QUICK ANSWERS</p>
-              <h2 className="headline">不安な点は？</h2>
-            </div>
-            <Link
-              href="/faq/"
-              className="hidden md:inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors shrink-0"
-            >
-              すべてのFAQ →
-            </Link>
-          </div>
-          <div className="border-t border-ink/10">
-            {faqHighlights.map((f) => (
-              <div key={f.q} className="grid md:grid-cols-[0.8fr_1.2fr] gap-3 md:gap-10 py-7 border-b border-ink/10">
-                <p className="text-lg font-bold tracking-tight">{f.q}</p>
-                <p className="text-base text-ink/65 leading-relaxed">{f.a}</p>
-              </div>
+          <div className="lg:col-span-7 space-y-3 text-base leading-loose text-ink/75">
+            {discordAbout.map((p) => (
+              <p key={p}>{p}</p>
             ))}
           </div>
-          <Link
-            href="/faq/"
-            className="md:hidden mt-8 inline-flex items-center gap-1 font-mono text-xs tracking-widest text-ink/60 hover:text-ink transition-colors"
-          >
-            すべてのFAQ →
-          </Link>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="relative overflow-hidden border-t border-ink/10 bg-night">
-        <div aria-hidden className="absolute inset-0 dot-grid opacity-50" />
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40 text-center">
-          <p className="section-label mb-8">JOIN</p>
-          <h2 className="statement mb-10">
-            一歩、<span>外の世界</span>を<br />覗いてみませんか。
-          </h2>
-          <p className="text-base md:text-lg text-ink/60 max-w-xl mx-auto mb-12">
-            特別な準備は必要ありません。まずはDiscordに入るところから。
-          </p>
-          <div className="flex justify-center">
-            <DiscordCTA location="join_footer" />
+      <section id="discord-account" className="scroll-mt-20 border-b border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20 grid gap-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading title="Discord のアカウントの作り方">
+              <p>
+                Discord を使ったことがない人は、次の順番でアカウントを作ってください。すでにアカウントがある人は、この手順は飛ばして、下の「参加の流れ」に進んでください。
+              </p>
+            </SectionHeading>
+          </Reveal>
+          <ol className="lg:col-span-7 space-y-3">
+            {discordSignup.map((s, i) => (
+              <li key={s.title} className="flex gap-4 rounded-2xl border border-ink/10 bg-white p-5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/25 text-sm font-bold">
+                  {i + 1}
+                </span>
+                <span className="pt-0.5">
+                  <span className="block font-bold leading-relaxed">{s.title}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-ink/65">{s.body}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="flow" className="scroll-mt-20 border-b border-ink/10 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20 grid gap-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading title="参加の流れ">
+              <p>Discord に入ったあと、所属とやりたいことを選択肢から選びます。選んだ内容に合わせてロールが付きます。</p>
+            </SectionHeading>
+            <div className="mt-8 hidden lg:block">
+              <DiscordCTA location="join_steps" variant="brand" size="md" label="Discord に参加する" />
+            </div>
+          </Reveal>
+          <div className="lg:col-span-7 space-y-6">
+            <JoinSteps />
+            <RoleChoices />
+            <div className="lg:hidden">
+              <DiscordCTA location="join_steps_mobile" variant="brand" size="md" label="Discord に参加する" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-ink/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20 grid gap-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading title="参加の条件" />
+          </Reveal>
+          <ul className="lg:col-span-7 space-y-3">
+            {welcomeConditions.map((c) => (
+              <li key={c} className="rounded-2xl border border-ink/10 bg-white px-5 py-4 font-bold leading-relaxed">
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="faq" className="scroll-mt-20 border-b border-ink/10 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20 grid gap-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <SectionHeading title="よくある質問" />
+          </Reveal>
+          <div className="lg:col-span-7 space-y-3">
+            {faqs.map((f) => (
+              <details key={f.question} className="group rounded-2xl border border-ink/10 bg-canvas">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-bold leading-relaxed [&::-webkit-details-marker]:hidden">
+                  {f.question}
+                  <ChevronDown
+                    className="h-5 w-5 shrink-0 text-ink/50 transition-transform duration-200 group-open:rotate-180"
+                    aria-hidden
+                  />
+                </summary>
+                <p className="px-5 pb-5 text-sm md:text-base leading-loose text-ink/70">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
+          <div className="flex flex-col gap-6 rounded-3xl border border-ink/10 bg-white p-6 md:flex-row md:items-center md:justify-between md:p-10">
+            <p className="text-lg md:text-xl font-bold leading-relaxed">ほかに質問があれば、Discord で運営に連絡してください。</p>
+            <DiscordCTA location="join_bottom" variant="brand" size="md" label="Discord に参加する" className="shrink-0 self-start md:self-auto" />
           </div>
         </div>
       </section>
