@@ -14,6 +14,7 @@ import JoinSteps from "@/components/site/JoinSteps";
 import RoleChoices from "@/components/site/RoleChoices";
 import StepSection, { StepBlock } from "@/components/site/StepSection";
 import PhotoStack from "@/components/site/PhotoStack";
+import HeroSlideshow from "@/components/site/HeroSlideshow";
 
 const [stepJoin, stepLearn, stepBuild, stepPresent] = flowSteps;
 
@@ -32,6 +33,14 @@ const pastEvents = [
   ...pastSessions.map((s) => ({ date: s.date, title: s.title, href: s.materialHref, label: s.materialLabel })),
   ...ltEvents.map((lt) => ({ date: lt.date.replaceAll("-", "."), title: lt.title, href: undefined, label: undefined })),
 ].sort((a, b) => b.date.localeCompare(a.date));
+
+const heroSlides = [
+  { src: "/images/lt/lt1-02.jpg", alt: "発表するメンバー" },
+  { src: "/images/vibe-coding-workshop.png", alt: "ワークショップで作業するメンバー" },
+  { src: "/images/lt/lt1-03.jpg", alt: "発表するメンバー" },
+  { src: "/images/first-workshop.png", alt: "つくったアプリを発表するメンバー" },
+  { src: "/images/lt/lt1-01.jpg", alt: "発表を聞くメンバー" },
+];
 
 const eventPhotos = [
   { src: "/images/first-workshop.png", alt: "第1回ワークショップの様子" },
@@ -77,16 +86,7 @@ export default function HomeClient() {
           </div>
 
           <div className="hidden lg:block lg:col-span-6 animate-fade-up [animation-delay:200ms]">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-ink/10">
-              <Image
-                src="/images/lt/lt1-02.jpg"
-                alt="発表するメンバー"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+            <HeroSlideshow slides={heroSlides} />
           </div>
         </div>
       </section>

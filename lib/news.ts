@@ -7,6 +7,8 @@ export interface NewsItem {
 // サイト全体のニュースの単一ソース。トップページ(Latest Updates)と
 // /news ページの両方がここを参照する。新しい順に並べる。
 export const newsItems: NewsItem[] = [
+  { date: "2026.10.10", title: "学習プログラム「OIF学習」をメンバー向けに公開しました" },
+  { date: "2026.08.30", title: "技術メディア「Noema」を公開しました" },
   { date: "2026.07.08", title: "第2回LT会を開催しました" },
   { date: "2026.07.01", title: "第1回LT会を開催しました" },
   { date: "2026.06.19", title: "「コードで学ぶ！DeepLearning」を開催しました" },
