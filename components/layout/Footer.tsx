@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-5">
             <Link href="/" className="inline-block mb-6" aria-label="OIF トップ">
-              <Image src="/logo.png" alt="OIF" width={120} height={120} className="h-14 w-auto mix-blend-multiply" />
+              <Image src="/logo-full.png" alt="OIF" width={201} height={304} className="h-14 w-auto" />
             </Link>
             <p className="text-lg font-bold mb-2">OMU Innovation Frontier</p>
             <p className="text-sm leading-relaxed text-ink/65 max-w-xs">
