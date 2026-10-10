@@ -17,7 +17,6 @@ export default function HeroSlideshow({ slides }: { slides: Slide[] }) {
           src={s.src}
           alt={s.alt}
           fill
-          priority={i === 0}
           sizes="(max-width: 1024px) 0px, 45vw"
           className="hero-slide object-cover"
           style={{ animationDelay: `${i * SECONDS_PER_SLIDE - 1}s` }}
